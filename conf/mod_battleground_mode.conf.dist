@@ -20,16 +20,22 @@ BattlegroundMode.AllowedLevels = "19,29,39,49,59,69,79"
 
 BattlegroundMode.RestoreHealthMana = 1
 BattlegroundMode.TeleportOnSelection = 1
-BattlegroundMode.Alliance.Map = 0
-BattlegroundMode.Alliance.X = -8833.38
-BattlegroundMode.Alliance.Y = 628.62
-BattlegroundMode.Alliance.Z = 94.00
-BattlegroundMode.Alliance.O = 0.0
-BattlegroundMode.Horde.Map = 1
-BattlegroundMode.Horde.X = 1629.36
-BattlegroundMode.Horde.Y = -4373.39
-BattlegroundMode.Horde.Z = 31.26
-BattlegroundMode.Horde.O = 0.0
+# Both factions: default brackets 19/29/39/49/59/69 go to Shattrath;
+# level 79 goes to Dalaran. For custom brackets, levels below MinLevel use
+# Shattrath; levels at or above it use Dalaran (MinLevel is clamped to 1..80).
+# Applies once when selecting BG mode; existing characters are not moved on login.
+# Replaces the old Alliance/Horde destination settings, which are no longer used.
+BattlegroundMode.Teleport.Dalaran.MinLevel = 79
+BattlegroundMode.Teleport.Shattrath.Map = 530
+BattlegroundMode.Teleport.Shattrath.X = -1838.16
+BattlegroundMode.Teleport.Shattrath.Y = 5301.79
+BattlegroundMode.Teleport.Shattrath.Z = -12.428
+BattlegroundMode.Teleport.Shattrath.O = 5.0
+BattlegroundMode.Teleport.Dalaran.Map = 571
+BattlegroundMode.Teleport.Dalaran.X = 5807.75
+BattlegroundMode.Teleport.Dalaran.Y = 588.347
+BattlegroundMode.Teleport.Dalaran.Z = 660.939
+BattlegroundMode.Teleport.Dalaran.O = 1.64
 
 # Per-character restrictions, also applied while a new character is undecided.
 # Normal characters on the same account are unaffected. Disabling any of these

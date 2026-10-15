@@ -116,7 +116,7 @@ SQL file is needed.
 The single `starter_state` column stores pending (0), claimed (1), or delivered
 (2). A durable claim precedes inventory changes, then item instances, positions,
 and completion are queued together on the core's asynchronous database worker
-before the capital teleport. Delivery is confirmed after that transaction succeeds.
+before the city teleport. Delivery is confirmed after that transaction succeeds.
 Player-save statements require this worker connection; a synchronous direct
 commit causes a missing prepared-statement assertion. A server crash
 or exceptional failure after claiming requires a GM to reconcile inventory;
@@ -228,7 +228,7 @@ The runtime validator also checks against your server's actual item templates.
 ## Item tooltips
 
 Starter delivery sends the core's localized item-template response before the
-new-item notification and capital teleport. BG login also refreshes information
+new-item notification and city teleport. BG login also refreshes information
 for equipped items. If an existing character shows “Retrieving item information,”
 log in again after updating, or use `.bgstarter` to refresh equipped-item
 information. A completed delivery remains completed; this does not grant gear.

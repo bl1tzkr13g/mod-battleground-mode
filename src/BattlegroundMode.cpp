@@ -17,6 +17,7 @@
 #include "WorldPacket.h"
 #include "WorldSession.h"
 
+#include <algorithm>
 #include <mutex>
 #include <memory>
 #include <optional>
@@ -57,8 +58,9 @@ struct Settings
     bool starterBind = true;
     std::shared_ptr<GearCatalog const> gear = std::make_shared<GearCatalog>();
     std::vector<uint8> levels;
-    Destination alliance{0, -8833.38f, 628.62f, 94.0f, 0.0f};
-    Destination horde{1, 1629.36f, -4373.39f, 31.26f, 0.0f};
+    uint32 dalaranMinLevel = 79;
+    Destination shattrath{530, -1838.16f, 5301.79f, -12.428f, 5.0f};
+    Destination dalaran{571, 5807.75f, 588.347f, 660.939f, 1.64f};
 };
 
 struct CharacterState
@@ -112,17 +114,19 @@ public:
         if (next.levels.empty())
             LOG_ERROR("module", "Battleground Mode: invalid/empty AllowedLevels; bracket selection is unavailable.");
 
-        auto destination = [](std::string const& faction, Destination defaults)
+        auto destination = [](std::string const& city, Destination defaults)
         {
-            std::string prefix = "BattlegroundMode." + faction + ".";
+            std::string prefix = "BattlegroundMode.Teleport." + city + ".";
             return Destination{sConfigMgr->GetOption<uint32>(prefix + "Map", defaults.map),
                 sConfigMgr->GetOption<float>(prefix + "X", defaults.x),
                 sConfigMgr->GetOption<float>(prefix + "Y", defaults.y),
                 sConfigMgr->GetOption<float>(prefix + "Z", defaults.z),
                 sConfigMgr->GetOption<float>(prefix + "O", defaults.orientation)};
         };
-        next.alliance = destination("Alliance", next.alliance);
-        next.horde = destination("Horde", next.horde);
+        next.dalaranMinLevel = std::clamp<uint32>(
+            sConfigMgr->GetOption<uint32>("BattlegroundMode.Teleport.Dalaran.MinLevel", 79), 1, 80);
+        next.shattrath = destination("Shattrath", next.shattrath);
+        next.dalaran = destination("Dalaran", next.dalaran);
         auto gear = std::make_shared<GearCatalog>();
         for (auto const& key : sConfigMgr->GetKeysByString("BattlegroundMode.Gear.Level"))
             if (!gear->Add(key, sConfigMgr->GetOption<std::string>(key, "", false)))
@@ -351,7 +355,7 @@ public:
             }
 
         // Queue item instances, inventory positions, and completion together.
-        // Build the save BEFORE any capital teleport (which delays saves).
+        // Build the save BEFORE any city teleport (which delays saves).
         if (!player->IsInWorld() || player->IsBeingTeleportedFar())
         {
             StarterDeliveryError(player);
@@ -672,11 +676,11 @@ public:
         }
         if (config.teleport)
         {
-            auto const& dest = player->GetTeamId(true) == TEAM_ALLIANCE ? config.alliance : config.horde;
+            auto const& dest = level >= config.dalaranMinLevel ? config.dalaran : config.shattrath;
             if (!player->TeleportTo(dest.map, dest.x, dest.y, dest.z, dest.orientation))
             {
-                Tell(player, "Your level is locked, but the capital teleport failed. Contact a game master.");
-                LOG_ERROR("module", "Battleground Mode: capital teleport failed for character {}.", player->GetGUID().GetCounter());
+                Tell(player, "Your level is locked, but the city teleport failed. Contact a game master.");
+                LOG_ERROR("module", "Battleground Mode: city teleport failed for character {}.", player->GetGUID().GetCounter());
             }
         }
         player->SaveToDB(false, false);

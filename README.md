@@ -16,7 +16,11 @@ rewards are the next milestone.
   five seconds. Changing allowed levels never rewrites existing choices.
 - Selection uses the core's normal level-change flow so other modules receive
   `OnPlayerLevelChanged`. This module does not grant talents or combat spells.
-- Configurable health/mana restoration and faction-capital teleport on selection.
+- Configurable health/mana restoration and neutral-city teleport on selection:
+  levels 19–69 go to Shattrath, level 79 to Dalaran, for both factions.
+  Edit `BattlegroundMode.Teleport.Shattrath.*`, `BattlegroundMode.Teleport.Dalaran.*`
+  and `BattlegroundMode.Teleport.Dalaran.MinLevel` (default 79) to change routing.
+  Replace the old Alliance/Horde destination settings in your installed config.
 - Configurable restrictions on trading, sending/collecting/returning mail,
   auctions, guild-bank items/gold, and guild-funded NPC repairs.
 - Mail addressed to a restricted character is rejected even while that character
