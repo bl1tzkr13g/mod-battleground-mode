@@ -224,3 +224,11 @@ snapshot for existence, level cap, armor type, class/race/faction eligibility,
 and absence of profession, spell, reputation, honor-rank, map, area, and holiday
 requirements. This checks eligibility, not PvP balance or live-client behavior.
 The runtime validator also checks against your server's actual item templates.
+
+## Item tooltips
+
+Starter delivery sends the core's localized item-template response before the
+new-item notification and capital teleport. BG login also refreshes information
+for equipped items. If an existing character shows “Retrieving item information,”
+log in again after updating, or use `.bgstarter` to refresh equipped-item
+information. A completed delivery remains completed; this does not grant gear.

@@ -181,6 +181,22 @@ public:
         Tell(player, "Starter delivery was interrupted. Contact a game master; it will not be repeated automatically.");
     }
 
+    // Use the core's localized item-query response rather than duplicating
+    // its packet format. Prime the client before item notifications/teleport.
+    static void SendItemInformation(Player* player, uint32 entry)
+    {
+        WorldPacket query(CMSG_ITEM_QUERY_SINGLE, sizeof(uint32));
+        query << entry;
+        player->GetSession()->HandleItemQuerySingleOpcode(query);
+    }
+
+    static void RefreshEquippedItemInformation(Player* player)
+    {
+        for (uint8 slot = EQUIPMENT_SLOT_START; slot < EQUIPMENT_SLOT_END; ++slot)
+            if (Item* item = player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
+                SendItemInformation(player, item->GetEntry());
+    }
+
     void GiveStarterGear(Player* player)
     {
         auto config = Config();
@@ -192,6 +208,7 @@ public:
         }
         if (!CanDeliverStarter(config.starterEnabled, true, state->starter))
         {
+            RefreshEquippedItemInformation(player);
             Tell(player, state->starter == StarterState::Claimed ?
                 "An earlier starter delivery needs game master review." :
                 "Starter gear is disabled or has already been delivered to this character.");
@@ -318,6 +335,7 @@ public:
             player->ItemAddedQuestCheck(entry, 1);
             player->UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_OWN_ITEM, entry, 1);
             sScriptMgr->OnPlayerStoreNewItem(player, stored, 1);
+            SendItemInformation(player, entry);
             player->SendNewItem(stored, 1, true, false);
             delivered.push_back(stored);
         }
@@ -505,7 +523,10 @@ public:
         state->starterAttempt = CanDeliverStarter(config.starterEnabled, state->mode == Mode::Battleground, state->starter);
         Store(player, *state);
         if (state->mode == Mode::Battleground)
+        {
             Enforce(player, *state);
+            RefreshEquippedItemInformation(player);
+        }
         if (state->mode == Mode::Pending)
             Tell(player, "Choose Normal or Battleground Mode. Type .bgmode to reopen the menu at level 1. XP works normally; reaching level 2 permanently selects Normal Mode.");
         if (state->mode == Mode::Battleground && state->starter == StarterState::Claimed)
