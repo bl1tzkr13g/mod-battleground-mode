@@ -119,3 +119,8 @@ python3 tests/hub_database_test.py --socket /path/to/test-mariadb.sock
 
 In-game placement and vendor interactions still require verification on the
 running server; there is no live game server in this workspace.
+
+The world setup detects older `creature.id` and newer `creature.id1/id2/id3`
+layouts, plus `spawndist`/`wander_distance`, without converting the core schema.
+Run `tests/hub_database_test.py` with `--legacy-schema` to exercise the older
+layout as well. The production SQL runs unchanged in both tests.

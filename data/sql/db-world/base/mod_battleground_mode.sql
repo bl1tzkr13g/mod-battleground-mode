@@ -64,19 +64,47 @@ SELECT c.banner, c.map, c.zone, c.area,
        CONCAT('mod-battleground-mode:',c.faction,'-hub:',c.city,':banner:',s.side) AS tag
 FROM bgmode_hub_centers c CROSS JOIN bgmode_hub_banner_sides s;
 
+-- Older AzerothCore worlds use creature.id; newer worlds use id1/id2/id3.
+-- Detect the actual schema instead of requiring a core database conversion.
+SET @bgmode_entry_column = IF(EXISTS(
+    SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()
+    AND TABLE_NAME='creature' AND COLUMN_NAME='id1'), 'id1', 'id');
+SET @bgmode_extra_ids = IF(EXISTS(
+    SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()
+    AND TABLE_NAME='creature' AND COLUMN_NAME='id2'), ', c.id2=0, c.id3=0', '');
+SET @bgmode_wander = CASE
+    WHEN EXISTS(SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()
+        AND TABLE_NAME='creature' AND COLUMN_NAME='wander_distance') THEN 'c.wander_distance=0, '
+    WHEN EXISTS(SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()
+        AND TABLE_NAME='creature' AND COLUMN_NAME='spawndist') THEN 'c.spawndist=0, '
+    ELSE '' END;
+
 START TRANSACTION;
-UPDATE creature c JOIN bgmode_hub_creatures h ON c.Comment = h.tag
-SET c.id1=h.entry, c.id2=0, c.id3=0, c.map=h.map, c.zoneId=h.zone, c.areaId=h.area,
+SET @bgmode_spawn_update = CONCAT('UPDATE creature c JOIN bgmode_hub_creatures h ON c.Comment = h.tag
+SET c.',
+    @bgmode_entry_column,
+    '=h.entry',
+    @bgmode_extra_ids,
+    ', c.map=h.map, c.zoneId=h.zone, c.areaId=h.area,
     c.spawnMask=1, c.phaseMask=1, c.equipment_id=h.equipment,
     c.position_x=h.x, c.position_y=h.y, c.position_z=h.z, c.orientation=h.facing,
-    c.spawntimesecs=300, c.wander_distance=0, c.MovementType=0;
-INSERT INTO creature
-    (id1,map,zoneId,areaId,spawnMask,phaseMask,equipment_id,
+    c.spawntimesecs=300, ',
+    @bgmode_wander,
+    'c.MovementType=0');
+PREPARE bgmode_spawn_stmt FROM @bgmode_spawn_update;
+EXECUTE bgmode_spawn_stmt;
+DEALLOCATE PREPARE bgmode_spawn_stmt;
+SET @bgmode_spawn_insert = CONCAT('INSERT INTO creature
+    (', @bgmode_entry_column,
+    ',map,zoneId,areaId,spawnMask,phaseMask,equipment_id,
      position_x,position_y,position_z,orientation,spawntimesecs,MovementType,Comment)
 SELECT h.entry,h.map,h.zone,h.area,1,1,h.equipment,h.x,h.y,h.z,h.facing,300,0,h.tag
 FROM bgmode_hub_creatures h JOIN creature_template t ON t.entry=h.entry
 LEFT JOIN creature c ON c.Comment=h.tag
-WHERE c.guid IS NULL;
+WHERE c.guid IS NULL');
+PREPARE bgmode_spawn_stmt FROM @bgmode_spawn_insert;
+EXECUTE bgmode_spawn_stmt;
+DEALLOCATE PREPARE bgmode_spawn_stmt;
 
 UPDATE gameobject g JOIN bgmode_hub_banners h ON g.Comment=h.tag
 SET g.id=h.banner, g.map=h.map, g.zoneId=h.zone, g.areaId=h.area,

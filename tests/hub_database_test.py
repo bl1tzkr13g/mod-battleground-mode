@@ -11,6 +11,7 @@ def main():
     parser.add_argument('--client', default='mariadb')
     parser.add_argument('--socket', required=True)
     parser.add_argument('--user', default='root')
+    parser.add_argument('--legacy-schema', action='store_true', help='Test older creature.id/spawndist layout')
     args = parser.parse_args()
     database = 'bgmode_hub_test_' + uuid.uuid4().hex
     client = [args.client, '--no-defaults', '--protocol=socket', '--socket=' + args.socket,
@@ -18,7 +19,10 @@ def main():
     root = Path(__file__).resolve().parents[1]
     checks = 0
 
-    def sql(statement, selected=True):
+    def sql(statement, selected=True, adapt=True):
+        # Adapt fixture/assertion statements only; execute production SQL verbatim.
+        if args.legacy_schema and adapt:
+            statement = statement.replace('id1', 'id').replace('wander_distance', 'spawndist')
         result = subprocess.run(client + ([database] if selected else []), input=statement,
                                 text=True, capture_output=True)
         if result.returncode:
@@ -34,7 +38,11 @@ def main():
 
     sql(f'CREATE DATABASE `{database}`', False)
     try:
-        sql((root / 'tests/fixtures/hub_world_schema.sql').read_text())
+        schema = (root / 'tests/fixtures/hub_world_schema.sql').read_text()
+        if args.legacy_schema:
+            schema = schema.replace('`id1`', '`id`').replace('`wander_distance`', '`spawndist`')
+            schema = '\n'.join(line for line in schema.splitlines() if '`id2`' not in line and '`id3`' not in line)
+        sql(schema)
         entries = [12794,12795,12788,15350,34038,34063,34060,34043,12793,
                    12784,12785,12778,15351,34075,34084,34078,34081,12781]
         sql('INSERT INTO creature_template VALUES ' + ','.join(f"({i},'original')" for i in entries) + ';'
@@ -46,7 +54,7 @@ def main():
         install = (root / 'data/sql/db-world/base/mod_battleground_mode.sql').read_text()
         remove = (root / 'data/sql/manual/remove_pvp_hubs.sql').read_text()
         expect_install = '36\n8'
-        if sql(install) != expect_install:
+        if sql(install, adapt=False) != expect_install:
             raise AssertionError('expected 36 copied vendors and 8 banners')
         checks += 1
         expect('SELECT map,COUNT(*) FROM creature GROUP BY map ORDER BY map;',
@@ -72,7 +80,7 @@ def main():
         ids = sql('SELECT GROUP_CONCAT(guid ORDER BY guid) FROM creature;')
         banner_ids = sql('SELECT GROUP_CONCAT(guid ORDER BY guid) FROM gameobject;')
         sql("UPDATE creature SET position_x=0 WHERE Comment='mod-battleground-mode:horde-hub:Shattrath:vendor:12794';")
-        if sql(install) != expect_install:
+        if sql(install, adapt=False) != expect_install:
             raise AssertionError('repeat import counts differ')
         checks += 1
         expect('SELECT GROUP_CONCAT(guid ORDER BY guid) FROM creature;', ids, 'reimport preserves creature GUIDs')
@@ -84,7 +92,7 @@ def main():
         sql(remove)
         expect('SELECT guid,id1,map,Comment FROM creature;', '9000000\t12794\t1\toriginal vendor', 'removal preserves original NPC')
         expect('SELECT guid,id,map,Comment FROM gameobject;', '9000000\t192254\t1\toriginal banner', 'removal preserves original banner')
-        if sql(install) != expect_install:
+        if sql(install, adapt=False) != expect_install:
             raise AssertionError('reinstall after removal failed')
         checks += 1
         print(f'{checks} hub database checks passed')
