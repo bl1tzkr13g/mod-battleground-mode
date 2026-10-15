@@ -6,7 +6,7 @@ catalogs, starter sets, vendors, and progression rewards are the next milestone.
 
 ## Implemented
 
-- New characters choose **Normal Mode** or **Battleground Mode** through a
+- New level 1 characters choose **Normal Mode** or **Battleground Mode** through a
   player-owned gossip menu, with confirmation before either permanent decision.
 - Default bracket levels: **19, 29, 39, 49, 59, 69, 79**, configurable up to 80
   with at most 31 distinct choices to stay within the gossip menu limit.
@@ -29,9 +29,10 @@ economy restrictions apply while pending. Closing the menu does not choose a mod
 use **`.bgmode`** to reopen it. Once chosen, the command reports the character's
 mode instead of offering conversion.
 
-Characters cannot select a level below their current level. For example, a new
-Death Knight can choose level 59 or higher with the default settings, but cannot
-enter the level 19 bracket with higher-level abilities.
+Only level 1 characters can enroll. Characters above level 1 remain Normal,
+including newly created Death Knights and characters on servers with higher
+starting levels. Old pending choices automatically become Normal if the character
+is above level 1. Existing Battleground Mode characters keep their saved locks.
 
 ## Installation
 

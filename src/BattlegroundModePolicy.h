@@ -47,8 +47,8 @@ inline std::vector<std::uint8_t> ParseLevels(std::string_view text, std::uint8_t
 inline bool CanChoose(Mode mode, std::uint8_t current, std::uint8_t target,
     std::vector<std::uint8_t> const& allowed)
 {
-    // Never downlevel a character that already has higher-level spells/skills.
-    return mode == Mode::Pending && target >= current &&
+    // Enrollment is only for level 1 characters, regardless of starting class.
+    return mode == Mode::Pending && current == 1 && target >= current &&
         std::find(allowed.begin(), allowed.end(), target) != allowed.end();
 }
 

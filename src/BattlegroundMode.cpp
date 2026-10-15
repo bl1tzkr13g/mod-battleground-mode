@@ -166,6 +166,27 @@ public:
         return state;
     }
 
+    std::optional<CharacterState> EligibleState(Player* player)
+    {
+        auto state = State(player);
+        if (!state || state->mode != Mode::Pending || player->GetLevel() == 1)
+            return state;
+
+        // Retire old pending choices, including characters that leveled while
+        // the module was disabled. Never rewrite an established bracket lock.
+        CharacterDatabase.DirectExecute(
+            "UPDATE mod_battleground_mode SET mode = 1, locked_level = 0 WHERE guid = {} AND mode = 0",
+            player->GetGUID().GetCounter());
+        auto saved = Read(player);
+        if (!saved || !saved->persisted || saved->mode != Mode::Normal)
+        {
+            DatabaseError(player);
+            return std::nullopt;
+        }
+        Store(player, *saved);
+        return saved;
+    }
+
     void Login(Player* player)
     {
         auto config = Config();
@@ -173,14 +194,18 @@ public:
             return;
         if (player->HasAtLoginFlag(AT_LOGIN_FIRST))
             CharacterDatabase.DirectExecute(
-                "INSERT IGNORE INTO mod_battleground_mode (guid, mode, locked_level) VALUES ({}, 0, 0)",
-                player->GetGUID().GetCounter());
+                "INSERT IGNORE INTO mod_battleground_mode (guid, mode, locked_level) VALUES ({}, {}, 0)",
+                player->GetGUID().GetCounter(), player->GetLevel() == 1 ? 0 : 1);
         auto state = Read(player);
         if (!state || (player->HasAtLoginFlag(AT_LOGIN_FIRST) && !state->persisted))
         {
             DatabaseError(player);
             return;
         }
+        Store(player, *state);
+        state = EligibleState(player);
+        if (!state)
+            return;
         state->prompt = config.prompt && state->mode == Mode::Pending;
         Store(player, *state);
         if (state->mode == Mode::Battleground)
@@ -226,7 +251,7 @@ public:
     void ShowMenu(Player* player, bool brackets = false)
     {
         auto config = Config();
-        auto state = State(player);
+        auto state = config.enabled ? EligibleState(player) : State(player);
         if (!config.enabled)
         {
             Tell(player, "Battleground Mode is disabled.");
@@ -275,7 +300,7 @@ public:
     void Select(Player* player, uint32 action)
     {
         auto config = Config();
-        auto state = State(player);
+        auto state = config.enabled ? EligibleState(player) : State(player);
         CloseGossipMenuFor(player);
         if (!config.enabled || !state || state->mode != Mode::Pending || !SafeToSelect(player))
             return;
@@ -341,7 +366,7 @@ public:
     {
         if (!Config().enabled)
             return;
-        auto state = State(player);
+        auto state = EligibleState(player);
         if (!state || state->mode == Mode::Normal)
             return;
         if (elapsed < state->checkTimer)

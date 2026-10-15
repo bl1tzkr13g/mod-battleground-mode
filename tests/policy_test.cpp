@@ -35,7 +35,9 @@ int main()
     Check(ParseLevels(manyLevels, 80).size() == MaxBracketChoices, "maximum menu choices leave room for Back");
     Check(ParseLevels(manyLevels + ",32", 80).empty(), "oversized configuration cannot overflow the gossip menu");
     Check(CanChoose(Mode::Pending, 1, 19, levels), "a new character can choose a bracket");
-    Check(CanChoose(Mode::Pending, 55, 59, levels), "Death Knight can choose a higher bracket");
+    Check(!CanChoose(Mode::Pending, 2, 19, levels), "a character above level 1 cannot enroll");
+    Check(!CanChoose(Mode::Pending, 55, 59, levels), "Death Knight starting above level 1 cannot enroll");
+    Check(!CanChoose(Mode::Pending, 79, 79, levels), "matching a bracket does not bypass level 1 eligibility");
     Check(!CanChoose(Mode::Pending, 55, 19, levels), "Death Knight cannot retain high-level abilities in level 19 bracket");
     Check(!CanChoose(Mode::Normal, 1, 19, levels), "normal decision is permanent");
     Check(!CanChoose(Mode::Battleground, 19, 29, levels), "a second confirmation cannot change bracket");

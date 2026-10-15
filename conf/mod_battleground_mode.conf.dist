@@ -4,7 +4,9 @@
 # Do not disable on a live server with a restricted economy without planning it.
 BattlegroundMode.Enable = 1
 
-# New characters only. Existing characters without a record remain normal.
+# New level 1 characters only. Characters above level 1 are ineligible and
+# remain normal, including classes/server configurations that start above 1.
+# Existing characters without a record remain normal.
 # Closing the menu is safe: .bgmode opens it again. Pending characters gain no XP.
 BattlegroundMode.PromptOnLogin = 1
 BattlegroundMode.AllowNormal = 1
