@@ -79,6 +79,22 @@ inline bool CanChoose(Mode mode, std::uint8_t current, std::uint8_t target,
         std::find(allowed.begin(), allowed.end(), target) != allowed.end();
 }
 
+inline bool CanGainExperience(Mode mode)
+{
+    return mode == Mode::Pending || mode == Mode::Normal;
+}
+
+inline bool CanChangeLevel(Mode mode, std::uint8_t target, std::uint8_t locked, bool applyingLock)
+{
+    return mode == Mode::Pending || mode == Mode::Normal ||
+        (mode == Mode::Battleground && applyingLock && target == locked);
+}
+
+inline bool ShouldBecomeNormal(Mode mode, std::uint8_t level)
+{
+    return mode == Mode::Pending && level > 1;
+}
+
 inline bool ValidRecord(Mode mode, std::uint8_t level)
 {
     return ((mode == Mode::Pending || mode == Mode::Normal) && level == 0) ||

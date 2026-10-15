@@ -24,9 +24,10 @@ catalogs, starter sets, vendors, and progression rewards are the next milestone.
   Character deletion removes its record in the core's deletion transaction.
 
 Restrictions are **per character**. Existing characters without a module record
-remain Normal. New characters stay pending until they choose; XP and configured
-economy restrictions apply while pending. Closing the menu does not choose a mode:
-use **`.bgmode`** to reopen it. Once chosen, the command reports the character's
+remain Normal. New characters stay pending until they choose and gain XP normally,
+even if they close the menu. Reaching level 2 automatically saves Normal Mode
+permanently. Configured economy restrictions apply while pending. At level 1,
+use **`.bgmode`** to reopen the menu. Once chosen, the command reports the character's
 mode instead of offering conversion.
 
 On first login, the automatic menu waits for the intro cinematic to finish or be
@@ -106,6 +107,7 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | --- | --- |
 | First login, skip intro with Escape or watch it to completion | Menu opens about one second afterward without relogging |
 | New character, close menu, relog, `.bgmode` | Choice remains pending and menu can reopen |
+| Close menu, gain XP, reach level 2, then relog and `.bgmode` | Normal XP and leveling work; Normal Mode is saved permanently |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
 | Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |
 | Kill, quest, explore, or gain battleground XP | No XP gain for Battleground Mode |

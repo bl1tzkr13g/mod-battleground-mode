@@ -7,7 +7,8 @@ BattlegroundMode.Enable = 1
 # New level 1 characters only. Characters above level 1 are ineligible and
 # remain normal, including classes/server configurations that start above 1.
 # Existing characters without a record remain normal.
-# Closing the menu is safe: .bgmode opens it again. Pending characters gain no XP.
+# Closing the menu allows normal XP gain. At level 1, .bgmode opens it again.
+# Reaching level 2 permanently selects Normal Mode automatically.
 BattlegroundMode.PromptOnLogin = 1
 BattlegroundMode.AllowNormal = 1
 

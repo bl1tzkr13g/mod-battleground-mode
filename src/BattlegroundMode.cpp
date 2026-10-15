@@ -170,7 +170,7 @@ public:
     std::optional<CharacterState> EligibleState(Player* player)
     {
         auto state = State(player);
-        if (!state || state->mode != Mode::Pending || player->GetLevel() == 1)
+        if (!state || !ShouldBecomeNormal(state->mode, player->GetLevel()))
             return state;
 
         // Retire old pending choices, including characters that leveled while
@@ -185,6 +185,8 @@ public:
             return std::nullopt;
         }
         Store(player, *saved);
+        CloseGossipMenuFor(player);
+        Tell(player, "You have progressed beyond level 1. This character now permanently uses Normal Mode.");
         return saved;
     }
 
@@ -212,7 +214,7 @@ public:
         if (state->mode == Mode::Battleground)
             Enforce(player, *state);
         if (state->mode == Mode::Pending)
-            Tell(player, "Choose Normal or Battleground Mode. Type .bgmode if you close the selection menu. XP is paused until you choose.");
+            Tell(player, "Choose Normal or Battleground Mode. Type .bgmode to reopen the menu at level 1. XP works normally; reaching level 2 permanently selects Normal Mode.");
     }
 
     void Enforce(Player* player, CharacterState state)
@@ -412,8 +414,16 @@ public:
     void OnPlayerGiveXP(Player* player, uint32& amount, Unit* /*victim*/, uint8 /*source*/) override
     {
         auto& manager = Manager::Instance();
-        if (manager.Config().enabled && manager.Restricted(player))
+        auto state = manager.State(player);
+        if (manager.Config().enabled && (!state || !CanGainExperience(state->mode)))
             amount = 0;
+    }
+
+    void OnPlayerLevelChanged(Player* player, uint8 /*oldLevel*/) override
+    {
+        auto& manager = Manager::Instance();
+        if (manager.Config().enabled)
+            manager.EligibleState(player);
     }
 
     bool OnPlayerCanGiveLevel(Player* player, uint8 newLevel) override
@@ -426,8 +436,7 @@ public:
         // native initialization (including the Death Knight starting level).
         if (!state)
             return player->isBeingLoaded();
-        return state->mode == Mode::Normal ||
-            (state->mode == Mode::Battleground && state->applyingLevel && newLevel == state->level);
+        return CanChangeLevel(state->mode, newLevel, state->level, state->applyingLevel);
     }
 
     void OnPlayerGossipSelect(Player* player, uint32 menu, uint32 sender, uint32 action) override
