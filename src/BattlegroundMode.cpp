@@ -5,6 +5,7 @@
 #include "CinematicMgr.h"
 #include "Config.h"
 #include "DatabaseEnv.h"
+#include "Item.h"
 #include "ItemTemplate.h"
 #include "Log.h"
 #include "ObjectMgr.h"
@@ -19,6 +20,7 @@
 #include <mutex>
 #include <memory>
 #include <optional>
+#include <set>
 #include <unordered_map>
 
 namespace BattlegroundMode
@@ -49,6 +51,10 @@ struct Settings
     bool blockReceiveMail = true;
     bool blockAuction = true;
     bool blockGuildBank = true;
+    bool starterEnabled = true;
+    bool starterAutoEquip = true;
+    bool starterTrainArmor = true;
+    bool starterBind = true;
     std::shared_ptr<GearCatalog const> gear = std::make_shared<GearCatalog>();
     std::vector<uint8> levels;
     Destination alliance{0, -8833.38f, 628.62f, 94.0f, 0.0f};
@@ -61,6 +67,8 @@ struct CharacterState
     uint8 level = 0;
     bool persisted = false;
     bool applyingLevel = false;
+    StarterState starter = StarterState::Pending;
+    bool starterAttempt = false;
     uint32 checkTimer = 1000;
     LoginPrompt prompt;
 };
@@ -95,6 +103,10 @@ public:
         next.blockReceiveMail = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockReceivingMail", true);
         next.blockAuction = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockAuctionHouse", true);
         next.blockGuildBank = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockGuildBank", true);
+        next.starterEnabled = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.Enable", true);
+        next.starterAutoEquip = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.AutoEquip", true);
+        next.starterTrainArmor = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.TrainArmorProficiency", true);
+        next.starterBind = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.BindToCharacter", true);
         next.levels = ParseLevels(sConfigMgr->GetOption<std::string>("BattlegroundMode.AllowedLevels", "19,29,39,49,59,69,79"),
             static_cast<uint8>(std::min<uint32>(80, sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))));
         if (next.levels.empty())
@@ -159,6 +171,196 @@ public:
         auto validated = ValidateGearLists(Config().gear);
         std::lock_guard<std::mutex> lock(_mutex);
         _settings.gear = std::move(validated);
+    }
+
+    void StarterDeliveryError(Player* player)
+    {
+        LOG_ERROR("module", "Battleground Mode: interrupted starter delivery for character {}. "
+            "Reconcile inventory before resetting starter_state; do not blindly repeat the grant.",
+            player->GetGUID().GetCounter());
+        Tell(player, "Starter delivery was interrupted. Contact a game master; it will not be repeated automatically.");
+    }
+
+    void GiveStarterGear(Player* player)
+    {
+        auto config = Config();
+        auto state = State(player);
+        if (!config.enabled || !state || state->mode != Mode::Battleground)
+        {
+            Tell(player, "Starter gear is available to Battleground Mode characters only.");
+            return;
+        }
+        if (!CanDeliverStarter(config.starterEnabled, true, state->starter))
+        {
+            Tell(player, state->starter == StarterState::Claimed ?
+                "An earlier starter delivery needs game master review." :
+                "Starter gear is disabled or has already been delivered to this character.");
+            return;
+        }
+        if (!player->IsInWorld() || player->isBeingLoaded() || !SafeToSelect(player) || player->GetTradeData() ||
+            player->GetLevel() != state->level)
+        {
+            Tell(player, "Use .bgstarter when alive, out of combat, and outside travel, trades, and battlegrounds.");
+            return;
+        }
+        auto const& kit = config.gear->Find(state->level, player->getClass(), 1);
+        if (kit.empty())
+        {
+            Tell(player, "No valid Tier 1 gear is configured for your bracket and class. Contact a game master.");
+            return;
+        }
+
+        if (config.starterAutoEquip && config.starterTrainArmor && player->GetLevel() >= 40)
+        {
+            if (player->getClass() == CLASS_WARRIOR || player->getClass() == CLASS_PALADIN)
+                player->learnSpell(750); // Class-appropriate plate proficiency.
+            else if (player->getClass() == CLASS_HUNTER || player->getClass() == CLASS_SHAMAN)
+                player->learnSpell(8737); // Class-appropriate mail proficiency.
+        }
+
+        // Preallocate and preflight the WHOLE kit before consuming its claim.
+        // Creating an affixed item queues it; discarded probes must be removed.
+        auto discard = [player](Item* item)
+        {
+            if (item)
+            {
+                item->RemoveFromUpdateQueueOf(player);
+                delete item;
+            }
+        };
+        std::vector<std::unique_ptr<Item, decltype(discard)>> prepared;
+        std::vector<Item*> incoming;
+        std::vector<uint16> equipment;
+        std::set<uint16> usedSlots;
+        for (auto const& entry : kit)
+        {
+            ItemTemplate const* prototype = sObjectMgr->GetItemTemplate(entry.entry);
+            if (!prototype)
+            {
+                Tell(player, "A configured starter item is unavailable. Contact a game master.");
+                return;
+            }
+            prepared.emplace_back(Item::CreateItem(entry.entry, 1, player), discard);
+            Item* item = prepared.back().get();
+            if (!item)
+            {
+                Tell(player, "Starter items could not be prepared. Try .bgstarter again later.");
+                return;
+            }
+            if ((prototype->RandomProperty || prototype->RandomSuffix) && item->GetItemRandomPropertyId() == 0)
+            {
+                Tell(player, "A starter item's random stats could not be generated. Nothing was delivered; contact a game master.");
+                return;
+            }
+            if (config.starterBind)
+                item->SetBinding(true);
+            incoming.push_back(item);
+            if (config.starterAutoEquip)
+            {
+                uint16 destination = 0;
+                InventoryResult result = player->CanEquipItem(NULL_SLOT, destination, item, true);
+                if (result != EQUIP_ERR_OK || player->CanUnequipItem(destination, true) != EQUIP_ERR_OK)
+                {
+                    if (result != EQUIP_ERR_OK)
+                        player->SendEquipError(result, item);
+                    Tell(player, "The whole starter set must be equippable. Nothing was delivered; fix the restriction and use .bgstarter.");
+                    return;
+                }
+                if (!usedSlots.insert(destination).second)
+                {
+                    Tell(player, "Starter gear contains conflicting equipment slots. Nothing was delivered; contact a game master.");
+                    return;
+                }
+                equipment.push_back(destination);
+            }
+        }
+        uint32 limitedBy = 0;
+        InventoryResult capacity = player->CanStoreItems(incoming.data(), static_cast<int>(incoming.size()), &limitedBy);
+        if (capacity != EQUIP_ERR_OK)
+        {
+            player->SendEquipError(capacity, nullptr);
+            Tell(player, "Make bag room for the entire starter set, then use .bgstarter. Existing equipment will be kept in your bags.");
+            return;
+        }
+
+        // A durable claim precedes item creation in inventory. A crash/error
+        // after this point requires review instead of duplicating free items.
+        state->starter = StarterState::Claimed;
+        state->starterAttempt = false;
+        Store(player, *state);
+        CharacterDatabase.DirectExecute(
+            "UPDATE mod_battleground_mode SET starter_state = 1 WHERE guid = {} AND mode = 2 AND starter_state = 0",
+            player->GetGUID().GetCounter());
+        auto claimed = Read(player);
+        if (!claimed || claimed->mode != Mode::Battleground || claimed->level != state->level ||
+            claimed->starter != StarterState::Claimed)
+        {
+            DatabaseError(player);
+            return;
+        }
+
+        std::vector<Item*> delivered;
+        for (auto& item : prepared)
+        {
+            ItemPosCountVec positions;
+            if (player->CanStoreItem(NULL_BAG, NULL_SLOT, positions, item.get()) != EQUIP_ERR_OK)
+            {
+                StarterDeliveryError(player);
+                return;
+            }
+            uint32 entry = item->GetEntry();
+            Item* stored = player->StoreItem(positions, item.release(), true);
+            if (!stored)
+            {
+                StarterDeliveryError(player);
+                return;
+            }
+            player->ItemAddedQuestCheck(entry, 1);
+            player->UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_OWN_ITEM, entry, 1);
+            sScriptMgr->OnPlayerStoreNewItem(player, stored, 1);
+            player->SendNewItem(stored, 1, true, false);
+            delivered.push_back(stored);
+        }
+
+        bool fullyEquipped = true;
+        if (config.starterAutoEquip)
+            for (std::size_t i = 0; i < delivered.size(); ++i)
+            {
+                // Native swapping updates stats/appearance and puts the old
+                // equipped item into the new item's vacated bag position.
+                player->SwapItem(delivered[i]->GetPos(), equipment[i]);
+                fullyEquipped = fullyEquipped && player->GetItemByPos(equipment[i]) == delivered[i];
+            }
+
+        // Save item instances, inventory positions, and completion together.
+        // This is deliberately BEFORE any capital teleport (which delays saves).
+        if (!player->IsInWorld() || player->IsBeingTeleportedFar())
+        {
+            StarterDeliveryError(player);
+            return;
+        }
+        CharacterDatabaseTransaction transaction = CharacterDatabase.BeginTransaction();
+        player->SaveToDB(transaction, false, false);
+        transaction->Append(
+            "UPDATE mod_battleground_mode SET starter_state = 2 WHERE guid = {} AND mode = 2 AND starter_state = 1",
+            player->GetGUID().GetCounter());
+        CharacterDatabase.DirectCommitTransaction(transaction);
+        auto saved = Read(player);
+        if (!saved || saved->starter != StarterState::Delivered)
+        {
+            StarterDeliveryError(player);
+            return;
+        }
+        state->starter = StarterState::Delivered;
+        Store(player, *state);
+        if (config.restore)
+        {
+            player->SetHealth(player->GetMaxHealth());
+            player->SetPower(POWER_MANA, player->GetMaxPower(POWER_MANA));
+        }
+        Tell(player, !config.starterAutoEquip ? "Your one-time Tier 1 starter set has been placed in your bags." :
+            fullyEquipped ? "Your Tier 1 starter set is equipped. Replaced equipment is in your bags." :
+            "Your starter set was delivered, but some pieces could not be equipped and remain in your bags.");
     }
 
     void ShowGear(Player* player, uint32 tier)
@@ -226,7 +428,7 @@ public:
         // LEFT JOIN guarantees a row even when this existing character has no
         // module record. An empty result therefore means an actual DB failure.
         QueryResult result = CharacterDatabase.Query(
-            "SELECT b.mode, b.locked_level "
+            "SELECT b.mode, b.locked_level, b.starter_state "
             "FROM characters c LEFT JOIN mod_battleground_mode b ON b.guid = c.guid WHERE c.guid = {}",
             player->GetGUID().GetCounter());
         if (!result)
@@ -235,11 +437,13 @@ public:
             return CharacterState{};
         uint8 mode = (*result)[0].Get<uint8>();
         uint8 level = (*result)[1].Get<uint8>();
-        if (!ValidRecord(static_cast<Mode>(mode), level))
+        uint8 starter = (*result)[2].Get<uint8>();
+        if (!ValidRecord(static_cast<Mode>(mode), level) || starter > static_cast<uint8>(StarterState::Delivered))
             return std::nullopt;
         CharacterState state;
         state.mode = static_cast<Mode>(mode);
         state.level = level;
+        state.starter = static_cast<StarterState>(starter);
         state.persisted = true;
         return state;
     }
@@ -287,11 +491,14 @@ public:
         if (!state)
             return;
         state->prompt.pending = config.prompt && state->mode == Mode::Pending;
+        state->starterAttempt = CanDeliverStarter(config.starterEnabled, state->mode == Mode::Battleground, state->starter);
         Store(player, *state);
         if (state->mode == Mode::Battleground)
             Enforce(player, *state);
         if (state->mode == Mode::Pending)
             Tell(player, "Choose Normal or Battleground Mode. Type .bgmode to reopen the menu at level 1. XP works normally; reaching level 2 permanently selects Normal Mode.");
+        if (state->mode == Mode::Battleground && state->starter == StarterState::Claimed)
+            Tell(player, "An earlier starter delivery was interrupted. Contact a game master; it will not be repeated automatically.");
     }
 
     void Enforce(Player* player, CharacterState state)
@@ -425,6 +632,7 @@ public:
         Enforce(player, *persisted);
         if (player->GetLevel() != level)
             return;
+        GiveStarterGear(player);
         if (config.restore)
         {
             player->SetHealth(player->GetMaxHealth());
@@ -451,6 +659,10 @@ public:
         if (!state || state->mode == Mode::Normal)
             return;
         bool prompt = state->prompt.Advance(SafeToSelect(player), elapsed);
+        bool starter = state->starterAttempt && player->IsInWorld() && !player->isBeingLoaded() &&
+            !player->GetTradeData() && SafeToSelect(player);
+        if (starter)
+            state->starterAttempt = false;
         bool checkLevel = elapsed >= state->checkTimer;
         if (!checkLevel)
             state->checkTimer -= elapsed;
@@ -459,6 +671,8 @@ public:
         Store(player, *state);
         if (checkLevel)
             Enforce(player, *state);
+        if (starter)
+            GiveStarterGear(player);
         if (prompt)
             ShowMenu(player);
     }
@@ -634,7 +848,8 @@ public:
         static ChatCommandTable commands =
         {
             {"bgmode", HandleMode, SEC_PLAYER, Console::No},
-            {"bggear", HandleGear, SEC_PLAYER, Console::No}
+            {"bggear", HandleGear, SEC_PLAYER, Console::No},
+            {"bgstarter", HandleStarter, SEC_PLAYER, Console::No}
         };
         return commands;
     }
@@ -648,6 +863,12 @@ public:
     {
         if (Player* player = handler->GetPlayer())
             Manager::Instance().ShowGear(player, tier);
+        return true;
+    }
+    static bool HandleStarter(ChatHandler* handler)
+    {
+        if (Player* player = handler->GetPlayer())
+            Manager::Instance().GiveStarterGear(player);
         return true;
     }
 };

@@ -57,18 +57,68 @@ unknown item, an item above the bracket, incompatible armor/class restrictions,
 or a price above the honor cap. Malformed keys, duplicate IDs within a list,
 missing prices, negative prices, and incorrect zero prices are rejected with a
 server log message. Weapon skill, race, profession, and reputation checks must
-also be enforced by the future purchase/equip flow if you add restricted items.
+also be enforced by the future purchase flow if you add restricted items. Starter
+auto-equip uses the core's equipment checks, including item-use restrictions.
 
 A Battleground Mode character can use **`.bggear 2`** (or another tier number) to
 preview only the exact saved bracket/class list and its prices. Other brackets,
 other classes, and Normal Mode characters do not receive that list. This command
 is a preview: it does not grant, sell, equip, or deduct honor for anything.
 
-Automatic one-time starter grants and the NPC purchase flow are the next
-implementation step. The future vendor must use tiers 2+ and recheck the same
+The future vendor must use tiers 2+ and recheck the same
 bracket/class, live price, honor balance, and inventory capacity at purchase time.
 The data structures preserve prices for that flow, but purchasing is not yet
-implemented. No SQL changes are needed for this catalog update.
+implemented.
+
+## One-time starter delivery and auto-equip
+
+```ini
+BattlegroundMode.StarterGear.Enable = 1
+BattlegroundMode.StarterGear.AutoEquip = 1
+BattlegroundMode.StarterGear.TrainArmorProficiency = 1
+BattlegroundMode.StarterGear.BindToCharacter = 1
+```
+
+On confirming Battleground Mode, the character receives its configured Tier 1
+list once. With auto-equip enabled, every piece is equipped using the native
+inventory swap flow. Existing gear in the same slots moves into bags; slots
+absent from the configured kit remain unchanged. Old items are not deleted.
+With `AutoEquip = 0`, the entire set goes into bags without changing equipment.
+Changing the setting afterward does not reissue or auto-equip an already
+delivered set. Characters can equip their delivered bag items manually.
+
+Existing Battleground Mode characters receive an unclaimed starter set on their
+next safe login, including replacement of their currently equipped matching
+slots. Grants wait until the player is loaded, alive, out of combat, and outside
+travel, trades, battlegrounds, and queues. Normal characters never get this grant.
+Disabling starter delivery leaves the entitlement unclaimed for later use.
+
+The entire set must fit in inventory first, even when it will then be equipped.
+Auto-equip preflights every item and rejects kits with conflicting destination
+slots. If capacity or equipment checks fail, no items are delivered and the claim
+stays available. Fix the problem and use **`.bgstarter`**, or relog. Repeating the
+command after success never grants a second set or overwrites earned upgrades.
+If a later native swap is blocked unexpectedly, that piece remains in the bags
+and the player is notified.
+
+The optional training teaches only legal plate proficiency for level-40+
+Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weapon
+skills, class combat spells, or talents. New starter pieces are soulbound when
+`BindToCharacter` is enabled. Honor is not charged for Tier 1.
+
+**Existing servers must import**
+[`2026_10_14_00_starter_state.sql`](../data/sql/db-characters/updates/2026_10_14_00_starter_state.sql)
+into the character database while stopped, before running this version. New
+installations get the column from the base SQL. Reapplying the update is safe
+and preserves choices and completed deliveries.
+
+The single `starter_state` column stores pending (0), claimed (1), or delivered
+(2). A durable claim precedes inventory changes, then item instances, positions,
+and completion are saved together before the capital teleport. A server crash
+or exceptional failure after claiming requires a GM to reconcile inventory;
+state 1 is deliberately not retried automatically. Do not blindly reset that
+state, since some items may already have been received. This prevents repeated
+free grants when a delivery's outcome is uncertain.
 
 ## Starter recommendations
 
@@ -95,8 +145,8 @@ healing/caster variants need administrator edits or a later role-selection flow.
 Cobalt is a defensive physical baseline, not a tailored Retribution set.
 
 Hunter/Shaman defaults use leather below 40 and mail afterward. Warrior/Paladin
-defaults use mail below 40 and plate afterward. A future auto-equip implementation
-must teach the character's valid armor proficiency where necessary. The existing
+defaults use mail below 40 and plate afterward. Starter auto-equip can teach the
+character's valid mail/plate armor proficiency where necessary. The existing
 talent module remains responsible for talents.
 
 The level-69 starter families are item level 99, leaving space for stronger
@@ -113,17 +163,18 @@ before opening a vendor to players.
 ## Affixes and the restricted economy
 
 Many green items use random-property or random-suffix pools. An item ID alone
-does not specify its final stats. Before automatic grants are implemented,
-choose controlled, legal affixes for the intended role; do not award unrelated
-random stats or expect an unrolled template to contain its full stat budget.
+does not specify its final stats. Starter delivery uses the core's normal random
+property/suffix generation and refuses to deliver a random-stat item if its
+affix could not be generated. These are legal ordinary rolls, not controlled
+role-specific stats; deterministic role-specific affixes remain future work.
 The starter research CSV records the relevant pool IDs and fixed stats.
 
 Stock templates have ordinary vendor resale and disenchant values. Merely listing
 them here does not make them zero-value or prevent disenchanting. If those actions
 must be prohibited, the grant/purchase implementation needs appropriate item
 restrictions or separate custom templates. Do not modify the stock templates
-globally and affect Normal Mode characters. Starter grants must be one-time and
-persisted safely before any free equipment is distributed.
+globally and affect Normal Mode characters. Starter delivery is tracked once per
+character using the persistent delivery marker described above.
 
 ## Research and verification
 

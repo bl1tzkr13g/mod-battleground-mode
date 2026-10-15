@@ -1,9 +1,9 @@
 # Battleground Mode
 
 An AzerothCore 3.3.5a C++ module for permanent battleground bracket characters.
-This first implementation provides character selection and restrictions. Gear
-catalogs and per-item honor prices are configurable; starter grants, vendors, and
-progression rewards are the next milestone.
+Provides character selection, restrictions, and one-time starter armor delivery.
+Gear catalogs and per-item honor prices are configurable; vendors and progression
+rewards are the next milestone.
 
 ## Implemented
 
@@ -15,17 +15,22 @@ progression rewards are the next milestone.
   including GM level commands. The lock is restored on login and checked every
   five seconds. Changing allowed levels never rewrites existing choices.
 - Selection uses the core's normal level-change flow so other modules receive
-  `OnPlayerLevelChanged`. This module does not grant talents or class spells.
+  `OnPlayerLevelChanged`. This module does not grant talents or combat spells.
 - Configurable health/mana restoration and faction-capital teleport on selection.
 - Configurable restrictions on trading, sending/collecting/returning mail,
   auctions, guild-bank items/gold, and guild-funded NPC repairs.
 - Mail addressed to a restricted character is rejected even while that character
   is offline. NPC vendors and personally funded repairs remain available.
-- One character-database table, containing only `guid`, `mode`, and `locked_level`.
+- One character-database table: `guid`, `mode`, `locked_level`, and a one-time
+  starter delivery marker (`starter_state`).
   Character deletion removes its record in the core's deletion transaction.
 - Editable gear lists by bracket, tier, and class, with individual honor prices.
   Five tiers are laid out, with automatic discovery of additional tier keys.
   `.bggear <tier>` previews the matching list; it does not grant or sell items.
+- Tier 1 is delivered once and auto-equipped by default, replacing matching
+  equipment slots and preserving old gear in bags. Existing BG characters receive
+  an unclaimed set on their next safe login. `.bgstarter` retries delivery after
+  inventory/equip restrictions are resolved; it cannot duplicate a completed set.
 
 Restrictions are **per character**. Existing characters without a module record
 remain Normal. New characters stay pending until they choose and gain XP normally,
@@ -58,6 +63,13 @@ there, but a complete core build needs the compatible MySQL client library.
 
    ```sh
    mysql acore_characters < modules/mod-battleground-mode/data/sql/db-characters/base/mod_battleground_mode.sql
+   ```
+
+   **Existing installations:** stop the server and import this update before
+   running the new module. It adds the delivery marker without resetting choices:
+
+   ```sh
+   mysql acore_characters < modules/mod-battleground-mode/data/sql/db-characters/updates/2026_10_14_00_starter_state.sql
    ```
 
 3. Reconfigure, build, and install AzerothCore with modules enabled, using your
@@ -114,6 +126,10 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | Close menu, gain XP, reach level 2, then relog and `.bgmode` | Normal XP and leveling work; Normal Mode is saved permanently |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
 | Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |
+| Confirm BG Mode with room for the whole set | Configured Tier 1 armor equips; replaced items move into bags |
+| Relog, change Tier 1 config, or repeat `.bgstarter` after delivery | No second kit and no replacement of later upgrades |
+| Full bags, then free space and `.bgstarter` | No partial grant while full; one successful delivery after space is available |
+| Set `StarterGear.AutoEquip = 0` before delivery | Set goes into bags; equipped gear stays in place |
 | Kill, quest, explore, or gain battleground XP | No XP gain for Battleground Mode |
 | GM level command on a locked character | Level remains unchanged |
 | Normal character on the same account | Regular XP and economy operations work |
@@ -132,9 +148,15 @@ the exact tier coverage, source data, and role/affix limitations. Starter gear i
 free; later items use `itemID:honorPrice` pairs. Empty higher-tier lists are
 placeholders for further curation or custom gear.
 
-Next: implement one-time starter grants and an NPC that purchases from the
-bracket/class catalogs with server-side honor checks. No currency grants, item
-grants, purchases, or honor deductions are implemented yet.
+Starter delivery is enabled and auto-equipped by default. Set
+`BattlegroundMode.StarterGear.AutoEquip = 0` for bag delivery, or
+`BattlegroundMode.StarterGear.Enable = 0` to disable grants. The whole set must fit
+in bags before a grant begins. Newly granted pieces are soulbound by default;
+class-appropriate mail/plate training at level 40+ is configurable.
+
+Next: implement an NPC that purchases from the bracket/class catalogs with
+server-side honor checks. No starting currency, purchases, or honor deductions
+are implemented yet.
 
 Keep auctions blocked for a restricted economy: buying a normal player's auction
 transfers gold to its owner. Custom modules with shared storage, account wallets,

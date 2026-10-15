@@ -42,6 +42,20 @@ BattlegroundMode.BlockReceivingMail = 1
 BattlegroundMode.BlockAuctionHouse = 1
 BattlegroundMode.BlockGuildBank = 1
 
+# One-time Tier 1 delivery. Existing BG characters receive an unclaimed set on
+# their next safe login. Later config edits never overwrite a completed grant.
+BattlegroundMode.StarterGear.Enable = 1
+# 1: equip every configured piece, swapping replaced equipment into the bags.
+# 0: deliver the set into the bags without changing equipped gear.
+BattlegroundMode.StarterGear.AutoEquip = 1
+# Teach only the class's legal mail/plate proficiency at level 40+, as needed.
+BattlegroundMode.StarterGear.TrainArmorProficiency = 1
+# Soulbind new starter pieces to the receiving character.
+BattlegroundMode.StarterGear.BindToCharacter = 1
+# Keep enough free bag slots for the WHOLE starter set before delivery. Nothing
+# is deleted to make room. If blocked, fix the problem and use .bgstarter to retry.
+# Import the starter_state CHARACTER DB update before using this module version.
+
 # ============================================================================
 # GEAR CATALOG: bracket -> tier -> class -> itemID:honorPrice
 # ============================================================================
@@ -53,16 +67,18 @@ BattlegroundMode.BlockGuildBank = 1
 # Empty lists are intentional: they supply no starter/vendor items.
 # Add any Tier6 (or higher) class key below; the loader discovers it automatically.
 # No TierCount or code change is needed. Tier IDs range from 1 to 65535.
-# Settings reload with .reload config. The catalog is currently preview-only:
+# Settings reload with .reload config. The catalog preview command is:
 # .bggear <tier> lists the logged-in BG character's exact bracket/class and prices.
-# Automatic starter grants, vendor purchasing, and honor deductions are NOT wired yet.
-# No starting gold, spells, or talent grants are provided here.
+# Tier 1 is delivered once using the StarterGear settings above. Vendor purchasing
+# and honor deductions are NOT wired yet.
+# No starting gold, combat spells, or talent grants are provided here.
 #
 # These are STOCK item candidates, NOT playtested complete sets at every tier.
 # Tier 1 contains core armor. Level 19 has no head item. Weapons, cloaks, jewelry,
 # and trinkets are not included. Higher tiers contain upgrade options, not full kits.
 # Empty later tiers must be filled before exposing them in the future vendor.
-# Green items may require a controlled stat affix before they can be granted.
+# Green starter items receive normal random stat affixes from the core's pools.
+# Role-specific fixed affixes are not implemented.
 # Default Druid/Shaman/Paladin lists favor physical roles; caster/healer variants
 # need separate role design or administrator edits. Death Knight lists are empty
 # because characters starting above level 1 are ineligible for BG enrollment.

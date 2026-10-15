@@ -23,6 +23,11 @@ void Check(bool value, char const* description)
 
 int main(int argc, char** argv)
 {
+    Check(CanDeliverStarter(true, true, StarterState::Pending), "unclaimed BG starter delivery is permitted");
+    Check(!CanDeliverStarter(true, true, StarterState::Claimed), "interrupted claims cannot duplicate a starter kit");
+    Check(!CanDeliverStarter(true, true, StarterState::Delivered), "relog and repeated requests cannot overwrite upgrades");
+    Check(!CanDeliverStarter(false, true, StarterState::Pending), "starter delivery respects its enable setting");
+    Check(!CanDeliverStarter(true, false, StarterState::Pending), "normal characters never receive free BG kits");
     GearCatalog catalog;
     Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin", "6573:0, 6574:0"), "free starter list parses");
     Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier2.Paladin", "12982:75,6460:100"), "per-piece honor prices parse");

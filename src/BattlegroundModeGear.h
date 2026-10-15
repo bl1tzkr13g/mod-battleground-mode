@@ -14,6 +14,13 @@
 
 namespace BattlegroundMode
 {
+enum class StarterState : std::uint8_t { Pending = 0, Claimed = 1, Delivered = 2 };
+
+inline bool CanDeliverStarter(bool enabled, bool battlegroundMode, StarterState state)
+{
+    return enabled && battlegroundMode && state == StarterState::Pending;
+}
+
 struct GearKey
 {
     std::uint8_t level;

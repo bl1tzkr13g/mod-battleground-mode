@@ -51,11 +51,11 @@ def main():
         sql(migration)
         sql(migration)  # Safe to import again without resetting choices.
         expect(record(1), "NULL\tNULL", "existing character has no module decision")
-        sql("INSERT IGNORE INTO mod_battleground_mode VALUES (1,0,0),(2,0,0);")
+        sql("INSERT IGNORE INTO mod_battleground_mode (guid,mode,locked_level) VALUES (1,0,0),(2,0,0);")
         expect(record(1), "0\t0", "new character is pending")
         sql("UPDATE mod_battleground_mode SET mode=2,locked_level=19 WHERE guid=1 AND mode=0;")
         expect(record(1), "2\t19", "bracket decision persists across client connections")
-        sql("INSERT IGNORE INTO mod_battleground_mode VALUES (1,0,0);")
+        sql("INSERT IGNORE INTO mod_battleground_mode (guid,mode,locked_level) VALUES (1,0,0);")
         expect(record(1), "2\t19", "repeated enrollment cannot erase a permanent decision")
         sql("UPDATE mod_battleground_mode SET mode=2,locked_level=29 WHERE guid=1 AND mode=0;")
         expect(record(1), "2\t19", "duplicate or stale confirmation cannot change bracket")
@@ -64,6 +64,33 @@ def main():
         sql("UPDATE mod_battleground_mode SET mode=1,locked_level=0 WHERE guid=2 AND mode=0;")
         sql("UPDATE mod_battleground_mode SET mode=2,locked_level=39 WHERE guid=2 AND mode=0;")
         expect(record(2), "1\t0", "normal decision cannot switch to bracket mode")
+        # Simulate an existing three-column install and apply the new migration.
+        sql("ALTER TABLE mod_battleground_mode DROP COLUMN starter_state;")
+        update = (Path(__file__).resolve().parents[1] /
+                  "data/sql/db-characters/updates/2026_10_14_00_starter_state.sql").read_text()
+        sql(update)
+        sql(update)
+        expect(record(1), "2\t19", "starter migration preserves existing bracket choices")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "0", "existing BG characters receive an unclaimed entitlement")
+        sql("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=1 AND mode=2 AND starter_state=0;")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "1", "starter claim is durable before inventory changes")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=1 AND mode=2 AND starter_state=0;"
+               "SELECT ROW_COUNT();", "0", "interrupted delivery cannot be claimed again")
+        # Minimal inventory fixture verifies the transaction boundary; live
+        # Player inventory/equipment operations still need an in-game check.
+        sql("CREATE TABLE starter_delivery_items (owner INT PRIMARY KEY, entry INT) ENGINE=InnoDB;")
+        sql("START TRANSACTION; INSERT INTO starter_delivery_items VALUES (1,6573);"
+            "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=1 AND starter_state=1; ROLLBACK;")
+        expect("SELECT COUNT(*) FROM starter_delivery_items;", "0", "failed delivery rolls back inventory fixture")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "1", "failed delivery retains its safety claim")
+        sql("START TRANSACTION; INSERT INTO starter_delivery_items VALUES (1,6573);"
+            "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=1 AND starter_state=1; COMMIT;")
+        expect("SELECT entry FROM starter_delivery_items WHERE owner=1;", "6573", "successful delivery persists item fixture")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "2", "successful delivery commits completion with inventory")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=1 AND mode=2 AND starter_state=0;"
+               "SELECT ROW_COUNT();", "0", "completed deliveries cannot regrant on relog or request")
+        sql(update)
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "2", "reapplying migration does not reset delivered grants")
         sql(migration)
         expect(record(1), "2\t19", "migration repeat preserves existing decisions")
         sql("START TRANSACTION; DELETE FROM mod_battleground_mode WHERE guid=1; ROLLBACK;")
