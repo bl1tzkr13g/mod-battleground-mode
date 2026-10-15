@@ -332,8 +332,8 @@ public:
                 fullyEquipped = fullyEquipped && player->GetItemByPos(equipment[i]) == delivered[i];
             }
 
-        // Save item instances, inventory positions, and completion together.
-        // This is deliberately BEFORE any capital teleport (which delays saves).
+        // Queue item instances, inventory positions, and completion together.
+        // Build the save BEFORE any capital teleport (which delays saves).
         if (!player->IsInWorld() || player->IsBeingTeleportedFar())
         {
             StarterDeliveryError(player);
@@ -344,23 +344,34 @@ public:
         transaction->Append(
             "UPDATE mod_battleground_mode SET starter_state = 2 WHERE guid = {} AND mode = 2 AND starter_state = 1",
             player->GetGUID().GetCounter());
-        CharacterDatabase.DirectCommitTransaction(transaction);
-        auto saved = Read(player);
-        if (!saved || saved->starter != StarterState::Delivered)
+        // Player::SaveToDB appends statements prepared only on async workers.
+        // A direct commit uses a synchronous connection and asserts in the core.
+        // Resolve the player through the session when the worker finishes; the
+        // original Player pointer may no longer be valid after logout.
+        WorldSession* session = player->GetSession();
+        ObjectGuid guid = player->GetGUID();
+        session->AddTransactionCallback(CharacterDatabase.AsyncCommitTransaction(transaction)).AfterComplete(
+            [this, session, guid, restore = config.restore, autoEquip = config.starterAutoEquip, fullyEquipped](bool success)
         {
-            StarterDeliveryError(player);
-            return;
-        }
-        state->starter = StarterState::Delivered;
-        Store(player, *state);
-        if (config.restore)
-        {
-            player->SetHealth(player->GetMaxHealth());
-            player->SetPower(POWER_MANA, player->GetMaxPower(POWER_MANA));
-        }
-        Tell(player, !config.starterAutoEquip ? "Your one-time Tier 1 starter set has been placed in your bags." :
-            fullyEquipped ? "Your Tier 1 starter set is equipped. Replaced equipment is in your bags." :
-            "Your starter set was delivered, but some pieces could not be equipped and remain in your bags.");
+            Player* current = session->GetPlayer();
+            if (!current || current->GetGUID() != guid)
+                return;
+            auto saved = success ? Read(current) : std::nullopt;
+            if (!saved || saved->starter != StarterState::Delivered)
+            {
+                StarterDeliveryError(current);
+                return;
+            }
+            Store(current, *saved);
+            if (restore)
+            {
+                current->SetHealth(current->GetMaxHealth());
+                current->SetPower(POWER_MANA, current->GetMaxPower(POWER_MANA));
+            }
+            Tell(current, !autoEquip ? "Your one-time Tier 1 starter set has been placed in your bags." :
+                fullyEquipped ? "Your Tier 1 starter set is equipped. Replaced equipment is in your bags." :
+                "Your starter set was delivered, but some pieces could not be equipped and remain in your bags.");
+        });
     }
 
     void ShowGear(Player* player, uint32 tier)

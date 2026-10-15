@@ -115,7 +115,10 @@ SQL file is needed.
 
 The single `starter_state` column stores pending (0), claimed (1), or delivered
 (2). A durable claim precedes inventory changes, then item instances, positions,
-and completion are saved together before the capital teleport. A server crash
+and completion are queued together on the core's asynchronous database worker
+before the capital teleport. Delivery is confirmed after that transaction succeeds.
+Player-save statements require this worker connection; a synchronous direct
+commit causes a missing prepared-statement assertion. A server crash
 or exceptional failure after claiming requires a GM to reconcile inventory;
 state 1 is deliberately not retried automatically. Do not blindly reset that
 state, since some items may already have been received. This prevents repeated
