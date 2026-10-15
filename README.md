@@ -65,12 +65,9 @@ there, but a complete core build needs the compatible MySQL client library.
    mysql acore_characters < modules/mod-battleground-mode/data/sql/db-characters/base/mod_battleground_mode.sql
    ```
 
-   **Existing installations:** stop the server and import this update before
-   running the new module. It adds the delivery marker without resetting choices:
-
-   ```sh
-   mysql acore_characters < modules/mod-battleground-mode/data/sql/db-characters/updates/2026_10_14_00_starter_state.sql
-   ```
+   Use this same file for existing installations. It adds missing module fields
+   without resetting choices or completed starter deliveries. Stop the server
+   before importing; no separate update SQL is needed.
 
 3. Reconfigure, build, and install AzerothCore with modules enabled, using your
    usual build options. For example, from the AzerothCore root:
@@ -89,6 +86,10 @@ there, but a complete core build needs the compatible MySQL client library.
 Apply `.reload config` for setting changes. Relog characters when enabling the
 module after it was disabled. Turning the master switch off removes enforcement;
 plan that change before using it on a server with a restricted economy.
+
+For an optional clean test reset, see
+[the manual reset instructions](docs/starter-gear.md#optional-clean-test-reset).
+Normal installation and builds never reset module records.
 
 Missing/unreadable schema or corrupt saved decisions cause login to fail closed,
 with a server log error. Import the migration and resolve the error before retrying.

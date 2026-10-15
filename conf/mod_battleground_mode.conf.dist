@@ -54,7 +54,8 @@ BattlegroundMode.StarterGear.TrainArmorProficiency = 1
 BattlegroundMode.StarterGear.BindToCharacter = 1
 # Keep enough free bag slots for the WHOLE starter set before delivery. Nothing
 # is deleted to make room. If blocked, fix the problem and use .bgstarter to retry.
-# Import the starter_state CHARACTER DB update before using this module version.
+# Import the original mod_battleground_mode.sql into the CHARACTER DB before use;
+# it handles both fresh installations and updates without resetting saved choices.
 
 # ============================================================================
 # GEAR CATALOG: bracket -> tier -> class -> itemID:honorPrice

@@ -106,11 +106,12 @@ Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weap
 skills, class combat spells, or talents. New starter pieces are soulbound when
 `BindToCharacter` is enabled. Honor is not charged for Tier 1.
 
-**Existing servers must import**
-[`2026_10_14_00_starter_state.sql`](../data/sql/db-characters/updates/2026_10_14_00_starter_state.sql)
-into the character database while stopped, before running this version. New
-installations get the column from the base SQL. Reapplying the update is safe
-and preserves choices and completed deliveries.
+Import the single original
+[`mod_battleground_mode.sql`](../data/sql/db-characters/base/mod_battleground_mode.sql)
+into the character database while stopped. It creates the current schema for a
+fresh installation and adds the starter field to earlier installations.
+Re-importing it preserves choices and completed deliveries. No separate update
+SQL file is needed.
 
 The single `starter_state` column stores pending (0), claimed (1), or delivered
 (2). A durable claim precedes inventory changes, then item instances, positions,
@@ -119,6 +120,27 @@ or exceptional failure after claiming requires a GM to reconcile inventory;
 state 1 is deliberately not retried automatically. Do not blindly reset that
 state, since some items may already have been received. This prevents repeated
 free grants when a delivery's outcome is uncertain.
+
+## Optional clean test reset
+
+To clear test setup, stop the server and back up the character database if you
+want to retain its current state. Manually import
+[`reset_battleground_mode.sql`](../data/sql/manual/reset_battleground_mode.sql)
+into the character database, then import the original
+[`mod_battleground_mode.sql`](../data/sql/db-characters/base/mod_battleground_mode.sql)
+before restarting with the module enabled.
+
+The reset clears the core XP-disabled flag only for recorded Battleground Mode
+characters, preserving their other flags. It drops this module's own table,
+including saved choices and starter claims. It does not delete characters or
+alter unrelated characters' XP settings.
+
+Already-applied levels, equipment, armor proficiency, and positions remain; the
+module has no record of their prior values. Fully reversing those changes needs
+a suitable backup or deliberate manual character edits. Existing characters
+without module records become Normal Mode; create a new level-1 character to
+retest first-login selection. The reset is optional and destructive, never a
+normal install/build/startup step.
 
 ## Starter recommendations
 

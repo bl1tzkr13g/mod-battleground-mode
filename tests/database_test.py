@@ -40,8 +40,8 @@ def main():
 
     sql(f"CREATE DATABASE `{database}`", selected=False)
     try:
-        sql("CREATE TABLE characters (guid INT UNSIGNED PRIMARY KEY) ENGINE=InnoDB;"
-            "INSERT INTO characters VALUES (1),(2),(3);")
+        sql("CREATE TABLE characters (guid INT UNSIGNED PRIMARY KEY, playerFlags INT UNSIGNED NOT NULL DEFAULT 0) ENGINE=InnoDB;"
+            "INSERT INTO characters (guid) VALUES (1),(2),(3);")
         result = sql(record(1), check=False)
         if result.returncode == 0:
             raise AssertionError("missing migration must fail instead of looking like normal mode")
@@ -66,8 +66,7 @@ def main():
         expect(record(2), "1\t0", "normal decision cannot switch to bracket mode")
         # Simulate an existing three-column install and apply the new migration.
         sql("ALTER TABLE mod_battleground_mode DROP COLUMN starter_state;")
-        update = (Path(__file__).resolve().parents[1] /
-                  "data/sql/db-characters/updates/2026_10_14_00_starter_state.sql").read_text()
+        update = migration  # The original SQL now handles old and new installs.
         sql(update)
         sql(update)
         expect(record(1), "2\t19", "starter migration preserves existing bracket choices")
@@ -99,6 +98,21 @@ def main():
             "DELETE FROM characters WHERE guid=1; COMMIT;")
         expect("SELECT COUNT(*) FROM mod_battleground_mode WHERE guid=1;", "0", "character deletion cleans up its decision")
         expect(record(3), "NULL\tNULL", "unrelated normal character is unchanged")
+        sql("INSERT INTO characters (guid,playerFlags) VALUES (4,33554440),(5,33554448);")
+        sql("INSERT INTO mod_battleground_mode (guid,mode,locked_level,starter_state) VALUES (4,2,19,2);")
+        reset = (Path(__file__).resolve().parents[1] /
+                 "data/sql/manual/reset_battleground_mode.sql").read_text()
+        sql(reset)
+        expect("SELECT playerFlags FROM characters WHERE guid=4;", "8", "reset clears the module XP flag and preserves other flags")
+        expect("SELECT playerFlags FROM characters WHERE guid=5;", "33554448", "reset leaves unrelated characters' XP flags untouched")
+        expect("SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='mod_battleground_mode';",
+               "0", "reset removes only the module table")
+        expect("SELECT COUNT(*) FROM characters;", "4", "reset does not delete characters")
+        sql(reset)
+        expect("SELECT playerFlags FROM characters WHERE guid=5;", "33554448", "repeating reset without the module table is safe")
+        sql(migration)
+        expect(record(4), "NULL\tNULL", "original SQL recreates a clean table after reset")
+        expect("SELECT starter_state FROM mod_battleground_mode LIMIT 1;", "", "clean install retains no stale starter claims")
         print(f"{checks} database checks passed")
     finally:
         sql(f"DROP DATABASE `{database}`", selected=False)
