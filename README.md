@@ -29,6 +29,10 @@ economy restrictions apply while pending. Closing the menu does not choose a mod
 use **`.bgmode`** to reopen it. Once chosen, the command reports the character's
 mode instead of offering conversion.
 
+On first login, the automatic menu waits for the intro cinematic to finish or be
+skipped, then waits one second before opening. It also waits while selection is
+unsafe (for example during combat or travel), rather than discarding the prompt.
+
 Only level 1 characters can enroll. Characters above level 1 remain Normal,
 including newly created Death Knights and characters on servers with higher
 starting levels. Old pending choices automatically become Normal if the character
@@ -100,6 +104,7 @@ not establish live client behavior. Before deployment, run these in-game checks:
 
 | Check | Expected result |
 | --- | --- |
+| First login, skip intro with Escape or watch it to completion | Menu opens about one second afterward without relogging |
 | New character, close menu, relog, `.bgmode` | Choice remains pending and menu can reopen |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
 | Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |

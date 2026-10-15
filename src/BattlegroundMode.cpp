@@ -1,6 +1,7 @@
 #include "BattlegroundModePolicy.h"
 
 #include "Chat.h"
+#include "CinematicMgr.h"
 #include "Config.h"
 #include "DatabaseEnv.h"
 #include "Log.h"
@@ -56,7 +57,7 @@ struct CharacterState
     bool persisted = false;
     bool applyingLevel = false;
     uint32 checkTimer = 1000;
-    bool prompt = false;
+    LoginPrompt prompt;
 };
 
 // Login/logout run on the world thread; player updates can run on map threads.
@@ -206,7 +207,7 @@ public:
         state = EligibleState(player);
         if (!state)
             return;
-        state->prompt = config.prompt && state->mode == Mode::Pending;
+        state->prompt.pending = config.prompt && state->mode == Mode::Pending;
         Store(player, *state);
         if (state->mode == Mode::Battleground)
             Enforce(player, *state);
@@ -245,7 +246,8 @@ public:
     static bool SafeToSelect(Player* player)
     {
         return player->IsAlive() && !player->IsInCombat() && !player->IsInFlight() &&
-            !player->IsBeingTeleported() && !player->InBattleground() && !player->InBattlegroundQueue();
+            !player->IsBeingTeleported() && !player->InBattleground() && !player->InBattlegroundQueue() &&
+            player->GetCinematicMgr().GetActiveCinematicCamera() == 0;
     }
 
     void ShowMenu(Player* player, bool brackets = false)
@@ -369,17 +371,15 @@ public:
         auto state = EligibleState(player);
         if (!state || state->mode == Mode::Normal)
             return;
-        if (elapsed < state->checkTimer)
-        {
+        bool prompt = state->prompt.Advance(SafeToSelect(player), elapsed);
+        bool checkLevel = elapsed >= state->checkTimer;
+        if (!checkLevel)
             state->checkTimer -= elapsed;
-            Store(player, *state);
-            return;
-        }
-        bool prompt = state->prompt;
-        state->prompt = false;
-        state->checkTimer = 5000;
+        else
+            state->checkTimer = 5000;
         Store(player, *state);
-        Enforce(player, *state);
+        if (checkLevel)
+            Enforce(player, *state);
         if (prompt)
             ShowMenu(player);
     }

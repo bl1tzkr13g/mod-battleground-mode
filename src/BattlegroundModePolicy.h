@@ -14,6 +14,33 @@ namespace BattlegroundMode
 constexpr std::size_t MaxBracketChoices = 31;
 enum class Mode : std::uint8_t { Pending = 0, Normal = 1, Battleground = 2 };
 
+struct LoginPrompt
+{
+    static constexpr std::uint32_t Delay = 1000;
+    bool pending = false;
+    std::uint32_t remaining = Delay;
+
+    bool Advance(bool ready, std::uint32_t elapsed)
+    {
+        if (!pending)
+            return false;
+        if (!ready)
+        {
+            // Include a fresh delay after the cinematic ends, so Escape used
+            // to skip the intro cannot immediately dismiss the selection.
+            remaining = Delay;
+            return false;
+        }
+        if (elapsed < remaining)
+        {
+            remaining -= elapsed;
+            return false;
+        }
+        pending = false;
+        return true;
+    }
+};
+
 // Reject the entire setting on malformed input. Never silently enable a level.
 inline std::vector<std::uint8_t> ParseLevels(std::string_view text, std::uint8_t serverMax)
 {

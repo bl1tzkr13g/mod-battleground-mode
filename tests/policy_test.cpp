@@ -22,6 +22,24 @@ void Check(bool condition, std::string const& description)
 
 int main()
 {
+    LoginPrompt prompt;
+    prompt.pending = true;
+    Check(!prompt.Advance(false, 60000), "long intro does not consume the login prompt");
+    Check(prompt.pending, "prompt stays pending during the cinematic");
+    Check(!prompt.Advance(true, 500), "skip-cinematic Escape gets a settling delay");
+    Check(prompt.Advance(true, 500), "prompt appears after cinematic completion without relogging");
+    Check(!prompt.Advance(true, 10000), "automatic prompt is sent only once");
+    LoginPrompt noIntro;
+    noIntro.pending = true;
+    Check(noIntro.Advance(true, 1000), "login without a cinematic still prompts");
+    LoginPrompt interrupted;
+    interrupted.pending = true;
+    Check(!interrupted.Advance(true, 500), "ready interval begins counting down");
+    Check(!interrupted.Advance(false, 1000), "unsafe state defers the prompt");
+    Check(!interrupted.Advance(true, 500), "readiness must remain stable for the whole delay");
+    Check(interrupted.Advance(true, 500), "deferred prompt appears once safe again");
+    LoginPrompt disabled;
+    Check(!disabled.Advance(true, 10000), "disabled or already chosen prompt never opens");
     auto levels = ParseLevels("19,29,39,49,59,69,79", 80);
     Check(levels == std::vector<std::uint8_t>({19,29,39,49,59,69,79}), "all default brackets are available");
     Check(ParseLevels(" 39 ,19,39, 29\t", 80) == std::vector<std::uint8_t>({19,29,39}), "whitespace and duplicate levels normalize");
