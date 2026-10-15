@@ -1,0 +1,43 @@
+[worldserver]
+
+# Master switch. Disabling removes enforcement as well as selection.
+# Do not disable on a live server with a restricted economy without planning it.
+BattlegroundMode.Enable = 1
+
+# New characters only. Existing characters without a record remain normal.
+# Closing the menu is safe: .bgmode opens it again. Pending characters gain no XP.
+BattlegroundMode.PromptOnLogin = 1
+BattlegroundMode.AllowNormal = 1
+
+# Up to 31 distinct comma-separated levels, 1..80 and <= the server maximum.
+# Invalid lists disable
+# Battleground Mode selection, with an error in the server log. No downleveling.
+# Existing permanent decisions survive edits to this list.
+BattlegroundMode.AllowedLevels = "19,29,39,49,59,69,79"
+
+BattlegroundMode.RestoreHealthMana = 1
+BattlegroundMode.TeleportOnSelection = 1
+BattlegroundMode.Alliance.Map = 0
+BattlegroundMode.Alliance.X = -8833.38
+BattlegroundMode.Alliance.Y = 628.62
+BattlegroundMode.Alliance.Z = 94.00
+BattlegroundMode.Alliance.O = 0.0
+BattlegroundMode.Horde.Map = 1
+BattlegroundMode.Horde.X = 1629.36
+BattlegroundMode.Horde.Y = -4373.39
+BattlegroundMode.Horde.Z = 31.26
+BattlegroundMode.Horde.O = 0.0
+
+# Per-character restrictions, also applied while a new character is undecided.
+# Normal characters on the same account are unaffected. Disabling any of these
+# opens value-transfer paths. Ordinary AH purchases pay the auction's owner.
+BattlegroundMode.BlockTrading = 1
+BattlegroundMode.BlockSendingMail = 1
+# Blocks player mail addressed to these characters, plus taking/returning mail.
+# System mail can still arrive, but its attachments cannot be collected.
+BattlegroundMode.BlockReceivingMail = 1
+BattlegroundMode.BlockAuctionHouse = 1
+BattlegroundMode.BlockGuildBank = 1
+
+# No starter gold, items, spells, or talent grants in this foundation release.
+# The existing talent module remains responsible for talents.

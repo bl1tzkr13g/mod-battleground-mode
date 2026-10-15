@@ -1,0 +1,37 @@
+name: Policy tests
+on: [push, pull_request]
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build
+      - run: cmake --build build --parallel 2
+      - run: ctest --test-dir build --output-on-failure
+  core-api:
+    runs-on: ubuntu-24.04
+    env:
+      AC_REVISION: 9eabf314a27b71d4e9cd513f6f2c08befe90d4ef
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install core build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build libboost-all-dev libmysqlclient-dev libssl-dev libreadline-dev zlib1g-dev
+      - name: Check out supported AzerothCore revision
+        run: |
+          git init "$RUNNER_TEMP/azerothcore"
+          git -C "$RUNNER_TEMP/azerothcore" remote add origin https://github.com/azerothcore/azerothcore-wotlk.git
+          git -C "$RUNNER_TEMP/azerothcore" fetch --depth 1 origin "$AC_REVISION"
+          git -C "$RUNNER_TEMP/azerothcore" checkout --detach FETCH_HEAD
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/azerothcore/modules/mod-battleground-mode"
+      - name: Configure module discovery
+        run: |
+          cmake -S "$RUNNER_TEMP/azerothcore" -B "$RUNNER_TEMP/ac-build" -G Ninja \
+            -DMODULES=static -DSCRIPTS=none -DUSE_COREPCH=0 -DUSE_SCRIPTPCH=0
+      - name: Compile module and generated loader against real core headers
+        run: |
+          ninja -C "$RUNNER_TEMP/ac-build" -j2 \
+            modules/CMakeFiles/modules.dir/mod-battleground-mode/src/BattlegroundMode.cpp.o \
+            modules/CMakeFiles/modules.dir/mod-battleground-mode/src/loader.cpp.o \
+            modules/CMakeFiles/modules.dir/gen_scriptloader/static/ModulesLoader.cpp.o
