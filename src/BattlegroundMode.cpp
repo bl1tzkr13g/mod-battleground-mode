@@ -205,20 +205,22 @@ public:
             // Remove disabled copies from memory only: the DB rows remain so
             // enabling the location on the next restart restores them.
             if (QueryResult rows = WorldDatabase.Query(
-                "SELECT guid FROM creature WHERE map = {} AND Comment LIKE "
-                "'mod-battleground-mode:horde-hub:{}:vendor:%'", map, city))
+                "SELECT guid FROM creature WHERE map = {} AND (Comment LIKE "
+                "'mod-battleground-mode:horde-hub:{}:vendor:%' OR Comment LIKE "
+                "'mod-battleground-mode:alliance-hub:{}:vendor:%')", map, city, city))
                 do
                 {
                     sObjectMgr->DeleteCreatureData(rows->Fetch()[0].Get<uint32>());
                 } while (rows->NextRow());
             if (QueryResult rows = WorldDatabase.Query(
-                "SELECT guid FROM gameobject WHERE map = {} AND Comment LIKE "
-                "'mod-battleground-mode:horde-hub:{}:banner:%'", map, city))
+                "SELECT guid FROM gameobject WHERE map = {} AND (Comment LIKE "
+                "'mod-battleground-mode:horde-hub:{}:banner:%' OR Comment LIKE "
+                "'mod-battleground-mode:alliance-hub:{}:banner:%')", map, city, city))
                 do
                 {
                     sObjectMgr->DeleteGOData(rows->Fetch()[0].Get<uint32>());
                 } while (rows->NextRow());
-            LOG_INFO("module", "Battleground Mode: copied Horde vendors and banners disabled in {}.", city);
+            LOG_INFO("module", "Battleground Mode: copied faction vendors and banners disabled in {}.", city);
         };
         if (!config.enabled || !config.shattrathVendors)
             suppress("Shattrath", 530);

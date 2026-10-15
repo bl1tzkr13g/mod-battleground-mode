@@ -1,15 +1,19 @@
-# Horde PvP vendor rows
+# Horde and Alliance PvP vendor rows
 
-The base world SQL adds all nine supplied stock Horde vendors to **both**
-Shattrath and Dalaran. Each row has Stone Guard Zarg at the supplied center, four
-vendors on either side at 3-yard intervals, and decorative Horde banners at the
-ends (15 yards from center). All face the supplied orientation; the row runs
-perpendicular to that direction.
+The base world SQL adds nine stock vendors for each faction in both cities:
+**36 vendor copies and 8 decorative banners**. Stone Guard Zarg centers each
+Horde row; Lieutenant Jackspring centers each Alliance row. Each row has four
+vendors on either side at 3-yard intervals and faction banners 15 yards from
+center. All face the supplied orientation; rows run perpendicular to it.
 
 | City | Map | Center X | Center Y | Center Z | Facing |
 |---|---:|---:|---:|---:|---:|
-| Shattrath | 530 | -1760.0829 | 5321.308 | -12.428 | 2.23232 |
-| Dalaran, Sunreaver's Sanctuary | 571 | 5891.34 | 635.432 | 647.682 | 3.4383 |
+| Shattrath, Horde | 530 | -1760.0829 | 5321.308 | -12.428 | 2.23232 |
+| Dalaran, Horde (Sunreaver's Sanctuary) | 571 | 5891.34 | 635.432 | 647.682 | 3.4383 |
+| Shattrath, Alliance | 530 | -1800.9764 | 5363.1265 | -12.428 | 5.498769 |
+| Dalaran, Alliance (Silver Enclave) | 571 | 5729.1016 | 746.7268 | 641.76764 | 4.0660844 |
+
+Horde row:
 
 | Slot | Vendor | Entry |
 |---:|---|---:|
@@ -23,6 +27,20 @@ perpendicular to that direction.
 | +3 | Blood Guard Zar'shi | 34063 |
 | +4 | Doris Volanthius | 34060 |
 
+Alliance row:
+
+| Slot | Vendor | Entry |
+|---:|---|---:|
+| -4 | Captain O'Neal | 34081 |
+| -3 | Master Sergeant Biggins | 12781 |
+| -2 | Sergeant Major Clate | 12785 |
+| -1 | Lieutenant Rachel Vaccar | 12778 |
+| 0 | Lieutenant Jackspring | 12784 |
+| +1 | Alliance Brigadier General | 15351 |
+| +2 | Captain Dirgehammer | 34075 |
+| +3 | Knight-Lieutenant Moonstrike | 34084 |
+| +4 | Lieutenant Tristia | 34078 |
+
 ## Install
 
 1. Update and build the module, then stop worldserver to install the build.
@@ -30,9 +48,9 @@ perpendicular to that direction.
    under the configured core `SourceDirectory`. The core applies
    [the base world SQL](../data/sql/db-world/base/mod_battleground_mode.sql)
    automatically at startup. No manual import is required. The output counts
-   should be **18** vendors and **4** banners; missing stock templates are not
+   should be **36** vendors and **8** banners; missing stock templates are not
    fabricated. See [automatic database setup](automatic-database-setup.md).
-3. Start worldserver and inspect both rows. A C++ rebuild is needed once for the
+3. Start worldserver and inspect all four rows. A C++ rebuild is needed once for the
    location switches; later switch changes only require a restart.
 
 The script reuses stock entries, retaining your server's vendor inventory, honor
@@ -40,15 +58,16 @@ prices, faction, and purchase requirements. It does not turn these inventories
 into the module's configurable class/bracket catalogs or change required item
 levels. Level 79 characters still cannot equip stock items requiring level 80.
 The copies are ordinary world NPCs, available under their normal faction rules,
-including to Normal Mode Horde characters. They are not exclusive to BG mode.
+including to Normal Mode characters of the appropriate faction. They are not exclusive to BG mode.
 Original NPCs and inventories remain in place. The generic type-5 Horde Banner
-(entry **192254**) is decorative and has no capture/PvP interaction.
+(**192254**) and Alliance Banner (**192252**) are decorative and have no
+capture/PvP interaction.
 
 The script assigns automatic spawn GUIDs and records module-specific `Comment`
 tags. Reimporting updates those tagged spawns and adds only missing ones; it
 preserves their GUIDs. Run imports while stopped, one at a time. Do not remove or
 copy the tags to unrelated spawns. To adjust the layout, edit the centers/facing
-or spacing in the SQL and reimport. A straight row is 24 yards wide (30 including
+or spacing in the SQL and restart with the core updater enabled. A straight row is 24 yards wide (30 including
 banners). All spawns initially use the center's Z; side positions need an in-game
 terrain/obstacle check and may need individual height adjustments. Reimporting
 restores the scripted positions, so preserve any manual adjustments in the SQL.
@@ -65,7 +84,7 @@ BattlegroundMode.VendorHubs.Shattrath.Enable = 1
 BattlegroundMode.VendorHubs.Dalaran.Enable = 1
 ```
 
-Set either to `0` to suppress that city's nine vendor copies and two banners.
+Set either to `0` to suppress that city's 18 vendor copies and four banners (both factions).
 **Restart worldserver** after changes; `.reload config` does not apply spawn
 changes. Both default to enabled. The module master switch set to `0` also
 suppresses both hubs at restart. The startup hook removes only tagged hub spawn
@@ -81,7 +100,7 @@ original vendors remaining available.
 ## Remove
 
 Stop worldserver, import
-[remove_horde_pvp_hubs.sql](../data/sql/manual/remove_horde_pvp_hubs.sql) into the
+[remove_pvp_hubs.sql](../data/sql/manual/remove_pvp_hubs.sql) into the
 world database, then restart. It deletes only tagged copies and banners. It can
 be run again safely. Because the core tracks applied SQL, unchanged SQL is not automatically rerun
 after manual removal. Use the location switches for ordinary disable/enable

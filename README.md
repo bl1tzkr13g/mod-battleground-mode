@@ -181,10 +181,10 @@ respect the core's level hooks; direct field manipulation cannot be prevented by
 this module, though level mismatches are repaired periodically. The existing talent
 module's source and a live game server are still needed to verify compatibility.
 
-## Horde PvP vendor hubs
+## Faction PvP vendor hubs
 
-[Nine stock Horde vendors are placed in rows at both supplied city locations](docs/horde-pvp-hubs.md),
-with Stone Guard Zarg centered and Horde banners at the ends. The core's startup
+[Nine vendors per faction are placed in rows at the supplied city locations](docs/horde-pvp-hubs.md),
+with Zarg/Jackspring centered and faction banners at the ends (36 NPCs, 8 banners). The core's startup
 updater installs the world SQL automatically. Build the updated module once to
 support location switches: `BattlegroundMode.VendorHubs.Shattrath.Enable` and
 `BattlegroundMode.VendorHubs.Dalaran.Enable` (default `1`). Changing a switch

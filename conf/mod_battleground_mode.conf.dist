@@ -44,9 +44,9 @@ BattlegroundMode.Teleport.Dalaran.Y = 588.347
 BattlegroundMode.Teleport.Dalaran.Z = 660.939
 BattlegroundMode.Teleport.Dalaran.O = 1.64
 
-# Optional stock Horde vendor rows and banners at the supplied hub locations.
+# Stock Horde and Alliance vendor rows and banners at the supplied hub locations.
 # Installed automatically by the core startup database updater (Updates.EnableDatabases = 7).
-# 1: allow the location's copies to spawn. 0: hide its copies AND banners.
+# 1: allow the location's copies to spawn. 0: hide BOTH factions' copies AND banners.
 # Worldserver RESTART required after changing these settings (.reload is not enough).
 # Only module-tagged hub spawns are affected; original vendors stay in place.
 # Master Enable = 0 also suppresses both hubs at the next restart.
