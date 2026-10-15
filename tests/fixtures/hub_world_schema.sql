@@ -1,0 +1,61 @@
+-- AzerothCore creature/gameobject table structures; test-only schema fixture.
+-- Based on core revision 9eabf314a27b71d4e9cd513f6f2c08befe90d4ef.
+CREATE TABLE `creature` (
+  `guid` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
+  `id1` int unsigned NOT NULL DEFAULT '0' COMMENT 'Creature Identifier',
+  `id2` int unsigned NOT NULL DEFAULT '0' COMMENT 'Creature Identifier',
+  `id3` int unsigned NOT NULL DEFAULT '0' COMMENT 'Creature Identifier',
+  `map` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Map Identifier',
+  `zoneId` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Zone Identifier',
+  `areaId` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Area Identifier',
+  `spawnMask` tinyint unsigned NOT NULL DEFAULT '1',
+  `phaseMask` int unsigned NOT NULL DEFAULT '1',
+  `equipment_id` tinyint NOT NULL DEFAULT '0',
+  `position_x` float NOT NULL DEFAULT '0',
+  `position_y` float NOT NULL DEFAULT '0',
+  `position_z` float NOT NULL DEFAULT '0',
+  `orientation` float NOT NULL DEFAULT '0',
+  `spawntimesecs` int unsigned NOT NULL DEFAULT '120',
+  `wander_distance` float NOT NULL DEFAULT '0',
+  `currentwaypoint` int unsigned NOT NULL DEFAULT '0',
+  `curhealth` int unsigned NOT NULL DEFAULT '1',
+  `curmana` int unsigned NOT NULL DEFAULT '0',
+  `MovementType` tinyint unsigned NOT NULL DEFAULT '0',
+  `npcflag` int unsigned NOT NULL DEFAULT '0',
+  `unit_flags` int unsigned NOT NULL DEFAULT '0',
+  `dynamicflags` int unsigned NOT NULL DEFAULT '0',
+  `ScriptName` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `VerifiedBuild` int DEFAULT NULL,
+  `CreateObject` tinyint unsigned NOT NULL DEFAULT '0',
+  `Comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`guid`),
+  KEY `idx_map` (`map`),
+  KEY `idx_id` (`id1`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Creature System';
+CREATE TABLE `gameobject` (
+  `guid` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
+  `id` int unsigned NOT NULL DEFAULT '0' COMMENT 'Gameobject Identifier',
+  `map` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Map Identifier',
+  `zoneId` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Zone Identifier',
+  `areaId` smallint unsigned NOT NULL DEFAULT '0' COMMENT 'Area Identifier',
+  `spawnMask` tinyint unsigned NOT NULL DEFAULT '1',
+  `phaseMask` int unsigned NOT NULL DEFAULT '1',
+  `position_x` float NOT NULL DEFAULT '0',
+  `position_y` float NOT NULL DEFAULT '0',
+  `position_z` float NOT NULL DEFAULT '0',
+  `orientation` float NOT NULL DEFAULT '0',
+  `rotation0` float NOT NULL DEFAULT '0',
+  `rotation1` float NOT NULL DEFAULT '0',
+  `rotation2` float NOT NULL DEFAULT '0',
+  `rotation3` float NOT NULL DEFAULT '0',
+  `spawntimesecs` int NOT NULL DEFAULT '0',
+  `animprogress` tinyint unsigned NOT NULL DEFAULT '0',
+  `state` tinyint unsigned NOT NULL DEFAULT '0',
+  `ScriptName` char(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `VerifiedBuild` int DEFAULT NULL,
+  `Comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`guid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Gameobject System';
+-- Only template fields consulted by the optional hub SQL are needed here.
+CREATE TABLE creature_template (entry INT UNSIGNED PRIMARY KEY, name VARCHAR(80));
+CREATE TABLE gameobject_template (entry INT UNSIGNED PRIMARY KEY, type INT, name VARCHAR(80));

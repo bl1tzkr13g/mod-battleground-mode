@@ -49,6 +49,8 @@ struct Settings
     bool restore = true;
     bool teleport = true;
     bool trainClassSpells = true;
+    bool shattrathVendors = true;
+    bool dalaranVendors = true;
     bool blockTrade = true;
     bool blockSendMail = true;
     bool blockReceiveMail = true;
@@ -99,6 +101,8 @@ public:
     {
         Settings next;
         next.enabled = sConfigMgr->GetOption<bool>("BattlegroundMode.Enable", true);
+        next.shattrathVendors = sConfigMgr->GetOption<bool>("BattlegroundMode.VendorHubs.Shattrath.Enable", true);
+        next.dalaranVendors = sConfigMgr->GetOption<bool>("BattlegroundMode.VendorHubs.Dalaran.Enable", true);
         next.prompt = sConfigMgr->GetOption<bool>("BattlegroundMode.PromptOnLogin", true);
         next.allowNormal = sConfigMgr->GetOption<bool>("BattlegroundMode.AllowNormal", true);
         next.restore = sConfigMgr->GetOption<bool>("BattlegroundMode.RestoreHealthMana", true);
@@ -143,6 +147,9 @@ public:
             next.gear = ValidateGearLists(next.gear);
         {
             std::lock_guard<std::mutex> lock(_mutex);
+            if (reload && (_settings.shattrathVendors != next.shattrathVendors ||
+                _settings.dalaranVendors != next.dalaranVendors || _settings.enabled != next.enabled))
+                LOG_INFO("module", "Battleground Mode: vendor hub spawn settings take effect after worldserver restart.");
             _settings = std::move(next);
         }
     }
@@ -187,6 +194,36 @@ public:
             "Reconcile inventory before resetting starter_state; do not blindly repeat the grant.",
             player->GetGUID().GetCounter());
         Tell(player, "Starter delivery was interrupted. Contact a game master; it will not be repeated automatically.");
+    }
+
+    void ConfigureVendorHubs()
+    {
+        auto config = Config();
+        auto suppress = [](char const* city, uint32 map)
+        {
+            // Runs after spawn data loads, before the core preloads map grids.
+            // Remove disabled copies from memory only: the DB rows remain so
+            // enabling the location on the next restart restores them.
+            if (QueryResult rows = WorldDatabase.Query(
+                "SELECT guid FROM creature WHERE map = {} AND Comment LIKE "
+                "'mod-battleground-mode:horde-hub:{}:vendor:%'", map, city))
+                do
+                {
+                    sObjectMgr->DeleteCreatureData(rows->Fetch()[0].Get<uint32>());
+                } while (rows->NextRow());
+            if (QueryResult rows = WorldDatabase.Query(
+                "SELECT guid FROM gameobject WHERE map = {} AND Comment LIKE "
+                "'mod-battleground-mode:horde-hub:{}:banner:%'", map, city))
+                do
+                {
+                    sObjectMgr->DeleteGOData(rows->Fetch()[0].Get<uint32>());
+                } while (rows->NextRow());
+            LOG_INFO("module", "Battleground Mode: copied Horde vendors and banners disabled in {}.", city);
+        };
+        if (!config.enabled || !config.shattrathVendors)
+            suppress("Shattrath", 530);
+        if (!config.enabled || !config.dalaranVendors)
+            suppress("Dalaran", 571);
     }
 
     void TrainClassSpells(Player* player)
@@ -774,6 +811,7 @@ public:
     ModeWorldScript() : WorldScript("battleground_mode_world") { }
     void OnAfterConfigLoad(bool reload) override { Manager::Instance().LoadConfig(reload); }
     void OnStartup() override { Manager::Instance().ValidateGear(); }
+    void OnBeforeWorldInitialized() override { Manager::Instance().ConfigureVendorHubs(); }
 };
 
 class ModePlayerScript : public PlayerScript

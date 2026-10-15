@@ -44,6 +44,15 @@ BattlegroundMode.Teleport.Dalaran.Y = 588.347
 BattlegroundMode.Teleport.Dalaran.Z = 660.939
 BattlegroundMode.Teleport.Dalaran.O = 1.64
 
+# Optional stock Horde vendor rows and banners at the supplied hub locations.
+# First import data/sql/manual/spawn_horde_pvp_hubs.sql into the WORLD DB.
+# 1: allow the location's copies to spawn. 0: hide its copies AND banners.
+# Worldserver RESTART required after changing these settings (.reload is not enough).
+# Only module-tagged hub spawns are affected; original vendors stay in place.
+# Master Enable = 0 also suppresses both hubs at the next restart.
+BattlegroundMode.VendorHubs.Shattrath.Enable = 1
+BattlegroundMode.VendorHubs.Dalaran.Enable = 1
+
 # Per-character restrictions, also applied while a new character is undecided.
 # Normal characters on the same account are unaffected. Disabling any of these
 # opens value-transfer paths. Ordinary AH purchases pay the auction's owner.

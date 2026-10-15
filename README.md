@@ -178,3 +178,14 @@ or alternate transfer paths need separate integration review. Other modules must
 respect the core's level hooks; direct field manipulation cannot be prevented by
 this module, though level mismatches are repaired periodically. The existing talent
 module's source and a live game server are still needed to verify compatibility.
+
+## Optional Horde PvP vendor hubs
+
+[Install the nine stock Horde vendors in rows at both supplied city locations](docs/horde-pvp-hubs.md),
+with Stone Guard Zarg centered and Horde banners at the ends. Import the optional
+`data/sql/manual/spawn_horde_pvp_hubs.sql` into the **world** database while stopped,
+then restart. Build the updated module once to support location switches:
+`BattlegroundMode.VendorHubs.Shattrath.Enable` and
+`BattlegroundMode.VendorHubs.Dalaran.Enable` (default `1`). Changing a switch
+requires a restart, with no SQL reimport. Stock inventories and
+requirements are retained; this is separate from the configurable bracket catalog.
