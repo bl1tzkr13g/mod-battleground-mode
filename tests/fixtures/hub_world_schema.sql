@@ -56,6 +56,6 @@ CREATE TABLE `gameobject` (
   `Comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Gameobject System';
--- Only template fields consulted by the optional hub SQL are needed here.
+-- Only template fields consulted by the base world SQL are needed here.
 CREATE TABLE creature_template (entry INT UNSIGNED PRIMARY KEY, name VARCHAR(80));
 CREATE TABLE gameobject_template (entry INT UNSIGNED PRIMARY KEY, type INT, name VARCHAR(80));

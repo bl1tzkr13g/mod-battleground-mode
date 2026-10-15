@@ -78,6 +78,16 @@ there, but a complete core build needs the compatible MySQL client library.
    without resetting choices or completed starter deliveries. Stop the server
    before importing; no separate update SQL is needed.
 
+   Import the base **world database** SQL for the vendor rows and banners too:
+
+   ```sh
+   mysql acore_world < modules/mod-battleground-mode/data/sql/db-world/base/mod_battleground_mode.sql
+   ```
+
+   These are separate files for separate databases. The world file also safely
+   updates existing hub installations without adding duplicate spawns. The
+   per-city config switches control whether the installed hubs spawn.
+
 3. Reconfigure, build, and install AzerothCore with modules enabled, using your
    usual build options. For example, from the AzerothCore root:
 
@@ -179,11 +189,11 @@ respect the core's level hooks; direct field manipulation cannot be prevented by
 this module, though level mismatches are repaired periodically. The existing talent
 module's source and a live game server are still needed to verify compatibility.
 
-## Optional Horde PvP vendor hubs
+## Horde PvP vendor hubs
 
 [Install the nine stock Horde vendors in rows at both supplied city locations](docs/horde-pvp-hubs.md),
-with Stone Guard Zarg centered and Horde banners at the ends. Import the optional
-`data/sql/manual/spawn_horde_pvp_hubs.sql` into the **world** database while stopped,
+with Stone Guard Zarg centered and Horde banners at the ends. Import the base world SQL
+`data/sql/db-world/base/mod_battleground_mode.sql` into the **world** database while stopped,
 then restart. Build the updated module once to support location switches:
 `BattlegroundMode.VendorHubs.Shattrath.Enable` and
 `BattlegroundMode.VendorHubs.Dalaran.Enable` (default `1`). Changing a switch

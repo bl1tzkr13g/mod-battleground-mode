@@ -1,6 +1,6 @@
 # Horde PvP vendor rows
 
-The optional world SQL adds all nine supplied stock Horde vendors to **both**
+The base world SQL adds all nine supplied stock Horde vendors to **both**
 Shattrath and Dalaran. Each row has Stone Guard Zarg at the supplied center, four
 vendors on either side at 3-yard intervals, and decorative Horde banners at the
 ends (15 yards from center). All face the supplied orientation; the row runs
@@ -26,12 +26,12 @@ perpendicular to that direction.
 ## Install
 
 1. Stop worldserver and back up the world database.
-2. Import [spawn_horde_pvp_hubs.sql](../data/sql/manual/spawn_horde_pvp_hubs.sql)
+2. Import [mod_battleground_mode.sql](../data/sql/db-world/base/mod_battleground_mode.sql)
    into your **world** database (normally `acore_world`). This is separate from
    the module's character database setup. The final counts should be **18**
    vendors and **4** banners. Missing stock templates are not fabricated.
 3. Start worldserver and inspect both rows in game. A C++ rebuild is needed once for the location config switches; no rebuild is
-   needed for later SQL placement changes. Building the server does not import this optional file.
+   needed for later SQL placement changes. Import the world SQL as part of database setup; a C++ build alone does not import it.
 
 The script reuses stock entries, retaining your server's vendor inventory, honor
 prices, faction, and purchase requirements. It does not turn these inventories

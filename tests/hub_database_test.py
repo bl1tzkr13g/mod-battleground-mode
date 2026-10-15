@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test optional hub SQL on a unique disposable database over a local Unix socket."""
+"""Test base world SQL on a unique disposable database over a local Unix socket."""
 import argparse
 from pathlib import Path
 import subprocess
@@ -40,7 +40,7 @@ def main():
             "INSERT INTO gameobject_template VALUES (192254,5,'Horde Banner');"
             "INSERT INTO creature (guid,id1,map,Comment) VALUES (9000000,12794,1,'original vendor');"
             "INSERT INTO gameobject (guid,id,map,Comment) VALUES (9000000,192254,1,'original banner');")
-        install = (root / 'data/sql/manual/spawn_horde_pvp_hubs.sql').read_text()
+        install = (root / 'data/sql/db-world/base/mod_battleground_mode.sql').read_text()
         remove = (root / 'data/sql/manual/remove_horde_pvp_hubs.sql').read_text()
         expect_install = '18\n4'
         if sql(install) != expect_install:
