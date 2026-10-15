@@ -25,13 +25,15 @@ perpendicular to that direction.
 
 ## Install
 
-1. Stop worldserver and back up the world database.
-2. Import [mod_battleground_mode.sql](../data/sql/db-world/base/mod_battleground_mode.sql)
-   into your **world** database (normally `acore_world`). This is separate from
-   the module's character database setup. The final counts should be **18**
-   vendors and **4** banners. Missing stock templates are not fabricated.
-3. Start worldserver and inspect both rows in game. A C++ rebuild is needed once for the location config switches; no rebuild is
-   needed for later SQL placement changes. Import the world SQL as part of database setup; a C++ build alone does not import it.
+1. Update and build the module, then stop worldserver to install the build.
+2. Keep `Updates.EnableDatabases = 7` in `worldserver.conf` and the module checkout
+   under the configured core `SourceDirectory`. The core applies
+   [the base world SQL](../data/sql/db-world/base/mod_battleground_mode.sql)
+   automatically at startup. No manual import is required. The output counts
+   should be **18** vendors and **4** banners; missing stock templates are not
+   fabricated. See [automatic database setup](automatic-database-setup.md).
+3. Start worldserver and inspect both rows. A C++ rebuild is needed once for the
+   location switches; later switch changes only require a restart.
 
 The script reuses stock entries, retaining your server's vendor inventory, honor
 prices, faction, and purchase requirements. It does not turn these inventories
@@ -56,7 +58,7 @@ positions. This file does not move player arrival points.
 
 ## Location switches
 
-After installing the spawn SQL, add these settings to your active module config:
+Add these settings to your active module config:
 
 ```ini
 BattlegroundMode.VendorHubs.Shattrath.Enable = 1
@@ -81,7 +83,9 @@ original vendors remaining available.
 Stop worldserver, import
 [remove_horde_pvp_hubs.sql](../data/sql/manual/remove_horde_pvp_hubs.sql) into the
 world database, then restart. It deletes only tagged copies and banners. It can
-be run again safely. Import the spawn script to reinstall.
+be run again safely. Because the core tracks applied SQL, unchanged SQL is not automatically rerun
+after manual removal. Use the location switches for ordinary disable/enable
+operations; the removal script is only for uninstalling the hub spawns.
 
 ## Validation
 

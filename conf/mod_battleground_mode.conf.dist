@@ -45,7 +45,7 @@ BattlegroundMode.Teleport.Dalaran.Z = 660.939
 BattlegroundMode.Teleport.Dalaran.O = 1.64
 
 # Optional stock Horde vendor rows and banners at the supplied hub locations.
-# First import data/sql/db-world/base/mod_battleground_mode.sql into the WORLD DB.
+# Installed automatically by the core startup database updater (Updates.EnableDatabases = 7).
 # 1: allow the location's copies to spawn. 0: hide its copies AND banners.
 # Worldserver RESTART required after changing these settings (.reload is not enough).
 # Only module-tagged hub spawns are affected; original vendors stay in place.
@@ -76,8 +76,8 @@ BattlegroundMode.StarterGear.TrainArmorProficiency = 1
 BattlegroundMode.StarterGear.BindToCharacter = 1
 # Keep enough free bag slots for the WHOLE starter set before delivery. Nothing
 # is deleted to make room. If blocked, fix the problem and use .bgstarter to retry.
-# Import the original mod_battleground_mode.sql into the CHARACTER DB before use;
-# it handles both fresh installations and updates without resetting saved choices.
+# Character SQL is applied automatically by the core startup database updater;
+# it handles fresh installations and upgrades without resetting saved choices.
 
 # ============================================================================
 # GEAR CATALOG: bracket -> tier -> class -> itemID:honorPrice

@@ -1,6 +1,6 @@
 -- Battleground Mode base WORLD database setup.
--- Import into the WORLD database while worldserver is STOPPED.
--- Adds stock Horde vendors at the two player-supplied locations. No rebuild needed.
+-- Applied automatically to the WORLD database by the core startup updater.
+-- Adds stock Horde vendors at the two player-supplied locations.
 -- Reimport updates only this script's tagged spawns, without duplicating them.
 -- Original NPCs, creature templates, inventories and honor costs are untouched.
 -- AUTO_INCREMENT assigns GUIDs; no fixed GUID range is reserved or overwritten.

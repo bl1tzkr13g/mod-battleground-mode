@@ -66,27 +66,18 @@ there, but a complete core build needs the compatible MySQL client library.
 
 1. Put this checkout at `azerothcore-wotlk/modules/mod-battleground-mode`.
    Keep that directory name: the generated loader expects it.
-2. Import the migration into your **character database** before starting the
-   updated server. Substitute your own database name and use your normal secure
-   database authentication:
+2. Leave AzerothCore's startup database updater enabled in `worldserver.conf`:
 
-   ```sh
-   mysql acore_characters < modules/mod-battleground-mode/data/sql/db-characters/base/mod_battleground_mode.sql
+   ```ini
+   Updates.EnableDatabases = 7
    ```
 
-   Use this same file for existing installations. It adds missing module fields
-   without resetting choices or completed starter deliveries. Stop the server
-   before importing; no separate update SQL is needed.
-
-   Import the base **world database** SQL for the vendor rows and banners too:
-
-   ```sh
-   mysql acore_world < modules/mod-battleground-mode/data/sql/db-world/base/mod_battleground_mode.sql
-   ```
-
-   These are separate files for separate databases. The world file also safely
-   updates existing hub installations without adding duplicate spawns. The
-   per-city config switches control whether the installed hubs spawn.
+   No manual SQL imports are required. The core discovers the compiled module's
+   `data/sql/db-characters` and `data/sql/db-world` folders recursively and applies
+   their SQL to the appropriate databases before loading world data. Keep this
+   checkout available under the core source directory. If the server runs from a
+   different installation, set `SourceDirectory` to the AzerothCore checkout.
+   See [automatic database setup](docs/automatic-database-setup.md) for Windows.
 
 3. Reconfigure, build, and install AzerothCore with modules enabled, using your
    usual build options. For example, from the AzerothCore root:
@@ -111,7 +102,8 @@ For an optional clean test reset, see
 Normal installation and builds never reset module records.
 
 Missing/unreadable schema or corrupt saved decisions cause login to fail closed,
-with a server log error. Import the migration and resolve the error before retrying.
+with a server log error. Check the startup database updater log and resolve its
+configuration or database permission errors before retrying.
 Choices are saved and verified before character changes; if the server stops during
 selection, the saved level is enforced on the next login. Teleport happens only on
 selection; a failed or interrupted teleport may require GM assistance.
@@ -191,11 +183,10 @@ module's source and a live game server are still needed to verify compatibility.
 
 ## Horde PvP vendor hubs
 
-[Install the nine stock Horde vendors in rows at both supplied city locations](docs/horde-pvp-hubs.md),
-with Stone Guard Zarg centered and Horde banners at the ends. Import the base world SQL
-`data/sql/db-world/base/mod_battleground_mode.sql` into the **world** database while stopped,
-then restart. Build the updated module once to support location switches:
-`BattlegroundMode.VendorHubs.Shattrath.Enable` and
+[Nine stock Horde vendors are placed in rows at both supplied city locations](docs/horde-pvp-hubs.md),
+with Stone Guard Zarg centered and Horde banners at the ends. The core's startup
+updater installs the world SQL automatically. Build the updated module once to
+support location switches: `BattlegroundMode.VendorHubs.Shattrath.Enable` and
 `BattlegroundMode.VendorHubs.Dalaran.Enable` (default `1`). Changing a switch
-requires a restart, with no SQL reimport. Stock inventories and
-requirements are retained; this is separate from the configurable bracket catalog.
+requires a restart. Stock inventories and requirements are retained; this is
+separate from the configurable bracket catalog.

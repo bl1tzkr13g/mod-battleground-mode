@@ -106,12 +106,11 @@ Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weap
 skills, class combat spells, or talents. New starter pieces are soulbound when
 `BindToCharacter` is enabled. Honor is not charged for Tier 1.
 
-Import the single original
+The core startup database updater automatically applies
 [`mod_battleground_mode.sql`](../data/sql/db-characters/base/mod_battleground_mode.sql)
-into the character database while stopped. It creates the current schema for a
-fresh installation and adds the starter field to earlier installations.
-Re-importing it preserves choices and completed deliveries. No separate update
-SQL file is needed.
+to the character database, creating fresh schemas and upgrading earlier ones
+without resetting choices or completed deliveries. No manual import is required;
+see [automatic database setup](automatic-database-setup.md).
 
 The single `starter_state` column stores pending (0), claimed (1), or delivered
 (2). A durable claim precedes inventory changes, then item instances, positions,
