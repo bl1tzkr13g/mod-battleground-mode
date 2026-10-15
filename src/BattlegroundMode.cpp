@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 #include "ScriptedGossip.h"
+#include "Trainer.h"
 #include "World.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
@@ -47,6 +48,7 @@ struct Settings
     bool allowNormal = true;
     bool restore = true;
     bool teleport = true;
+    bool trainClassSpells = true;
     bool blockTrade = true;
     bool blockSendMail = true;
     bool blockReceiveMail = true;
@@ -71,6 +73,7 @@ struct CharacterState
     bool applyingLevel = false;
     StarterState starter = StarterState::Pending;
     bool starterAttempt = false;
+    bool trainSpellsAttempt = false;
     uint32 checkTimer = 1000;
     LoginPrompt prompt;
 };
@@ -100,6 +103,7 @@ public:
         next.allowNormal = sConfigMgr->GetOption<bool>("BattlegroundMode.AllowNormal", true);
         next.restore = sConfigMgr->GetOption<bool>("BattlegroundMode.RestoreHealthMana", true);
         next.teleport = sConfigMgr->GetOption<bool>("BattlegroundMode.TeleportOnSelection", true);
+        next.trainClassSpells = sConfigMgr->GetOption<bool>("BattlegroundMode.AutoLearnClassTrainerSpells", true);
         next.blockTrade = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockTrading", true);
         next.blockSendMail = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockSendingMail", true);
         next.blockReceiveMail = sConfigMgr->GetOption<bool>("BattlegroundMode.BlockReceivingMail", true);
@@ -183,6 +187,43 @@ public:
             "Reconcile inventory before resetting starter_state; do not blindly repeat the grant.",
             player->GetGUID().GetCounter());
         Tell(player, "Starter delivery was interrupted. Contact a game master; it will not be repeated automatically.");
+    }
+
+    void TrainClassSpells(Player* player)
+    {
+        auto state = State(player);
+        if (!Config().enabled || !Config().trainClassSpells || !state || state->mode != Mode::Battleground ||
+            player->GetLevel() != state->level)
+            return;
+
+        // Use the same class-trainer eligibility and learning paths as the
+        // core's .learn all my trainer command, without charging training fees.
+        // Repeat for prerequisite chains, irrespective of trainer row order.
+        // Attempt each spell only once so a script refusing a learn cannot loop.
+        auto const& trainers = sObjectMgr->GetClassTrainers(player->getClass());
+        std::set<uint32> attempted;
+        bool progressed;
+        do
+        {
+            progressed = false;
+            for (Trainer::Trainer const* trainer : trainers)
+            {
+                if (!trainer->IsTrainerValidForPlayer(player))
+                    continue;
+                for (Trainer::Spell const& spell : trainer->GetSpells())
+                {
+                    if (spell.ReqLevel > state->level || attempted.count(spell.SpellId) ||
+                        !trainer->CanTeachSpell(player, &spell))
+                        continue;
+                    attempted.insert(spell.SpellId);
+                    if (spell.IsCastable())
+                        player->CastSpell(player, spell.SpellId, true);
+                    else
+                        player->learnSpell(spell.SpellId, false);
+                    progressed = true;
+                }
+            }
+        } while (progressed);
     }
 
     // Use the core's localized item-query response rather than duplicating
@@ -525,6 +566,7 @@ public:
             return;
         state->prompt.pending = config.prompt && state->mode == Mode::Pending;
         state->starterAttempt = CanDeliverStarter(config.starterEnabled, state->mode == Mode::Battleground, state->starter);
+        state->trainSpellsAttempt = config.trainClassSpells && state->mode == Mode::Battleground;
         Store(player, *state);
         if (state->mode == Mode::Battleground)
         {
@@ -668,6 +710,7 @@ public:
         Enforce(player, *persisted);
         if (player->GetLevel() != level)
             return;
+        TrainClassSpells(player);
         GiveStarterGear(player);
         if (config.restore)
         {
@@ -695,8 +738,12 @@ public:
         if (!state || state->mode == Mode::Normal)
             return;
         bool prompt = state->prompt.Advance(SafeToSelect(player), elapsed);
-        bool starter = state->starterAttempt && player->IsInWorld() && !player->isBeingLoaded() &&
+        bool ready = player->IsInWorld() && !player->isBeingLoaded() &&
             !player->GetTradeData() && SafeToSelect(player);
+        bool starter = state->starterAttempt && ready;
+        bool train = state->trainSpellsAttempt && ready;
+        if (train)
+            state->trainSpellsAttempt = false;
         if (starter)
             state->starterAttempt = false;
         bool checkLevel = elapsed >= state->checkTimer;
@@ -707,6 +754,8 @@ public:
         Store(player, *state);
         if (checkLevel)
             Enforce(player, *state);
+        if (train)
+            TrainClassSpells(player);
         if (starter)
             GiveStarterGear(player);
         if (prompt)

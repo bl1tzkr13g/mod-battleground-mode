@@ -15,7 +15,12 @@ rewards are the next milestone.
   including GM level commands. The lock is restored on login and checked every
   five seconds. Changing allowed levels never rewrites existing choices.
 - Selection uses the core's normal level-change flow so other modules receive
-  `OnPlayerLevelChanged`. This module does not grant talents or combat spells.
+  `OnPlayerLevelChanged`. This module does not grant talent points or select talents.
+- Automatically teaches available normal class-trainer spells up to the selected
+  level, free of training fees, on selection and the next safe BG login. Core
+  race/class, skill, rank, and prerequisite checks still apply. Quest-only spells
+  are not granted. Set `BattlegroundMode.AutoLearnClassTrainerSpells = 0` to disable
+  future training; this does not remove spells already learned.
 - Configurable health/mana restoration and neutral-city teleport on selection:
   levels 19–69 go to Shattrath, level 79 to Dalaran, for both factions.
   Edit `BattlegroundMode.Teleport.Shattrath.*`, `BattlegroundMode.Teleport.Dalaran.*`
@@ -143,6 +148,10 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | Auction bid/buyout/listing; guild bank items/gold/tab purchase | Rejected with default settings |
 | Repair with personal gold, then guild gold | Personal repair works; guild repair is blocked |
 | Level selection with your existing talent module | Appropriate talent handling occurs once |
+| Select each bracket with class training enabled | Available trainer spells through the bracket level are learned, including prerequisite ranks; higher-level spells are absent |
+| Existing BG character logs in | Missing eligible trainer spells are learned once safely loaded; known spells stay intact |
+| Normal/pending character or class training disabled | No automatic class-spell grants |
+| Class spells requiring a talent, quest spell, or skill | Core prerequisites remain enforced; unselected talents and quest-only spells are not granted |
 | Delete a character | Module record is removed |
 
 ## Next milestone

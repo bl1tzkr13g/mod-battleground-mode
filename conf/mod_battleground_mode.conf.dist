@@ -18,6 +18,13 @@ BattlegroundMode.AllowNormal = 1
 # Existing permanent decisions survive edits to this list.
 BattlegroundMode.AllowedLevels = "19,29,39,49,59,69,79"
 
+# Learn normal class-trainer spells for the chosen level, free of training fees.
+# Runs on bracket selection and the next safe login for existing BG characters.
+# Uses core race/class, level, skill, and spell-prerequisite checks. Does not
+# award talent points, select talents, or grant quest-only spells/professions.
+# Already-known spells are skipped; disabling does not unlearn earlier grants.
+BattlegroundMode.AutoLearnClassTrainerSpells = 1
+
 BattlegroundMode.RestoreHealthMana = 1
 BattlegroundMode.TeleportOnSelection = 1
 # Both factions: default brackets 19/29/39/49/59/69 go to Shattrath;
@@ -78,7 +85,8 @@ BattlegroundMode.StarterGear.BindToCharacter = 1
 # .bggear <tier> lists the logged-in BG character's exact bracket/class and prices.
 # Tier 1 is delivered once using the StarterGear settings above. Vendor purchasing
 # and honor deductions are NOT wired yet.
-# No starting gold, combat spells, or talent grants are provided here.
+# No starting gold or talent grants are provided here. Class-trainer spells
+# are controlled separately by AutoLearnClassTrainerSpells above.
 #
 # These are STOCK item candidates, NOT playtested complete sets at every tier.
 # Tier 1 contains core armor. Level 19 has no head item. Weapons, cloaks, jewelry,
