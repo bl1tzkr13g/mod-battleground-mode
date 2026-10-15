@@ -1,0 +1,214 @@
+bracket,profile,family,slot,item_id,item_name,quality,required_level,item_level,armor,fixed_stats,item_spell_ids,random_property_pool,random_suffix_pool,sell_price_copper,disenchant_id
+19,cloth-caster,Seer's,chest,2981,Seer's Robe,2,16,21,35,intellect=6;spirit=3,,0,0,648,3
+19,cloth-caster,Seer's,legs,2982,Seer's Pants,2,15,20,29,spirit=5;stamina=3,,0,0,566,2
+19,cloth-caster,Seer's,feet,2983,Seer's Boots,2,12,17,21,intellect=1;stamina=3,,0,0,280,2
+19,cloth-caster,Seer's,hands,2984,Seer's Gloves,2,13,18,20,spirit=4,,0,0,215,2
+19,cloth-caster,Seer's,wrists,3645,Seer's Cuffs,2,12,17,13,spirit=2;intellect=1,,0,0,189,2
+19,cloth-caster,Seer's,shoulders,4698,Seer's Mantle,1,16,21,25,,,0,0,301,0
+19,cloth-caster,Seer's,waist,4699,Seer's Belt,2,13,18,18,intellect=4,,0,0,221,2
+19,leather-physical,Bandit,waist,9775,Bandit Cinch,2,14,19,43,,,898,0,316,2
+19,leather-physical,Bandit,feet,9776,Bandit Boots,2,15,20,53,,,814,0,547,2
+19,leather-physical,Bandit,wrists,9777,Bandit Bracers,2,14,19,33,,,1066,0,318,2
+19,leather-physical,Bandit,hands,9780,Bandit Gloves,2,15,20,48,,,730,0,370,2
+19,leather-physical,Bandit,legs,9781,Bandit Pants,2,17,22,71,,,563,0,982,3
+19,leather-physical,Bandit,chest,9782,Bandit Jerkin,2,18,23,82,,,479,0,1113,3
+19,leather-physical,Bandit,shoulders,10405,Bandit Shoulders,1,17,22,58,,,0,0,409,0
+19,mail-physical,Defender,feet,6573,Defender Boots,2,18,23,122,,,836,0,938,3
+19,mail-physical,Defender,wrists,6574,Defender Bracers,2,17,22,76,,,1088,0,568,3
+19,mail-physical,Defender,waist,6576,Defender Girdle,2,17,22,98,,,920,0,572,3
+19,mail-physical,Defender,hands,6577,Defender Gauntlets,2,18,23,110,,,752,0,649,3
+19,mail-physical,Defender,legs,6578,Defender Leggings,2,18,23,155,,,584,0,1303,3
+19,mail-physical,Defender,shoulders,6579,Defender Spaulders,1,19,24,128,,,0,0,667,0
+19,mail-physical,Defender,chest,6580,Defender Tunic,2,18,23,177,,,500,0,1312,3
+29,cloth-caster,Bright + Azure Silk Hood,feet,3065,Bright Boots,2,18,23,25,stamina=5;spirit=2,,0,0,658,3
+29,cloth-caster,Bright + Azure Silk Hood,hands,3066,Bright Gloves,2,19,24,24,spirit=4;intellect=4,,0,0,497,3
+29,cloth-caster,Bright + Azure Silk Hood,legs,3067,Bright Pants,2,21,26,35,stamina=6;spirit=6,,0,0,1275,4
+29,cloth-caster,Bright + Azure Silk Hood,chest,3069,Bright Robe,2,22,27,41,spirit=8;intellect=4,,0,0,1412,4
+29,cloth-caster,Bright + Azure Silk Hood,wrists,3647,Bright Bracers,2,18,23,16,intellect=4,,0,0,434,3
+29,cloth-caster,Bright + Azure Silk Hood,shoulders,4661,Bright Mantle,2,21,26,30,intellect=5;spirit=4,,0,0,929,4
+29,cloth-caster,Bright + Azure Silk Hood,waist,4708,Bright Belt,2,19,24,21,intellect=4;stamina=4,,0,0,462,3
+29,cloth-caster,Bright + Azure Silk Hood,head,7048,Azure Silk Hood,2,24,29,34,intellect=8,,0,0,1242,4
+29,leather-physical,Superior + Emblazoned Hat,waist,9801,Superior Belt,2,20,25,48,,,900,0,708,3
+29,leather-physical,Superior + Emblazoned Hat,feet,9802,Superior Boots,2,21,26,60,,,816,0,1205,4
+29,leather-physical,Superior + Emblazoned Hat,wrists,9803,Superior Bracers,2,21,26,38,,,1068,0,729,4
+29,leather-physical,Superior + Emblazoned Hat,hands,9806,Superior Gloves,2,22,27,55,,,732,0,834,4
+29,leather-physical,Superior + Emblazoned Hat,shoulders,9807,Superior Shoulders,2,22,27,67,,,1152,0,1255,4
+29,leather-physical,Superior + Emblazoned Hat,legs,9808,Superior Leggings,2,23,28,79,,,565,0,1848,4
+29,leather-physical,Superior + Emblazoned Hat,chest,9809,Superior Tunic,2,23,28,90,,,481,0,1855,4
+29,leather-physical,Superior + Emblazoned Hat,head,4048,Emblazoned Hat,2,26,31,77,stamina=7;intellect=6;spirit=6,,0,0,1767,5
+29,mail-physical,Fortified + Glimmering Mail Coif,feet,9810,Fortified Boots,2,20,25,126,,,837,0,1231,3
+29,mail-physical,Fortified + Glimmering Mail Coif,wrists,9811,Fortified Bracers,2,19,24,79,,,1088,0,725,3
+29,mail-physical,Fortified + Glimmering Mail Coif,hands,9813,Fortified Gauntlets,2,20,25,114,,,753,0,826,3
+29,mail-physical,Fortified + Glimmering Mail Coif,waist,9814,Fortified Belt,2,19,24,101,,,920,0,733,3
+29,mail-physical,Fortified + Glimmering Mail Coif,legs,9815,Fortified Leggings,2,20,25,160,,,585,0,1664,3
+29,mail-physical,Fortified + Glimmering Mail Coif,shoulders,9817,Fortified Spaulders,2,21,26,139,,,1173,0,1426,4
+29,mail-physical,Fortified + Glimmering Mail Coif,chest,9818,Fortified Chain,2,20,25,183,,,501,0,1682,3
+29,mail-physical,Fortified + Glimmering Mail Coif,head,6389,Glimmering Mail Coif,2,26,31,163,stamina=7;agility=6;spirit=6,,0,0,2245,5
+39,cloth-caster,Conjurer's,feet,9845,Conjurer's Shoes,2,30,35,32,,,798,0,2136,5
+39,cloth-caster,Conjurer's,wrists,9846,Conjurer's Bracers,2,30,35,20,,,1050,0,1429,5
+39,cloth-caster,Conjurer's,hands,9848,Conjurer's Gloves,2,31,36,30,,,714,0,1584,6
+39,cloth-caster,Conjurer's,head,9849,Conjurer's Hood,2,31,36,39,,,630,0,2385,6
+39,cloth-caster,Conjurer's,shoulders,9850,Conjurer's Mantle,2,31,36,36,,,1134,0,2394,6
+39,cloth-caster,Conjurer's,legs,9851,Conjurer's Breeches,2,32,37,43,,,547,0,3524,6
+39,cloth-caster,Conjurer's,chest,9852,Conjurer's Robe,2,33,38,50,,,463,0,3820,6
+39,cloth-caster,Conjurer's,waist,9853,Conjurer's Cinch,2,29,34,26,,,882,0,1368,5
+39,leather-physical,Infiltrator,waist,7406,Infiltrator Cord,2,27,32,54,,,902,0,1372,5
+39,leather-physical,Infiltrator,chest,7407,Infiltrator Armor,2,30,35,102,,,483,0,3666,5
+39,leather-physical,Infiltrator,shoulders,7408,Infiltrator Shoulders,2,28,33,74,,,1154,0,2281,5
+39,leather-physical,Infiltrator,feet,7409,Infiltrator Boots,2,28,33,68,,,818,0,2289,5
+39,leather-physical,Infiltrator,wrists,7410,Infiltrator Bracers,2,26,31,42,,,1070,0,1174,5
+39,leather-physical,Infiltrator,hands,7412,Infiltrator Gloves,2,27,32,60,,,734,0,1302,5
+39,leather-physical,Infiltrator,head,7413,Infiltrator Cap,2,28,33,80,,,650,0,2157,5
+39,leather-physical,Infiltrator,legs,7414,Infiltrator Pants,2,29,34,87,,,567,0,3176,5
+39,mail-physical,Phalanx,wrists,7416,Phalanx Bracers,2,26,31,88,,,1091,0,1442,5
+39,mail-physical,Phalanx,feet,7417,Phalanx Boots,2,29,34,144,,,840,0,2903,5
+39,mail-physical,Phalanx,chest,7418,Phalanx Breastplate,2,30,35,213,,,504,0,4256,5
+39,mail-physical,Phalanx,head,7420,Phalanx Headguard,2,28,33,168,,,671,0,2658,5
+39,mail-physical,Phalanx,hands,7421,Phalanx Gauntlets,2,28,33,129,,,755,0,1778,5
+39,mail-physical,Phalanx,waist,7422,Phalanx Girdle,2,27,32,115,,,923,0,1622,5
+39,mail-physical,Phalanx,legs,7423,Phalanx Leggings,2,29,34,184,,,588,0,3941,5
+39,mail-physical,Phalanx,shoulders,7424,Phalanx Spaulders,2,28,33,155,,,1175,0,2709,5
+49,cloth-caster,Sorcerer,waist,9875,Sorcerer Sash,2,34,39,29,,,883,0,2139,6
+49,cloth-caster,Sorcerer,feet,9876,Sorcerer Slippers,2,35,40,36,,,800,0,3146,6
+49,cloth-caster,Sorcerer,head,9878,Sorcerer Hat,2,36,41,44,,,632,0,3425,7
+49,cloth-caster,Sorcerer,wrists,9879,Sorcerer Bracelets,2,34,39,23,,,1051,0,1964,6
+49,cloth-caster,Sorcerer,hands,9880,Sorcerer Gloves,2,35,40,33,,,716,0,2130,6
+49,cloth-caster,Sorcerer,shoulders,9881,Sorcerer Mantle,2,36,41,40,,,1136,0,3464,7
+49,cloth-caster,Sorcerer,legs,9883,Sorcerer Pants,2,37,42,48,,,548,0,5026,7
+49,cloth-caster,Sorcerer,chest,9884,Sorcerer Robe,2,38,43,57,,,465,0,5448,7
+49,leather-physical,Tracker's,waist,9916,Tracker's Belt,2,39,44,67,,,906,0,3566,7
+49,leather-physical,Tracker's,feet,9917,Tracker's Boots,2,39,44,82,,,822,0,5519,7
+49,leather-physical,Tracker's,hands,9920,Tracker's Gloves,2,39,44,75,,,738,0,3721,7
+49,leather-physical,Tracker's,head,9921,Tracker's Headband,2,40,45,99,,,654,0,6050,7
+49,leather-physical,Tracker's,legs,9922,Tracker's Leggings,2,41,46,108,,,571,0,8745,8
+49,leather-physical,Tracker's,shoulders,9923,Tracker's Shoulderpads,2,40,45,91,,,1158,0,6095,7
+49,leather-physical,Tracker's,chest,9924,Tracker's Tunic,2,43,48,129,,,487,0,10276,8
+49,leather-physical,Tracker's,wrists,9925,Tracker's Wristguards,2,39,44,52,,,1074,0,3790,7
+49,mail-physical,Brigade,feet,9926,Brigade Boots,2,38,43,166,,,843,0,6368,7
+49,mail-physical,Brigade,wrists,9927,Brigade Bracers,2,37,42,104,,,1094,0,3927,7
+49,mail-physical,Brigade,chest,9928,Brigade Breastplate,2,40,45,248,,,507,0,9930,7
+49,mail-physical,Brigade,hands,9930,Brigade Gauntlets,2,38,43,151,,,759,0,4287,7
+49,mail-physical,Brigade,waist,9931,Brigade Girdle,2,38,43,136,,,927,0,4303,7
+49,mail-physical,Brigade,head,9932,Brigade Circlet,2,39,44,199,,,675,0,6995,7
+49,mail-physical,Brigade,legs,9933,Brigade Leggings,2,40,45,217,,,591,0,9394,7
+49,mail-physical,Brigade,shoulders,9934,Brigade Pauldrons,2,39,44,184,,,1179,0,6577,7
+49,plate-physical,Field Plate,wrists,9285,Field Plate Vambraces,2,40,41,131,,,1115,0,4204,7
+49,plate-physical,Field Plate,chest,9286,Field Plate Armor,2,40,44,428,,,528,0,10571,7
+49,plate-physical,Field Plate,hands,9287,Field Plate Gauntlets,2,40,41,188,,,779,0,4235,7
+49,plate-physical,Field Plate,waist,9288,Field Plate Girdle,2,40,41,169,,,947,0,4250,7
+49,plate-physical,Field Plate,feet,9289,Field Plate Boots,2,40,41,206,,,863,0,6350,7
+49,plate-physical,Field Plate,head,9290,Field Plate Helmet,2,40,42,276,,,695,0,6883,7
+49,plate-physical,Field Plate,legs,9291,Field Plate Leggings,2,40,43,334,,,612,0,9251,7
+49,plate-physical,Field Plate,shoulders,9292,Field Plate Pauldrons,2,40,42,255,,,1199,0,6436,7
+59,cloth-caster,Councillor's,feet,10095,Councillor's Boots,2,51,56,50,,,805,0,10295,10
+59,cloth-caster,Councillor's,wrists,10096,Councillor's Cuffs,2,49,54,31,,,1056,0,6130,9
+59,cloth-caster,Councillor's,head,10097,Councillor's Circlet,2,52,57,60,,,637,0,10992,10
+59,cloth-caster,Councillor's,hands,10099,Councillor's Gloves,2,50,55,45,,,721,0,6568,9
+59,cloth-caster,Councillor's,shoulders,10100,Councillor's Shoulders,2,52,57,55,,,1141,0,11109,10
+59,cloth-caster,Councillor's,legs,10101,Councillor's Pants,2,53,58,66,,,554,0,15756,10
+59,cloth-caster,Councillor's,chest,10102,Councillor's Robes,2,54,59,76,,,470,0,15020,10
+59,cloth-caster,Councillor's,waist,10103,Councillor's Sash,2,49,54,39,,,888,0,5687,9
+59,leather-physical,Wanderer's,chest,10105,Wanderer's Armor,2,55,60,154,,,491,0,19942,10
+59,leather-physical,Wanderer's,feet,10106,Wanderer's Boots,2,51,56,100,,,826,0,12120,10
+59,leather-physical,Wanderer's,wrists,10107,Wanderer's Bracers,2,49,54,62,,,1077,0,7218,9
+59,leather-physical,Wanderer's,waist,10109,Wanderer's Belt,2,49,54,80,,,909,0,7273,9
+59,leather-physical,Wanderer's,hands,10110,Wanderer's Gloves,2,50,55,90,,,742,0,7948,9
+59,leather-physical,Wanderer's,head,10111,Wanderer's Hat,2,52,57,120,,,658,0,13444,10
+59,leather-physical,Wanderer's,legs,10112,Wanderer's Leggings,2,53,58,131,,,575,0,19071,10
+59,leather-physical,Wanderer's,shoulders,10113,Wanderer's Shoulders,2,52,57,111,,,1162,0,13541,10
+59,mail-physical,Merciless,wrists,15649,Merciless Bracers,2,46,51,122,,,1097,0,7808,9
+59,mail-physical,Merciless,chest,15650,Merciless Surcoat,2,52,57,307,,,511,0,22230,10
+59,mail-physical,Merciless,head,15651,Merciless Crown,2,51,56,246,,,679,0,15785,10
+59,mail-physical,Merciless,hands,15653,Merciless Gauntlets,2,48,53,180,,,762,0,8053,9
+59,mail-physical,Merciless,waist,15654,Merciless Belt,2,49,54,165,,,930,0,8569,9
+59,mail-physical,Merciless,legs,15655,Merciless Legguards,2,51,56,265,,,595,0,19862,10
+59,mail-physical,Merciless,shoulders,15656,Merciless Epaulets,2,49,54,220,,,1182,0,13366,9
+59,mail-physical,Merciless,feet,15694,Merciless Greaves,2,49,54,201,,,846,0,13264,9
+59,plate-physical,Templar,chest,10164,Templar Chestplate,2,53,58,552,,,533,0,25915,10
+59,plate-physical,Templar,hands,10165,Templar Gauntlets,2,50,55,328,,,784,0,10983,9
+59,plate-physical,Templar,waist,10166,Templar Girdle,2,49,54,290,,,951,0,10399,9
+59,plate-physical,Templar,feet,10167,Templar Boots,2,50,55,361,,,868,0,16470,9
+59,plate-physical,Templar,head,10168,Templar Crown,2,51,56,434,,,700,0,17523,10
+59,plate-physical,Templar,legs,10169,Templar Legplates,2,52,57,475,,,616,0,24903,10
+59,plate-physical,Templar,shoulders,10170,Templar Pauldrons,2,51,56,400,,,1204,0,17651,10
+59,plate-physical,Templar,wrists,10171,Templar Bracers,2,49,54,225,,,1119,0,10591,9
+69,cloth-caster,Feralfen,waist,24629,Feralfen Sash,2,63,99,69,,,0,61,12733,13
+69,cloth-caster,Feralfen,feet,24630,Feralfen Sandals,2,63,99,84,,,0,61,19171,13
+69,cloth-caster,Feralfen,chest,24631,Feralfen Jerkin,2,63,99,123,,,0,61,25656,13
+69,cloth-caster,Feralfen,hands,24632,Feralfen Hand,2,63,99,77,,,0,61,12874,13
+69,cloth-caster,Feralfen,head,24633,Feralfen Hood,2,63,99,100,,,0,61,19382,13
+69,cloth-caster,Feralfen,legs,24634,Feralfen Pants,2,63,99,108,,,0,61,25938,13
+69,cloth-caster,Feralfen,shoulders,24635,Feralfen Amice,2,63,99,92,,,0,61,19524,13
+69,cloth-caster,Feralfen,wrists,24636,Feralfen Cuffs,2,63,99,54,,,0,61,13062,13
+69,leather-physical,Ranger,waist,24741,Ranger Belt,2,63,99,130,,,0,63,15857,13
+69,leather-physical,Ranger,feet,24742,Ranger Boots,2,63,99,159,,,0,63,23875,13
+69,leather-physical,Ranger,chest,24743,Ranger Jerkin,2,63,99,231,,,0,63,31951,13
+69,leather-physical,Ranger,hands,24744,Ranger Gloves,2,63,99,144,,,0,63,16035,13
+69,leather-physical,Ranger,head,24745,Ranger Hat,2,63,99,188,,,0,63,24139,13
+69,leather-physical,Ranger,legs,24746,Ranger Pants,2,63,99,202,,,0,63,32304,13
+69,leather-physical,Ranger,shoulders,24747,Ranger Pauldrons,2,63,99,173,,,0,63,24316,13
+69,leather-physical,Ranger,wrists,24748,Ranger Armguards,2,63,99,101,,,0,63,16270,13
+69,mail-physical,Marshcreeper,waist,24854,Marshcreeper Belt,2,63,99,289,,,0,64,19028,13
+69,mail-physical,Marshcreeper,feet,24855,Marshcreeper Sludgeboots,2,63,99,353,,,0,64,28777,13
+69,mail-physical,Marshcreeper,chest,24856,Marshcreeper Fen-Vest,2,63,99,514,,,0,64,38342,13
+69,mail-physical,Marshcreeper,hands,24857,Marshcreeper Gloves,2,63,99,321,,,0,64,19242,13
+69,mail-physical,Marshcreeper,head,24858,Marshcreeper Helm,2,63,99,417,,,0,64,28967,13
+69,mail-physical,Marshcreeper,legs,24859,Marshcreeper Leggings,2,63,99,449,,,0,64,38764,13
+69,mail-physical,Marshcreeper,shoulders,24860,Marshcreeper Mantle,2,63,99,385,,,0,64,29310,13
+69,mail-physical,Marshcreeper,wrists,24861,Marshcreeper Bracelets,2,63,99,225,,,0,64,19524,13
+69,plate-physical,Talonguard,waist,24966,Talonguard Girdle,2,63,99,516,,,0,65,22246,13
+69,plate-physical,Talonguard,feet,24967,Talonguard Greaves,2,63,99,630,,,0,65,33237,13
+69,plate-physical,Talonguard,chest,24968,Talonguard Armor,2,63,99,917,,,0,65,44566,13
+69,plate-physical,Talonguard,hands,24969,Talonguard Gloves,2,63,99,573,,,0,65,22494,13
+69,plate-physical,Talonguard,head,24970,Talonguard Helmet,2,63,99,745,,,0,65,33609,13
+69,plate-physical,Talonguard,legs,24971,Talonguard Legplates,2,63,99,802,,,0,65,45059,13
+69,plate-physical,Talonguard,shoulders,24972,Talonguard Epaulets,2,63,99,688,,,0,65,33854,13
+69,plate-physical,Talonguard,wrists,24973,Talonguard Bracers,2,63,99,401,,,0,65,22825,13
+79,cloth-caster,Frostwoven,wrists,41512,Frostwoven Wristwraps,2,70,134,72,spell_power=30;stamina=22;spirit=19,,0,0,17675,15
+79,cloth-caster,Frostwoven,shoulders,41513,Frostwoven Shoulders,2,70,134,123,spell_power=41;stamina=28;spirit=25,,0,0,24074,15
+79,cloth-caster,Frostwoven,chest,41515,Frostwoven Robe,2,70,134,164,spell_power=54;stamina=39;spirit=34,,0,0,32348,15
+79,cloth-caster,Frostwoven,legs,41519,Frostwoven Leggings,2,72,142,152,spell_power=59;stamina=43;spirit=36,,0,0,35592,15
+79,cloth-caster,Frostwoven,feet,41520,Frostwoven Boots,2,68,138,116,spell_power=42;stamina=30;spirit=26,,0,0,26092,15
+79,cloth-caster,Frostwoven,head,41521,Frostwoven Cowl,2,72,142,141,spell_power=59;stamina=43;spirit=36,,0,0,26889,15
+79,cloth-caster,Frostwoven,waist,41522,Frostwoven Belt,2,68,138,95,spell_power=42;stamina=30;spirit=26,,0,0,17523,15
+79,cloth-caster,Frostwoven,hands,44211,Frostwoven Gloves,2,68,138,106,spell_power=42;stamina=30;spirit=26,,0,0,17334,15
+79,leather-physical,Arctic,chest,38400,Arctic Chestpiece,2,70,142,326,agility=37;stamina=42;attack_power=100,,0,0,45295,15
+79,leather-physical,Arctic,legs,38401,Arctic Leggings,2,71,146,293,crit=41;stamina=60;attack_power=83,,0,0,46644,15
+79,leather-physical,Arctic,shoulders,38402,Arctic Shoulderpads,2,72,142,244,agility=36;stamina=27;attack_power=60,,0,0,34215,15
+79,leather-physical,Arctic,hands,38403,Arctic Gloves,2,71,146,209,agility=38;stamina=29;hit=30,,0,0,23488,15
+79,leather-physical,Arctic,feet,38404,Arctic Boots,2,70,142,224,attack_power=74;agility=29;stamina=28,,0,0,34462,15
+79,leather-physical,Arctic,waist,38405,Arctic Belt,2,73,146,188,stamina=33;attack_power=70;crit=31,,0,0,23657,15
+79,leather-physical,Arctic,wrists,38433,Arctic Wristguards,2,74,150,150,attack_power=60;agility=17;stamina=33,,0,0,23219,15
+79,leather-physical,Arctic,head,38437,Arctic Helm,2,74,150,279,attack_power=106;agility=31;stamina=58,,0,0,35345,15
+79,leather-caster,Iceborne,waist,38406,Iceborne Belt,2,72,142,183,intellect=23;stamina=25;spell_power=48,,0,0,23137,15
+79,leather-caster,Iceborne,feet,38407,Iceborne Boots,2,70,138,218,stamina=25;intellect=27;spell_power=42,,0,0,33921,15
+79,leather-caster,Iceborne,chest,38408,Iceborne Chestguard,2,70,138,317,stamina=36;crit=37;spell_power=56,,0,0,45389,15
+79,leather-caster,Iceborne,hands,38409,Iceborne Gloves,2,70,142,204,intellect=25;stamina=36;spell_power=44,,0,0,21155,15
+79,leather-caster,Iceborne,legs,38410,Iceborne Leggings,2,70,142,285,stamina=37;intellect=38;spell_power=59,,0,0,42475,15
+79,leather-caster,Iceborne,shoulders,38411,Iceborne Shoulderpads,2,73,146,251,stamina=30;intellect=31;spell_power=41,,0,0,32813,15
+79,leather-caster,Iceborne,wrists,38434,Iceborne Wristguards,2,74,150,150,spell_power=35;spirit=21;crit=19,,0,0,23306,15
+79,leather-caster,Iceborne,head,38438,Iceborne Helm,2,74,150,279,spell_power=62;spirit=35;crit=36,,0,0,35474,15
+79,mail-physical,Frostscale,waist,38412,Frostscale Belt,2,68,138,397,attack_power=56;agility=28;stamina=24;intellect=18,,0,0,25013,15
+79,mail-physical,Frostscale,feet,38413,Frostscale Boots,2,73,146,513,agility=39;crit=26;hit=25,,0,0,39852,15
+79,mail-physical,Frostscale,chest,38414,Frostscale Chestguard,2,68,138,706,stamina=57;agility=38;attack_power=74,,0,0,51784,15
+79,mail-physical,Frostscale,hands,38415,Frostscale Gloves,2,72,142,454,attack_power=58;agility=30;stamina=28;intellect=20,,0,0,26683,15
+79,mail-physical,Frostscale,legs,38416,Frostscale Leggings,2,70,142,635,agility=50;crit=33;attack_power=68,,0,0,53564,15
+79,mail-physical,Frostscale,shoulders,38424,Frostscale Shoulders,2,70,142,544,stamina=19;attack_power=63;agility=38,,0,0,41534,15
+79,mail-physical,Frostscale,wrists,38436,Frostscale Bracers,2,74,150,335,attack_power=48;agility=23;stamina=24;intellect=15,,0,0,28172,15
+79,mail-physical,Frostscale,head,38440,Frostscale Helm,2,74,150,622,attack_power=84;agility=42;stamina=42;intellect=28,,0,0,42877,15
+79,mail-caster,Nerubian,shoulders,38417,Nerubian Shoulders,2,73,146,559,intellect=19;crit=29;spell_power=46,,0,0,41551,15
+79,mail-caster,Nerubian,waist,38418,Nerubian Belt,2,68,138,397,stamina=35;intellect=24;spell_power=42,,0,0,26274,15
+79,mail-caster,Nerubian,feet,38419,Nerubian Boots,2,72,142,499,stamina=27;mp5=15;spell_power=45,,0,0,40794,15
+79,mail-caster,Nerubian,chest,38420,Nerubian Chestguard,2,68,138,706,mp5=16;intellect=32;spell_power=56,,0,0,52933,15
+79,mail-caster,Nerubian,hands,38421,Nerubian Gloves,2,70,134,429,intellect=22;crit=23;spell_power=41,,0,0,25850,15
+79,mail-caster,Nerubian,legs,38422,Nerubian Legguards,2,68,138,618,spell_power=56;intellect=34;crit=30,,0,0,33853,15
+79,mail-caster,Nerubian,wrists,38435,Nerubian Bracers,2,74,150,335,spell_power=35;intellect=21;crit=19,,0,0,28071,15
+79,mail-caster,Nerubian,head,38439,Nerubian Helm,2,74,150,622,spell_power=62;intellect=36;crit=35,,0,0,42725,15
+79,plate-physical,Cobalt,shoulders,39083,Cobalt Shoulders,2,70,142,973,stamina=36;defense=30;strength=33,,0,0,48322,15
+79,plate-physical,Cobalt,head,39084,Cobalt Helm,2,70,142,1054,strength=33;stamina=51;defense=50,,0,0,48495,15
+79,plate-physical,Cobalt,chest,39085,Cobalt Chestpiece,2,70,142,1297,strength=39;defense=39;stamina=60,,0,0,65014,15
+79,plate-physical,Cobalt,legs,39086,Cobalt Legplates,2,70,142,1135,stamina=66;strength=40;defense=32,,0,0,65244,15
+79,plate-physical,Cobalt,waist,39087,Cobalt Belt,2,70,142,730,stamina=39;strength=25;defense=37,,0,0,29787,15
+79,plate-physical,Cobalt,feet,39088,Cobalt Boots,2,70,142,892,stamina=44;defense=30;strength=29,,0,0,44514,15
+79,plate-physical,Cobalt,wrists,41974,Cobalt Bracers,2,70,142,567,stamina=27;strength=25;defense=45,,0,0,31665,15
+79,plate-physical,Cobalt,hands,41975,Cobalt Gauntlets,2,70,142,811,stamina=39;strength=37;defense=25,,0,0,31778,15

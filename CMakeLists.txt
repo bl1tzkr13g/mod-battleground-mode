@@ -10,3 +10,11 @@ target_compile_features(battleground_mode_policy_test PRIVATE cxx_std_17)
 target_compile_options(battleground_mode_policy_test PRIVATE
     $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Werror>)
 add_test(NAME battleground_mode_policy COMMAND battleground_mode_policy_test)
+
+add_executable(battleground_mode_gear_test tests/gear_test.cpp)
+target_include_directories(battleground_mode_gear_test PRIVATE src)
+target_compile_features(battleground_mode_gear_test PRIVATE cxx_std_17)
+target_compile_options(battleground_mode_gear_test PRIVATE
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Werror>)
+add_test(NAME battleground_mode_gear COMMAND battleground_mode_gear_test
+    "${CMAKE_CURRENT_SOURCE_DIR}/conf/mod_battleground_mode.conf.dist")

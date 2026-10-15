@@ -2,7 +2,8 @@
 
 An AzerothCore 3.3.5a C++ module for permanent battleground bracket characters.
 This first implementation provides character selection and restrictions. Gear
-catalogs, starter sets, vendors, and progression rewards are the next milestone.
+catalogs and per-item honor prices are configurable; starter grants, vendors, and
+progression rewards are the next milestone.
 
 ## Implemented
 
@@ -22,6 +23,9 @@ catalogs, starter sets, vendors, and progression rewards are the next milestone.
   is offline. NPC vendors and personally funded repairs remain available.
 - One character-database table, containing only `guid`, `mode`, and `locked_level`.
   Character deletion removes its record in the core's deletion transaction.
+- Editable gear lists by bracket, tier, and class, with individual honor prices.
+  Five tiers are laid out, with automatic discovery of additional tier keys.
+  `.bggear <tier>` previews the matching list; it does not grant or sell items.
 
 Restrictions are **per character**. Existing characters without a module record
 remain Normal. New characters stay pending until they choose and gain XP normally,
@@ -122,10 +126,15 @@ not establish live client behavior. Before deployment, run these in-game checks:
 
 ## Next milestone
 
-Add configurable starter equipment and bracket/class/role gear catalogs, followed
-by vendors and gold/honor progression. Tier names, prices, and strongest-tier
-unlock conditions remain to be designed. No starting currency or item grants are
-implemented yet.
+The config now contains researched starter armor and priced upgrade candidates.
+See [gear configuration and research](docs/starter-gear.md) for editing syntax,
+the exact tier coverage, source data, and role/affix limitations. Starter gear is
+free; later items use `itemID:honorPrice` pairs. Empty higher-tier lists are
+placeholders for further curation or custom gear.
+
+Next: implement one-time starter grants and an NPC that purchases from the
+bracket/class catalogs with server-side honor checks. No currency grants, item
+grants, purchases, or honor deductions are implemented yet.
 
 Keep auctions blocked for a restricted economy: buying a normal player's auction
 transfers gold to its owner. Custom modules with shared storage, account wallets,

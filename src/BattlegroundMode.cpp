@@ -1,10 +1,13 @@
 #include "BattlegroundModePolicy.h"
+#include "BattlegroundModeGear.h"
 
 #include "Chat.h"
 #include "CinematicMgr.h"
 #include "Config.h"
 #include "DatabaseEnv.h"
+#include "ItemTemplate.h"
 #include "Log.h"
+#include "ObjectMgr.h"
 #include "Opcodes.h"
 #include "Player.h"
 #include "ScriptMgr.h"
@@ -14,6 +17,7 @@
 #include "WorldSession.h"
 
 #include <mutex>
+#include <memory>
 #include <optional>
 #include <unordered_map>
 
@@ -45,6 +49,7 @@ struct Settings
     bool blockReceiveMail = true;
     bool blockAuction = true;
     bool blockGuildBank = true;
+    std::shared_ptr<GearCatalog const> gear = std::make_shared<GearCatalog>();
     std::vector<uint8> levels;
     Destination alliance{0, -8833.38f, 628.62f, 94.0f, 0.0f};
     Destination horde{1, 1629.36f, -4373.39f, 31.26f, 0.0f};
@@ -77,7 +82,7 @@ public:
         return _settings;
     }
 
-    void LoadConfig()
+    void LoadConfig(bool reload)
     {
         Settings next;
         next.enabled = sConfigMgr->GetOption<bool>("BattlegroundMode.Enable", true);
@@ -106,8 +111,80 @@ public:
         };
         next.alliance = destination("Alliance", next.alliance);
         next.horde = destination("Horde", next.horde);
+        auto gear = std::make_shared<GearCatalog>();
+        for (auto const& key : sConfigMgr->GetKeysByString("BattlegroundMode.Gear.Level"))
+            if (!gear->Add(key, sConfigMgr->GetOption<std::string>(key, "", false)))
+                LOG_ERROR("module", "Battleground Mode: invalid gear list {}. Expected itemId:honor pairs; "
+                    "tier 1 must be free and later tiers must have positive prices.", key);
+        next.gear = std::move(gear);
+        // Item templates are loaded later during initial server startup. On
+        // reload, validate before publishing the replacement immutable catalog.
+        if (reload)
+            next.gear = ValidateGearLists(next.gear);
+        {
+            std::lock_guard<std::mutex> lock(_mutex);
+            _settings = std::move(next);
+        }
+    }
+
+    std::shared_ptr<GearCatalog const> ValidateGearLists(std::shared_ptr<GearCatalog const> const& snapshot)
+    {
+        GearCatalog::Lists valid;
+        for (auto const& [key, items] : snapshot->All())
+        {
+            bool usable = true;
+            for (auto const& item : items)
+            {
+                ItemTemplate const* prototype = sObjectMgr->GetItemTemplate(item.entry);
+                if (!prototype || prototype->RequiredLevel > key.level ||
+                    !(prototype->AllowableClass & (1u << (key.playerClass - 1))) ||
+                    (prototype->Class == ITEM_CLASS_ARMOR &&
+                        !GearArmorAllowed(key.playerClass, key.level, prototype->SubClass)) ||
+                    item.honor > sWorld->getIntConfig(CONFIG_MAX_HONOR_POINTS))
+                {
+                    LOG_ERROR("module", "Battleground Mode: rejecting level {} class {} tier {}: "
+                        "invalid/unusable item {} or honor price {} exceeds the honor cap.",
+                        key.level, key.playerClass, key.tier, item.entry, item.honor);
+                    usable = false;
+                }
+            }
+            if (usable)
+                valid.emplace(key, items);
+        }
+        return std::make_shared<GearCatalog>(std::move(valid));
+    }
+
+    void ValidateGear()
+    {
+        auto validated = ValidateGearLists(Config().gear);
         std::lock_guard<std::mutex> lock(_mutex);
-        _settings = std::move(next);
+        _settings.gear = std::move(validated);
+    }
+
+    void ShowGear(Player* player, uint32 tier)
+    {
+        auto config = Config();
+        auto state = State(player);
+        if (!config.enabled || !state || state->mode != Mode::Battleground)
+        {
+            Tell(player, "Gear lists are available to Battleground Mode characters only.");
+            return;
+        }
+        if (tier == 0 || tier > 65535)
+        {
+            Tell(player, "Tier must be between 1 and 65535.");
+            return;
+        }
+        auto const& items = config.gear->Find(state->level, player->getClass(), static_cast<uint16>(tier));
+        if (items.empty())
+        {
+            Tell(player, "No gear is configured for your bracket, class, and requested tier.");
+            return;
+        }
+        ChatHandler handler(player->GetSession());
+        handler.PSendSysMessage("Level {} / tier {} gear catalog (preview only):", state->level, tier);
+        for (auto const& item : items)
+            handler.PSendSysMessage("Item {}: {} honor", item.entry, item.honor);
     }
 
     std::optional<CharacterState> State(Player const* player)
@@ -396,7 +473,8 @@ class ModeWorldScript : public WorldScript
 {
 public:
     ModeWorldScript() : WorldScript("battleground_mode_world") { }
-    void OnAfterConfigLoad(bool /*reload*/) override { Manager::Instance().LoadConfig(); }
+    void OnAfterConfigLoad(bool reload) override { Manager::Instance().LoadConfig(reload); }
+    void OnStartup() override { Manager::Instance().ValidateGear(); }
 };
 
 class ModePlayerScript : public PlayerScript
@@ -553,13 +631,23 @@ public:
     Acore::ChatCommands::ChatCommandTable GetCommands() const override
     {
         using namespace Acore::ChatCommands;
-        static ChatCommandTable commands = {{"bgmode", HandleMode, SEC_PLAYER, Console::No}};
+        static ChatCommandTable commands =
+        {
+            {"bgmode", HandleMode, SEC_PLAYER, Console::No},
+            {"bggear", HandleGear, SEC_PLAYER, Console::No}
+        };
         return commands;
     }
     static bool HandleMode(ChatHandler* handler)
     {
         if (Player* player = handler->GetPlayer())
             Manager::Instance().ShowMenu(player);
+        return true;
+    }
+    static bool HandleGear(ChatHandler* handler, uint32 tier)
+    {
+        if (Player* player = handler->GetPlayer())
+            Manager::Instance().ShowGear(player, tier);
         return true;
     }
 };
