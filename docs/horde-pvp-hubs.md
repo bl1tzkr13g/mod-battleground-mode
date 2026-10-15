@@ -54,11 +54,15 @@ Alliance row:
    location switches; later switch changes only require a restart.
 
 The script reuses stock entries, retaining your server's vendor inventory, honor
-prices, faction, and purchase requirements. It does not turn these inventories
+prices and purchase requirements. It does not turn these inventories
 into the module's configurable class/bracket catalogs or change required item
 levels. Level 79 characters still cannot equip stock items requiring level 80.
-The copies are ordinary world NPCs, available under their normal faction rules,
-including to Normal Mode characters of the appropriate faction. They are not exclusive to BG mode.
+The copied NPCs use friendly faction 35 at runtime so both Horde and Alliance
+can approach and interact without hostility. Original NPCs retain their stock
+factions. The friendly override applies by tagged spawn GUID on creation and
+respawn, without editing shared creature templates. They are available to Normal
+Mode characters too. Item race/faction, level, reputation, and purchase restrictions
+still apply; friendliness does not make faction-restricted gear usable.
 Original NPCs and inventories remain in place. The generic type-5 Horde Banner
 (**192254**) and Alliance Banner (**192252**) are decorative and have no
 capture/PvP interaction.

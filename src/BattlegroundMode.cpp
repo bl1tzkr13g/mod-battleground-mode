@@ -4,6 +4,7 @@
 #include "Chat.h"
 #include "CinematicMgr.h"
 #include "Config.h"
+#include "Creature.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
 #include "ItemTemplate.h"
@@ -199,6 +200,21 @@ public:
     void ConfigureVendorHubs()
     {
         auto config = Config();
+        // Cache only module-tagged copies; stock spawns sharing these entries
+        // must retain their normal factions. Initialized before map grids load.
+        std::set<ObjectGuid::LowType> vendorSpawns;
+        if (QueryResult rows = WorldDatabase.Query(
+            "SELECT guid FROM creature WHERE (map = 530 OR map = 571) AND ("
+            "Comment LIKE 'mod-battleground-mode:horde-hub:%:vendor:%' OR "
+            "Comment LIKE 'mod-battleground-mode:alliance-hub:%:vendor:%')"))
+            do
+            {
+                vendorSpawns.insert(rows->Fetch()[0].Get<uint32>());
+            } while (rows->NextRow());
+        {
+            std::lock_guard<std::mutex> lock(_mutex);
+            _hubVendorSpawns = std::move(vendorSpawns);
+        }
         auto suppress = [](char const* city, uint32 map)
         {
             // Runs after spawn data loads, before the core preloads map grids.
@@ -226,6 +242,17 @@ public:
             suppress("Shattrath", 530);
         if (!config.enabled || !config.dalaranVendors)
             suppress("Dalaran", 571);
+    }
+
+    void SetHubVendorFaction(Creature* creature)
+    {
+        bool hubVendor;
+        {
+            std::lock_guard<std::mutex> lock(_mutex);
+            hubVendor = _hubVendorSpawns.count(creature->GetSpawnId()) != 0;
+        }
+        if (hubVendor)
+            creature->SetFaction(35); // Friendly to both factions, for this instance only.
     }
 
     void TrainClassSpells(Player* player)
@@ -805,6 +832,7 @@ private:
     std::mutex _mutex;
     Settings _settings;
     std::unordered_map<ObjectGuid::LowType, CharacterState> _characters;
+    std::set<ObjectGuid::LowType> _hubVendorSpawns;
 };
 
 class ModeWorldScript : public WorldScript
@@ -814,6 +842,18 @@ public:
     void OnAfterConfigLoad(bool reload) override { Manager::Instance().LoadConfig(reload); }
     void OnStartup() override { Manager::Instance().ValidateGear(); }
     void OnBeforeWorldInitialized() override { Manager::Instance().ConfigureVendorHubs(); }
+};
+
+class ModeHubVendorScript : public AllCreatureScript
+{
+public:
+    ModeHubVendorScript() : AllCreatureScript("battleground_mode_hub_vendors") { }
+    // Runs after template faction assignment on creation and on respawn, before
+    // the new creature is added to the world or its AI starts selecting targets.
+    void OnCreatureSelectLevel(CreatureTemplate const*, Creature* creature) override
+    {
+        Manager::Instance().SetHubVendorFaction(creature);
+    }
 };
 
 class ModePlayerScript : public PlayerScript
@@ -1002,6 +1042,7 @@ public:
 void AddBattlegroundModeScripts()
 {
     new BattlegroundMode::ModeWorldScript();
+    new BattlegroundMode::ModeHubVendorScript();
     new BattlegroundMode::ModePlayerScript();
     new BattlegroundMode::ModeServerScript();
     new BattlegroundMode::ModeCommandScript();
