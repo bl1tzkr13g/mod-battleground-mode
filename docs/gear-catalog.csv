@@ -4,64 +4,111 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 19,1,Paladin,6576,Defender Girdle,0,2,17,22
 19,1,Paladin,6577,Defender Gauntlets,0,2,18,23
 19,1,Paladin,6578,Defender Leggings,0,2,18,23
-19,1,Paladin,6579,Defender Spaulders,0,1,19,24
-19,1,Paladin,6580,Defender Tunic,0,2,18,23
+19,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+19,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+19,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+19,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 19,1,Warrior,6573,Defender Boots,0,2,18,23
 19,1,Warrior,6574,Defender Bracers,0,2,17,22
 19,1,Warrior,6576,Defender Girdle,0,2,17,22
 19,1,Warrior,6577,Defender Gauntlets,0,2,18,23
 19,1,Warrior,6578,Defender Leggings,0,2,18,23
-19,1,Warrior,6579,Defender Spaulders,0,1,19,24
-19,1,Warrior,6580,Defender Tunic,0,2,18,23
+19,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+19,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+19,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+19,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 19,1,Hunter,9775,Bandit Cinch,0,2,14,19
 19,1,Hunter,9776,Bandit Boots,0,2,15,20
 19,1,Hunter,9777,Bandit Bracers,0,2,14,19
 19,1,Hunter,9780,Bandit Gloves,0,2,15,20
 19,1,Hunter,9781,Bandit Pants,0,2,17,22
-19,1,Hunter,9782,Bandit Jerkin,0,2,18,23
-19,1,Hunter,10405,Bandit Shoulders,0,1,17,22
+19,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+19,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+19,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+19,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+19,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+19,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 19,1,Rogue,9775,Bandit Cinch,0,2,14,19
 19,1,Rogue,9776,Bandit Boots,0,2,15,20
 19,1,Rogue,9777,Bandit Bracers,0,2,14,19
 19,1,Rogue,9780,Bandit Gloves,0,2,15,20
 19,1,Rogue,9781,Bandit Pants,0,2,17,22
-19,1,Rogue,9782,Bandit Jerkin,0,2,18,23
-19,1,Rogue,10405,Bandit Shoulders,0,1,17,22
-19,1,Priest,2981,Seer's Robe,0,2,16,21
+19,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+19,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+19,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+19,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+19,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+19,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 19,1,Priest,2982,Seer's Pants,0,2,15,20
 19,1,Priest,2983,Seer's Boots,0,2,12,17
 19,1,Priest,2984,Seer's Gloves,0,2,13,18
 19,1,Priest,3645,Seer's Cuffs,0,2,12,17
-19,1,Priest,4698,Seer's Mantle,0,1,16,21
 19,1,Priest,4699,Seer's Belt,0,2,13,18
+19,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+19,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 19,1,Shaman,9775,Bandit Cinch,0,2,14,19
 19,1,Shaman,9776,Bandit Boots,0,2,15,20
 19,1,Shaman,9777,Bandit Bracers,0,2,14,19
 19,1,Shaman,9780,Bandit Gloves,0,2,15,20
 19,1,Shaman,9781,Bandit Pants,0,2,17,22
-19,1,Shaman,9782,Bandit Jerkin,0,2,18,23
-19,1,Shaman,10405,Bandit Shoulders,0,1,17,22
-19,1,Mage,2981,Seer's Robe,0,2,16,21
+19,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+19,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+19,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+19,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+19,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 19,1,Mage,2982,Seer's Pants,0,2,15,20
 19,1,Mage,2983,Seer's Boots,0,2,12,17
 19,1,Mage,2984,Seer's Gloves,0,2,13,18
 19,1,Mage,3645,Seer's Cuffs,0,2,12,17
-19,1,Mage,4698,Seer's Mantle,0,1,16,21
 19,1,Mage,4699,Seer's Belt,0,2,13,18
-19,1,Warlock,2981,Seer's Robe,0,2,16,21
+19,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+19,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 19,1,Warlock,2982,Seer's Pants,0,2,15,20
 19,1,Warlock,2983,Seer's Boots,0,2,12,17
 19,1,Warlock,2984,Seer's Gloves,0,2,13,18
 19,1,Warlock,3645,Seer's Cuffs,0,2,12,17
-19,1,Warlock,4698,Seer's Mantle,0,1,16,21
 19,1,Warlock,4699,Seer's Belt,0,2,13,18
+19,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+19,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 19,1,Druid,9775,Bandit Cinch,0,2,14,19
 19,1,Druid,9776,Bandit Boots,0,2,15,20
 19,1,Druid,9777,Bandit Bracers,0,2,14,19
 19,1,Druid,9780,Bandit Gloves,0,2,15,20
 19,1,Druid,9781,Bandit Pants,0,2,17,22
-19,1,Druid,9782,Bandit Jerkin,0,2,18,23
-19,1,Druid,10405,Bandit Shoulders,0,1,17,22
+19,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+19,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+19,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+19,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+19,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 19,2,Paladin,12982,Silver-linked Footguards,75,3,16,21
 19,2,Paladin,5425,Runescale Girdle,50,3,15,20
 19,2,Paladin,14147,Cavedweller Bracers,50,3,13,18
@@ -140,78 +187,125 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 19,3,Druid,10399,Blackened Defias Armor,300,3,19,24
 19,3,Druid,1121,Feet of the Lynx,225,3,19,24
 19,3,Druid,10410,Leggings of the Fang,300,3,18,23
+29,1,Paladin,6389,Glimmering Mail Coif,0,2,26,31
 29,1,Paladin,9810,Fortified Boots,0,2,20,25
 29,1,Paladin,9811,Fortified Bracers,0,2,19,24
 29,1,Paladin,9813,Fortified Gauntlets,0,2,20,25
 29,1,Paladin,9814,Fortified Belt,0,2,19,24
 29,1,Paladin,9815,Fortified Leggings,0,2,20,25
-29,1,Paladin,9817,Fortified Spaulders,0,2,21,26
-29,1,Paladin,9818,Fortified Chain,0,2,20,25
-29,1,Paladin,6389,Glimmering Mail Coif,0,2,26,31
+29,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+29,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+29,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+29,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
+29,1,Warrior,6389,Glimmering Mail Coif,0,2,26,31
 29,1,Warrior,9810,Fortified Boots,0,2,20,25
 29,1,Warrior,9811,Fortified Bracers,0,2,19,24
 29,1,Warrior,9813,Fortified Gauntlets,0,2,20,25
 29,1,Warrior,9814,Fortified Belt,0,2,19,24
 29,1,Warrior,9815,Fortified Leggings,0,2,20,25
-29,1,Warrior,9817,Fortified Spaulders,0,2,21,26
-29,1,Warrior,9818,Fortified Chain,0,2,20,25
-29,1,Warrior,6389,Glimmering Mail Coif,0,2,26,31
+29,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+29,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+29,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+29,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+29,1,Hunter,4048,Emblazoned Hat,0,2,26,31
 29,1,Hunter,9801,Superior Belt,0,2,20,25
 29,1,Hunter,9802,Superior Boots,0,2,21,26
 29,1,Hunter,9803,Superior Bracers,0,2,21,26
 29,1,Hunter,9806,Superior Gloves,0,2,22,27
-29,1,Hunter,9807,Superior Shoulders,0,2,22,27
 29,1,Hunter,9808,Superior Leggings,0,2,23,28
-29,1,Hunter,9809,Superior Tunic,0,2,23,28
-29,1,Hunter,4048,Emblazoned Hat,0,2,26,31
+29,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+29,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+29,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+29,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+29,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+29,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
+29,1,Rogue,4048,Emblazoned Hat,0,2,26,31
 29,1,Rogue,9801,Superior Belt,0,2,20,25
 29,1,Rogue,9802,Superior Boots,0,2,21,26
 29,1,Rogue,9803,Superior Bracers,0,2,21,26
 29,1,Rogue,9806,Superior Gloves,0,2,22,27
-29,1,Rogue,9807,Superior Shoulders,0,2,22,27
 29,1,Rogue,9808,Superior Leggings,0,2,23,28
-29,1,Rogue,9809,Superior Tunic,0,2,23,28
-29,1,Rogue,4048,Emblazoned Hat,0,2,26,31
+29,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+29,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+29,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+29,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+29,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+29,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 29,1,Priest,3065,Bright Boots,0,2,18,23
 29,1,Priest,3066,Bright Gloves,0,2,19,24
 29,1,Priest,3067,Bright Pants,0,2,21,26
-29,1,Priest,3069,Bright Robe,0,2,22,27
 29,1,Priest,3647,Bright Bracers,0,2,18,23
-29,1,Priest,4661,Bright Mantle,0,2,21,26
 29,1,Priest,4708,Bright Belt,0,2,19,24
 29,1,Priest,7048,Azure Silk Hood,0,2,24,29
+29,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+29,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+29,1,Shaman,4048,Emblazoned Hat,0,2,26,31
 29,1,Shaman,9801,Superior Belt,0,2,20,25
 29,1,Shaman,9802,Superior Boots,0,2,21,26
 29,1,Shaman,9803,Superior Bracers,0,2,21,26
 29,1,Shaman,9806,Superior Gloves,0,2,22,27
-29,1,Shaman,9807,Superior Shoulders,0,2,22,27
 29,1,Shaman,9808,Superior Leggings,0,2,23,28
-29,1,Shaman,9809,Superior Tunic,0,2,23,28
-29,1,Shaman,4048,Emblazoned Hat,0,2,26,31
+29,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+29,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+29,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+29,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+29,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 29,1,Mage,3065,Bright Boots,0,2,18,23
 29,1,Mage,3066,Bright Gloves,0,2,19,24
 29,1,Mage,3067,Bright Pants,0,2,21,26
-29,1,Mage,3069,Bright Robe,0,2,22,27
 29,1,Mage,3647,Bright Bracers,0,2,18,23
-29,1,Mage,4661,Bright Mantle,0,2,21,26
 29,1,Mage,4708,Bright Belt,0,2,19,24
 29,1,Mage,7048,Azure Silk Hood,0,2,24,29
+29,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+29,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 29,1,Warlock,3065,Bright Boots,0,2,18,23
 29,1,Warlock,3066,Bright Gloves,0,2,19,24
 29,1,Warlock,3067,Bright Pants,0,2,21,26
-29,1,Warlock,3069,Bright Robe,0,2,22,27
 29,1,Warlock,3647,Bright Bracers,0,2,18,23
-29,1,Warlock,4661,Bright Mantle,0,2,21,26
 29,1,Warlock,4708,Bright Belt,0,2,19,24
 29,1,Warlock,7048,Azure Silk Hood,0,2,24,29
+29,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+29,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+29,1,Druid,4048,Emblazoned Hat,0,2,26,31
 29,1,Druid,9801,Superior Belt,0,2,20,25
 29,1,Druid,9802,Superior Boots,0,2,21,26
 29,1,Druid,9803,Superior Bracers,0,2,21,26
 29,1,Druid,9806,Superior Gloves,0,2,22,27
-29,1,Druid,9807,Superior Shoulders,0,2,22,27
 29,1,Druid,9808,Superior Leggings,0,2,23,28
-29,1,Druid,9809,Superior Tunic,0,2,23,28
-29,1,Druid,4048,Emblazoned Hat,0,2,26,31
+29,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+29,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+29,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+29,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+29,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 29,2,Paladin,15524,Sentry's Surcoat,150,2,26,31
 29,2,Paladin,15525,Sentry's Slippers,112,2,23,28
 29,2,Paladin,15527,Sentry's Gloves,112,2,22,27
@@ -313,76 +407,123 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 29,3,Druid,6690,Ferine Leggings,450,3,29,34
 39,1,Paladin,7416,Phalanx Bracers,0,2,26,31
 39,1,Paladin,7417,Phalanx Boots,0,2,29,34
-39,1,Paladin,7418,Phalanx Breastplate,0,2,30,35
 39,1,Paladin,7420,Phalanx Headguard,0,2,28,33
 39,1,Paladin,7421,Phalanx Gauntlets,0,2,28,33
 39,1,Paladin,7422,Phalanx Girdle,0,2,27,32
 39,1,Paladin,7423,Phalanx Leggings,0,2,29,34
-39,1,Paladin,7424,Phalanx Spaulders,0,2,28,33
+39,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+39,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+39,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+39,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 39,1,Warrior,7416,Phalanx Bracers,0,2,26,31
 39,1,Warrior,7417,Phalanx Boots,0,2,29,34
-39,1,Warrior,7418,Phalanx Breastplate,0,2,30,35
 39,1,Warrior,7420,Phalanx Headguard,0,2,28,33
 39,1,Warrior,7421,Phalanx Gauntlets,0,2,28,33
 39,1,Warrior,7422,Phalanx Girdle,0,2,27,32
 39,1,Warrior,7423,Phalanx Leggings,0,2,29,34
-39,1,Warrior,7424,Phalanx Spaulders,0,2,28,33
+39,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+39,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+39,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+39,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 39,1,Hunter,7406,Infiltrator Cord,0,2,27,32
-39,1,Hunter,7407,Infiltrator Armor,0,2,30,35
-39,1,Hunter,7408,Infiltrator Shoulders,0,2,28,33
 39,1,Hunter,7409,Infiltrator Boots,0,2,28,33
 39,1,Hunter,7410,Infiltrator Bracers,0,2,26,31
 39,1,Hunter,7412,Infiltrator Gloves,0,2,27,32
 39,1,Hunter,7413,Infiltrator Cap,0,2,28,33
 39,1,Hunter,7414,Infiltrator Pants,0,2,29,34
+39,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+39,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+39,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+39,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+39,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+39,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 39,1,Rogue,7406,Infiltrator Cord,0,2,27,32
-39,1,Rogue,7407,Infiltrator Armor,0,2,30,35
-39,1,Rogue,7408,Infiltrator Shoulders,0,2,28,33
 39,1,Rogue,7409,Infiltrator Boots,0,2,28,33
 39,1,Rogue,7410,Infiltrator Bracers,0,2,26,31
 39,1,Rogue,7412,Infiltrator Gloves,0,2,27,32
 39,1,Rogue,7413,Infiltrator Cap,0,2,28,33
 39,1,Rogue,7414,Infiltrator Pants,0,2,29,34
+39,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+39,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+39,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+39,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+39,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+39,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 39,1,Priest,9845,Conjurer's Shoes,0,2,30,35
 39,1,Priest,9846,Conjurer's Bracers,0,2,30,35
 39,1,Priest,9848,Conjurer's Gloves,0,2,31,36
 39,1,Priest,9849,Conjurer's Hood,0,2,31,36
-39,1,Priest,9850,Conjurer's Mantle,0,2,31,36
 39,1,Priest,9851,Conjurer's Breeches,0,2,32,37
-39,1,Priest,9852,Conjurer's Robe,0,2,33,38
 39,1,Priest,9853,Conjurer's Cinch,0,2,29,34
+39,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+39,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 39,1,Shaman,7406,Infiltrator Cord,0,2,27,32
-39,1,Shaman,7407,Infiltrator Armor,0,2,30,35
-39,1,Shaman,7408,Infiltrator Shoulders,0,2,28,33
 39,1,Shaman,7409,Infiltrator Boots,0,2,28,33
 39,1,Shaman,7410,Infiltrator Bracers,0,2,26,31
 39,1,Shaman,7412,Infiltrator Gloves,0,2,27,32
 39,1,Shaman,7413,Infiltrator Cap,0,2,28,33
 39,1,Shaman,7414,Infiltrator Pants,0,2,29,34
+39,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+39,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+39,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+39,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+39,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 39,1,Mage,9845,Conjurer's Shoes,0,2,30,35
 39,1,Mage,9846,Conjurer's Bracers,0,2,30,35
 39,1,Mage,9848,Conjurer's Gloves,0,2,31,36
 39,1,Mage,9849,Conjurer's Hood,0,2,31,36
-39,1,Mage,9850,Conjurer's Mantle,0,2,31,36
 39,1,Mage,9851,Conjurer's Breeches,0,2,32,37
-39,1,Mage,9852,Conjurer's Robe,0,2,33,38
 39,1,Mage,9853,Conjurer's Cinch,0,2,29,34
+39,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+39,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 39,1,Warlock,9845,Conjurer's Shoes,0,2,30,35
 39,1,Warlock,9846,Conjurer's Bracers,0,2,30,35
 39,1,Warlock,9848,Conjurer's Gloves,0,2,31,36
 39,1,Warlock,9849,Conjurer's Hood,0,2,31,36
-39,1,Warlock,9850,Conjurer's Mantle,0,2,31,36
 39,1,Warlock,9851,Conjurer's Breeches,0,2,32,37
-39,1,Warlock,9852,Conjurer's Robe,0,2,33,38
 39,1,Warlock,9853,Conjurer's Cinch,0,2,29,34
+39,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+39,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 39,1,Druid,7406,Infiltrator Cord,0,2,27,32
-39,1,Druid,7407,Infiltrator Armor,0,2,30,35
-39,1,Druid,7408,Infiltrator Shoulders,0,2,28,33
 39,1,Druid,7409,Infiltrator Boots,0,2,28,33
 39,1,Druid,7410,Infiltrator Bracers,0,2,26,31
 39,1,Druid,7412,Infiltrator Gloves,0,2,27,32
 39,1,Druid,7413,Infiltrator Cap,0,2,28,33
 39,1,Druid,7414,Infiltrator Pants,0,2,29,34
+39,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+39,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+39,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+39,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+39,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 39,2,Paladin,7454,Knight's Breastplate,200,2,34,39
 39,2,Paladin,7455,Knight's Legguards,200,2,34,39
 39,2,Paladin,7456,Knight's Headguard,200,2,33,38
@@ -483,77 +624,124 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 39,3,Druid,9398,Worn Running Boots,450,3,35,40
 39,3,Druid,1718,Basilisk Hide Pants,600,3,38,43
 49,1,Paladin,9285,Field Plate Vambraces,0,2,40,41
-49,1,Paladin,9286,Field Plate Armor,0,2,40,44
 49,1,Paladin,9287,Field Plate Gauntlets,0,2,40,41
 49,1,Paladin,9288,Field Plate Girdle,0,2,40,41
 49,1,Paladin,9289,Field Plate Boots,0,2,40,41
 49,1,Paladin,9290,Field Plate Helmet,0,2,40,42
 49,1,Paladin,9291,Field Plate Leggings,0,2,40,43
-49,1,Paladin,9292,Field Plate Pauldrons,0,2,40,42
+49,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+49,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+49,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+49,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 49,1,Warrior,9285,Field Plate Vambraces,0,2,40,41
-49,1,Warrior,9286,Field Plate Armor,0,2,40,44
 49,1,Warrior,9287,Field Plate Gauntlets,0,2,40,41
 49,1,Warrior,9288,Field Plate Girdle,0,2,40,41
 49,1,Warrior,9289,Field Plate Boots,0,2,40,41
 49,1,Warrior,9290,Field Plate Helmet,0,2,40,42
 49,1,Warrior,9291,Field Plate Leggings,0,2,40,43
-49,1,Warrior,9292,Field Plate Pauldrons,0,2,40,42
+49,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+49,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+49,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+49,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 49,1,Hunter,9926,Brigade Boots,0,2,38,43
 49,1,Hunter,9927,Brigade Bracers,0,2,37,42
-49,1,Hunter,9928,Brigade Breastplate,0,2,40,45
 49,1,Hunter,9930,Brigade Gauntlets,0,2,38,43
 49,1,Hunter,9931,Brigade Girdle,0,2,38,43
 49,1,Hunter,9932,Brigade Circlet,0,2,39,44
 49,1,Hunter,9933,Brigade Leggings,0,2,40,45
-49,1,Hunter,9934,Brigade Pauldrons,0,2,39,44
+49,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+49,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+49,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+49,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+49,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+49,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 49,1,Rogue,9916,Tracker's Belt,0,2,39,44
 49,1,Rogue,9917,Tracker's Boots,0,2,39,44
 49,1,Rogue,9920,Tracker's Gloves,0,2,39,44
 49,1,Rogue,9921,Tracker's Headband,0,2,40,45
 49,1,Rogue,9922,Tracker's Leggings,0,2,41,46
-49,1,Rogue,9923,Tracker's Shoulderpads,0,2,40,45
-49,1,Rogue,9924,Tracker's Tunic,0,2,43,48
 49,1,Rogue,9925,Tracker's Wristguards,0,2,39,44
+49,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+49,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+49,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+49,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+49,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+49,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 49,1,Priest,9875,Sorcerer Sash,0,2,34,39
 49,1,Priest,9876,Sorcerer Slippers,0,2,35,40
 49,1,Priest,9878,Sorcerer Hat,0,2,36,41
 49,1,Priest,9879,Sorcerer Bracelets,0,2,34,39
 49,1,Priest,9880,Sorcerer Gloves,0,2,35,40
-49,1,Priest,9881,Sorcerer Mantle,0,2,36,41
 49,1,Priest,9883,Sorcerer Pants,0,2,37,42
-49,1,Priest,9884,Sorcerer Robe,0,2,38,43
+49,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+49,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 49,1,Shaman,9926,Brigade Boots,0,2,38,43
 49,1,Shaman,9927,Brigade Bracers,0,2,37,42
-49,1,Shaman,9928,Brigade Breastplate,0,2,40,45
 49,1,Shaman,9930,Brigade Gauntlets,0,2,38,43
 49,1,Shaman,9931,Brigade Girdle,0,2,38,43
 49,1,Shaman,9932,Brigade Circlet,0,2,39,44
 49,1,Shaman,9933,Brigade Leggings,0,2,40,45
-49,1,Shaman,9934,Brigade Pauldrons,0,2,39,44
+49,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+49,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+49,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+49,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+49,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 49,1,Mage,9875,Sorcerer Sash,0,2,34,39
 49,1,Mage,9876,Sorcerer Slippers,0,2,35,40
 49,1,Mage,9878,Sorcerer Hat,0,2,36,41
 49,1,Mage,9879,Sorcerer Bracelets,0,2,34,39
 49,1,Mage,9880,Sorcerer Gloves,0,2,35,40
-49,1,Mage,9881,Sorcerer Mantle,0,2,36,41
 49,1,Mage,9883,Sorcerer Pants,0,2,37,42
-49,1,Mage,9884,Sorcerer Robe,0,2,38,43
+49,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+49,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 49,1,Warlock,9875,Sorcerer Sash,0,2,34,39
 49,1,Warlock,9876,Sorcerer Slippers,0,2,35,40
 49,1,Warlock,9878,Sorcerer Hat,0,2,36,41
 49,1,Warlock,9879,Sorcerer Bracelets,0,2,34,39
 49,1,Warlock,9880,Sorcerer Gloves,0,2,35,40
-49,1,Warlock,9881,Sorcerer Mantle,0,2,36,41
 49,1,Warlock,9883,Sorcerer Pants,0,2,37,42
-49,1,Warlock,9884,Sorcerer Robe,0,2,38,43
+49,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+49,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 49,1,Druid,9916,Tracker's Belt,0,2,39,44
 49,1,Druid,9917,Tracker's Boots,0,2,39,44
 49,1,Druid,9920,Tracker's Gloves,0,2,39,44
 49,1,Druid,9921,Tracker's Headband,0,2,40,45
 49,1,Druid,9922,Tracker's Leggings,0,2,41,46
-49,1,Druid,9923,Tracker's Shoulderpads,0,2,40,45
-49,1,Druid,9924,Tracker's Tunic,0,2,43,48
 49,1,Druid,9925,Tracker's Wristguards,0,2,39,44
+49,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+49,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+49,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+49,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+49,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 49,2,Paladin,10127,Revenant Bracers,125,2,44,49
 49,2,Paladin,10128,Revenant Chestplate,250,2,49,54
 49,2,Paladin,10129,Revenant Gauntlets,187,2,45,50
@@ -653,78 +841,125 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 49,3,Druid,17742,Fungus Shroud Armor,750,3,46,51
 49,3,Druid,17728,Albino Crocscale Boots,562,3,48,53
 49,3,Druid,12470,Sandstalker Ankleguards,562,3,42,47
-59,1,Paladin,10164,Templar Chestplate,0,2,53,58
 59,1,Paladin,10165,Templar Gauntlets,0,2,50,55
 59,1,Paladin,10166,Templar Girdle,0,2,49,54
 59,1,Paladin,10167,Templar Boots,0,2,50,55
 59,1,Paladin,10168,Templar Crown,0,2,51,56
 59,1,Paladin,10169,Templar Legplates,0,2,52,57
-59,1,Paladin,10170,Templar Pauldrons,0,2,51,56
 59,1,Paladin,10171,Templar Bracers,0,2,49,54
-59,1,Warrior,10164,Templar Chestplate,0,2,53,58
+59,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+59,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+59,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+59,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 59,1,Warrior,10165,Templar Gauntlets,0,2,50,55
 59,1,Warrior,10166,Templar Girdle,0,2,49,54
 59,1,Warrior,10167,Templar Boots,0,2,50,55
 59,1,Warrior,10168,Templar Crown,0,2,51,56
 59,1,Warrior,10169,Templar Legplates,0,2,52,57
-59,1,Warrior,10170,Templar Pauldrons,0,2,51,56
 59,1,Warrior,10171,Templar Bracers,0,2,49,54
+59,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+59,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+59,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+59,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 59,1,Hunter,15649,Merciless Bracers,0,2,46,51
-59,1,Hunter,15650,Merciless Surcoat,0,2,52,57
 59,1,Hunter,15651,Merciless Crown,0,2,51,56
 59,1,Hunter,15653,Merciless Gauntlets,0,2,48,53
 59,1,Hunter,15654,Merciless Belt,0,2,49,54
 59,1,Hunter,15655,Merciless Legguards,0,2,51,56
-59,1,Hunter,15656,Merciless Epaulets,0,2,49,54
 59,1,Hunter,15694,Merciless Greaves,0,2,49,54
-59,1,Rogue,10105,Wanderer's Armor,0,2,55,60
+59,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+59,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+59,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+59,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+59,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+59,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 59,1,Rogue,10106,Wanderer's Boots,0,2,51,56
 59,1,Rogue,10107,Wanderer's Bracers,0,2,49,54
 59,1,Rogue,10109,Wanderer's Belt,0,2,49,54
 59,1,Rogue,10110,Wanderer's Gloves,0,2,50,55
 59,1,Rogue,10111,Wanderer's Hat,0,2,52,57
 59,1,Rogue,10112,Wanderer's Leggings,0,2,53,58
-59,1,Rogue,10113,Wanderer's Shoulders,0,2,52,57
+59,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+59,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+59,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+59,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+59,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+59,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 59,1,Priest,10095,Councillor's Boots,0,2,51,56
 59,1,Priest,10096,Councillor's Cuffs,0,2,49,54
 59,1,Priest,10097,Councillor's Circlet,0,2,52,57
 59,1,Priest,10099,Councillor's Gloves,0,2,50,55
-59,1,Priest,10100,Councillor's Shoulders,0,2,52,57
 59,1,Priest,10101,Councillor's Pants,0,2,53,58
-59,1,Priest,10102,Councillor's Robes,0,2,54,59
 59,1,Priest,10103,Councillor's Sash,0,2,49,54
+59,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+59,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 59,1,Shaman,15649,Merciless Bracers,0,2,46,51
-59,1,Shaman,15650,Merciless Surcoat,0,2,52,57
 59,1,Shaman,15651,Merciless Crown,0,2,51,56
 59,1,Shaman,15653,Merciless Gauntlets,0,2,48,53
 59,1,Shaman,15654,Merciless Belt,0,2,49,54
 59,1,Shaman,15655,Merciless Legguards,0,2,51,56
-59,1,Shaman,15656,Merciless Epaulets,0,2,49,54
 59,1,Shaman,15694,Merciless Greaves,0,2,49,54
+59,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+59,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+59,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+59,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+59,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 59,1,Mage,10095,Councillor's Boots,0,2,51,56
 59,1,Mage,10096,Councillor's Cuffs,0,2,49,54
 59,1,Mage,10097,Councillor's Circlet,0,2,52,57
 59,1,Mage,10099,Councillor's Gloves,0,2,50,55
-59,1,Mage,10100,Councillor's Shoulders,0,2,52,57
 59,1,Mage,10101,Councillor's Pants,0,2,53,58
-59,1,Mage,10102,Councillor's Robes,0,2,54,59
 59,1,Mage,10103,Councillor's Sash,0,2,49,54
+59,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+59,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 59,1,Warlock,10095,Councillor's Boots,0,2,51,56
 59,1,Warlock,10096,Councillor's Cuffs,0,2,49,54
 59,1,Warlock,10097,Councillor's Circlet,0,2,52,57
 59,1,Warlock,10099,Councillor's Gloves,0,2,50,55
-59,1,Warlock,10100,Councillor's Shoulders,0,2,52,57
 59,1,Warlock,10101,Councillor's Pants,0,2,53,58
-59,1,Warlock,10102,Councillor's Robes,0,2,54,59
 59,1,Warlock,10103,Councillor's Sash,0,2,49,54
-59,1,Druid,10105,Wanderer's Armor,0,2,55,60
+59,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+59,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 59,1,Druid,10106,Wanderer's Boots,0,2,51,56
 59,1,Druid,10107,Wanderer's Bracers,0,2,49,54
 59,1,Druid,10109,Wanderer's Belt,0,2,49,54
 59,1,Druid,10110,Wanderer's Gloves,0,2,50,55
 59,1,Druid,10111,Wanderer's Hat,0,2,52,57
 59,1,Druid,10112,Wanderer's Leggings,0,2,53,58
-59,1,Druid,10113,Wanderer's Shoulders,0,2,52,57
+59,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+59,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+59,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+59,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+59,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 59,2,Paladin,10368,Imbued Plate Armor,300,2,57,62
 59,2,Paladin,10369,Imbued Plate Gauntlets,225,2,53,58
 59,2,Paladin,10370,Imbued Plate Girdle,150,2,52,57
@@ -898,76 +1133,123 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 59,4,Druid,24708,Haal'eshi Bindings,1125,2,58,84
 69,1,Paladin,24966,Talonguard Girdle,0,2,63,99
 69,1,Paladin,24967,Talonguard Greaves,0,2,63,99
-69,1,Paladin,24968,Talonguard Armor,0,2,63,99
 69,1,Paladin,24969,Talonguard Gloves,0,2,63,99
 69,1,Paladin,24970,Talonguard Helmet,0,2,63,99
 69,1,Paladin,24971,Talonguard Legplates,0,2,63,99
-69,1,Paladin,24972,Talonguard Epaulets,0,2,63,99
 69,1,Paladin,24973,Talonguard Bracers,0,2,63,99
+69,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+69,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+69,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+69,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 69,1,Warrior,24966,Talonguard Girdle,0,2,63,99
 69,1,Warrior,24967,Talonguard Greaves,0,2,63,99
-69,1,Warrior,24968,Talonguard Armor,0,2,63,99
 69,1,Warrior,24969,Talonguard Gloves,0,2,63,99
 69,1,Warrior,24970,Talonguard Helmet,0,2,63,99
 69,1,Warrior,24971,Talonguard Legplates,0,2,63,99
-69,1,Warrior,24972,Talonguard Epaulets,0,2,63,99
 69,1,Warrior,24973,Talonguard Bracers,0,2,63,99
+69,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+69,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+69,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+69,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 69,1,Hunter,24854,Marshcreeper Belt,0,2,63,99
 69,1,Hunter,24855,Marshcreeper Sludgeboots,0,2,63,99
-69,1,Hunter,24856,Marshcreeper Fen-Vest,0,2,63,99
 69,1,Hunter,24857,Marshcreeper Gloves,0,2,63,99
 69,1,Hunter,24858,Marshcreeper Helm,0,2,63,99
 69,1,Hunter,24859,Marshcreeper Leggings,0,2,63,99
-69,1,Hunter,24860,Marshcreeper Mantle,0,2,63,99
 69,1,Hunter,24861,Marshcreeper Bracelets,0,2,63,99
+69,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+69,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+69,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+69,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+69,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+69,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 69,1,Rogue,24741,Ranger Belt,0,2,63,99
 69,1,Rogue,24742,Ranger Boots,0,2,63,99
-69,1,Rogue,24743,Ranger Jerkin,0,2,63,99
 69,1,Rogue,24744,Ranger Gloves,0,2,63,99
 69,1,Rogue,24745,Ranger Hat,0,2,63,99
 69,1,Rogue,24746,Ranger Pants,0,2,63,99
-69,1,Rogue,24747,Ranger Pauldrons,0,2,63,99
 69,1,Rogue,24748,Ranger Armguards,0,2,63,99
+69,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+69,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+69,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+69,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+69,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+69,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 69,1,Priest,24629,Feralfen Sash,0,2,63,99
 69,1,Priest,24630,Feralfen Sandals,0,2,63,99
-69,1,Priest,24631,Feralfen Jerkin,0,2,63,99
 69,1,Priest,24632,Feralfen Hand,0,2,63,99
 69,1,Priest,24633,Feralfen Hood,0,2,63,99
 69,1,Priest,24634,Feralfen Pants,0,2,63,99
-69,1,Priest,24635,Feralfen Amice,0,2,63,99
 69,1,Priest,24636,Feralfen Cuffs,0,2,63,99
+69,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+69,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 69,1,Shaman,24854,Marshcreeper Belt,0,2,63,99
 69,1,Shaman,24855,Marshcreeper Sludgeboots,0,2,63,99
-69,1,Shaman,24856,Marshcreeper Fen-Vest,0,2,63,99
 69,1,Shaman,24857,Marshcreeper Gloves,0,2,63,99
 69,1,Shaman,24858,Marshcreeper Helm,0,2,63,99
 69,1,Shaman,24859,Marshcreeper Leggings,0,2,63,99
-69,1,Shaman,24860,Marshcreeper Mantle,0,2,63,99
 69,1,Shaman,24861,Marshcreeper Bracelets,0,2,63,99
+69,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+69,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+69,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+69,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+69,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 69,1,Mage,24629,Feralfen Sash,0,2,63,99
 69,1,Mage,24630,Feralfen Sandals,0,2,63,99
-69,1,Mage,24631,Feralfen Jerkin,0,2,63,99
 69,1,Mage,24632,Feralfen Hand,0,2,63,99
 69,1,Mage,24633,Feralfen Hood,0,2,63,99
 69,1,Mage,24634,Feralfen Pants,0,2,63,99
-69,1,Mage,24635,Feralfen Amice,0,2,63,99
 69,1,Mage,24636,Feralfen Cuffs,0,2,63,99
+69,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+69,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 69,1,Warlock,24629,Feralfen Sash,0,2,63,99
 69,1,Warlock,24630,Feralfen Sandals,0,2,63,99
-69,1,Warlock,24631,Feralfen Jerkin,0,2,63,99
 69,1,Warlock,24632,Feralfen Hand,0,2,63,99
 69,1,Warlock,24633,Feralfen Hood,0,2,63,99
 69,1,Warlock,24634,Feralfen Pants,0,2,63,99
-69,1,Warlock,24635,Feralfen Amice,0,2,63,99
 69,1,Warlock,24636,Feralfen Cuffs,0,2,63,99
+69,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+69,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 69,1,Druid,24741,Ranger Belt,0,2,63,99
 69,1,Druid,24742,Ranger Boots,0,2,63,99
-69,1,Druid,24743,Ranger Jerkin,0,2,63,99
 69,1,Druid,24744,Ranger Gloves,0,2,63,99
 69,1,Druid,24745,Ranger Hat,0,2,63,99
 69,1,Druid,24746,Ranger Pants,0,2,63,99
-69,1,Druid,24747,Ranger Pauldrons,0,2,63,99
 69,1,Druid,24748,Ranger Armguards,0,2,63,99
+69,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+69,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+69,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+69,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+69,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 69,2,Paladin,24990,Warmaul Belt,200,2,66,108
 69,2,Paladin,24991,Warmaul Greaves,300,2,66,108
 69,2,Paladin,24992,Warmaul Breastplate,400,2,66,108
@@ -1139,78 +1421,125 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 69,4,Druid,36072,Daggercap Trousers,3000,2,67,130
 69,4,Druid,36073,Daggercap Spaulders,2250,2,67,130
 69,4,Druid,36074,Daggercap Bracers,1500,2,67,130
-79,1,Paladin,39083,Cobalt Shoulders,0,2,70,142
 79,1,Paladin,39084,Cobalt Helm,0,2,70,142
-79,1,Paladin,39085,Cobalt Chestpiece,0,2,70,142
 79,1,Paladin,39086,Cobalt Legplates,0,2,70,142
 79,1,Paladin,39087,Cobalt Belt,0,2,70,142
 79,1,Paladin,39088,Cobalt Boots,0,2,70,142
 79,1,Paladin,41974,Cobalt Bracers,0,2,70,142
 79,1,Paladin,41975,Cobalt Gauntlets,0,2,70,142
-79,1,Warrior,39083,Cobalt Shoulders,0,2,70,142
+79,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
+79,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+79,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+79,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
 79,1,Warrior,39084,Cobalt Helm,0,2,70,142
-79,1,Warrior,39085,Cobalt Chestpiece,0,2,70,142
 79,1,Warrior,39086,Cobalt Legplates,0,2,70,142
 79,1,Warrior,39087,Cobalt Belt,0,2,70,142
 79,1,Warrior,39088,Cobalt Boots,0,2,70,142
 79,1,Warrior,41974,Cobalt Bracers,0,2,70,142
 79,1,Warrior,41975,Cobalt Gauntlets,0,2,70,142
+79,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+79,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
+79,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+79,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
 79,1,Hunter,38412,Frostscale Belt,0,2,68,138
 79,1,Hunter,38413,Frostscale Boots,0,2,73,146
-79,1,Hunter,38414,Frostscale Chestguard,0,2,68,138
 79,1,Hunter,38415,Frostscale Gloves,0,2,72,142
 79,1,Hunter,38416,Frostscale Leggings,0,2,70,142
-79,1,Hunter,38424,Frostscale Shoulders,0,2,70,142
 79,1,Hunter,38436,Frostscale Bracers,0,2,74,150
 79,1,Hunter,38440,Frostscale Helm,0,2,74,150
-79,1,Rogue,38400,Arctic Chestpiece,0,2,70,142
+79,1,Hunter,42944,Balanced Heartseeker,0,7,0,1
+79,1,Hunter,42946,Charmed Ancient Bone Bow,0,7,0,1
+79,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
+79,1,Hunter,42991,Swift Hand of Justice,0,7,0,1
+79,1,Hunter,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Hunter,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Hunter,48677,Champion's Deathdealer Breastplate,0,7,1,1
+79,1,Hunter,50255,Dread Pirate Ring,0,7,0,1
 79,1,Rogue,38401,Arctic Leggings,0,2,71,146
-79,1,Rogue,38402,Arctic Shoulderpads,0,2,72,142
 79,1,Rogue,38403,Arctic Gloves,0,2,71,146
 79,1,Rogue,38404,Arctic Boots,0,2,70,142
 79,1,Rogue,38405,Arctic Belt,0,2,73,146
 79,1,Rogue,38433,Arctic Wristguards,0,2,74,150
 79,1,Rogue,38437,Arctic Helm,0,2,74,150
+79,1,Rogue,42944,Balanced Heartseeker,0,7,0,1
+79,1,Rogue,42952,Stained Shadowcraft Spaulders,0,7,0,1
+79,1,Rogue,42991,Swift Hand of Justice,0,7,0,1
+79,1,Rogue,44091,Sharpened Scarlet Kris,0,7,0,1
+79,1,Rogue,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
+79,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
 79,1,Priest,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Priest,41513,Frostwoven Shoulders,0,2,70,134
-79,1,Priest,41515,Frostwoven Robe,0,2,70,134
 79,1,Priest,41519,Frostwoven Leggings,0,2,72,142
 79,1,Priest,41520,Frostwoven Boots,0,2,68,138
 79,1,Priest,41521,Frostwoven Cowl,0,2,72,142
 79,1,Priest,41522,Frostwoven Belt,0,2,68,138
+79,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
+79,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
 79,1,Priest,44211,Frostwoven Gloves,0,2,68,138
+79,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Priest,50255,Dread Pirate Ring,0,7,0,1
 79,1,Shaman,38412,Frostscale Belt,0,2,68,138
 79,1,Shaman,38413,Frostscale Boots,0,2,73,146
-79,1,Shaman,38414,Frostscale Chestguard,0,2,68,138
 79,1,Shaman,38415,Frostscale Gloves,0,2,72,142
 79,1,Shaman,38416,Frostscale Leggings,0,2,70,142
-79,1,Shaman,38424,Frostscale Shoulders,0,2,70,142
 79,1,Shaman,38436,Frostscale Bracers,0,2,74,150
 79,1,Shaman,38440,Frostscale Helm,0,2,74,150
+79,1,Shaman,42950,Champion Herod's Shoulder,0,7,0,1
+79,1,Shaman,42991,Swift Hand of Justice,0,7,0,1
+79,1,Shaman,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Shaman,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
+79,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
+79,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
 79,1,Mage,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Mage,41513,Frostwoven Shoulders,0,2,70,134
-79,1,Mage,41515,Frostwoven Robe,0,2,70,134
 79,1,Mage,41519,Frostwoven Leggings,0,2,72,142
 79,1,Mage,41520,Frostwoven Boots,0,2,68,138
 79,1,Mage,41521,Frostwoven Cowl,0,2,72,142
 79,1,Mage,41522,Frostwoven Belt,0,2,68,138
+79,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
+79,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
 79,1,Mage,44211,Frostwoven Gloves,0,2,68,138
+79,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Mage,50255,Dread Pirate Ring,0,7,0,1
 79,1,Warlock,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Warlock,41513,Frostwoven Shoulders,0,2,70,134
-79,1,Warlock,41515,Frostwoven Robe,0,2,70,134
 79,1,Warlock,41519,Frostwoven Leggings,0,2,72,142
 79,1,Warlock,41520,Frostwoven Boots,0,2,68,138
 79,1,Warlock,41521,Frostwoven Cowl,0,2,72,142
 79,1,Warlock,41522,Frostwoven Belt,0,2,68,138
+79,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
+79,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
 79,1,Warlock,44211,Frostwoven Gloves,0,2,68,138
-79,1,Druid,38400,Arctic Chestpiece,0,2,70,142
+79,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
 79,1,Druid,38401,Arctic Leggings,0,2,71,146
-79,1,Druid,38402,Arctic Shoulderpads,0,2,72,142
 79,1,Druid,38403,Arctic Gloves,0,2,71,146
 79,1,Druid,38404,Arctic Boots,0,2,70,142
 79,1,Druid,38405,Arctic Belt,0,2,73,146
 79,1,Druid,38433,Arctic Wristguards,0,2,74,150
 79,1,Druid,38437,Arctic Helm,0,2,74,150
+79,1,Druid,42952,Stained Shadowcraft Spaulders,0,7,0,1
+79,1,Druid,42991,Swift Hand of Justice,0,7,0,1
+79,1,Druid,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Druid,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Druid,48689,Stained Shadowcraft Tunic,0,7,1,1
+79,1,Druid,48718,Repurposed Lava Dredger,0,7,1,1
+79,1,Druid,50255,Dread Pirate Ring,0,7,0,1
 79,2,Paladin,36347,Jormungar Girdle,250,2,74,158
 79,2,Paladin,36348,Jormungar Sabatons,375,2,74,158
 79,2,Paladin,36349,Jormungar Breastplate,500,2,74,158

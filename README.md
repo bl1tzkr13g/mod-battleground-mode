@@ -1,7 +1,7 @@
 # Battleground Mode
 
 An AzerothCore 3.3.5a C++ module for permanent battleground bracket characters.
-Provides character selection, restrictions, and one-time starter armor delivery.
+Provides character selection, restrictions, and one-time starter gear delivery.
 Gear catalogs and per-item honor prices are configurable; vendors and progression
 rewards are the next milestone.
 
@@ -138,7 +138,7 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | Close menu, gain XP, reach level 2, then relog and `.bgmode` | Normal XP and leveling work; Normal Mode is saved permanently |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
 | Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |
-| Confirm BG Mode with room for the whole set | Configured Tier 1 armor equips; replaced items move into bags |
+| Confirm BG Mode with room for the whole set | Configured Tier 1 gear equips; replaced items move into bags |
 | Relog, change Tier 1 config, or repeat `.bgstarter` after delivery | No second kit and no replacement of later upgrades |
 | Full bags, then free space and `.bgstarter` | No partial grant while full; one successful delivery after space is available |
 | Set `StarterGear.AutoEquip = 0` before delivery | Set goes into bags; equipped gear stays in place |
@@ -158,7 +158,8 @@ not establish live client behavior. Before deployment, run these in-game checks:
 
 ## Next milestone
 
-The config now contains researched starter armor and priced upgrade candidates.
+The config contains class heirlooms at every bracket, ordinary filler armor,
+and priced upgrade candidates. See [Tier 1 heirloom loadouts](docs/tier1-heirlooms.md).
 See [gear configuration and research](docs/starter-gear.md) for editing syntax,
 the exact tier coverage, source data, and role/affix limitations. Starter gear is
 free; later items use `itemID:honorPrice` pairs. Empty higher-tier lists are

@@ -1,4 +1,4 @@
-# Starter armor and configurable honor catalogs
+# Starter gear and configurable honor catalogs
 
 The config is the editable source for gear and prices. No item lists or honor
 prices are stored in the module's character database.
@@ -12,8 +12,8 @@ Preserve your existing settings when copying the new gear sections into it.
 
 ```ini
 # LEVEL 19 - TIER 1 STARTER GEAR
-# Paladin: free starter armor
-BattlegroundMode.Gear.Level19.Tier1.Paladin = "6573:0,6574:0,6576:0,6577:0,6578:0,6579:0,6580:0"
+# Paladin: ordinary filler armor plus heirloom armor, sword, ring, and trinkets
+BattlegroundMode.Gear.Level19.Tier1.Paladin = "6573:0,6574:0,6576:0,6577:0,6578:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # LEVEL 19 - TIER 2 GEAR
 # Paladin: boots cost 75 honor; each belt/bracer costs 50 honor
@@ -36,7 +36,7 @@ every WotLK class in each of five tiers. Class names are case-sensitive:
 starting level makes it ineligible for the module's level-1 enrollment.
 
 Five tiers are laid out: Starter, Soldier, Veteran, Champion, Elite. Tier 1 has
-starter armor, tiers 2 and 3 have upgrade candidates, and tier 4 has additional
+heirlooms plus ordinary filler armor, tiers 2 and 3 have upgrade candidates, and tier 4 has additional
 expansion/PvP candidates at levels 59, 69, and 79. Other tier-4 lists and all
 tier-5 lists are empty placeholders. They are not completed five-tier sets.
 Stock gear at low brackets does not provide five distinct full sets with
@@ -103,7 +103,9 @@ and the player is notified.
 
 The optional training teaches only legal plate proficiency for level-40+
 Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weapon
-skills, class combat spells, or talents. New starter pieces are soulbound when
+skill ranks or talents. Configurable starter weapon proficiency training now
+teaches class-legal skills needed to equip the supplied weapons; class-trainer
+combat spells are managed separately by AutoLearnClassTrainerSpells. New starter pieces are soulbound when
 `BindToCharacter` is enabled. Honor is not charged for Tier 1.
 
 The core startup database updater automatically applies
@@ -146,11 +148,12 @@ normal install/build/startup step.
 
 ## Starter recommendations
 
-These are ordinary leveling items, generally green, with white shoulders at
-level 19. They leave room for stronger affixes, dungeon rewards, crafted gear,
-PvP gear, and enchants. Level 19 kits have seven core armor slots; higher brackets
-have eight, including a head item. Weapons, shields, cloaks, jewelry, and trinkets
-remain to be curated separately.
+Tier 1 now uses the same class-appropriate heirloom shoulders, chest, weapon(s),
+ring, and trinkets at every bracket. The old shoulders and chest are removed;
+ordinary pieces for other slots remain. See [the heirloom loadouts](tier1-heirlooms.md).
+The following families describe those retained filler pieces and the original
+research, rather than complete current sets. Cloaks, shields, wands and ammunition
+remain to be curated separately; level 19 has no head item.
 
 | Bracket | Cloth | Leather | Mail | Plate |
 | --- | --- | --- | --- | --- |
@@ -168,8 +171,9 @@ Paladins, Druids, and Shamans. They do not automatically infer a specialization:
 healing/caster variants need administrator edits or a later role-selection flow.
 Cobalt is a defensive physical baseline, not a tailored Retribution set.
 
-Hunter/Shaman defaults use leather below 40 and mail afterward. Warrior/Paladin
-defaults use mail below 40 and plate afterward. Starter auto-equip can teach the
+Retained Hunter/Shaman filler armor uses leather below 40 and mail afterward.
+Warrior/Paladin filler uses mail below 40 and plate afterward. Heirloom armor
+uses the core's built-in low-level adaptation. Starter auto-equip can teach the
 character's valid mail/plate armor proficiency where necessary. The existing
 talent module remains responsible for talents.
 

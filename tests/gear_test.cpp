@@ -56,6 +56,20 @@ int main(int argc, char** argv)
     Check(!GearArmorAllowed(8, 79, 2), "Mage cannot use leather");
     Check(GearArmorAllowed(11, 79, 2), "Druid can use leather");
 
+    Check(GearArmorAllowed(2, 19, 4, true), "heirloom plate uses the core's low-level mail adaptation");
+    Check(GearArmorAllowed(3, 19, 3, true), "heirloom mail adapts for a low-level Hunter");
+    Check(!GearArmorAllowed(8, 79, 4, true), "heirloom quality does not give a Mage plate proficiency");
+    Check(!GearArmorAllowed(11, 19, 3, true), "heirloom mail does not bypass Druid armor restrictions");
+    Check(StarterEquipmentSlots(12) == std::vector<std::uint8_t>({12,13}), "two trinkets receive distinct candidate slots");
+    Check(StarterEquipmentSlots(13) == std::vector<std::uint8_t>({15,16}), "one-handed weapons can use separate hands");
+    Check(StarterEquipmentSlots(17) == std::vector<std::uint8_t>({255}), "two-handed weapons use core slot selection");
+    Check(StarterWeaponProficiency(1, 1) == 197, "Warrior can train the starter axe proficiency");
+    Check(StarterWeaponProficiency(2, 8) == 202, "Paladin can train the starter sword proficiency");
+    Check(StarterWeaponProficiency(3, 2) == 264, "Hunter bow proficiency is independent of race");
+    Check(StarterWeaponProficiency(11, 5) == 199, "Druid can train the starter two-handed mace");
+    Check(!StarterWeaponProficiency(8, 1), "Mage cannot gain axe proficiency from configuration");
+    Check(!StarterWeaponProficiency(2, 15), "Paladin cannot gain dagger proficiency from configuration");
+
     Check(argc == 2, "configuration path provided");
     std::ifstream config(argv[1]);
     Check(config.good(), "distributed config is readable");
@@ -78,5 +92,24 @@ int main(int argc, char** argv)
     Check(!shipped.Find(79, 8, 1).empty(), "level 79 Mage starter list is populated");
     Check(!shipped.Find(79, 1, 4).empty(), "level 79 Warrior has a priced PvP upgrade catalog");
     Check(shipped.Find(19, 6, 1).empty(), "Death Knight has no starter kit while enrollment is ineligible");
+    auto contains = [](GearCatalog::Items const& items, std::uint32_t entry)
+    {
+        return std::any_of(items.begin(), items.end(), [entry](GearItem const& item) { return item.entry == entry; });
+    };
+    struct HeirloomLoadout { std::uint8_t playerClass; std::uint32_t shoulders, chest, weapon, trinket; };
+    for (auto level : {19,29,39,49,59,69,79})
+        for (auto kit : {HeirloomLoadout{1,42949,48685,42943,42991}, {2,42949,48685,44092,42991},
+                {3,42950,48677,42944,42991}, {4,42952,48689,42944,42991}, {5,42985,48691,42947,42992},
+                {7,42950,48677,48716,42991}, {8,42985,48691,42947,42992}, {9,42985,48691,42947,42992},
+                {11,42952,48689,48718,42991}})
+        {
+            auto const& items = shipped.Find(level, kit.playerClass, 1);
+            Check(contains(items, kit.shoulders) && contains(items, kit.chest), "every bracket includes class heirloom armor");
+            Check(contains(items, kit.weapon) && contains(items, kit.trinket), "every bracket includes class heirloom weapon and trinket");
+            Check(contains(items, 50255) && contains(items, 44098) && contains(items, 44097), "all brackets define ring and both faction insignia options");
+            Check(!contains(items, 44090) && !contains(items, 38691), "test and non-heirloom starting weapons are excluded");
+        }
+    Check(contains(shipped.Find(19, 4, 1), 44091), "Rogue also gets the offhand dagger");
+    Check(contains(shipped.Find(79, 3, 1), 42946), "Hunter also gets the ranged heirloom");
     std::cout << checks << " gear checks passed\n";
 }

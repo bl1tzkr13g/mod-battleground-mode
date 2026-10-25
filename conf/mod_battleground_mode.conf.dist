@@ -72,6 +72,9 @@ BattlegroundMode.StarterGear.Enable = 1
 BattlegroundMode.StarterGear.AutoEquip = 1
 # Teach only the class's legal mail/plate proficiency at level 40+, as needed.
 BattlegroundMode.StarterGear.TrainArmorProficiency = 1
+# Teach class-legal weapon proficiencies needed by configured starter weapons.
+# Does not grant Dual Wield, talents, or raise weapon skill ranks.
+BattlegroundMode.StarterGear.TrainWeaponProficiency = 1
 # Soulbind new starter pieces to the receiving character.
 BattlegroundMode.StarterGear.BindToCharacter = 1
 # Keep enough free bag slots for the WHOLE starter set before delivery. Nothing
@@ -98,8 +101,12 @@ BattlegroundMode.StarterGear.BindToCharacter = 1
 # are controlled separately by AutoLearnClassTrainerSpells above.
 #
 # These are STOCK item candidates, NOT playtested complete sets at every tier.
-# Tier 1 contains core armor. Level 19 has no head item. Weapons, cloaks, jewelry,
-# and trinkets are not included. Higher tiers contain upgrade options, not full kits.
+# Tier 1 uses the SAME class heirlooms at EVERY bracket, plus retained ordinary
+# armor in slots not replaced. Level 19 still has no head item; cloaks/shields/
+# wands/ammunition are not supplied by these lists. Higher tiers are unchanged.
+# Both faction insignias are listed: only the player's faction version is given.
+# Hybrid defaults are physical: Retribution Paladin, Enhancement Shaman, Feral
+# Druid. Edit the class lists for other roles; no role-selection menu is provided.
 # Empty later tiers must be filled before exposing them in the future vendor.
 # Green starter items receive normal random stat affixes from the core's pools.
 # Role-specific fixed affixes are not implemented.
@@ -115,40 +122,40 @@ BattlegroundMode.StarterGear.BindToCharacter = 1
 # LEVEL 19 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Defender Boots; Defender Bracers; Defender Girdle; Defender Gauntlets; Defender Leggings; Defender Spaulders; Defender Tunic
-BattlegroundMode.Gear.Level19.Tier1.Paladin = "6573:0,6574:0,6576:0,6577:0,6578:0,6579:0,6580:0"
+# Defender Boots; Defender Bracers; Defender Girdle; Defender Gauntlets; Defender Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Paladin = "6573:0,6574:0,6576:0,6577:0,6578:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Defender Boots; Defender Bracers; Defender Girdle; Defender Gauntlets; Defender Leggings; Defender Spaulders; Defender Tunic
-BattlegroundMode.Gear.Level19.Tier1.Warrior = "6573:0,6574:0,6576:0,6577:0,6578:0,6579:0,6580:0"
+# Defender Boots; Defender Bracers; Defender Girdle; Defender Gauntlets; Defender Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Warrior = "6573:0,6574:0,6576:0,6577:0,6578:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Bandit Jerkin; Bandit Shoulders
-BattlegroundMode.Gear.Level19.Tier1.Hunter = "9775:0,9776:0,9777:0,9780:0,9781:0,9782:0,10405:0"
+# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Hunter = "9775:0,9776:0,9777:0,9780:0,9781:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Bandit Jerkin; Bandit Shoulders
-BattlegroundMode.Gear.Level19.Tier1.Rogue = "9775:0,9776:0,9777:0,9780:0,9781:0,9782:0,10405:0"
+# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Rogue = "9775:0,9776:0,9777:0,9780:0,9781:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Seer's Robe; Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Mantle; Seer's Belt
-BattlegroundMode.Gear.Level19.Tier1.Priest = "2981:0,2982:0,2983:0,2984:0,3645:0,4698:0,4699:0"
+# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Priest = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Bandit Jerkin; Bandit Shoulders
-BattlegroundMode.Gear.Level19.Tier1.Shaman = "9775:0,9776:0,9777:0,9780:0,9781:0,9782:0,10405:0"
+# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Shaman = "9775:0,9776:0,9777:0,9780:0,9781:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Seer's Robe; Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Mantle; Seer's Belt
-BattlegroundMode.Gear.Level19.Tier1.Mage = "2981:0,2982:0,2983:0,2984:0,3645:0,4698:0,4699:0"
+# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Mage = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Seer's Robe; Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Mantle; Seer's Belt
-BattlegroundMode.Gear.Level19.Tier1.Warlock = "2981:0,2982:0,2983:0,2984:0,3645:0,4698:0,4699:0"
+# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Warlock = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Bandit Jerkin; Bandit Shoulders
-BattlegroundMode.Gear.Level19.Tier1.Druid = "9775:0,9776:0,9777:0,9780:0,9781:0,9782:0,10405:0"
+# Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level19.Tier1.Druid = "9775:0,9776:0,9777:0,9780:0,9781:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -330,40 +337,40 @@ BattlegroundMode.Gear.Level19.Tier5.DeathKnight = ""
 # LEVEL 29 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Fortified Boots; Fortified Bracers; Fortified Gauntlets; Fortified Belt; Fortified Leggings; Fortified Spaulders; Fortified Chain; Glimmering Mail Coif
-BattlegroundMode.Gear.Level29.Tier1.Paladin = "9810:0,9811:0,9813:0,9814:0,9815:0,9817:0,9818:0,6389:0"
+# Fortified Boots; Fortified Bracers; Fortified Gauntlets; Fortified Belt; Fortified Leggings; Glimmering Mail Coif; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Paladin = "9810:0,9811:0,9813:0,9814:0,9815:0,6389:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Fortified Boots; Fortified Bracers; Fortified Gauntlets; Fortified Belt; Fortified Leggings; Fortified Spaulders; Fortified Chain; Glimmering Mail Coif
-BattlegroundMode.Gear.Level29.Tier1.Warrior = "9810:0,9811:0,9813:0,9814:0,9815:0,9817:0,9818:0,6389:0"
+# Fortified Boots; Fortified Bracers; Fortified Gauntlets; Fortified Belt; Fortified Leggings; Glimmering Mail Coif; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Warrior = "9810:0,9811:0,9813:0,9814:0,9815:0,6389:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Shoulders; Superior Leggings; Superior Tunic; Emblazoned Hat
-BattlegroundMode.Gear.Level29.Tier1.Hunter = "9801:0,9802:0,9803:0,9806:0,9807:0,9808:0,9809:0,4048:0"
+# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Hunter = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Shoulders; Superior Leggings; Superior Tunic; Emblazoned Hat
-BattlegroundMode.Gear.Level29.Tier1.Rogue = "9801:0,9802:0,9803:0,9806:0,9807:0,9808:0,9809:0,4048:0"
+# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Rogue = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Bright Boots; Bright Gloves; Bright Pants; Bright Robe; Bright Bracers; Bright Mantle; Bright Belt; Azure Silk Hood
-BattlegroundMode.Gear.Level29.Tier1.Priest = "3065:0,3066:0,3067:0,3069:0,3647:0,4661:0,4708:0,7048:0"
+# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Priest = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Shoulders; Superior Leggings; Superior Tunic; Emblazoned Hat
-BattlegroundMode.Gear.Level29.Tier1.Shaman = "9801:0,9802:0,9803:0,9806:0,9807:0,9808:0,9809:0,4048:0"
+# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Shaman = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Bright Boots; Bright Gloves; Bright Pants; Bright Robe; Bright Bracers; Bright Mantle; Bright Belt; Azure Silk Hood
-BattlegroundMode.Gear.Level29.Tier1.Mage = "3065:0,3066:0,3067:0,3069:0,3647:0,4661:0,4708:0,7048:0"
+# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Mage = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Bright Boots; Bright Gloves; Bright Pants; Bright Robe; Bright Bracers; Bright Mantle; Bright Belt; Azure Silk Hood
-BattlegroundMode.Gear.Level29.Tier1.Warlock = "3065:0,3066:0,3067:0,3069:0,3647:0,4661:0,4708:0,7048:0"
+# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Warlock = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Shoulders; Superior Leggings; Superior Tunic; Emblazoned Hat
-BattlegroundMode.Gear.Level29.Tier1.Druid = "9801:0,9802:0,9803:0,9806:0,9807:0,9808:0,9809:0,4048:0"
+# Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level29.Tier1.Druid = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -545,40 +552,40 @@ BattlegroundMode.Gear.Level29.Tier5.DeathKnight = ""
 # LEVEL 39 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Phalanx Bracers; Phalanx Boots; Phalanx Breastplate; Phalanx Headguard; Phalanx Gauntlets; Phalanx Girdle; Phalanx Leggings; Phalanx Spaulders
-BattlegroundMode.Gear.Level39.Tier1.Paladin = "7416:0,7417:0,7418:0,7420:0,7421:0,7422:0,7423:0,7424:0"
+# Phalanx Bracers; Phalanx Boots; Phalanx Headguard; Phalanx Gauntlets; Phalanx Girdle; Phalanx Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Paladin = "7416:0,7417:0,7420:0,7421:0,7422:0,7423:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Phalanx Bracers; Phalanx Boots; Phalanx Breastplate; Phalanx Headguard; Phalanx Gauntlets; Phalanx Girdle; Phalanx Leggings; Phalanx Spaulders
-BattlegroundMode.Gear.Level39.Tier1.Warrior = "7416:0,7417:0,7418:0,7420:0,7421:0,7422:0,7423:0,7424:0"
+# Phalanx Bracers; Phalanx Boots; Phalanx Headguard; Phalanx Gauntlets; Phalanx Girdle; Phalanx Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Warrior = "7416:0,7417:0,7420:0,7421:0,7422:0,7423:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Infiltrator Cord; Infiltrator Armor; Infiltrator Shoulders; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants
-BattlegroundMode.Gear.Level39.Tier1.Hunter = "7406:0,7407:0,7408:0,7409:0,7410:0,7412:0,7413:0,7414:0"
+# Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Hunter = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Infiltrator Cord; Infiltrator Armor; Infiltrator Shoulders; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants
-BattlegroundMode.Gear.Level39.Tier1.Rogue = "7406:0,7407:0,7408:0,7409:0,7410:0,7412:0,7413:0,7414:0"
+# Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Rogue = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Mantle; Conjurer's Breeches; Conjurer's Robe; Conjurer's Cinch
-BattlegroundMode.Gear.Level39.Tier1.Priest = "9845:0,9846:0,9848:0,9849:0,9850:0,9851:0,9852:0,9853:0"
+# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Priest = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Infiltrator Cord; Infiltrator Armor; Infiltrator Shoulders; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants
-BattlegroundMode.Gear.Level39.Tier1.Shaman = "7406:0,7407:0,7408:0,7409:0,7410:0,7412:0,7413:0,7414:0"
+# Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Shaman = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Mantle; Conjurer's Breeches; Conjurer's Robe; Conjurer's Cinch
-BattlegroundMode.Gear.Level39.Tier1.Mage = "9845:0,9846:0,9848:0,9849:0,9850:0,9851:0,9852:0,9853:0"
+# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Mage = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Mantle; Conjurer's Breeches; Conjurer's Robe; Conjurer's Cinch
-BattlegroundMode.Gear.Level39.Tier1.Warlock = "9845:0,9846:0,9848:0,9849:0,9850:0,9851:0,9852:0,9853:0"
+# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Warlock = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Infiltrator Cord; Infiltrator Armor; Infiltrator Shoulders; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants
-BattlegroundMode.Gear.Level39.Tier1.Druid = "7406:0,7407:0,7408:0,7409:0,7410:0,7412:0,7413:0,7414:0"
+# Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level39.Tier1.Druid = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -760,40 +767,40 @@ BattlegroundMode.Gear.Level39.Tier5.DeathKnight = ""
 # LEVEL 49 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Field Plate Vambraces; Field Plate Armor; Field Plate Gauntlets; Field Plate Girdle; Field Plate Boots; Field Plate Helmet; Field Plate Leggings; Field Plate Pauldrons
-BattlegroundMode.Gear.Level49.Tier1.Paladin = "9285:0,9286:0,9287:0,9288:0,9289:0,9290:0,9291:0,9292:0"
+# Field Plate Vambraces; Field Plate Gauntlets; Field Plate Girdle; Field Plate Boots; Field Plate Helmet; Field Plate Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Paladin = "9285:0,9287:0,9288:0,9289:0,9290:0,9291:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Field Plate Vambraces; Field Plate Armor; Field Plate Gauntlets; Field Plate Girdle; Field Plate Boots; Field Plate Helmet; Field Plate Leggings; Field Plate Pauldrons
-BattlegroundMode.Gear.Level49.Tier1.Warrior = "9285:0,9286:0,9287:0,9288:0,9289:0,9290:0,9291:0,9292:0"
+# Field Plate Vambraces; Field Plate Gauntlets; Field Plate Girdle; Field Plate Boots; Field Plate Helmet; Field Plate Leggings; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Warrior = "9285:0,9287:0,9288:0,9289:0,9290:0,9291:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Brigade Boots; Brigade Bracers; Brigade Breastplate; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Brigade Pauldrons
-BattlegroundMode.Gear.Level49.Tier1.Hunter = "9926:0,9927:0,9928:0,9930:0,9931:0,9932:0,9933:0,9934:0"
+# Brigade Boots; Brigade Bracers; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Hunter = "9926:0,9927:0,9930:0,9931:0,9932:0,9933:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Tracker's Belt; Tracker's Boots; Tracker's Gloves; Tracker's Headband; Tracker's Leggings; Tracker's Shoulderpads; Tracker's Tunic; Tracker's Wristguards
-BattlegroundMode.Gear.Level49.Tier1.Rogue = "9916:0,9917:0,9920:0,9921:0,9922:0,9923:0,9924:0,9925:0"
+# Tracker's Belt; Tracker's Boots; Tracker's Gloves; Tracker's Headband; Tracker's Leggings; Tracker's Wristguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Rogue = "9916:0,9917:0,9920:0,9921:0,9922:0,9925:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level49.Tier1.Priest = "9875:0,9876:0,9878:0,9879:0,9880:0,9881:0,9883:0,9884:0"
+# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Priest = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Brigade Boots; Brigade Bracers; Brigade Breastplate; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Brigade Pauldrons
-BattlegroundMode.Gear.Level49.Tier1.Shaman = "9926:0,9927:0,9928:0,9930:0,9931:0,9932:0,9933:0,9934:0"
+# Brigade Boots; Brigade Bracers; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Shaman = "9926:0,9927:0,9930:0,9931:0,9932:0,9933:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level49.Tier1.Mage = "9875:0,9876:0,9878:0,9879:0,9880:0,9881:0,9883:0,9884:0"
+# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Mage = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level49.Tier1.Warlock = "9875:0,9876:0,9878:0,9879:0,9880:0,9881:0,9883:0,9884:0"
+# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Warlock = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Tracker's Belt; Tracker's Boots; Tracker's Gloves; Tracker's Headband; Tracker's Leggings; Tracker's Shoulderpads; Tracker's Tunic; Tracker's Wristguards
-BattlegroundMode.Gear.Level49.Tier1.Druid = "9916:0,9917:0,9920:0,9921:0,9922:0,9923:0,9924:0,9925:0"
+# Tracker's Belt; Tracker's Boots; Tracker's Gloves; Tracker's Headband; Tracker's Leggings; Tracker's Wristguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level49.Tier1.Druid = "9916:0,9917:0,9920:0,9921:0,9922:0,9925:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -975,40 +982,40 @@ BattlegroundMode.Gear.Level49.Tier5.DeathKnight = ""
 # LEVEL 59 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Templar Chestplate; Templar Gauntlets; Templar Girdle; Templar Boots; Templar Crown; Templar Legplates; Templar Pauldrons; Templar Bracers
-BattlegroundMode.Gear.Level59.Tier1.Paladin = "10164:0,10165:0,10166:0,10167:0,10168:0,10169:0,10170:0,10171:0"
+# Templar Gauntlets; Templar Girdle; Templar Boots; Templar Crown; Templar Legplates; Templar Bracers; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Paladin = "10165:0,10166:0,10167:0,10168:0,10169:0,10171:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Templar Chestplate; Templar Gauntlets; Templar Girdle; Templar Boots; Templar Crown; Templar Legplates; Templar Pauldrons; Templar Bracers
-BattlegroundMode.Gear.Level59.Tier1.Warrior = "10164:0,10165:0,10166:0,10167:0,10168:0,10169:0,10170:0,10171:0"
+# Templar Gauntlets; Templar Girdle; Templar Boots; Templar Crown; Templar Legplates; Templar Bracers; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Warrior = "10165:0,10166:0,10167:0,10168:0,10169:0,10171:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Merciless Bracers; Merciless Surcoat; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Epaulets; Merciless Greaves
-BattlegroundMode.Gear.Level59.Tier1.Hunter = "15649:0,15650:0,15651:0,15653:0,15654:0,15655:0,15656:0,15694:0"
+# Merciless Bracers; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Greaves; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Hunter = "15649:0,15651:0,15653:0,15654:0,15655:0,15694:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Wanderer's Armor; Wanderer's Boots; Wanderer's Bracers; Wanderer's Belt; Wanderer's Gloves; Wanderer's Hat; Wanderer's Leggings; Wanderer's Shoulders
-BattlegroundMode.Gear.Level59.Tier1.Rogue = "10105:0,10106:0,10107:0,10109:0,10110:0,10111:0,10112:0,10113:0"
+# Wanderer's Boots; Wanderer's Bracers; Wanderer's Belt; Wanderer's Gloves; Wanderer's Hat; Wanderer's Leggings; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Rogue = "10106:0,10107:0,10109:0,10110:0,10111:0,10112:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Shoulders; Councillor's Pants; Councillor's Robes; Councillor's Sash
-BattlegroundMode.Gear.Level59.Tier1.Priest = "10095:0,10096:0,10097:0,10099:0,10100:0,10101:0,10102:0,10103:0"
+# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Priest = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Merciless Bracers; Merciless Surcoat; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Epaulets; Merciless Greaves
-BattlegroundMode.Gear.Level59.Tier1.Shaman = "15649:0,15650:0,15651:0,15653:0,15654:0,15655:0,15656:0,15694:0"
+# Merciless Bracers; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Greaves; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Shaman = "15649:0,15651:0,15653:0,15654:0,15655:0,15694:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Shoulders; Councillor's Pants; Councillor's Robes; Councillor's Sash
-BattlegroundMode.Gear.Level59.Tier1.Mage = "10095:0,10096:0,10097:0,10099:0,10100:0,10101:0,10102:0,10103:0"
+# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Mage = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Shoulders; Councillor's Pants; Councillor's Robes; Councillor's Sash
-BattlegroundMode.Gear.Level59.Tier1.Warlock = "10095:0,10096:0,10097:0,10099:0,10100:0,10101:0,10102:0,10103:0"
+# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Warlock = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Wanderer's Armor; Wanderer's Boots; Wanderer's Bracers; Wanderer's Belt; Wanderer's Gloves; Wanderer's Hat; Wanderer's Leggings; Wanderer's Shoulders
-BattlegroundMode.Gear.Level59.Tier1.Druid = "10105:0,10106:0,10107:0,10109:0,10110:0,10111:0,10112:0,10113:0"
+# Wanderer's Boots; Wanderer's Bracers; Wanderer's Belt; Wanderer's Gloves; Wanderer's Hat; Wanderer's Leggings; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level59.Tier1.Druid = "10106:0,10107:0,10109:0,10110:0,10111:0,10112:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -1190,40 +1197,40 @@ BattlegroundMode.Gear.Level59.Tier5.DeathKnight = ""
 # LEVEL 69 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Talonguard Girdle; Talonguard Greaves; Talonguard Armor; Talonguard Gloves; Talonguard Helmet; Talonguard Legplates; Talonguard Epaulets; Talonguard Bracers
-BattlegroundMode.Gear.Level69.Tier1.Paladin = "24966:0,24967:0,24968:0,24969:0,24970:0,24971:0,24972:0,24973:0"
+# Talonguard Girdle; Talonguard Greaves; Talonguard Gloves; Talonguard Helmet; Talonguard Legplates; Talonguard Bracers; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Paladin = "24966:0,24967:0,24969:0,24970:0,24971:0,24973:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Talonguard Girdle; Talonguard Greaves; Talonguard Armor; Talonguard Gloves; Talonguard Helmet; Talonguard Legplates; Talonguard Epaulets; Talonguard Bracers
-BattlegroundMode.Gear.Level69.Tier1.Warrior = "24966:0,24967:0,24968:0,24969:0,24970:0,24971:0,24972:0,24973:0"
+# Talonguard Girdle; Talonguard Greaves; Talonguard Gloves; Talonguard Helmet; Talonguard Legplates; Talonguard Bracers; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Warrior = "24966:0,24967:0,24969:0,24970:0,24971:0,24973:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Fen-Vest; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Mantle; Marshcreeper Bracelets
-BattlegroundMode.Gear.Level69.Tier1.Hunter = "24854:0,24855:0,24856:0,24857:0,24858:0,24859:0,24860:0,24861:0"
+# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Bracelets; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Hunter = "24854:0,24855:0,24857:0,24858:0,24859:0,24861:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Ranger Belt; Ranger Boots; Ranger Jerkin; Ranger Gloves; Ranger Hat; Ranger Pants; Ranger Pauldrons; Ranger Armguards
-BattlegroundMode.Gear.Level69.Tier1.Rogue = "24741:0,24742:0,24743:0,24744:0,24745:0,24746:0,24747:0,24748:0"
+# Ranger Belt; Ranger Boots; Ranger Gloves; Ranger Hat; Ranger Pants; Ranger Armguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Rogue = "24741:0,24742:0,24744:0,24745:0,24746:0,24748:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Feralfen Sash; Feralfen Sandals; Feralfen Jerkin; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Amice; Feralfen Cuffs
-BattlegroundMode.Gear.Level69.Tier1.Priest = "24629:0,24630:0,24631:0,24632:0,24633:0,24634:0,24635:0,24636:0"
+# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Priest = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Fen-Vest; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Mantle; Marshcreeper Bracelets
-BattlegroundMode.Gear.Level69.Tier1.Shaman = "24854:0,24855:0,24856:0,24857:0,24858:0,24859:0,24860:0,24861:0"
+# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Bracelets; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Shaman = "24854:0,24855:0,24857:0,24858:0,24859:0,24861:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Feralfen Sash; Feralfen Sandals; Feralfen Jerkin; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Amice; Feralfen Cuffs
-BattlegroundMode.Gear.Level69.Tier1.Mage = "24629:0,24630:0,24631:0,24632:0,24633:0,24634:0,24635:0,24636:0"
+# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Mage = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Feralfen Sash; Feralfen Sandals; Feralfen Jerkin; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Amice; Feralfen Cuffs
-BattlegroundMode.Gear.Level69.Tier1.Warlock = "24629:0,24630:0,24631:0,24632:0,24633:0,24634:0,24635:0,24636:0"
+# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Warlock = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Ranger Belt; Ranger Boots; Ranger Jerkin; Ranger Gloves; Ranger Hat; Ranger Pants; Ranger Pauldrons; Ranger Armguards
-BattlegroundMode.Gear.Level69.Tier1.Druid = "24741:0,24742:0,24743:0,24744:0,24745:0,24746:0,24747:0,24748:0"
+# Ranger Belt; Ranger Boots; Ranger Gloves; Ranger Hat; Ranger Pants; Ranger Armguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level69.Tier1.Druid = "24741:0,24742:0,24744:0,24745:0,24746:0,24748:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.
@@ -1405,40 +1412,40 @@ BattlegroundMode.Gear.Level69.Tier5.DeathKnight = ""
 # LEVEL 79 - TIER 1 STARTER GEAR (FREE)
 # ============================================================================
 # Paladin
-# Cobalt Shoulders; Cobalt Helm; Cobalt Chestpiece; Cobalt Legplates; Cobalt Belt; Cobalt Boots; Cobalt Bracers; Cobalt Gauntlets
-BattlegroundMode.Gear.Level79.Tier1.Paladin = "39083:0,39084:0,39085:0,39086:0,39087:0,39088:0,41974:0,41975:0"
+# Cobalt Helm; Cobalt Legplates; Cobalt Belt; Cobalt Boots; Cobalt Bracers; Cobalt Gauntlets; Polished Spaulders of Valor; Polished Breastplate of Valor; Reforged Truesilver Champion; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Paladin = "39084:0,39086:0,39087:0,39088:0,41974:0,41975:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
 
 # Warrior
-# Cobalt Shoulders; Cobalt Helm; Cobalt Chestpiece; Cobalt Legplates; Cobalt Belt; Cobalt Boots; Cobalt Bracers; Cobalt Gauntlets
-BattlegroundMode.Gear.Level79.Tier1.Warrior = "39083:0,39084:0,39085:0,39086:0,39087:0,39088:0,41974:0,41975:0"
+# Cobalt Helm; Cobalt Legplates; Cobalt Belt; Cobalt Boots; Cobalt Bracers; Cobalt Gauntlets; Polished Spaulders of Valor; Polished Breastplate of Valor; Bloodied Arcanite Reaper; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Warrior = "39084:0,39086:0,39087:0,39088:0,41974:0,41975:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Frostscale Belt; Frostscale Boots; Frostscale Chestguard; Frostscale Gloves; Frostscale Leggings; Frostscale Shoulders; Frostscale Bracers; Frostscale Helm
-BattlegroundMode.Gear.Level79.Tier1.Hunter = "38412:0,38413:0,38414:0,38415:0,38416:0,38424:0,38436:0,38440:0"
+# Frostscale Belt; Frostscale Boots; Frostscale Gloves; Frostscale Leggings; Frostscale Bracers; Frostscale Helm; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Hunter = "38412:0,38413:0,38415:0,38416:0,38436:0,38440:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
 
 # Rogue
-# Arctic Chestpiece; Arctic Leggings; Arctic Shoulderpads; Arctic Gloves; Arctic Boots; Arctic Belt; Arctic Wristguards; Arctic Helm
-BattlegroundMode.Gear.Level79.Tier1.Rogue = "38400:0,38401:0,38402:0,38403:0,38404:0,38405:0,38433:0,38437:0"
+# Arctic Leggings; Arctic Gloves; Arctic Boots; Arctic Belt; Arctic Wristguards; Arctic Helm; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Balanced Heartseeker; Sharpened Scarlet Kris; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Rogue = "38401:0,38403:0,38404:0,38405:0,38433:0,38437:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Frostwoven Wristwraps; Frostwoven Shoulders; Frostwoven Robe; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves
-BattlegroundMode.Gear.Level79.Tier1.Priest = "41512:0,41513:0,41515:0,41519:0,41520:0,41521:0,41522:0,44211:0"
+# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Priest = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Shaman
-# Frostscale Belt; Frostscale Boots; Frostscale Chestguard; Frostscale Gloves; Frostscale Leggings; Frostscale Shoulders; Frostscale Bracers; Frostscale Helm
-BattlegroundMode.Gear.Level79.Tier1.Shaman = "38412:0,38413:0,38414:0,38415:0,38416:0,38424:0,38436:0,38440:0"
+# Frostscale Belt; Frostscale Boots; Frostscale Gloves; Frostscale Leggings; Frostscale Bracers; Frostscale Helm; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Shaman = "38412:0,38413:0,38415:0,38416:0,38436:0,38440:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Frostwoven Wristwraps; Frostwoven Shoulders; Frostwoven Robe; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves
-BattlegroundMode.Gear.Level79.Tier1.Mage = "41512:0,41513:0,41515:0,41519:0,41520:0,41521:0,41522:0,44211:0"
+# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Mage = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Warlock
-# Frostwoven Wristwraps; Frostwoven Shoulders; Frostwoven Robe; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves
-BattlegroundMode.Gear.Level79.Tier1.Warlock = "41512:0,41513:0,41515:0,41519:0,41520:0,41521:0,41522:0,44211:0"
+# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Warlock = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
 
 # Druid
-# Arctic Chestpiece; Arctic Leggings; Arctic Shoulderpads; Arctic Gloves; Arctic Boots; Arctic Belt; Arctic Wristguards; Arctic Helm
-BattlegroundMode.Gear.Level79.Tier1.Druid = "38400:0,38401:0,38402:0,38403:0,38404:0,38405:0,38433:0,38437:0"
+# Arctic Leggings; Arctic Gloves; Arctic Boots; Arctic Belt; Arctic Wristguards; Arctic Helm; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
+BattlegroundMode.Gear.Level79.Tier1.Druid = "38401:0,38403:0,38404:0,38405:0,38433:0,38437:0,42952:0,48689:0,48718:0,42991:0,50255:0,44098:0,44097:0"
 
 # DeathKnight
 # Ineligible starting class; reserved for future administrator use.

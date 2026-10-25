@@ -60,6 +60,7 @@ struct Settings
     bool starterEnabled = true;
     bool starterAutoEquip = true;
     bool starterTrainArmor = true;
+    bool starterTrainWeapons = true;
     bool starterBind = true;
     std::shared_ptr<GearCatalog const> gear = std::make_shared<GearCatalog>();
     std::vector<uint8> levels;
@@ -117,6 +118,7 @@ public:
         next.starterEnabled = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.Enable", true);
         next.starterAutoEquip = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.AutoEquip", true);
         next.starterTrainArmor = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.TrainArmorProficiency", true);
+        next.starterTrainWeapons = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.TrainWeaponProficiency", true);
         next.starterBind = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.BindToCharacter", true);
         next.levels = ParseLevels(sConfigMgr->GetOption<std::string>("BattlegroundMode.AllowedLevels", "19,29,39,49,59,69,79"),
             static_cast<uint8>(std::min<uint32>(80, sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))));
@@ -167,7 +169,8 @@ public:
                 if (!prototype || prototype->RequiredLevel > key.level ||
                     !(prototype->AllowableClass & (1u << (key.playerClass - 1))) ||
                     (prototype->Class == ITEM_CLASS_ARMOR &&
-                        !GearArmorAllowed(key.playerClass, key.level, prototype->SubClass)) ||
+                        !GearArmorAllowed(key.playerClass, key.level, prototype->SubClass,
+                            prototype->Quality == ITEM_QUALITY_HEIRLOOM)) ||
                     item.honor > sWorld->getIntConfig(CONFIG_MAX_HONOR_POINTS))
                 {
                     LOG_ERROR("module", "Battleground Mode: rejecting level {} class {} tier {}: "
@@ -368,6 +371,14 @@ public:
                 Tell(player, "A configured starter item is unavailable. Contact a game master.");
                 return;
             }
+            // Config lists both insignias. Give only the faction-compatible one.
+            if ((prototype->HasFlag2(ITEM_FLAG2_FACTION_ALLIANCE) && player->GetTeamId(true) != TEAM_ALLIANCE) ||
+                (prototype->HasFlag2(ITEM_FLAG2_FACTION_HORDE) && player->GetTeamId(true) != TEAM_HORDE))
+                continue;
+            if (config.starterAutoEquip && config.starterTrainWeapons && prototype->Class == ITEM_CLASS_WEAPON)
+                if (uint32 proficiency = StarterWeaponProficiency(player->getClass(), prototype->SubClass))
+                    if (!player->HasSpell(proficiency))
+                        player->learnSpell(proficiency);
             prepared.emplace_back(Item::CreateItem(entry.entry, 1, player), discard);
             Item* item = prepared.back().get();
             if (!item)
@@ -386,21 +397,36 @@ public:
             if (config.starterAutoEquip)
             {
                 uint16 destination = 0;
-                InventoryResult result = player->CanEquipItem(NULL_SLOT, destination, item, true);
-                if (result != EQUIP_ERR_OK || player->CanUnequipItem(destination, true) != EQUIP_ERR_OK)
+                InventoryResult result = EQUIP_ERR_ITEM_CANT_BE_EQUIPPED;
+                bool found = false;
+                for (uint8 slot : StarterEquipmentSlots(prototype->InventoryType))
+                {
+                    uint16 candidate = 0;
+                    if (slot != NULL_SLOT && usedSlots.count(static_cast<uint16>((INVENTORY_SLOT_BAG_0 << 8) | slot)))
+                        continue;
+                    result = player->CanEquipItem(slot, candidate, item, true);
+                    if (result == EQUIP_ERR_OK && !usedSlots.count(candidate))
+                    {
+                        destination = candidate;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found || player->CanUnequipItem(destination, true) != EQUIP_ERR_OK)
                 {
                     if (result != EQUIP_ERR_OK)
                         player->SendEquipError(result, item);
-                    Tell(player, "The whole starter set must be equippable. Nothing was delivered; fix the restriction and use .bgstarter.");
+                    Tell(player, "The whole starter set must fit distinct legal equipment slots. Nothing was delivered; fix the restriction and use .bgstarter.");
                     return;
                 }
-                if (!usedSlots.insert(destination).second)
-                {
-                    Tell(player, "Starter gear contains conflicting equipment slots. Nothing was delivered; contact a game master.");
-                    return;
-                }
+                usedSlots.insert(destination);
                 equipment.push_back(destination);
             }
+        }
+        if (prepared.empty())
+        {
+            Tell(player, "No starter items match this character's faction. Contact a game master.");
+            return;
         }
         uint32 limitedBy = 0;
         InventoryResult capacity = player->CanStoreItems(incoming.data(), static_cast<int>(incoming.size()), &limitedBy);

@@ -5,6 +5,7 @@
 #include <charconv>
 #include <cstdint>
 #include <map>
+#include <initializer_list>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -145,7 +146,49 @@ private:
     Lists _lists;
 };
 
-inline bool GearArmorAllowed(std::uint8_t playerClass, std::uint8_t level, std::uint32_t armor)
+// Explicit paired slots prevent preflighting two items into the same empty
+// slot. 255 means let the core choose the normal slot for all other items.
+inline std::vector<std::uint8_t> StarterEquipmentSlots(std::uint32_t inventoryType)
+{
+    switch (inventoryType)
+    {
+        case 11: return {10, 11}; // Rings.
+        case 12: return {12, 13}; // Trinkets.
+        case 13: return {15, 16}; // One-handed weapons (offhand still needs Dual Wield).
+        default: return {255};
+    }
+}
+
+// Proficiency spells only, restricted to the class's legal weapon families.
+// No talents, Dual Wield, or skill-rank boosts are granted here.
+inline std::uint32_t StarterWeaponProficiency(std::uint8_t playerClass, std::uint32_t subclass)
+{
+    auto allowed = [playerClass](std::initializer_list<std::uint8_t> classes)
+    {
+        return std::find(classes.begin(), classes.end(), playerClass) != classes.end();
+    };
+    switch (subclass)
+    {
+        case 0: return allowed({1,2,3,4,6,7}) ? 196 : 0; // One-handed axes.
+        case 1: return allowed({1,2,3,6,7}) ? 197 : 0; // Two-handed axes.
+        case 2: return allowed({1,3,4}) ? 264 : 0; // Bows.
+        case 3: return allowed({1,3,4}) ? 266 : 0; // Guns.
+        case 4: return allowed({1,2,4,5,6,7,11}) ? 198 : 0; // Maces.
+        case 5: return allowed({1,2,6,7,11}) ? 199 : 0; // Two-handed maces.
+        case 6: return allowed({1,2,3,6,11}) ? 200 : 0; // Polearms.
+        case 7: return allowed({1,2,3,4,6,8,9}) ? 201 : 0; // Swords.
+        case 8: return allowed({1,2,3,6}) ? 202 : 0; // Two-handed swords.
+        case 10: return allowed({1,3,5,7,8,9,11}) ? 227 : 0; // Staves.
+        case 13: return allowed({1,3,4,7,11}) ? 15590 : 0; // Fist weapons.
+        case 15: return allowed({1,3,4,5,7,8,9,11}) ? 1180 : 0; // Daggers.
+        case 16: return allowed({1,3,4}) ? 2567 : 0; // Thrown.
+        case 18: return allowed({1,3,4}) ? 5011 : 0; // Crossbows.
+        case 19: return allowed({5,8,9}) ? 5009 : 0; // Wands.
+        default: return 0;
+    }
+}
+
+inline bool GearArmorAllowed(std::uint8_t playerClass, std::uint8_t level, std::uint32_t armor, bool heirloom = false)
 {
     if (armor == 0 || armor == 1)
         return true;
@@ -154,9 +197,9 @@ inline bool GearArmorAllowed(std::uint8_t playerClass, std::uint8_t level, std::
             playerClass == 6 || playerClass == 7 || playerClass == 11;
     if (armor == 3)
         return playerClass == 1 || playerClass == 2 || playerClass == 6 ||
-            ((playerClass == 3 || playerClass == 7) && level >= 40);
+            ((playerClass == 3 || playerClass == 7) && (level >= 40 || heirloom));
     if (armor == 4)
-        return (playerClass == 1 || playerClass == 2) ? level >= 40 : playerClass == 6;
+        return (playerClass == 1 || playerClass == 2) ? (level >= 40 || heirloom) : playerClass == 6;
     if (armor == 6)
         return playerClass == 1 || playerClass == 2 || playerClass == 7;
     return true; // Relics/offhands receive their normal class and skill checks.
