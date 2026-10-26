@@ -23,7 +23,9 @@ Every starter piece is free. Higher tiers have been removed; PvP vendors supply 
 | Main hand | Dignified Headmaster's Charge | 42947 | Existing two-handed heirloom staff |
 | Ranged | Tattered Dreadmist Wand | 900026 | Gravestone Scepter (7001), Nature damage |
 
-The staff occupies both hands; offhand is intentionally empty. Shirts and tabards
+The staff occupies both hands; the equipped offhand is empty.
+[Bag alternatives](caster-weapon-alternatives.md) provide a scaling caster dagger
+and held tome without replacing the staff automatically. Shirts and tabards
 are not part of this kit. The config has 17 IDs because it lists both faction
 insignias; delivery filters the incompatible one, yielding **16 equipped items**.
 Custom items have class mask 400 (Priest/Mage/Warlock) and permit all their races.
@@ -69,9 +71,9 @@ Existing models are reused; no new artwork is required.
 4. Test a fresh eligible character in each caster class, in both factions. The
    default starter bag supplies 20 additional slots in the first empty equipped
    bag slot, before gear delivery. Auto-equip reserves room only for replaced
-   gear plus **one reusable working slot**, not all 16 pieces simultaneously.
+   gear, bag alternatives and **one reusable working slot**, not all primary pieces simultaneously.
    Starting food/hearthstone can remain. Free bag space and use `.bgstarter` if delivery was blocked.
-   With `AutoEquip=0`, all 16 items must fit in bags. Specialized bags may not
+   With `AutoEquip=0`, all 18 items (primary plus alternatives) must fit in bags. Specialized bags may not
    accept every piece. This delivery fix requires rebuilding the module once.
 5. Check all slots, separate rings/trinkets, correct faction insignia, staff and
    ranged wand, appearance, actual stat changes on equip/unequip, and relog.

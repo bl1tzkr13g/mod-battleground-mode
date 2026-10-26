@@ -28,7 +28,8 @@ appearances only. No physical-stat shoulder or Valor chest is reused as Holy gea
 Class mask **2** restricts the new items to Paladin of any applicable race.
 
 The mace is a legal Paladin one-handed weapon. The tome is a **held offhand**,
-not a shield: it has no armor or block value. Paladin relic slot stays empty.
+not a shield: it has no armor or block value. [A bracket caster shield](caster-weapon-alternatives.md) is supplied in bags as
+an alternative to the equipped tome. Paladin relic slot stays empty.
 No talent selection, respec, Dual Wield or early plate-proficiency training is
 added. Below 40, caster plate uses the same native heirloom proficiency exception
 as the stock Valor family. Low-level armor values still need in-game verification.

@@ -189,7 +189,7 @@ module build; no SQL schema change is needed.
 Starter delivery is enabled and auto-equipped by default. Set
 `BattlegroundMode.StarterGear.AutoEquip = 0` for bag delivery, or
 `BattlegroundMode.StarterGear.Enable = 0` to disable grants. Auto-equip reserves
-bag room for replaced gear plus one reusable staging slot; bag-only delivery
+bag room for alternatives, replaced gear and one reusable staging slot; bag-only delivery
 requires room for the whole kit. Newly granted pieces are soulbound by default;
 class-appropriate mail/plate training at level 40+ is configurable.
 
@@ -250,3 +250,14 @@ automatically with no additional rebuild required.
 [Holy Paladin plate with mace/tome](docs/holy-paladin-starter-set.md) are selectable
 builds in the main config at all seven brackets. Caster Shaman uses leather below
 40 and mail afterward. Client patch work remains deferred.
+
+## Caster weapon alternatives
+
+[Caster starter grants now include bag alternatives](docs/caster-weapon-alternatives.md):
+cloth casters and Balance/Restoration Druids get a scaling dagger/tome;
+Elemental/Restoration Shamans get a caster mace and bracket shield. Staff builds
+keep their staff equipped. Holy Paladins keep their mace/tome and get a caster
+shield alternative. Edit the adjacent `BattlegroundMode.Gear.Bag.Level...` lists
+in the same config. Bag, primary kit and alternatives share one durable claim.
+This update requires rebuilding/installing worldserver and updating the active
+config; item SQL applies automatically on startup. Completed grants are preserved.

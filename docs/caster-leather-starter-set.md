@@ -31,7 +31,8 @@ Elemental/Restoration Shaman at 19/29/39. Druid keeps caster shoulders/chest
 
 These builds use Dignified Headmaster's Charge (42947), Discerning Eye of the
 Beast (42992), Dread Pirate Ring (50255) and the correct faction insignia. The
-staff uses both hands, so there is no caster shield/offhand in these loadouts.
+staff uses both hands in the equipped kit. [Bag alternatives](caster-weapon-alternatives.md)
+provide a dagger/tome for caster Druids and a mace/shield for caster Shamans.
 Relic slots remain empty. Each delivers **15 equipped pieces**, plus the existing
 configurable starter bag. Physical weapons and Swift Hand of Justice are removed
 from the alternate entries. No talents, forms or extra weapon skill ranks are

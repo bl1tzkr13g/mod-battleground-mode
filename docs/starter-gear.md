@@ -16,7 +16,10 @@ Use real complete item lists from the distributed config; the ellipses above
 only illustrate key names. Entries remain comma-separated `itemID:0` pairs.
 Every price must be zero, duplicate item IDs are rejected, and item metadata is
 validated for the class/bracket. Empty or rejected lists never appear as choices.
-Keep a one-handed main weapon before its held offhand. Both faction insignias
+[Optional caster alternatives](caster-weapon-alternatives.md) use adjacent
+`BattlegroundMode.Gear.Bag.LevelNN.Tier1.Class.Build` lists and stay in bags.
+Missing/empty bag lists add nothing; they do not create builds on their own.
+Keep a one-handed main weapon before its held offhand in equipped lists. Both faction insignias
 can be listed; the receiver gets only the correct faction's version.
 
 | Class | Available builds |
@@ -51,7 +54,7 @@ automatic spec detection or additional Dual Wield grant is performed. A saved
 choice stays fixed even after later talent changes. `.bggear 1` previews that
 character's chosen starter kit; other tiers direct players to PvP vendors.
 `.bgstarter` retries an unclaimed delivery for the saved build, never another role.
-The one-time claim still covers the bag and gear together. Relogging, changing
+The one-time claim covers the bag, primary gear and bag alternatives together. Relogging, changing
 roles in config or using old menu packets cannot yield a second kit.
 
 ## Upgrade an existing installation
@@ -100,7 +103,7 @@ travel, trades, battlegrounds, and queues. Normal characters never get this gran
 Disabling starter delivery leaves the entitlement unclaimed for later use.
 
 Auto-equip preflights every item and rejects kits with conflicting destination
-slots. Auto-equip reserves bag room for displaced gear and one reusable working
+slots. Auto-equip reserves bag room for alternatives, displaced gear and one reusable working
 slot, checking incoming item restrictions before claiming. Each item is stored
 and equipped immediately so empty equipment slots release staging capacity.
 Starting food/hearthstone do not need to be removed just to hold a complete kit.
@@ -153,6 +156,9 @@ The core startup database updater automatically applies
 to the character database, creating fresh schemas and upgrading earlier ones
 without resetting choices or completed deliveries. No manual import is required;
 see [automatic database setup](automatic-database-setup.md).
+
+Weapon proficiency training includes bag alternatives, even with AutoEquip disabled.
+This does not boost ranks or teach class-inappropriate weapon types.
 
 The single `starter_state` column stores pending (0), claimed (1), or delivered
 (2). A durable claim precedes inventory changes, then item instances, positions,

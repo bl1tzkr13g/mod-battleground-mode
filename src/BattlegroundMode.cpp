@@ -146,14 +146,21 @@ public:
         next.shattrath = destination("Shattrath", next.shattrath);
         next.dalaran = destination("Dalaran", next.dalaran);
         auto gear = std::make_shared<GearCatalog>();
-        auto gearKeys = sConfigMgr->GetKeysByString("BattlegroundMode.Gear.Level");
+        auto gearKeys = sConfigMgr->GetKeysByString("BattlegroundMode.Gear.");
+        std::vector<GearKey> malformedBuilds;
         // A legacy class key sorts before its explicit build keys. Explicit
         // builds therefore win deterministically if an upgrade leaves both.
         std::sort(gearKeys.begin(), gearKeys.end());
         for (auto const& key : gearKeys)
             if (!gear->Add(key, sConfigMgr->GetOption<std::string>(key, "", false)))
+            {
+                if (auto parsed = ParseGearKey(key))
+                    malformedBuilds.push_back(*parsed);
                 LOG_ERROR("module", "Battleground Mode: invalid gear list {}. Expected itemId:honor pairs; "
                     "only free Tier 1 class/build lists are supported.", key);
+            }
+        for (auto const& key : malformedBuilds)
+            gear->RemoveBuild(key);
         next.gear = std::move(gear);
         // Item templates are loaded later during initial server startup. On
         // reload, validate before publishing the replacement immutable catalog.
@@ -171,9 +178,15 @@ public:
     std::shared_ptr<GearCatalog const> ValidateGearLists(std::shared_ptr<GearCatalog const> const& snapshot)
     {
         GearCatalog::Lists valid;
+        std::vector<GearKey> rejected;
         for (auto const& [key, items] : snapshot->All())
         {
-            bool usable = true;
+            bool usable = DistinctStarterItems(
+                snapshot->Find(key.level, key.playerClass, 1, key.role),
+                snapshot->Find(key.level, key.playerClass, 1, key.role, true));
+            if (!usable)
+                LOG_ERROR("module", "Battleground Mode: equipped/bag starter lists share an item at level {} class {} build {}.",
+                    key.level, key.playerClass, std::string(StarterRoleName(key.role)));
             for (auto const& item : items)
             {
                 ItemTemplate const* prototype = sObjectMgr->GetItemTemplate(item.entry);
@@ -192,8 +205,13 @@ public:
             }
             if (usable)
                 valid.emplace(key, items);
+            else
+                rejected.push_back(key);
         }
-        return std::make_shared<GearCatalog>(std::move(valid));
+        auto catalog = std::make_shared<GearCatalog>(std::move(valid));
+        for (auto const& key : rejected)
+            catalog->RemoveBuild(key); // Invalid alternatives must block the whole grant, not silently disappear.
+        return catalog;
     }
 
     void ValidateGear()
@@ -352,6 +370,15 @@ public:
             return;
         }
 
+        auto const& alternatives = config.gear->Find(state->level, player->getClass(), 1, state->role, true);
+        if (!DistinctStarterItems(kit, alternatives))
+        {
+            Tell(player, "Starter equipment and bag alternatives contain a duplicate item. Contact a game master.");
+            return;
+        }
+        auto bundle = kit;
+        bundle.insert(bundle.end(), alternatives.begin(), alternatives.end());
+
         if (config.starterAutoEquip && config.starterTrainArmor && player->GetLevel() >= 40)
         {
             if (player->getClass() == CLASS_WARRIOR || player->getClass() == CLASS_PALADIN)
@@ -405,10 +432,14 @@ public:
         }
         std::vector<std::unique_ptr<Item, decltype(discard)>> prepared;
         std::vector<Item*> incoming;
+        std::vector<Item*> bagOnly;
+        std::size_t primaryCount = 0;
         std::vector<uint16> equipment;
         std::set<uint16> usedSlots;
-        for (auto const& entry : kit)
+        for (std::size_t index = 0; index < bundle.size(); ++index)
         {
+            auto const& entry = bundle[index];
+            bool extra = index >= kit.size();
             ItemTemplate const* prototype = sObjectMgr->GetItemTemplate(entry.entry);
             if (!prototype)
             {
@@ -419,7 +450,7 @@ public:
             if ((prototype->HasFlag2(ITEM_FLAG2_FACTION_ALLIANCE) && player->GetTeamId(true) != TEAM_ALLIANCE) ||
                 (prototype->HasFlag2(ITEM_FLAG2_FACTION_HORDE) && player->GetTeamId(true) != TEAM_HORDE))
                 continue;
-            if (config.starterAutoEquip && config.starterTrainWeapons && prototype->Class == ITEM_CLASS_WEAPON)
+            if (config.starterTrainWeapons && prototype->Class == ITEM_CLASS_WEAPON)
                 if (uint32 proficiency = StarterWeaponProficiency(player->getClass(), prototype->SubClass))
                     if (!player->HasSpell(proficiency))
                         player->learnSpell(proficiency);
@@ -438,9 +469,22 @@ public:
             if (config.starterBind)
                 item->SetBinding(true);
             incoming.push_back(item);
-            if (config.starterAutoEquip)
+            uint16 destination = 0; // Zero means bag-only; all actual equipment positions include bag 255.
+            if (extra)
             {
-                uint16 destination = 0;
+                InventoryResult result = player->CanUseItem(item);
+                if (result != EQUIP_ERR_OK)
+                {
+                    player->SendEquipError(result, item);
+                    Tell(player, "A starter alternative is not usable by this character. Nothing was delivered; contact a game master.");
+                    return;
+                }
+                bagOnly.push_back(item);
+            }
+            else
+                ++primaryCount;
+            if (config.starterAutoEquip && !extra)
+            {
                 InventoryResult result = EQUIP_ERR_ITEM_CANT_BE_EQUIPPED;
                 bool found = false;
                 for (uint8 slot : StarterEquipmentSlots(prototype->InventoryType))
@@ -483,32 +527,33 @@ public:
                     return;
                 }
                 usedSlots.insert(destination);
-                equipment.push_back(destination);
             }
+            equipment.push_back(destination); // Keep indexes aligned with prepared/incoming, including bag-only items.
         }
         if (starterBag && usedSlots.count(bagDestination))
         {
             Tell(player, "Starter gear conflicts with the configured starter bag slot. Contact a game master.");
             return;
         }
-        if (prepared.empty())
+        if (primaryCount == 0)
         {
             Tell(player, "No starter items match this character's faction. Contact a game master.");
             return;
         }
         // Bag-only delivery still reserves the full kit. Auto-equip instead
-        // reserves the displaced equipment plus one reusable staging slot.
+        // reserves the bag alternatives, displaced equipment and one staging slot.
         // Each newly equipped piece releases its bag slot immediately.
         std::vector<Item*> replaced;
         if (config.starterAutoEquip)
         {
             for (uint16 destination : equipment)
-                if (Item* old = player->GetItemByPos(destination))
-                    replaced.push_back(old);
-            bool twoHanded = std::any_of(incoming.begin(), incoming.end(), [](Item* item)
-            {
-                return item->GetTemplate()->InventoryType == INVTYPE_2HWEAPON;
-            });
+                if (destination)
+                    if (Item* old = player->GetItemByPos(destination))
+                        replaced.push_back(old);
+            bool twoHanded = false;
+            for (std::size_t i = 0; i < incoming.size(); ++i)
+                if (equipment[i] && incoming[i]->GetTemplate()->InventoryType == INVTYPE_2HWEAPON)
+                    twoHanded = true;
             uint16 offhand = (INVENTORY_SLOT_BAG_0 << 8) | EQUIPMENT_SLOT_OFFHAND;
             if (twoHanded)
             {
@@ -542,7 +587,7 @@ public:
                 return;
             }
         }
-        auto storage = StarterStorageReservation(incoming, replaced, config.starterAutoEquip);
+        auto storage = StarterStorageReservation(incoming, replaced, config.starterAutoEquip, bagOnly);
         uint32 limitedBy = 0;
         InventoryResult capacity = player->CanStoreItems(storage.data(), static_cast<int>(storage.size()), &limitedBy);
         if (starterBag && (capacity == EQUIP_ERR_BAG_FULL || capacity == EQUIP_ERR_INVENTORY_FULL) &&
@@ -556,7 +601,7 @@ public:
         {
             player->SendEquipError(capacity, nullptr);
             Tell(player, config.starterAutoEquip ?
-                "Make bag room for replaced equipment and one working slot, then use .bgstarter. Nothing was delivered." :
+                "Make bag room for alternatives, replaced equipment and one working slot, then use .bgstarter. Nothing was delivered." :
                 "Make bag room for the entire starter set, then use .bgstarter. Nothing was delivered.");
             return;
         }
@@ -623,7 +668,7 @@ public:
             SendItemInformation(player, entry);
             player->SendNewItem(stored, 1, true, false);
             delivered.push_back(stored);
-            if (config.starterAutoEquip)
+            if (config.starterAutoEquip && equipment[i])
             {
                 // Equip immediately so empty target slots release bag capacity;
                 // replaced gear occupies the new item's vacated bag position.
@@ -638,13 +683,17 @@ public:
             }
         }
 
-        if (config.starterAutoEquip)
-            for (std::size_t i = 0; i < delivered.size(); ++i)
-                if (player->GetItemByPos(equipment[i]) != delivered[i])
-                {
-                    StarterDeliveryError(player); // A later swap must not displace an earlier kit piece.
-                    return;
-                }
+        for (std::size_t i = 0; i < delivered.size(); ++i)
+        {
+            Item* item = delivered[i];
+            bool correct = equipment[i] ? player->GetItemByPos(equipment[i]) == item :
+                Player::IsInventoryPos(item->GetPos()) && player->GetItemByPos(item->GetPos()) == item;
+            if (!correct)
+            {
+                StarterDeliveryError(player); // No later swap/script may displace equipment or auto-equip an alternative.
+                return;
+            }
+        }
 
         // Queue item instances, inventory positions, and completion together.
         // Build the save BEFORE any city teleport (which delays saves).
@@ -683,7 +732,7 @@ public:
                 current->SetPower(POWER_MANA, current->GetMaxPower(POWER_MANA));
             }
             Tell(current, !autoEquip ? "Your one-time Tier 1 starter set has been placed in your bags." :
-                "Your Tier 1 starter set is equipped. Replaced equipment is in your bags.");
+                "Your Tier 1 starter set is equipped. Configured alternatives and replaced equipment are in your bags.");
         });
     }
 
@@ -711,7 +760,9 @@ public:
         handler.PSendSysMessage("Level {} / {} starter gear (preview only):", state->level,
             std::string(StarterRoleName(state->role == StarterRole::None ? DefaultStarterRole(player->getClass()) : state->role)));
         for (auto const& item : items)
-            handler.PSendSysMessage("Item {}: {} honor", item.entry, item.honor);
+            handler.PSendSysMessage("Equipped list: item {}", item.entry);
+        for (auto const& item : config.gear->Find(state->level, player->getClass(), 1, state->role, true))
+            handler.PSendSysMessage("Bag alternative: item {}", item.entry);
     }
 
     std::optional<CharacterState> State(Player const* player)

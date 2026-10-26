@@ -49,6 +49,23 @@ int main(int argc, char** argv)
     Check(AvailableStarterRoles(catalog,39,2,false) == std::vector<StarterRole>{StarterRole::Holy},
         "disabled grants cannot accept an unoffered default when other builds are present");
     Check(AvailableStarterRoles(catalog,19,10,false).empty(), "invalid class cannot obtain disabled-delivery fallback");
+    GearCatalog mixed;
+    Check(mixed.Add("BattlegroundMode.Gear.Level19.Tier1.Mage.Damage", "42947:0"), "staff equipped list parses");
+    Check(mixed.Add("BattlegroundMode.Gear.Bag.Level19.Tier1.Mage.Damage", "900086:0,900087:0"), "bag-only alternatives parse separately");
+    Check(mixed.Find(19,8,1).size() == 1 && mixed.Find(19,8,1,StarterRole::Damage,true).size() == 2,
+        "bag weapons do not enter the equipped list");
+    Check(DistinctStarterItems(mixed.Find(19,8,1),mixed.Find(19,8,1,StarterRole::Damage,true)), "staff and alternate weapons can share a grant");
+    Check(!DistinctStarterItems({{42947,0}},{{42947,0}}), "duplicate items across equipped/bag lists block delivery");
+    Check(mixed.Add("BattlegroundMode.Gear.Bag.Level29.Tier1.Paladin.Holy", "6383:0"), "a standalone bag list can be parsed for diagnostics");
+    Check(mixed.Roles(29,2).empty(), "bag-only catalog cannot expose a build with no primary kit");
+    Check(mixed.Find(29,8,1,StarterRole::Damage,true).empty(), "bag choices do not leak across brackets");
+    Check(mixed.Find(19,2,1,StarterRole::Holy,true).empty(), "bag choices do not leak across classes or roles");
+    auto rejected = *ParseGearKey("BattlegroundMode.Gear.Bag.Level19.Tier1.Mage.Damage");
+    mixed.RemoveBuild(rejected);
+    Check(mixed.Roles(19,8).empty() && mixed.Find(19,8,1,StarterRole::Damage,true).empty(),
+        "invalid alternative removes both lists of only the affected build");
+    Check(mixed.Find(29,2,1,StarterRole::Holy,true).size() == 1, "invalid build removal preserves unrelated catalog entries");
+    Check(!mixed.Add("BattlegroundMode.Gear.Bag.Level19.Tier1.Mage.Damage", "900086:10"), "bag alternatives must be free");
     for (unsigned cls = 1; cls <= 11; ++cls)
         for (unsigned id = 0; id <= 255; ++id)
         {
@@ -129,6 +146,33 @@ int main(int argc, char** argv)
     }
     Check(safe, "reservation retains all replaced gear and staging capacity for every slot ordering");
 
+    int alternateItems[2] = {};
+    std::vector<int*> extras{&alternateItems[0], &alternateItems[1]};
+    auto complete = incoming;
+    complete.insert(complete.end(),extras.begin(),extras.end());
+    for (unsigned mask = 0; mask < (1u << 16); ++mask)
+    {
+        replaced.clear();
+        for (unsigned i = 0; i < 16; ++i)
+            if (mask & (1u << i))
+                replaced.push_back(&oldItems[i]);
+        auto slots = StarterStorageReservation(complete,replaced,true,extras);
+        int free = static_cast<int>(slots.size());
+        for (unsigned i = 0; i < incoming.size(); ++i)
+        {
+            if (--free < 0)
+                safe = false;
+            if (!(mask & (1u << i)))
+                ++free;
+        }
+        free -= static_cast<int>(extras.size()); // Alternatives are stored last and never equipped.
+        if (free < 1 || slots.size() != replaced.size() + extras.size() + 1)
+            safe = false;
+    }
+    Check(safe, "mixed reservation preserves displaced gear and both bag alternatives for all target occupancies");
+    Check(StarterStorageReservation(complete,replaced,false,extras) == complete,
+        "bag-only mode reserves all items once without double-counting alternatives");
+
     Check(ValidStarterBag(1,0,18,20,0), "Frostweave Bag is a valid generic starter bag");
     Check(!ValidStarterBag(4,1,1,20,0), "ordinary armor cannot be configured as a starter bag");
     Check(!ValidStarterBag(1,2,18,20,32), "specialized bags cannot stand in for general starter storage");
@@ -146,10 +190,10 @@ int main(int argc, char** argv)
     std::ifstream config(argv[1]);
     Check(config.good(), "distributed config is readable");
     GearCatalog shipped;
-    unsigned lists = 0;
+    unsigned lists = 0, bagLists = 0;
     for (std::string line; std::getline(config, line);)
     {
-        if (line.rfind("BattlegroundMode.Gear.Level", 0) != 0)
+        if (line.rfind("BattlegroundMode.Gear.Level", 0) != 0 && line.rfind("BattlegroundMode.Gear.Bag.Level", 0) != 0)
             continue;
         auto equals = line.find('=');
         auto key = line.substr(0, line.find_last_not_of(" \t", equals - 1) + 1);
@@ -157,8 +201,12 @@ int main(int argc, char** argv)
         auto lastQuote = line.rfind('"');
         Check(firstQuote != std::string::npos && lastQuote > firstQuote, "config list is quoted");
         Check(shipped.Add(key, line.substr(firstQuote + 1, lastQuote - firstQuote - 1)), "shipped catalog syntax and prices are valid");
-        ++lists;
+        if (line.rfind("BattlegroundMode.Gear.Bag.Level", 0) == 0)
+            ++bagLists;
+        else
+            ++lists;
     }
+    Check(bagLists == 56, "eight caster class/build alternatives are configured across seven brackets");
     Check(lists == 112, "seven brackets include sixteen completed class/build choices each");
     Check(!shipped.Find(19, 2, 1).empty(), "level 19 Paladin starter list is populated");
     Check(!shipped.Find(79, 8, 1).empty(), "level 79 Mage starter list is populated");
@@ -251,6 +299,32 @@ int main(int argc, char** argv)
             Check(!contains(items,42943) && !contains(items,44092) && !contains(items,42947) && !contains(items,900085),
                 "Protection excludes damage 2H weapons, caster staves and the Holy tome");
         }
+    for (auto [level, shield] : {std::pair<unsigned,unsigned>{19,6383}, {29,14608}, {39,14777},
+            {49,17718}, {59,18485}, {69,31287}, {79,35636}})
+    {
+        for (auto [playerClass, role] : {std::pair<unsigned,StarterRole>{5,StarterRole::Damage},
+                {8,StarterRole::Damage}, {9,StarterRole::Damage}, {11,StarterRole::Balance},
+                {11,StarterRole::Restoration}, {7,StarterRole::Elemental}, {7,StarterRole::Restoration}, {2,StarterRole::Holy}})
+        {
+            auto const& primary = shipped.Find(level,playerClass,1,role);
+            auto const& extras = shipped.Find(level,playerClass,1,role,true);
+            Check(DistinctStarterItems(primary,extras), "no extra duplicates a primary item in any caster loadout");
+            if (playerClass == 2)
+                Check(extras.size() == 1 && contains(extras,shield) && contains(primary,42948) && contains(primary,900085),
+                    "Holy keeps its mace/tome equipped and receives only a shield alternative");
+            else if (playerClass == 7)
+                Check(extras.size() == 2 && contains(extras,42948) && contains(extras,shield) && contains(primary,42947),
+                    "caster Shaman keeps its staff equipped and gets a caster mace/shield in bags");
+            else
+                Check(extras.size() == 2 && contains(extras,900086) && contains(extras,900087) && contains(primary,42947),
+                    "cloth and Druid casters keep staff equipped and get legal dagger/tome alternatives");
+            Check(primary.size() + extras.size() - 1 <= 20, "faction-filtered complete bag-only caster grant fits one empty starter bag");
+        }
+        Check(shipped.Find(level,1,1,StarterRole::Protection,true).empty() &&
+            shipped.Find(level,2,1,StarterRole::Retribution,true).empty() &&
+            shipped.Find(level,11,1,StarterRole::Feral,true).empty() &&
+            shipped.Find(level,7,1,StarterRole::Enhancement,true).empty(), "caster bag alternatives do not leak into physical builds");
+    }
     struct AlternateLoadout { std::uint8_t playerClass; StarterRole role; };
     for (auto example : {AlternateLoadout{11,StarterRole::Balance}, {11,StarterRole::Restoration},
             {7,StarterRole::Elemental}, {7,StarterRole::Restoration}, {2,StarterRole::Holy}})

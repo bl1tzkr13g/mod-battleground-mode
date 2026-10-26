@@ -117,15 +117,15 @@ def main():
             "CREATE TABLE starter_bag_items (owner INT, entry INT, PRIMARY KEY(owner,entry)) ENGINE=InnoDB;")
         expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
                "1", "one durable claim covers bag and gear")
-        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019);"
+        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019),(6,900086),(6,900087);"
             "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=6 AND starter_state=1; ROLLBACK;")
-        expect("SELECT COUNT(*) FROM starter_bag_items WHERE owner=6;", "0", "failed save rolls back bag and gear together")
+        expect("SELECT COUNT(*) FROM starter_bag_items WHERE owner=6;", "0", "failed save rolls back bag, gear and alternatives together")
         expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=6;", "1", "failed bag-and-gear save retains duplication guard")
         expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
                "0", "interrupted delivery cannot regrant its bag")
-        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019);"
+        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019),(6,900086),(6,900087);"
             "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=6 AND starter_state=1; COMMIT;")
-        expect("SELECT GROUP_CONCAT(entry ORDER BY entry) FROM starter_bag_items WHERE owner=6;", "41599,900019", "bag and gear commit in one transaction")
+        expect("SELECT GROUP_CONCAT(entry ORDER BY entry) FROM starter_bag_items WHERE owner=6;", "41599,900019,900086,900087", "bag, gear and alternatives commit in one transaction")
         expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=6;", "2", "bag and gear complete one entitlement")
         sql("DELETE FROM starter_bag_items WHERE owner=6 AND entry=41599;")
         expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",

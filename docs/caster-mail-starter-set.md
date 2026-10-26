@@ -33,7 +33,8 @@ the bracket; see [configuration and migration](starter-gear.md).
 Both builds retain Mystical Pauldrons of Elements (42951) and Mystical Vest (48683), plus
 Dignified Headmaster's Charge (42947), Discerning Eye of the Beast (42992), Dread
 Pirate Ring (50255) and the matching faction insignia. The staff occupies both
-hands; no shield/offhand or relic is granted. This shared caster/healer baseline
+hands. [Bag alternatives](caster-weapon-alternatives.md) include a caster mace
+and bracket shield; the relic slot remains untouched. This shared caster/healer baseline
 has **15 equipped pieces**, plus the configurable starter bag.
 
 ## Scaling budgets

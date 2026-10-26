@@ -31,15 +31,16 @@ inline bool ValidStarterBag(std::uint32_t itemClass, std::uint32_t subclass,
 }
 
 // Auto-equip stages one piece at a time. Reserve space for all displaced gear
-// and one reusable working item; bag-only delivery must hold the entire kit.
+// plus alternatives and one working item; bag-only delivery holds the whole grant.
 template <typename Item>
 std::vector<Item*> StarterStorageReservation(std::vector<Item*> const& incoming,
-    std::vector<Item*> const& replaced, bool autoEquip)
+    std::vector<Item*> const& replaced, bool autoEquip, std::vector<Item*> const& bagOnly = {})
 {
     if (!autoEquip)
         return incoming;
     auto storage = replaced;
-    if (!incoming.empty())
+    storage.insert(storage.end(), bagOnly.begin(), bagOnly.end());
+    if (incoming.size() > bagOnly.size())
         storage.push_back(incoming.front());
     return storage;
 }
@@ -95,10 +96,12 @@ struct GearKey
     std::uint8_t playerClass;
     std::uint16_t tier;
     StarterRole role = StarterRole::None;
+    bool bag = false;
 
     bool operator<(GearKey const& other) const
     {
-        return std::tie(level, playerClass, tier, role) < std::tie(other.level, other.playerClass, other.tier, other.role);
+        return std::tie(level, playerClass, tier, role, bag) <
+            std::tie(other.level, other.playerClass, other.tier, other.role, other.bag);
     }
 };
 
@@ -121,7 +124,9 @@ inline std::optional<std::uint32_t> GearNumber(std::string_view value)
 
 inline std::optional<GearKey> ParseGearKey(std::string_view key)
 {
-    constexpr std::string_view prefix = "BattlegroundMode.Gear.Level";
+    constexpr std::string_view bagPrefix = "BattlegroundMode.Gear.Bag.";
+    bool bag = key.substr(0, bagPrefix.size()) == bagPrefix;
+    std::string_view prefix = bag ? "BattlegroundMode.Gear.Bag.Level" : "BattlegroundMode.Gear.Level";
     if (key.substr(0, prefix.size()) != prefix)
         return std::nullopt;
     key.remove_prefix(prefix.size());
@@ -148,12 +153,12 @@ inline std::optional<GearKey> ParseGearKey(std::string_view key)
         if (!classes[playerClass].empty() && className == classes[playerClass])
         {
             if (rolePosition == std::string_view::npos)
-                return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, DefaultStarterRole(playerClass)};
+                return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, DefaultStarterRole(playerClass), bag};
             for (unsigned id = 1; id <= 9; ++id)
             {
                 auto role = static_cast<StarterRole>(id);
                 if (roleName == StarterRoleName(role) && StarterRoleAllowed(playerClass, role))
-                    return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, role};
+                    return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, role, bag};
             }
         }
     return std::nullopt;
@@ -215,12 +220,13 @@ public:
         return true;
     }
 
-    Items const& Find(std::uint8_t level, std::uint8_t playerClass, std::uint16_t tier, StarterRole role = StarterRole::None) const
+    Items const& Find(std::uint8_t level, std::uint8_t playerClass, std::uint16_t tier,
+        StarterRole role = StarterRole::None, bool bag = false) const
     {
         static Items const empty;
         if (role == StarterRole::None)
             role = DefaultStarterRole(playerClass);
-        auto found = _lists.find({level, playerClass, tier, role});
+        auto found = _lists.find({level, playerClass, tier, role, bag});
         return found == _lists.end() ? empty : found->second;
     }
 
@@ -228,9 +234,22 @@ public:
     {
         std::vector<StarterRole> roles;
         for (auto const& [key, items] : _lists)
-            if (key.level == level && key.playerClass == playerClass && !items.empty())
+            if (!key.bag && key.level == level && key.playerClass == playerClass && !items.empty())
                 roles.push_back(key.role);
         return roles;
+    }
+
+    void RemoveBuild(GearKey const& rejected)
+    {
+        for (auto it = _lists.begin(); it != _lists.end();)
+        {
+            auto const& key = it->first;
+            if (key.level == rejected.level && key.playerClass == rejected.playerClass &&
+                key.tier == rejected.tier && key.role == rejected.role)
+                it = _lists.erase(it);
+            else
+                ++it;
+        }
     }
 
     Lists const& All() const { return _lists; }
@@ -238,6 +257,15 @@ public:
 private:
     Lists _lists;
 };
+
+inline bool DistinctStarterItems(GearCatalog::Items const& equipped, GearCatalog::Items const& bag)
+{
+    for (auto const& item : bag)
+        if (std::any_of(equipped.begin(), equipped.end(),
+                [&item](GearItem const& existing) { return existing.entry == item.entry; }))
+            return false;
+    return true;
+}
 
 // Share the same choice list between menu rendering and confirmation. Disabled
 // starter delivery may still enroll a class with no configured gear at all.
