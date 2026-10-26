@@ -34,7 +34,6 @@ def main():
     sql(f'CREATE DATABASE `{database}`', False)
     try:
         sql((root / 'tests/fixtures/heirloom_item_schema.sql').read_text())
-        prototype = (root / 'data/sql/db-world/base/mod_battleground_mode_heirloom_prototype.sql').read_text()
         install = (root / 'data/sql/db-world/base/mod_battleground_mode_heirloom_cloth_set.sql').read_text()
         # Real source metadata (not the full stock world database).
         sources = [(16698,31263),(13122,28652),(16702,29793),(16703,29795),
@@ -45,8 +44,10 @@ def main():
         sql("INSERT INTO item_template (entry,name,displayid,delay,dmg_type1) VALUES " +
             ','.join(f"({entry},'stock appearance',{display},{1500 if entry == 7001 else 0},{5 if entry == 7001 else 0})" for entry, display in sources) + ';')
         before = sql('SELECT * FROM item_template ORDER BY entry;')
-        # Existing tested prototype must retain its template and instances' identity.
-        sql(prototype)
+        # Simulate the earlier deployed hood independently of the retired SQL.
+        # A set upgrade must preserve its ID and existing template.
+        sql("INSERT INTO item_template (entry,name,class,subclass,displayid,Quality,AllowableClass,InventoryType,RequiredLevel,ScalingStatDistribution,ScalingStatValue) "
+            "VALUES (900019,'Tattered Dreadmist Hood',4,1,31263,7,400,1,1,336,1048584);")
         hood = sql('SELECT * FROM item_template WHERE entry=900019;')
         sql(install)
         sql(install)
@@ -71,12 +72,14 @@ def main():
         sql('DELETE FROM item_template WHERE entry IN (900025,16704);')
         sql(install)
         expect('SELECT COUNT(*) FROM item_template WHERE entry=900025;', '0', 'missing appearance source does not create broken boots')
-        # Fresh install order: alphabetic cloth SQL precedes prototype SQL.
+        # A fresh install now needs only the full-set SQL, including its hood.
         sql('DELETE FROM item_template WHERE entry BETWEEN 900019 AND 900028;')
+        sql("INSERT INTO item_template (entry,name,displayid) VALUES (16704,'stock boots',29799);")
         sql(install)
-        new_hood = sql('SELECT * FROM item_template WHERE entry=900019;')
-        sql(prototype)
-        expect('SELECT * FROM item_template WHERE entry=900019;', new_hood, 'fresh alphabetic startup order preserves new hood')
+        expect('SELECT COUNT(*) FROM item_template WHERE entry BETWEEN 900019 AND 900028;',
+               '10', 'fresh install creates the whole set without retired SQL')
+        expect('SELECT name,displayid,InventoryType,Quality,AllowableClass FROM item_template WHERE entry=900019;',
+               'Tattered Dreadmist Hood\t31263\t1\t7\t400', 'fresh hood is provided by the full-set SQL')
         print(f'{checks} cloth-set database checks passed')
     finally:
         sql(f'DROP DATABASE `{database}`', False)
