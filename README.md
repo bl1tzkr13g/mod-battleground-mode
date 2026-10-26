@@ -162,11 +162,14 @@ not establish live client behavior. Before deployment, run these in-game checks:
 
 [Starter build configuration](docs/starter-gear.md) lists the available roles and
 migration steps. All completed loadouts live in `conf/mod_battleground_mode.conf.dist`;
-there are no separate alternate config files to copy. Paladin has Retribution/Holy,
+there are no separate alternate config files to copy. Warrior has Damage/Protection;
+Paladin has Retribution/Holy/Protection,
 Druid has Feral/Balance/Restoration, and Shaman has Enhancement/Elemental/Restoration.
 Other eligible classes share a Damage kit (Priest's kit also suits healing).
-Protection is reserved for future kits and is not offered yet. Gear choice does
-not assign talents, respec, or change the class-training policy.
+[Protection kits](docs/protection-starter-set.md) combine scaling Valor armor and
+a one-handed heirloom sword with a stock shield for each bracket. Shield armor
+and block stay at their native stock values. Gear choice does not assign talents,
+respec, or change the class-training policy.
 
 **Upgrade:** pull, rebuild/install worldserver, replace the gear catalog in your
 active module `.conf` with the new complete section, then restart. Preserve your

@@ -99,7 +99,9 @@ BattlegroundMode.StarterGear.Bag.Item = 41599
 # The player chooses bracket, then one of the nonempty class builds below.
 # Selection controls the one-time gear grant, not talents, spells or spec.
 # Damage is a shared kit for the pure damage classes and Priest (caster/healer).
-# Protection kits are not available yet. No placeholder builds appear in menus.
+# Protection Warrior/Paladin use Valor armor, a 1H sword and a bracket shield.
+# Shield armor/block use native stock values; shields do not scale as heirlooms.
+# No placeholder builds appear in menus.
 # Keep a one-handed main weapon before any held offhand in each item list.
 # Both insignias are listed; delivery filters to the player's faction.
 # Low-level heirloom armor follows native mail/plate adaptation. Client patch
@@ -110,9 +112,13 @@ BattlegroundMode.StarterGear.Bag.Item = 41599
 
 # Warrior
 BattlegroundMode.Gear.Level19.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Bear Buckler.
+BattlegroundMode.Gear.Level19.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,4821:0"
 
 # Paladin
 BattlegroundMode.Gear.Level19.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Bear Buckler.
+BattlegroundMode.Gear.Level19.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,4821:0"
 BattlegroundMode.Gear.Level19.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -144,9 +150,13 @@ BattlegroundMode.Gear.Level19.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level29.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Nefarious Buckler.
+BattlegroundMode.Gear.Level29.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,4477:0"
 
 # Paladin
 BattlegroundMode.Gear.Level29.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Nefarious Buckler.
+BattlegroundMode.Gear.Level29.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,4477:0"
 BattlegroundMode.Gear.Level29.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -178,9 +188,13 @@ BattlegroundMode.Gear.Level29.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level39.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Symbolic Crest.
+BattlegroundMode.Gear.Level39.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,14825:0"
 
 # Paladin
 BattlegroundMode.Gear.Level39.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Symbolic Crest.
+BattlegroundMode.Gear.Level39.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,14825:0"
 BattlegroundMode.Gear.Level39.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -212,9 +226,13 @@ BattlegroundMode.Gear.Level39.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level49.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Valorous Shield.
+BattlegroundMode.Gear.Level49.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,8282:0"
 
 # Paladin
 BattlegroundMode.Gear.Level49.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Valorous Shield.
+BattlegroundMode.Gear.Level49.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,8282:0"
 BattlegroundMode.Gear.Level49.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -246,9 +264,13 @@ BattlegroundMode.Gear.Level49.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level59.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Imbued Shield.
+BattlegroundMode.Gear.Level59.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,15943:0"
 
 # Paladin
 BattlegroundMode.Gear.Level59.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Imbued Shield.
+BattlegroundMode.Gear.Level59.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,15943:0"
 BattlegroundMode.Gear.Level59.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -280,9 +302,13 @@ BattlegroundMode.Gear.Level59.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level69.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Shield of the Wayward Footman.
+BattlegroundMode.Gear.Level69.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,31200:0"
 
 # Paladin
 BattlegroundMode.Gear.Level69.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Shield of the Wayward Footman.
+BattlegroundMode.Gear.Level69.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,31200:0"
 BattlegroundMode.Gear.Level69.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
@@ -314,9 +340,13 @@ BattlegroundMode.Gear.Level69.Tier1.Druid.Restoration = "900056:0,900064:0,42984
 
 # Warrior
 BattlegroundMode.Gear.Level79.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Blade-Binding Bulwark.
+BattlegroundMode.Gear.Level79.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,37810:0"
 
 # Paladin
 BattlegroundMode.Gear.Level79.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Blade-Binding Bulwark.
+BattlegroundMode.Gear.Level79.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,37810:0"
 BattlegroundMode.Gear.Level79.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter

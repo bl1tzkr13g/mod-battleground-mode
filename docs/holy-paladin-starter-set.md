@@ -38,7 +38,8 @@ as the stock Valor family. Low-level armor values still need in-game verificatio
 Holy and Retribution live together in the main config at all seven brackets.
 Choose Holy after the bracket to receive this caster kit. The choice persists
 without respeccing the player. See [configuration and migration](starter-gear.md).
-Existing completed grants stay completed. Protection is not offered until built.
+Existing completed grants stay completed. [Protection](protection-starter-set.md)
+is also available as a separate Paladin choice with its own sword/shield kit.
 
 **Keep the one-handed mace before the tome in the item list.** The updated
 preflight can validate a shield/held offhand after an already validated planned

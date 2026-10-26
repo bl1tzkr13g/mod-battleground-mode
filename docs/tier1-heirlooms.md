@@ -70,3 +70,8 @@ replaced original equipment moves into the bags.
 [Holy Paladin caster plate](holy-paladin-starter-set.md) are selectable alongside
 the physical builds above. All entries live in the main config. Client patch work
 remains deferred; the role-selection update requires rebuilding worldserver.
+
+[Protection Warrior and Paladin](protection-starter-set.md) reuse the Valor armor,
+ring and physical trinket with a one-handed heirloom sword (42945). Each bracket
+has a stock shield with native armor/block, since shield scaling is not supplied
+by the existing heirloom tables. Both roles are selectable in the main config.

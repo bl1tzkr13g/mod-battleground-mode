@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     Check(catalog.Find(29,2,1,StarterRole::Holy).empty(), "build cannot leak across brackets");
     Check(catalog.Find(19,1,1,StarterRole::Holy).empty(), "build cannot leak across classes");
     Check(!catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Warrior.Holy", "42948:0"), "class-inappropriate build rejected");
-    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin.Protection", ""), "Protection key is ready for a future kit without offering an empty build");
+    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin.Protection", ""), "empty Protection keys disable that build without offering a placeholder");
     Check(catalog.Roles(19,2).size() == 2, "only configured nonempty builds are offered");
     Check(catalog.Add("BattlegroundMode.Gear.Level29.Tier1.Paladin.Holy", ""), "empty build intentionally disabled");
     Check(catalog.Roles(29,2).empty(), "empty builds do not appear in selection");
@@ -159,8 +159,7 @@ int main(int argc, char** argv)
         Check(shipped.Add(key, line.substr(firstQuote + 1, lastQuote - firstQuote - 1)), "shipped catalog syntax and prices are valid");
         ++lists;
     }
-    Check(shipped.Find(19,2,1,StarterRole::Protection).empty(), "unbuilt Protection has no pretend loadout");
-    Check(lists == 98, "seven brackets include nine defaults and five alternate builds each");
+    Check(lists == 112, "seven brackets include sixteen completed class/build choices each");
     Check(!shipped.Find(19, 2, 1).empty(), "level 19 Paladin starter list is populated");
     Check(!shipped.Find(79, 8, 1).empty(), "level 79 Mage starter list is populated");
     Check(shipped.Find(79, 1, 4).empty(), "upgrade catalog is removed");
@@ -230,6 +229,27 @@ int main(int argc, char** argv)
                 Check(contains(items, entry), "Warrior/Paladin get strength plate completion at every bracket");
             Check(items.size() == 16, "strength kit has 15 equipped pieces plus one alternate insignia");
             Check(contains(items, 42949) && contains(items, 48685), "strength kit retains existing Valor shoulders and chest");
+        }
+    for (auto [level, shield] : {std::pair<unsigned,unsigned>{19,4821}, {29,4477}, {39,14825},
+            {49,8282}, {59,15943}, {69,31200}, {79,37810}})
+        for (auto playerClass : {1,2})
+        {
+            auto const& items = shipped.Find(level, playerClass, 1, StarterRole::Protection);
+            auto roles = AvailableStarterRoles(shipped, level, playerClass, true);
+            Check(std::find(roles.begin(), roles.end(), StarterRole::Protection) != roles.end(),
+                "Protection is selectable for both shield classes at every bracket");
+            Check(items.size() == 17, "Protection has sixteen equipped items plus the alternate faction insignia");
+            for (std::uint32_t entry = 900047; entry <= 900055; ++entry)
+                Check(contains(items,entry), "Protection retains all strength/stamina Valor completion pieces");
+            Check(contains(items,42949) && contains(items,48685), "Protection retains scaling Valor shoulders/chest");
+            Check(contains(items,42991) && contains(items,50255) && contains(items,44098) && contains(items,44097),
+                "Protection retains physical trinket, ring and faction-filtered insignia");
+            auto sword = std::find_if(items.begin(),items.end(),[](GearItem const& x) { return x.entry == 42945; });
+            auto offhand = std::find_if(items.begin(),items.end(),[shield](GearItem const& x) { return x.entry == shield; });
+            Check(sword != items.end() && offhand != items.end() && sword < offhand,
+                "Protection plans its legal 1H sword before the bracket shield over an old 2H weapon");
+            Check(!contains(items,42943) && !contains(items,44092) && !contains(items,42947) && !contains(items,900085),
+                "Protection excludes damage 2H weapons, caster staves and the Holy tome");
         }
     struct AlternateLoadout { std::uint8_t playerClass; StarterRole role; };
     for (auto example : {AlternateLoadout{11,StarterRole::Balance}, {11,StarterRole::Restoration},

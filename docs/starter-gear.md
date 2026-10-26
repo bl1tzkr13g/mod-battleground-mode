@@ -21,16 +21,17 @@ can be listed; the receiver gets only the correct faction's version.
 
 | Class | Available builds |
 |---|---|
-| Warrior | Damage (two-handed strength) |
-| Paladin | Retribution, Holy |
+| Warrior | Damage (two-handed strength), Protection |
+| Paladin | Retribution, Holy, Protection |
 | Hunter, Rogue, Mage, Warlock | Damage |
 | Priest | Damage (shared caster/healer kit) |
 | Shaman | Enhancement, Elemental, Restoration |
 | Druid | Feral, Balance, Restoration |
 
-These 14 builds are present at 19/29/39/49/59/69/79. Death Knights start above
-level 1 and remain ineligible. `Protection` is a supported future Warrior/Paladin
-key, but no kit is supplied or offered yet. Do not fill it with a damage kit.
+These 16 builds are present at 19/29/39/49/59/69/79. Death Knights start above
+level 1 and remain ineligible. [Protection Warrior/Paladin](protection-starter-set.md)
+uses scaling Valor gear and a one-handed sword with bracket-appropriate stock
+shields. The shields retain their fixed native armor/block values.
 New brackets need complete class/build keys too. No kit is borrowed from another
 bracket, class or role. Balance/Restoration and Elemental/Restoration currently
 share caster/healer item lists but persist as separate choices for future tuning.

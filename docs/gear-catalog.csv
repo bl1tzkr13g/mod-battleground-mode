@@ -1609,3 +1609,241 @@ level,tier,player_class,role,item_id,item_name,honor,quality,required_level,item
 79,1,Druid,Restoration,44098,Inherited Insignia of the Alliance,0,7,0,1
 79,1,Druid,Restoration,44097,Inherited Insignia of the Horde,0,7,0,1
 79,1,Druid,Restoration,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+19,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+19,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+19,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+19,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+19,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+19,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+19,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+19,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+19,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+19,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+19,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+19,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+19,1,Paladin,Protection,4821,Bear Buckler,0,2,18,23
+19,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+19,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+19,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+19,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+19,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+19,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+19,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+19,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+19,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+19,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+19,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+19,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+19,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+19,1,Warrior,Protection,4821,Bear Buckler,0,2,18,23
+29,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+29,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+29,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+29,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+29,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+29,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+29,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+29,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+29,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+29,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+29,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+29,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+29,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+29,1,Paladin,Protection,4477,Nefarious Buckler,0,2,29,34
+29,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+29,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+29,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+29,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+29,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+29,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+29,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+29,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+29,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+29,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+29,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+29,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+29,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+29,1,Warrior,Protection,4477,Nefarious Buckler,0,2,29,34
+39,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+39,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+39,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+39,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+39,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+39,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+39,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+39,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+39,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+39,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+39,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+39,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+39,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+39,1,Paladin,Protection,14825,Symbolic Crest,0,2,38,43
+39,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+39,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+39,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+39,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+39,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+39,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+39,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+39,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+39,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+39,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+39,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+39,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+39,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+39,1,Warrior,Protection,14825,Symbolic Crest,0,2,38,43
+49,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+49,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+49,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+49,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+49,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+49,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+49,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+49,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+49,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+49,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+49,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+49,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+49,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+49,1,Paladin,Protection,8282,Valorous Shield,0,2,46,51
+49,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+49,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+49,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+49,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+49,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+49,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+49,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+49,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+49,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+49,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+49,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+49,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+49,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+49,1,Warrior,Protection,8282,Valorous Shield,0,2,46,51
+59,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+59,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+59,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+59,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+59,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+59,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+59,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+59,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+59,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+59,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+59,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+59,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+59,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+59,1,Paladin,Protection,15943,Imbued Shield,0,2,56,61
+59,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+59,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+59,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+59,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+59,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+59,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+59,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+59,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+59,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+59,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+59,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+59,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+59,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+59,1,Warrior,Protection,15943,Imbued Shield,0,2,56,61
+69,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+69,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+69,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+69,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+69,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+69,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+69,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+69,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+69,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+69,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+69,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+69,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+69,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+69,1,Paladin,Protection,31200,Shield of the Wayward Footman,0,3,65,100
+69,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+69,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+69,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+69,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+69,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+69,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+69,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+69,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+69,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+69,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+69,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+69,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+69,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+69,1,Warrior,Protection,31200,Shield of the Wayward Footman,0,3,65,100
+79,1,Paladin,Protection,900047,Polished Helm of Valor,0,7,1,1
+79,1,Paladin,Protection,900055,Polished Pendant of Valor,0,7,1,1
+79,1,Paladin,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+79,1,Paladin,Protection,900048,Polished Cloak of Valor,0,7,1,1
+79,1,Paladin,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Paladin,Protection,900050,Polished Bracers of Valor,0,7,1,1
+79,1,Paladin,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+79,1,Paladin,Protection,900049,Polished Belt of Valor,0,7,1,1
+79,1,Paladin,Protection,900052,Polished Legplates of Valor,0,7,1,1
+79,1,Paladin,Protection,900053,Polished Boots of Valor,0,7,1,1
+79,1,Paladin,Protection,50255,Dread Pirate Ring,0,7,0,1
+79,1,Paladin,Protection,900054,Polished Signet of Valor,0,7,1,1
+79,1,Paladin,Protection,42991,Swift Hand of Justice,0,7,0,1
+79,1,Paladin,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Paladin,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Paladin,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+79,1,Paladin,Protection,37810,Blade-Binding Bulwark,0,3,76,158
+79,1,Warrior,Protection,900047,Polished Helm of Valor,0,7,1,1
+79,1,Warrior,Protection,900055,Polished Pendant of Valor,0,7,1,1
+79,1,Warrior,Protection,42949,Polished Spaulders of Valor,0,7,0,1
+79,1,Warrior,Protection,900048,Polished Cloak of Valor,0,7,1,1
+79,1,Warrior,Protection,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Warrior,Protection,900050,Polished Bracers of Valor,0,7,1,1
+79,1,Warrior,Protection,900051,Polished Gauntlets of Valor,0,7,1,1
+79,1,Warrior,Protection,900049,Polished Belt of Valor,0,7,1,1
+79,1,Warrior,Protection,900052,Polished Legplates of Valor,0,7,1,1
+79,1,Warrior,Protection,900053,Polished Boots of Valor,0,7,1,1
+79,1,Warrior,Protection,50255,Dread Pirate Ring,0,7,0,1
+79,1,Warrior,Protection,900054,Polished Signet of Valor,0,7,1,1
+79,1,Warrior,Protection,42991,Swift Hand of Justice,0,7,0,1
+79,1,Warrior,Protection,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Warrior,Protection,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Warrior,Protection,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+79,1,Warrior,Protection,37810,Blade-Binding Bulwark,0,3,76,158
