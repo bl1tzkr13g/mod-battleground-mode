@@ -238,3 +238,11 @@ is available with optional ready-to-copy loadouts in `conf/loadouts`. Default
 physical class lists stay unchanged. The updater installs the items on restart;
 copy the chosen example entries into the active config to make that class's
 future starter grants use caster gear. No additional rebuild is required.
+
+## Alternate Elemental/Restoration Shaman mail
+
+[Caster/healer mail and a complete seven-bracket Shaman caster path](docs/caster-mail-starter-set.md)
+are available as optional example configs. The combined example uses caster
+leather below 40 and caster mail afterward. Enhancement remains the default;
+replace the chosen active Tier 1 entries to test the caster path. SQL installs
+on restart, with no additional rebuild required.

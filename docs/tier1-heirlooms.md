@@ -68,3 +68,7 @@ Caster/healer leather alternatives for Druid and low-level Shaman are documented
 [here](caster-leather-starter-set.md), with separate example configs. Physical
 class defaults remain as above until those example entries are copied into the
 active config. Client patch work remains deferred.
+
+[Elemental/Restoration Shaman caster mail](caster-mail-starter-set.md) completes
+its alternate caster path from level 40 onward; the combined example covers all
+seven default brackets without changing the active Enhancement defaults.

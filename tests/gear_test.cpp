@@ -208,10 +208,13 @@ int main(int argc, char** argv)
     std::string configPath = argv[1];
     auto slash = configPath.find_last_of("/\\");
     auto configDir = slash == std::string::npos ? std::string() : configPath.substr(0, slash + 1);
-    for (auto example : {"caster-leather-druid.conf.example", "caster-leather-shaman-low.conf.example"})
+    struct AlternateLoadout { char const* file; std::uint8_t playerClass; unsigned coverage; };
+    for (auto example : {AlternateLoadout{"caster-leather-druid.conf.example",11,0},
+            {"caster-leather-shaman-low.conf.example",7,1},
+            {"caster-mail-shaman-high.conf.example",7,2}, {"caster-shaman.conf.example",7,3}})
     {
-        std::ifstream alternate(configDir + "loadouts/" + example);
-        Check(alternate.good(), "caster leather example is readable");
+        std::ifstream alternate(configDir + "loadouts/" + example.file);
+        Check(alternate.good(), "caster alternate example is readable");
         GearCatalog role;
         unsigned roleLists = 0;
         for (std::string line; std::getline(alternate, line);)
@@ -226,18 +229,21 @@ int main(int argc, char** argv)
                 "alternate caster list uses supported keys and free prices");
             ++roleLists;
         }
-        bool druid = std::string(example) == "caster-leather-druid.conf.example";
-        Check(roleLists == (druid ? 7u : 3u), "alternate contains only its intended class/bracket entries");
+        bool druid = example.playerClass == 11;
+        unsigned expectedLists = example.coverage == 1 ? 3u : example.coverage == 2 ? 4u : 7u;
+        Check(roleLists == expectedLists, "alternate contains only its intended class/bracket entries");
         for (auto level : {19,29,39,49,59,69,79})
         {
-            auto const& items = role.Find(level, druid ? 11 : 7, 1);
-            bool available = druid || level < 40;
-            Check(items.empty() == !available, "caster leather example covers intended brackets only");
+            auto const& items = role.Find(level, example.playerClass, 1);
+            bool available = example.coverage == 0 || example.coverage == 3 ||
+                (example.coverage == 1 ? level < 40 : level >= 40);
+            Check(items.empty() == !available, "caster example covers intended brackets only");
             if (!available)
                 continue;
-            Check(items.size() == 16, "caster leather kit delivers 15 pieces after faction filtering");
-            for (std::uint32_t entry = 900056; entry <= 900064; ++entry)
-                Check(contains(items, entry), "alternate includes every caster leather completion piece");
+            Check(items.size() == 16, "caster alternate delivers 15 pieces after faction filtering");
+            std::uint32_t firstEntry = !druid && level >= 40 ? 900065 : 900056;
+            for (std::uint32_t entry = firstEntry; entry < firstEntry + 9; ++entry)
+                Check(contains(items, entry), "caster alternate selects the correct armor family at each bracket");
             Check(contains(items, 42947) && contains(items, 42992) && !contains(items, 42991), "alternate uses caster staff and stat trinket");
             Check(contains(items, druid ? 42984 : 42951) && contains(items, druid ? 48687 : 48683), "alternate uses class-appropriate caster heirloom chest/shoulders");
         }

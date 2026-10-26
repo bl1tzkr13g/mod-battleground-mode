@@ -3,7 +3,9 @@
 Hunter and Enhancement Shaman now receive nine custom scaling completion pieces
 in level-40+ brackets: **49, 59, 69 and 79** in the default config. Their 19/29/39
 leather lists remain unchanged. This is the physical/agility mail baseline, not
-an Elemental/Restoration caster-mail loadout. Warrior/Paladin and other classes
+an Elemental/Restoration caster-mail loadout. The separate
+[caster/healer mail alternative](caster-mail-starter-set.md) now includes ready-to-copy
+example configs. Warrior/Paladin and other classes
 are unchanged by this update.
 
 | Slot | Item | ID | Stock appearance |

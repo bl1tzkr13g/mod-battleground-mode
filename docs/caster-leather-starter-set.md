@@ -46,7 +46,8 @@ replace the matching class/bracket Tier 1 entries in the active module `.conf`
 with its entries, then restart. This makes that role the class default for future
 unclaimed grants at those brackets. It does not offer an in-game role picker or
 change completed grants. The Shaman example only changes low-level brackets;
-its higher-level caster mail alternative is separate future content.
+its [higher-level caster mail](caster-mail-starter-set.md) is now available,
+including a combined seven-bracket Shaman example.
 
 The example keys use the existing supported `Gear.LevelNN.Tier1.Class` syntax,
 with no unsupported suffixes. [caster-leather-loadouts.csv](caster-leather-loadouts.csv)
