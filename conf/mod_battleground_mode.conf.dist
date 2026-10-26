@@ -113,7 +113,7 @@ BattlegroundMode.StarterGear.Bag.Item = 41599
 # Tiers 2+ are STOCK upgrade candidates, NOT playtested complete sets.
 # Tier 1 uses the SAME class heirlooms at EVERY bracket. Rogue/Feral Druid use
 # custom agility leather completion pieces at all brackets; Hunter/Shaman use
-# them below 40, retaining their existing mail filler from 40 onward.
+# them below 40 and the custom agility mail completion set from 40 onward.
 # Warrior/Paladin retain ordinary filler armor and still lack a head item at 19.
 # Priest/Mage/Warlock now get a full custom-scaling cloth completion set, including
 # cloak, jewelry and wand. Client icons/right-click support are deferred.
@@ -790,8 +790,8 @@ BattlegroundMode.Gear.Level49.Tier1.Paladin = "9285:0,9287:0,9288:0,9289:0,9290:
 BattlegroundMode.Gear.Level49.Tier1.Warrior = "9285:0,9287:0,9288:0,9289:0,9290:0,9291:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Brigade Boots; Brigade Bracers; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level49.Tier1.Hunter = "9926:0,9927:0,9930:0,9931:0,9932:0,9933:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
+BattlegroundMode.Gear.Level49.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
 # Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
@@ -802,8 +802,8 @@ BattlegroundMode.Gear.Level49.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,
 BattlegroundMode.Gear.Level49.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Brigade Boots; Brigade Bracers; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level49.Tier1.Shaman = "9926:0,9927:0,9930:0,9931:0,9932:0,9933:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
+BattlegroundMode.Gear.Level49.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
 
 # Mage
 # Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
@@ -1005,8 +1005,8 @@ BattlegroundMode.Gear.Level59.Tier1.Paladin = "10165:0,10166:0,10167:0,10168:0,1
 BattlegroundMode.Gear.Level59.Tier1.Warrior = "10165:0,10166:0,10167:0,10168:0,10169:0,10171:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Merciless Bracers; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Greaves; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level59.Tier1.Hunter = "15649:0,15651:0,15653:0,15654:0,15655:0,15694:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
+BattlegroundMode.Gear.Level59.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
 # Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
@@ -1017,8 +1017,8 @@ BattlegroundMode.Gear.Level59.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,
 BattlegroundMode.Gear.Level59.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Merciless Bracers; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Greaves; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level59.Tier1.Shaman = "15649:0,15651:0,15653:0,15654:0,15655:0,15694:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
+BattlegroundMode.Gear.Level59.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
 
 # Mage
 # Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
@@ -1220,8 +1220,8 @@ BattlegroundMode.Gear.Level69.Tier1.Paladin = "24966:0,24967:0,24969:0,24970:0,2
 BattlegroundMode.Gear.Level69.Tier1.Warrior = "24966:0,24967:0,24969:0,24970:0,24971:0,24973:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Bracelets; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level69.Tier1.Hunter = "24854:0,24855:0,24857:0,24858:0,24859:0,24861:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
+BattlegroundMode.Gear.Level69.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
 # Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
@@ -1232,8 +1232,8 @@ BattlegroundMode.Gear.Level69.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,
 BattlegroundMode.Gear.Level69.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Bracelets; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level69.Tier1.Shaman = "24854:0,24855:0,24857:0,24858:0,24859:0,24861:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
+BattlegroundMode.Gear.Level69.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
 
 # Mage
 # Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
@@ -1435,8 +1435,8 @@ BattlegroundMode.Gear.Level79.Tier1.Paladin = "39084:0,39086:0,39087:0,39088:0,4
 BattlegroundMode.Gear.Level79.Tier1.Warrior = "39084:0,39086:0,39087:0,39088:0,41974:0,41975:0,42949:0,48685:0,42943:0,42991:0,50255:0,44098:0,44097:0"
 
 # Hunter
-# Frostscale Belt; Frostscale Boots; Frostscale Gloves; Frostscale Leggings; Frostscale Bracers; Frostscale Helm; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Balanced Heartseeker; Charmed Ancient Bone Bow; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level79.Tier1.Hunter = "38412:0,38413:0,38415:0,38416:0,38436:0,38440:0,42950:0,48677:0,42944:0,42946:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
+BattlegroundMode.Gear.Level79.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
 # Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
@@ -1447,8 +1447,8 @@ BattlegroundMode.Gear.Level79.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,
 BattlegroundMode.Gear.Level79.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Frostscale Belt; Frostscale Boots; Frostscale Gloves; Frostscale Leggings; Frostscale Bracers; Frostscale Helm; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level79.Tier1.Shaman = "38412:0,38413:0,38415:0,38416:0,38436:0,38440:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
+# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
+BattlegroundMode.Gear.Level79.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
 
 # Mage
 # Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand

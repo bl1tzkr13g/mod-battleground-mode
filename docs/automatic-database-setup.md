@@ -6,7 +6,7 @@ updater runs before world data and module startup hooks. It reads the compiled
 module list and recursively discovers this module's database folders:
 
 - `data/sql/db-characters`: character choices and starter delivery schema.
-- `data/sql/db-world`: vendor rows and banners.
+- `data/sql/db-world`: vendor rows, banners and custom starter item templates.
 
 The core tracks applied filenames and content hashes in each database's `updates`
 table. Changed module SQL is reapplied with the default redundancy settings.

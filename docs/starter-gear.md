@@ -185,8 +185,8 @@ normal install/build/startup step.
 
 Tier 1 now uses the same class-appropriate heirloom shoulders, chest, weapon(s),
 ring, and trinkets at every bracket. The old shoulders and chest are removed;
-ordinary pieces for other slots remain for Warrior/Paladin and level-40+
-Hunter/Shaman. Rogue/Feral Druid use the [leather completion set](leather-starter-set.md)
+ordinary pieces for other slots remain for Warrior/Paladin. Hunter/Shaman
+use the [agility mail completion set](mail-starter-set.md) from level 40 onward. Rogue/Feral Druid use the [leather completion set](leather-starter-set.md)
 at every bracket; Hunter/Enhancement Shaman get it below 40. Priest, Mage and
 Warlock instead use the [full custom caster completion set](caster-starter-set.md).
 See [the heirloom loadouts](tier1-heirlooms.md).

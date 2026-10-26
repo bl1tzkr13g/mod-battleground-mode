@@ -183,5 +183,18 @@ int main(int argc, char** argv)
                 Check(contains(items, shoulders) && contains(items, chest), "appropriate existing heirloom chest and shoulders remain");
             }
         }
+    for (auto level : {19,29,39,49,59,69,79})
+        for (auto playerClass : {3,7})
+        {
+            auto const& items = shipped.Find(level, playerClass, 1);
+            bool mail = level >= 40;
+            for (std::uint32_t entry = 900038; entry <= 900046; ++entry)
+                Check(contains(items, entry) == mail, "agility mail completion is granted only to mail-level Hunter/Shaman");
+            if (mail)
+            {
+                Check(items.size() == (playerClass == 3 ? 17u : 16u), "mail kit preserves expected piece count and faction option");
+                Check(contains(items, 42950) && contains(items, 48677), "mail kit retains existing heirloom chest and shoulders");
+            }
+        }
     std::cout << checks << " gear checks passed\n";
 }

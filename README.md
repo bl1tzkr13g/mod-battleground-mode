@@ -212,6 +212,13 @@ for custom-item icons/right-click equipping remains deferred.
 ## Agility leather completion set
 
 [Rogue/Feral Druid now use custom scaling leather completion pieces at every bracket](docs/leather-starter-set.md).
-Hunter and Enhancement Shaman get them at 19/29/39, retaining existing mail lists
-from 40 onward. Stock heirloom chest/shoulders/weapons remain; old ordinary filler
+Hunter and Enhancement Shaman get them at 19/29/39, using the separate mail
+completion set from 40 onward. Stock heirloom chest/shoulders/weapons remain; old ordinary filler
 is replaced. SQL installs automatically on restart; update active Tier 1 lists.
+
+## Agility mail completion set
+
+[Hunter/Enhancement Shaman use custom scaling mail completion pieces at 49/59/69/79](docs/mail-starter-set.md),
+with existing heirloom chest, shoulders and weapons retained. Their lower brackets
+remain leather. Update active Tier 1 config entries and restart; SQL installs
+automatically and this gear-data update needs no additional rebuild.

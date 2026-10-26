@@ -25,8 +25,7 @@ Nine custom scaling pieces complete the leather armor, cloak and jewelry slots:
 
 Hunter/Shaman mail heirloom chest/shoulders already use the core's low-level
 leather adaptation. Only the completion pieces change to actual leather. Their
-level-49/59/69/79 mail lists stay as they were; this update does not create a new
-mail completion set. Warriors and Paladins wear mail below 40, so they do not
+level-49/59/69/79 lists now use the separate [agility mail completion set](mail-starter-set.md). Warriors and Paladins wear mail below 40, so they do not
 receive this leather set. Death Knights remain ineligible for level-1 enrollment.
 
 These are **agility/physical** defaults using the existing Shadowcraft heirloom
@@ -81,7 +80,7 @@ retries after clearing space; completed deliveries are not reset. The improved
 auto-equip staging requires rebuilding the updated module once. Existing testers can add individual IDs above
 with GM `.additem` to inspect them without resetting claims.
 
-Verify at least: Rogue/Druid at 19 and 79, Hunter/Shaman at 19 and 39, their old
-mail choices at 49, both factions and applicable races, item models and actual
+Verify at least: Rogue/Druid at 19 and 79, Hunter/Shaman at 19 and 39, their
+mail completion set at 49, both factions and applicable races, item models and actual
 stat changes on equip/unequip/relog, dagger hands and distinct rings/trinkets.
 The new leather items' scaling and armor budgets have not been verified in-game.
