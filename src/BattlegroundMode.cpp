@@ -442,6 +442,25 @@ public:
                     if (slot != NULL_SLOT && usedSlots.count(static_cast<uint16>((INVENTORY_SLOT_BAG_0 << 8) | slot)))
                         continue;
                     result = player->CanEquipItem(slot, candidate, item, true);
+                    if (result == EQUIP_ERR_CANT_EQUIP_WITH_TWOHANDED)
+                    {
+                        uint16 mainPos = (INVENTORY_SLOT_BAG_0 << 8) | EQUIPMENT_SLOT_MAINHAND;
+                        auto main = std::find(equipment.begin(), equipment.end(), mainPos);
+                        if (main != equipment.end())
+                        {
+                            ItemTemplate const* planned = incoming[static_cast<std::size_t>(main - equipment.begin())]->GetTemplate();
+                            if (planned->Class == ITEM_CLASS_WEAPON &&
+                                CanPlanHeldOffhand(prototype->InventoryType, planned->InventoryType, planned->SubClass))
+                            {
+                                // The core has already checked this item's ownership,
+                                // class/race, level, proficiency and unique restrictions.
+                                // Only the CURRENT 2H main hand blocked it. A validated
+                                // earlier 1H item will be equipped before this offhand.
+                                candidate = (INVENTORY_SLOT_BAG_0 << 8) | EQUIPMENT_SLOT_OFFHAND;
+                                result = EQUIP_ERR_OK;
+                            }
+                        }
+                    }
                     if (result == EQUIP_ERR_OK && !usedSlots.count(candidate))
                     {
                         destination = candidate;

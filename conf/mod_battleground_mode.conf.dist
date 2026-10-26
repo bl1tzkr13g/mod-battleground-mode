@@ -123,7 +123,8 @@ BattlegroundMode.StarterGear.Bag.Item = 41599
 # Both faction insignias are listed: only the player's faction version is given.
 # Hybrid defaults are physical: Retribution Paladin, Enhancement Shaman, Feral
 # Druid. Optional caster/healer loadouts are in conf/loadouts/*.conf.example;
-# copy their class entries to activate. No role-selection menu is provided.
+# copy their class entries to activate (including holy-paladin.conf.example).
+# No role-selection menu is provided.
 # Empty later tiers must be filled before exposing them in the future vendor.
 # Green starter items receive normal random stat affixes from the core's pools.
 # Role-specific fixed affixes are not implemented.

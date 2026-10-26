@@ -72,3 +72,8 @@ active config. Client patch work remains deferred.
 [Elemental/Restoration Shaman caster mail](caster-mail-starter-set.md) completes
 its alternate caster path from level 40 onward; the combined example covers all
 seven default brackets without changing the active Enhancement defaults.
+
+[Holy Paladin caster plate](holy-paladin-starter-set.md) has its own optional
+loadout with a one-handed caster mace and held tome. It leaves Retribution's
+physical defaults intact until the Holy class entries are copied into the active
+config; planned main/offhand handling requires the updated module build.

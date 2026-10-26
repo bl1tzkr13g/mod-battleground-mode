@@ -168,6 +168,15 @@ private:
     Lists _lists;
 };
 
+// A held offhand may be preflighted after an ALREADY validated planned 1H
+// main hand, even while the current weapon is 2H. Ordinary dual-wield weapons
+// are not covered by this exception, nor are polearms, staves or fishing poles.
+inline bool CanPlanHeldOffhand(std::uint32_t offhandType, std::uint32_t mainType, std::uint32_t mainSubclass)
+{
+    return (offhandType == 14 || offhandType == 23) && (mainType == 13 || mainType == 21) &&
+        mainSubclass != 6 && mainSubclass != 10 && mainSubclass != 20;
+}
+
 // Explicit paired slots prevent preflighting two items into the same empty
 // slot. 255 means let the core choose the normal slot for all other items.
 inline std::vector<std::uint8_t> StarterEquipmentSlots(std::uint32_t inventoryType)

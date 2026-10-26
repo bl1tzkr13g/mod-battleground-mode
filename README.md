@@ -246,3 +246,11 @@ are available as optional example configs. The combined example uses caster
 leather below 40 and caster mail afterward. Enhancement remains the default;
 replace the chosen active Tier 1 entries to test the caster path. SQL installs
 on restart, with no additional rebuild required.
+
+## Alternate Holy Paladin plate
+
+[Holy Paladin Lightforge](docs/holy-paladin-starter-set.md) includes custom caster
+plate, a stock one-handed caster mace and a scaling held tome. Retribution stays
+the default; replace matching entries using `conf/loadouts/holy-paladin.conf.example`
+to activate Holy for future grants. This update needs a rebuild for planned
+main/offhand preflight; SQL still installs automatically on restart.

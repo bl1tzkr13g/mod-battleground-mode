@@ -117,6 +117,13 @@ int main(int argc, char** argv)
     Check(!ValidStarterBag(1,0,18,0,0) && !ValidStarterBag(1,0,18,37,0), "invalid container sizes are rejected");
     Check(StarterStorageReservation(incoming, {}, false).size() <= 20, "new 20-slot bag can hold the complete 16-piece kit even in bag-only mode");
 
+    Check(CanPlanHeldOffhand(23,21,4), "Holy mace can precede a held tome while replacing an old 2H weapon");
+    Check(CanPlanHeldOffhand(14,13,7), "a validated one-handed sword can precede a shield");
+    Check(!CanPlanHeldOffhand(23,17,5), "two-handed mace cannot be planned with a held offhand");
+    Check(!CanPlanHeldOffhand(13,21,4), "ordinary offhand weapons do not bypass dual-wield checks");
+    Check(!CanPlanHeldOffhand(23,13,6) && !CanPlanHeldOffhand(23,13,10) && !CanPlanHeldOffhand(23,13,20),
+        "polearm, staff and fishing pole restrictions remain intact");
+
     Check(argc == 2, "configuration path provided");
     std::ifstream config(argv[1]);
     Check(config.good(), "distributed config is readable");
@@ -211,7 +218,8 @@ int main(int argc, char** argv)
     struct AlternateLoadout { char const* file; std::uint8_t playerClass; unsigned coverage; };
     for (auto example : {AlternateLoadout{"caster-leather-druid.conf.example",11,0},
             {"caster-leather-shaman-low.conf.example",7,1},
-            {"caster-mail-shaman-high.conf.example",7,2}, {"caster-shaman.conf.example",7,3}})
+            {"caster-mail-shaman-high.conf.example",7,2}, {"caster-shaman.conf.example",7,3},
+            {"holy-paladin.conf.example",2,4}})
     {
         std::ifstream alternate(configDir + "loadouts/" + example.file);
         Check(alternate.good(), "caster alternate example is readable");
@@ -230,22 +238,30 @@ int main(int argc, char** argv)
             ++roleLists;
         }
         bool druid = example.playerClass == 11;
+        bool holy = example.playerClass == 2;
         unsigned expectedLists = example.coverage == 1 ? 3u : example.coverage == 2 ? 4u : 7u;
         Check(roleLists == expectedLists, "alternate contains only its intended class/bracket entries");
         for (auto level : {19,29,39,49,59,69,79})
         {
             auto const& items = role.Find(level, example.playerClass, 1);
-            bool available = example.coverage == 0 || example.coverage == 3 ||
+            bool available = example.coverage == 0 || example.coverage == 3 || example.coverage == 4 ||
                 (example.coverage == 1 ? level < 40 : level >= 40);
             Check(items.empty() == !available, "caster example covers intended brackets only");
             if (!available)
                 continue;
-            Check(items.size() == 16, "caster alternate delivers 15 pieces after faction filtering");
-            std::uint32_t firstEntry = !druid && level >= 40 ? 900065 : 900056;
-            for (std::uint32_t entry = firstEntry; entry < firstEntry + 9; ++entry)
+            Check(items.size() == (holy ? 17u : 16u), "caster alternate has the correct piece count plus alternate insignia");
+            std::uint32_t firstEntry = holy ? 900074 : !druid && level >= 40 ? 900065 : 900056;
+            for (std::uint32_t entry = firstEntry; entry < firstEntry + (holy ? 12u : 9u); ++entry)
                 Check(contains(items, entry), "caster alternate selects the correct armor family at each bracket");
-            Check(contains(items, 42947) && contains(items, 42992) && !contains(items, 42991), "alternate uses caster staff and stat trinket");
-            Check(contains(items, druid ? 42984 : 42951) && contains(items, druid ? 48687 : 48683), "alternate uses class-appropriate caster heirloom chest/shoulders");
+            Check(contains(items, holy ? 42948 : 42947) && contains(items, 42992) && !contains(items, 42991), "alternate uses a class-legal caster weapon and stat trinket");
+            Check(contains(items, holy ? 900083 : druid ? 42984 : 42951) && contains(items, holy ? 900084 : druid ? 48687 : 48683), "alternate uses class-appropriate caster chest/shoulders");
+            if (holy)
+            {
+                auto mace = std::find_if(items.begin(), items.end(), [](GearItem const& x) { return x.entry == 42948; });
+                auto tome = std::find_if(items.begin(), items.end(), [](GearItem const& x) { return x.entry == 900085; });
+                Check(mace != items.end() && tome != items.end() && mace < tome, "Holy mace is planned and equipped before its tome");
+                Check(!contains(items, 48685) && !contains(items, 44100), "Holy alternate does not substitute physical-stat stock armor");
+            }
         }
     }
     std::cout << checks << " gear checks passed\n";
