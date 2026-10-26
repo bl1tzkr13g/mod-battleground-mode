@@ -31,9 +31,10 @@ are excluded. Unused alternative heirlooms are not extra grants.
 
 Priest, Mage and Warlock now use the [full caster set](caster-starter-set.md),
 with custom scaling armor, cloak, jewelry and wand in place of all old filler.
-For the other classes, old chest and shoulders are removed while bracket-specific
-boots, bracers, belts, gloves, leggings and existing helmets remain. Their level-19
-kits still lack a helmet; shields and Hunter ammunition are not supplied. Shaman receives one mace, without implicitly granting Dual Wield.
+Rogue/Feral Druid now use the [agility leather completion set](leather-starter-set.md)
+at all brackets; Hunter/Enhancement Shaman receive it below 40. Other physical
+lists still retain ordinary filler armor. Warrior/Paladin level-19 kits still
+lack a helmet; shields and Hunter ammunition are not supplied. Shaman receives one mace, without implicitly granting Dual Wield.
 The core's normal class-spell training teaches Rogue Dual Wield; if disabled or
 blocked, the core still enforces that requirement before granting the kit.
 Caster/healer hybrids need edits to their class lists before choosing BG mode.

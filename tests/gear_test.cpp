@@ -120,5 +120,21 @@ int main(int argc, char** argv)
                 Check(contains(items, entry), "every caster bracket includes all ten custom completion pieces");
             Check(contains(items, 42985) && contains(items, 48691) && contains(items, 42947), "existing heirloom shoulders, robe and staff remain");
         }
+    for (auto level : {19,29,39,49,59,69,79})
+        for (auto playerClass : {3,4,7,11})
+        {
+            auto const& items = shipped.Find(level, playerClass, 1);
+            bool leather = playerClass == 4 || playerClass == 11 || level < 40;
+            for (std::uint32_t entry = 900029; entry <= 900037; ++entry)
+                Check(contains(items, entry) == leather, "leather completion follows class and bracket armor needs");
+            if (leather)
+            {
+                auto expected = (playerClass == 3 || playerClass == 4) ? 17u : 16u;
+                Check(items.size() == expected, "leather kit has the expected piece count plus alternate insignia");
+                auto shoulders = (playerClass == 4 || playerClass == 11) ? 42952u : 42950u;
+                auto chest = (playerClass == 4 || playerClass == 11) ? 48689u : 48677u;
+                Check(contains(items, shoulders) && contains(items, chest), "appropriate existing heirloom chest and shoulders remain");
+            }
+        }
     std::cout << checks << " gear checks passed\n";
 }

@@ -150,13 +150,14 @@ normal install/build/startup step.
 
 Tier 1 now uses the same class-appropriate heirloom shoulders, chest, weapon(s),
 ring, and trinkets at every bracket. The old shoulders and chest are removed;
-ordinary pieces for other slots remain for physical classes. Priest, Mage and
+ordinary pieces for other slots remain for Warrior/Paladin and level-40+
+Hunter/Shaman. Rogue/Feral Druid use the [leather completion set](leather-starter-set.md)
+at every bracket; Hunter/Enhancement Shaman get it below 40. Priest, Mage and
 Warlock instead use the [full custom caster completion set](caster-starter-set.md).
 See [the heirloom loadouts](tier1-heirlooms.md).
 The following families describe those retained filler pieces and the original
 research, rather than complete current sets. Casters have scaling cloaks and
-wands; shields and ammunition remain separate. Physical level-19 kits have no
-head item.
+wands; shields and ammunition remain separate. Warrior/Paladin level-19 kits have no head item.
 
 | Bracket | Cloth | Leather | Mail | Plate |
 | --- | --- | --- | --- | --- |

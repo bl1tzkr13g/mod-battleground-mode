@@ -199,3 +199,10 @@ at every bracket, with ten custom scaling completion items alongside existing
 stock heirlooms. The original tested hood is included. SQL installs automatically
 on startup; update the active caster Tier 1 config lists too. Client patch work
 for custom-item icons/right-click equipping remains deferred.
+
+## Agility leather completion set
+
+[Rogue/Feral Druid now use custom scaling leather completion pieces at every bracket](docs/leather-starter-set.md).
+Hunter and Enhancement Shaman get them at 19/29/39, retaining existing mail lists
+from 40 onward. Stock heirloom chest/shoulders/weapons remain; old ordinary filler
+is replaced. SQL installs automatically on restart; update active Tier 1 lists.
