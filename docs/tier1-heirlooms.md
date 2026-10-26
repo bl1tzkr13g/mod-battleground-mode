@@ -63,3 +63,8 @@ used by the original gear research. In-game checks should cover level 19 and 79,
 both factions, Rogue dagger hands, trinket slots, Hunter bow, weapon proficiency,
 and low-level mail/plate adaptation. Two-handed weapons leave the offhand empty;
 replaced original equipment moves into the bags.
+
+Caster/healer leather alternatives for Druid and low-level Shaman are documented
+[here](caster-leather-starter-set.md), with separate example configs. Physical
+class defaults remain as above until those example entries are copied into the
+active config. Client patch work remains deferred.

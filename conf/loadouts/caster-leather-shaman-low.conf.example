@@ -1,0 +1,19 @@
+# OPTIONAL CLASS DEFAULT: copy these entries into the active module .conf.
+# This example file is not loaded automatically. Replaces the listed class's
+# physical starter defaults for FUTURE unclaimed grants; no per-character role
+# picker is introduced. Existing completed grants are not repeated.
+# Requires the automatically installed caster-leather item SQL (900056..900064).
+# Staff occupies both hands; no caster offhand/shield is needed for this loadout.
+# The existing starter bag and faction-insignia selection continue to apply.
+
+[worldserver]
+
+# Preened Ironfeather Cowl; Preened Ironfeather Pendant; Mystical Pauldrons of Elements; Preened Ironfeather Cloak; Mystical Vest of Elements; Preened Ironfeather Bracers; Preened Ironfeather Gloves; Preened Ironfeather Belt; Preened Ironfeather Kilt; Preened Ironfeather Boots; Dread Pirate Ring; Preened Ironfeather Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge
+BattlegroundMode.Gear.Level19.Tier1.Shaman = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+
+# Preened Ironfeather Cowl; Preened Ironfeather Pendant; Mystical Pauldrons of Elements; Preened Ironfeather Cloak; Mystical Vest of Elements; Preened Ironfeather Bracers; Preened Ironfeather Gloves; Preened Ironfeather Belt; Preened Ironfeather Kilt; Preened Ironfeather Boots; Dread Pirate Ring; Preened Ironfeather Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge
+BattlegroundMode.Gear.Level29.Tier1.Shaman = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+
+# Preened Ironfeather Cowl; Preened Ironfeather Pendant; Mystical Pauldrons of Elements; Preened Ironfeather Cloak; Mystical Vest of Elements; Preened Ironfeather Bracers; Preened Ironfeather Gloves; Preened Ironfeather Belt; Preened Ironfeather Kilt; Preened Ironfeather Boots; Dread Pirate Ring; Preened Ironfeather Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge
+BattlegroundMode.Gear.Level39.Tier1.Shaman = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+

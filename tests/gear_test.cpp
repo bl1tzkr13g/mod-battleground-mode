@@ -205,5 +205,42 @@ int main(int argc, char** argv)
             Check(items.size() == 16, "strength kit has 15 equipped pieces plus one alternate insignia");
             Check(contains(items, 42949) && contains(items, 48685), "strength kit retains existing Valor shoulders and chest");
         }
+    std::string configPath = argv[1];
+    auto slash = configPath.find_last_of("/\\");
+    auto configDir = slash == std::string::npos ? std::string() : configPath.substr(0, slash + 1);
+    for (auto example : {"caster-leather-druid.conf.example", "caster-leather-shaman-low.conf.example"})
+    {
+        std::ifstream alternate(configDir + "loadouts/" + example);
+        Check(alternate.good(), "caster leather example is readable");
+        GearCatalog role;
+        unsigned roleLists = 0;
+        for (std::string line; std::getline(alternate, line);)
+        {
+            if (line.rfind("BattlegroundMode.Gear.Level", 0) != 0)
+                continue;
+            auto equals = line.find('=');
+            auto key = line.substr(0, line.find_last_not_of(" \t", equals - 1) + 1);
+            auto first = line.find('"', equals);
+            auto last = line.rfind('"');
+            Check(first != std::string::npos && last > first && role.Add(key, line.substr(first + 1, last - first - 1)),
+                "alternate caster list uses supported keys and free prices");
+            ++roleLists;
+        }
+        bool druid = std::string(example) == "caster-leather-druid.conf.example";
+        Check(roleLists == (druid ? 7u : 3u), "alternate contains only its intended class/bracket entries");
+        for (auto level : {19,29,39,49,59,69,79})
+        {
+            auto const& items = role.Find(level, druid ? 11 : 7, 1);
+            bool available = druid || level < 40;
+            Check(items.empty() == !available, "caster leather example covers intended brackets only");
+            if (!available)
+                continue;
+            Check(items.size() == 16, "caster leather kit delivers 15 pieces after faction filtering");
+            for (std::uint32_t entry = 900056; entry <= 900064; ++entry)
+                Check(contains(items, entry), "alternate includes every caster leather completion piece");
+            Check(contains(items, 42947) && contains(items, 42992) && !contains(items, 42991), "alternate uses caster staff and stat trinket");
+            Check(contains(items, druid ? 42984 : 42951) && contains(items, druid ? 48687 : 48683), "alternate uses class-appropriate caster heirloom chest/shoulders");
+        }
+    }
     std::cout << checks << " gear checks passed\n";
 }

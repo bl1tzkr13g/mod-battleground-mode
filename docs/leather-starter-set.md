@@ -30,8 +30,8 @@ receive this leather set. Death Knights remain ineligible for level-1 enrollment
 
 These are **agility/physical** defaults using the existing Shadowcraft heirloom
 stat distribution (stock 335, copied from item 48689). They are not caster or
-healing leather; Balance/Restoration Druid or caster Shaman needs a separate
-loadout/config choice. No automatic spec detection is introduced.
+healing leather; [caster/healer leather alternatives](caster-leather-starter-set.md)
+now have separate ready-to-copy loadouts. No automatic spec detection is introduced.
 
 Every affected kit retains Dread Pirate Ring, Swift Hand of Justice and the
 correct Alliance/Horde insignia. Both insignia IDs are listed, but only the

@@ -230,3 +230,11 @@ with stock heirloom chest, shoulders and two-handed weapons retained. Lower
 brackets use the same native heirloom proficiency exception as the stock Valor
 items. Update their active Tier 1 entries and restart; item SQL installs
 automatically with no additional rebuild required.
+
+## Alternate caster/healer leather
+
+[Druid and low-level Shaman caster/healer leather](docs/caster-leather-starter-set.md)
+is available with optional ready-to-copy loadouts in `conf/loadouts`. Default
+physical class lists stay unchanged. The updater installs the items on restart;
+copy the chosen example entries into the active config to make that class's
+future starter grants use caster gear. No additional rebuild is required.
