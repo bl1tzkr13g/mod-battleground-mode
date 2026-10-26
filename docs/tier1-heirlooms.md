@@ -33,9 +33,10 @@ Priest, Mage and Warlock now use the [full caster set](caster-starter-set.md),
 with custom scaling armor, cloak, jewelry and wand in place of all old filler.
 Rogue/Feral Druid now use the [agility leather completion set](leather-starter-set.md)
 at all brackets; Hunter/Enhancement Shaman receive it below 40 and the
-[agility mail completion set](mail-starter-set.md) from 40 onward. Warrior/Paladin
-lists still retain ordinary filler armor. Warrior/Paladin level-19 kits still
-lack a helmet; shields and Hunter ammunition are not supplied. Shaman receives one mace, without implicitly granting Dual Wield.
+[agility mail completion set](mail-starter-set.md) from 40 onward. Warrior and
+Retribution Paladin now use the [strength Valor completion set](plate-starter-set.md)
+at every bracket, including a helmet at 19 via native heirloom proficiency
+handling. Shields and Hunter ammunition are not supplied. Shaman receives one mace, without implicitly granting Dual Wield.
 The core's normal class-spell training teaches Rogue Dual Wield; if disabled or
 blocked, the core still enforces that requirement before granting the kit.
 Caster/healer hybrids need edits to their class lists before choosing BG mode.

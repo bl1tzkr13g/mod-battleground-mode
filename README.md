@@ -158,7 +158,7 @@ not establish live client behavior. Before deployment, run these in-game checks:
 
 ## Next milestone
 
-The config contains class heirlooms at every bracket, ordinary filler armor,
+The config contains class heirlooms and scaling completion sets at every bracket,
 and priced upgrade candidates. See [Tier 1 heirloom loadouts](docs/tier1-heirlooms.md).
 See [gear configuration and research](docs/starter-gear.md) for editing syntax,
 the exact tier coverage, source data, and role/affix limitations. Starter gear is
@@ -222,3 +222,11 @@ is replaced. SQL installs automatically on restart; update active Tier 1 lists.
 with existing heirloom chest, shoulders and weapons retained. Their lower brackets
 remain leather. Update active Tier 1 config entries and restart; SQL installs
 automatically and this gear-data update needs no additional rebuild.
+
+## Strength plate completion set
+
+[Warrior/Retribution Paladin now use scaling Valor completion pieces at every bracket](docs/plate-starter-set.md),
+with stock heirloom chest, shoulders and two-handed weapons retained. Lower
+brackets use the same native heirloom proficiency exception as the stock Valor
+items. Update their active Tier 1 entries and restart; item SQL installs
+automatically with no additional rebuild required.

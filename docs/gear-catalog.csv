@@ -1,28 +1,36 @@
 level,tier,player_class,item_id,item_name,honor,quality,required_level,item_level
-19,1,Paladin,6573,Defender Boots,0,2,18,23
-19,1,Paladin,6574,Defender Bracers,0,2,17,22
-19,1,Paladin,6576,Defender Girdle,0,2,17,22
-19,1,Paladin,6577,Defender Gauntlets,0,2,18,23
-19,1,Paladin,6578,Defender Leggings,0,2,18,23
+19,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+19,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 19,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-19,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-19,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-19,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-19,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 19,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+19,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+19,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+19,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+19,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 19,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-19,1,Warrior,6573,Defender Boots,0,2,18,23
-19,1,Warrior,6574,Defender Bracers,0,2,17,22
-19,1,Warrior,6576,Defender Girdle,0,2,17,22
-19,1,Warrior,6577,Defender Gauntlets,0,2,18,23
-19,1,Warrior,6578,Defender Leggings,0,2,18,23
-19,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+19,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+19,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+19,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+19,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+19,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 19,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-19,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-19,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-19,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 19,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+19,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+19,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+19,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+19,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+19,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 19,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+19,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+19,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+19,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 19,1,Hunter,900029,Stained Shadowcraft Cap,0,7,1,1
 19,1,Hunter,900037,Stained Shadowcraft Pendant,0,7,1,1
 19,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -218,32 +226,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 19,3,Druid,10399,Blackened Defias Armor,300,3,19,24
 19,3,Druid,1121,Feet of the Lynx,225,3,19,24
 19,3,Druid,10410,Leggings of the Fang,300,3,18,23
-29,1,Paladin,6389,Glimmering Mail Coif,0,2,26,31
-29,1,Paladin,9810,Fortified Boots,0,2,20,25
-29,1,Paladin,9811,Fortified Bracers,0,2,19,24
-29,1,Paladin,9813,Fortified Gauntlets,0,2,20,25
-29,1,Paladin,9814,Fortified Belt,0,2,19,24
-29,1,Paladin,9815,Fortified Leggings,0,2,20,25
+29,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+29,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 29,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-29,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-29,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-29,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-29,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 29,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+29,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+29,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+29,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+29,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 29,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-29,1,Warrior,6389,Glimmering Mail Coif,0,2,26,31
-29,1,Warrior,9810,Fortified Boots,0,2,20,25
-29,1,Warrior,9811,Fortified Bracers,0,2,19,24
-29,1,Warrior,9813,Fortified Gauntlets,0,2,20,25
-29,1,Warrior,9814,Fortified Belt,0,2,19,24
-29,1,Warrior,9815,Fortified Leggings,0,2,20,25
-29,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+29,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+29,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+29,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+29,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+29,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 29,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-29,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-29,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-29,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 29,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+29,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+29,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+29,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+29,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+29,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 29,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+29,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+29,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+29,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 29,1,Hunter,900029,Stained Shadowcraft Cap,0,7,1,1
 29,1,Hunter,900037,Stained Shadowcraft Pendant,0,7,1,1
 29,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -460,32 +474,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 29,3,Druid,7754,Harbinger Boots,337,3,25,30
 29,3,Druid,9509,Petrolspill Leggings,450,3,25,30
 29,3,Druid,6690,Ferine Leggings,450,3,29,34
-39,1,Paladin,7416,Phalanx Bracers,0,2,26,31
-39,1,Paladin,7417,Phalanx Boots,0,2,29,34
-39,1,Paladin,7420,Phalanx Headguard,0,2,28,33
-39,1,Paladin,7421,Phalanx Gauntlets,0,2,28,33
-39,1,Paladin,7422,Phalanx Girdle,0,2,27,32
-39,1,Paladin,7423,Phalanx Leggings,0,2,29,34
+39,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+39,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 39,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-39,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-39,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-39,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-39,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 39,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+39,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+39,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+39,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+39,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 39,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-39,1,Warrior,7416,Phalanx Bracers,0,2,26,31
-39,1,Warrior,7417,Phalanx Boots,0,2,29,34
-39,1,Warrior,7420,Phalanx Headguard,0,2,28,33
-39,1,Warrior,7421,Phalanx Gauntlets,0,2,28,33
-39,1,Warrior,7422,Phalanx Girdle,0,2,27,32
-39,1,Warrior,7423,Phalanx Leggings,0,2,29,34
-39,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+39,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+39,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+39,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+39,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+39,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 39,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-39,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-39,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-39,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 39,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+39,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+39,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+39,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+39,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+39,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 39,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+39,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+39,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+39,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 39,1,Hunter,900029,Stained Shadowcraft Cap,0,7,1,1
 39,1,Hunter,900037,Stained Shadowcraft Pendant,0,7,1,1
 39,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -702,32 +722,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 39,3,Druid,10583,Quillward Harness,600,3,34,39
 39,3,Druid,9398,Worn Running Boots,450,3,35,40
 39,3,Druid,1718,Basilisk Hide Pants,600,3,38,43
-49,1,Paladin,9285,Field Plate Vambraces,0,2,40,41
-49,1,Paladin,9287,Field Plate Gauntlets,0,2,40,41
-49,1,Paladin,9288,Field Plate Girdle,0,2,40,41
-49,1,Paladin,9289,Field Plate Boots,0,2,40,41
-49,1,Paladin,9290,Field Plate Helmet,0,2,40,42
-49,1,Paladin,9291,Field Plate Leggings,0,2,40,43
+49,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+49,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 49,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-49,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-49,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-49,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-49,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 49,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+49,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+49,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+49,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+49,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 49,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-49,1,Warrior,9285,Field Plate Vambraces,0,2,40,41
-49,1,Warrior,9287,Field Plate Gauntlets,0,2,40,41
-49,1,Warrior,9288,Field Plate Girdle,0,2,40,41
-49,1,Warrior,9289,Field Plate Boots,0,2,40,41
-49,1,Warrior,9290,Field Plate Helmet,0,2,40,42
-49,1,Warrior,9291,Field Plate Leggings,0,2,40,43
-49,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+49,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+49,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+49,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+49,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+49,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 49,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-49,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-49,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-49,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 49,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+49,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+49,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+49,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+49,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+49,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 49,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+49,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+49,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+49,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 49,1,Hunter,900038,Champion's Deathdealer Cap,0,7,1,1
 49,1,Hunter,900046,Champion's Deathdealer Pendant,0,7,1,1
 49,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -944,32 +970,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 49,3,Druid,17742,Fungus Shroud Armor,750,3,46,51
 49,3,Druid,17728,Albino Crocscale Boots,562,3,48,53
 49,3,Druid,12470,Sandstalker Ankleguards,562,3,42,47
-59,1,Paladin,10165,Templar Gauntlets,0,2,50,55
-59,1,Paladin,10166,Templar Girdle,0,2,49,54
-59,1,Paladin,10167,Templar Boots,0,2,50,55
-59,1,Paladin,10168,Templar Crown,0,2,51,56
-59,1,Paladin,10169,Templar Legplates,0,2,52,57
-59,1,Paladin,10171,Templar Bracers,0,2,49,54
+59,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+59,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 59,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-59,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-59,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-59,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-59,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 59,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+59,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+59,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+59,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+59,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 59,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-59,1,Warrior,10165,Templar Gauntlets,0,2,50,55
-59,1,Warrior,10166,Templar Girdle,0,2,49,54
-59,1,Warrior,10167,Templar Boots,0,2,50,55
-59,1,Warrior,10168,Templar Crown,0,2,51,56
-59,1,Warrior,10169,Templar Legplates,0,2,52,57
-59,1,Warrior,10171,Templar Bracers,0,2,49,54
-59,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+59,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+59,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+59,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+59,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+59,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 59,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-59,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-59,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-59,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 59,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+59,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+59,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+59,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+59,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+59,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 59,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+59,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+59,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+59,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 59,1,Hunter,900038,Champion's Deathdealer Cap,0,7,1,1
 59,1,Hunter,900046,Champion's Deathdealer Pendant,0,7,1,1
 59,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -1258,32 +1290,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 59,4,Druid,24706,Haal'eshi Leggings,2250,2,58,84
 59,4,Druid,24707,Haal'eshi Pauldrons,1687,2,58,84
 59,4,Druid,24708,Haal'eshi Bindings,1125,2,58,84
-69,1,Paladin,24966,Talonguard Girdle,0,2,63,99
-69,1,Paladin,24967,Talonguard Greaves,0,2,63,99
-69,1,Paladin,24969,Talonguard Gloves,0,2,63,99
-69,1,Paladin,24970,Talonguard Helmet,0,2,63,99
-69,1,Paladin,24971,Talonguard Legplates,0,2,63,99
-69,1,Paladin,24973,Talonguard Bracers,0,2,63,99
+69,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+69,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 69,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-69,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-69,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-69,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-69,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 69,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+69,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+69,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+69,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+69,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 69,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-69,1,Warrior,24966,Talonguard Girdle,0,2,63,99
-69,1,Warrior,24967,Talonguard Greaves,0,2,63,99
-69,1,Warrior,24969,Talonguard Gloves,0,2,63,99
-69,1,Warrior,24970,Talonguard Helmet,0,2,63,99
-69,1,Warrior,24971,Talonguard Legplates,0,2,63,99
-69,1,Warrior,24973,Talonguard Bracers,0,2,63,99
-69,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+69,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+69,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+69,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+69,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+69,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 69,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-69,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-69,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-69,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 69,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+69,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+69,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+69,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+69,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+69,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 69,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+69,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+69,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+69,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 69,1,Hunter,900038,Champion's Deathdealer Cap,0,7,1,1
 69,1,Hunter,900046,Champion's Deathdealer Pendant,0,7,1,1
 69,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1
@@ -1572,32 +1610,38 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 69,4,Druid,36072,Daggercap Trousers,3000,2,67,130
 69,4,Druid,36073,Daggercap Spaulders,2250,2,67,130
 69,4,Druid,36074,Daggercap Bracers,1500,2,67,130
-79,1,Paladin,39084,Cobalt Helm,0,2,70,142
-79,1,Paladin,39086,Cobalt Legplates,0,2,70,142
-79,1,Paladin,39087,Cobalt Belt,0,2,70,142
-79,1,Paladin,39088,Cobalt Boots,0,2,70,142
-79,1,Paladin,41974,Cobalt Bracers,0,2,70,142
-79,1,Paladin,41975,Cobalt Gauntlets,0,2,70,142
+79,1,Paladin,900047,Polished Helm of Valor,0,7,1,1
+79,1,Paladin,900055,Polished Pendant of Valor,0,7,1,1
 79,1,Paladin,42949,Polished Spaulders of Valor,0,7,0,1
-79,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
-79,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
-79,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
-79,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Paladin,900048,Polished Cloak of Valor,0,7,1,1
 79,1,Paladin,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Paladin,900050,Polished Bracers of Valor,0,7,1,1
+79,1,Paladin,900051,Polished Gauntlets of Valor,0,7,1,1
+79,1,Paladin,900049,Polished Belt of Valor,0,7,1,1
+79,1,Paladin,900052,Polished Legplates of Valor,0,7,1,1
+79,1,Paladin,900053,Polished Boots of Valor,0,7,1,1
 79,1,Paladin,50255,Dread Pirate Ring,0,7,0,1
-79,1,Warrior,39084,Cobalt Helm,0,2,70,142
-79,1,Warrior,39086,Cobalt Legplates,0,2,70,142
-79,1,Warrior,39087,Cobalt Belt,0,2,70,142
-79,1,Warrior,39088,Cobalt Boots,0,2,70,142
-79,1,Warrior,41974,Cobalt Bracers,0,2,70,142
-79,1,Warrior,41975,Cobalt Gauntlets,0,2,70,142
-79,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
+79,1,Paladin,900054,Polished Signet of Valor,0,7,1,1
+79,1,Paladin,42991,Swift Hand of Justice,0,7,0,1
+79,1,Paladin,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Paladin,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Paladin,44092,Reforged Truesilver Champion,0,7,0,1
+79,1,Warrior,900047,Polished Helm of Valor,0,7,1,1
+79,1,Warrior,900055,Polished Pendant of Valor,0,7,1,1
 79,1,Warrior,42949,Polished Spaulders of Valor,0,7,0,1
-79,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
-79,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
-79,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Warrior,900048,Polished Cloak of Valor,0,7,1,1
 79,1,Warrior,48685,Polished Breastplate of Valor,0,7,1,1
+79,1,Warrior,900050,Polished Bracers of Valor,0,7,1,1
+79,1,Warrior,900051,Polished Gauntlets of Valor,0,7,1,1
+79,1,Warrior,900049,Polished Belt of Valor,0,7,1,1
+79,1,Warrior,900052,Polished Legplates of Valor,0,7,1,1
+79,1,Warrior,900053,Polished Boots of Valor,0,7,1,1
 79,1,Warrior,50255,Dread Pirate Ring,0,7,0,1
+79,1,Warrior,900054,Polished Signet of Valor,0,7,1,1
+79,1,Warrior,42991,Swift Hand of Justice,0,7,0,1
+79,1,Warrior,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Warrior,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Warrior,42943,Bloodied Arcanite Reaper,0,7,0,1
 79,1,Hunter,900038,Champion's Deathdealer Cap,0,7,1,1
 79,1,Hunter,900046,Champion's Deathdealer Pendant,0,7,1,1
 79,1,Hunter,42950,Champion Herod's Shoulder,0,7,0,1

@@ -196,5 +196,14 @@ int main(int argc, char** argv)
                 Check(contains(items, 42950) && contains(items, 48677), "mail kit retains existing heirloom chest and shoulders");
             }
         }
+    for (auto level : {19,29,39,49,59,69,79})
+        for (auto playerClass : {1,2})
+        {
+            auto const& items = shipped.Find(level, playerClass, 1);
+            for (std::uint32_t entry = 900047; entry <= 900055; ++entry)
+                Check(contains(items, entry), "Warrior/Paladin get strength plate completion at every bracket");
+            Check(items.size() == 16, "strength kit has 15 equipped pieces plus one alternate insignia");
+            Check(contains(items, 42949) && contains(items, 48685), "strength kit retains existing Valor shoulders and chest");
+        }
     std::cout << checks << " gear checks passed\n";
 }

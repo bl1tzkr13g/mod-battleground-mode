@@ -12,8 +12,8 @@ Preserve your existing settings when copying the new gear sections into it.
 
 ```ini
 # LEVEL 19 - TIER 1 STARTER GEAR
-# Paladin: ordinary filler armor plus heirloom armor, sword, ring, and trinkets
-BattlegroundMode.Gear.Level19.Tier1.Paladin = "6573:0,6574:0,6576:0,6577:0,6578:0,42949:0,48685:0,44092:0,42991:0,50255:0,44098:0,44097:0"
+# Paladin: strength Valor completion, stock heirloom armor/sword, ring and trinkets
+BattlegroundMode.Gear.Level19.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
 
 # LEVEL 19 - TIER 2 GEAR
 # Paladin: boots cost 75 honor; each belt/bracer costs 50 honor
@@ -36,7 +36,7 @@ every WotLK class in each of five tiers. Class names are case-sensitive:
 starting level makes it ineligible for the module's level-1 enrollment.
 
 Five tiers are laid out: Starter, Soldier, Veteran, Champion, Elite. Tier 1 has
-heirlooms plus ordinary filler armor, tiers 2 and 3 have upgrade candidates, and tier 4 has additional
+heirlooms plus scaling completion pieces, tiers 2 and 3 have upgrade candidates, and tier 4 has additional
 expansion/PvP candidates at levels 59, 69, and 79. Other tier-4 lists and all
 tier-5 lists are empty placeholders. They are not completed five-tier sets.
 Stock gear at low brackets does not provide five distinct full sets with
@@ -185,14 +185,15 @@ normal install/build/startup step.
 
 Tier 1 now uses the same class-appropriate heirloom shoulders, chest, weapon(s),
 ring, and trinkets at every bracket. The old shoulders and chest are removed;
-ordinary pieces for other slots remain for Warrior/Paladin. Hunter/Shaman
+Warrior/Paladin now use the [strength Valor completion set](plate-starter-set.md).
+Hunter/Shaman
 use the [agility mail completion set](mail-starter-set.md) from level 40 onward. Rogue/Feral Druid use the [leather completion set](leather-starter-set.md)
 at every bracket; Hunter/Enhancement Shaman get it below 40. Priest, Mage and
 Warlock instead use the [full custom caster completion set](caster-starter-set.md).
 See [the heirloom loadouts](tier1-heirlooms.md).
-The following families describe those retained filler pieces and the original
-research, rather than complete current sets. Casters have scaling cloaks and
-wands; shields and ammunition remain separate. Warrior/Paladin level-19 kits have no head item.
+The following families document the original ordinary-item research; the current
+Tier 1 defaults now use the scaling completion sets. Casters have scaling cloaks and
+wands; shields and ammunition remain separate. Every enabled class's current Tier 1 list includes a head item, including at level 19.
 
 | Bracket | Cloth | Leather | Mail | Plate |
 | --- | --- | --- | --- | --- |
@@ -210,8 +211,9 @@ Paladins, Druids, and Shamans. They do not automatically infer a specialization:
 healing/caster variants need administrator edits or a later role-selection flow.
 Cobalt is a defensive physical baseline, not a tailored Retribution set.
 
-Retained Hunter/Shaman filler armor uses leather below 40 and mail afterward.
-Warrior/Paladin filler uses mail below 40 and plate afterward. Heirloom armor
+Hunter/Shaman completion armor uses leather below 40 and mail afterward.
+Warrior/Paladin Valor armor is heirloom plate, with the core's native low-level
+proficiency exception. Heirloom armor
 uses the core's built-in low-level adaptation. Starter auto-equip can teach the
 character's valid mail/plate armor proficiency where necessary. The existing
 talent module remains responsible for talents.
