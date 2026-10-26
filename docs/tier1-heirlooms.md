@@ -1,9 +1,10 @@
 # Tier 1 heirloom starters
 
 Every enabled class list at **19, 29, 39, 49, 59, 69, and 79** includes the same
-heirlooms. They scale through the core's normal heirloom system. Tier 2+ catalogs
-and honor prices are unchanged. This remains one list per class; no specialization
-selection is inferred. Hybrid defaults match the physical roles used previously.
+heirlooms within each build. They scale through the core's normal heirloom system.
+All completed builds are selectable in the single module config; no talent or
+specialization selection is inferred. Higher-tier catalogs have been removed.
+See [build configuration and migration](starter-gear.md).
 
 | Class / default role | Shoulders | Chest | Weapon(s) | Stat trinket |
 |---|---:|---:|---|---:|
@@ -64,16 +65,8 @@ both factions, Rogue dagger hands, trinket slots, Hunter bow, weapon proficiency
 and low-level mail/plate adaptation. Two-handed weapons leave the offhand empty;
 replaced original equipment moves into the bags.
 
-Caster/healer leather alternatives for Druid and low-level Shaman are documented
-[here](caster-leather-starter-set.md), with separate example configs. Physical
-class defaults remain as above until those example entries are copied into the
-active config. Client patch work remains deferred.
-
-[Elemental/Restoration Shaman caster mail](caster-mail-starter-set.md) completes
-its alternate caster path from level 40 onward; the combined example covers all
-seven default brackets without changing the active Enhancement defaults.
-
-[Holy Paladin caster plate](holy-paladin-starter-set.md) has its own optional
-loadout with a one-handed caster mace and held tome. It leaves Retribution's
-physical defaults intact until the Holy class entries are copied into the active
-config; planned main/offhand handling requires the updated module build.
+[Balance/Restoration Druid and caster Shaman leather](caster-leather-starter-set.md),
+[Elemental/Restoration Shaman mail](caster-mail-starter-set.md), and
+[Holy Paladin caster plate](holy-paladin-starter-set.md) are selectable alongside
+the physical builds above. All entries live in the main config. Client patch work
+remains deferred; the role-selection update requires rebuilding worldserver.

@@ -44,15 +44,61 @@ std::vector<Item*> StarterStorageReservation(std::vector<Item*> const& incoming,
     return storage;
 }
 
+// IDs are persisted: never renumber or reuse an existing role.
+enum class StarterRole : std::uint8_t
+{
+    None = 0, Damage = 1, Holy = 2, Retribution = 3, Feral = 4,
+    Balance = 5, Restoration = 6, Enhancement = 7, Elemental = 8, Protection = 9
+};
+
+inline StarterRole DefaultStarterRole(std::uint8_t playerClass)
+{
+    switch (playerClass)
+    {
+        case 2: return StarterRole::Retribution;
+        case 7: return StarterRole::Enhancement;
+        case 11: return StarterRole::Feral;
+        default: return StarterRole::Damage;
+    }
+}
+
+inline std::string_view StarterRoleName(StarterRole role)
+{
+    switch (role)
+    {
+        case StarterRole::Damage: return "Damage";
+        case StarterRole::Holy: return "Holy";
+        case StarterRole::Retribution: return "Retribution";
+        case StarterRole::Feral: return "Feral";
+        case StarterRole::Balance: return "Balance";
+        case StarterRole::Restoration: return "Restoration";
+        case StarterRole::Enhancement: return "Enhancement";
+        case StarterRole::Elemental: return "Elemental";
+        case StarterRole::Protection: return "Protection";
+        default: return "Unselected";
+    }
+}
+
+inline bool StarterRoleAllowed(std::uint8_t playerClass, StarterRole role)
+{
+    if (role == DefaultStarterRole(playerClass))
+        return playerClass >= 1 && playerClass <= 11 && playerClass != 10;
+    return ((playerClass == 1 || playerClass == 2) && role == StarterRole::Protection) ||
+        (playerClass == 2 && role == StarterRole::Holy) ||
+        (playerClass == 7 && (role == StarterRole::Elemental || role == StarterRole::Restoration)) ||
+        (playerClass == 11 && (role == StarterRole::Balance || role == StarterRole::Restoration));
+}
+
 struct GearKey
 {
     std::uint8_t level;
     std::uint8_t playerClass;
     std::uint16_t tier;
+    StarterRole role = StarterRole::None;
 
     bool operator<(GearKey const& other) const
     {
-        return std::tie(level, playerClass, tier) < std::tie(other.level, other.playerClass, other.tier);
+        return std::tie(level, playerClass, tier, role) < std::tie(other.level, other.playerClass, other.tier, other.role);
     }
 };
 
@@ -93,9 +139,23 @@ inline std::optional<GearKey> ParseGearKey(std::string_view key)
         "DeathKnight", "Shaman", "Mage", "Warlock", "", "Druid"};
     if (!level || *level > 80 || !tier || *tier > 65535)
         return std::nullopt;
+    if (*tier != 1)
+        return std::nullopt; // Progression gear belongs to stock PvP vendors.
+    auto rolePosition = key.find('.');
+    auto className = key.substr(0, rolePosition);
+    auto roleName = rolePosition == std::string_view::npos ? std::string_view{} : key.substr(rolePosition + 1);
     for (std::uint8_t playerClass = 1; playerClass < 12; ++playerClass)
-        if (!classes[playerClass].empty() && key == classes[playerClass])
-            return GearKey{static_cast<std::uint8_t>(*level), playerClass, static_cast<std::uint16_t>(*tier)};
+        if (!classes[playerClass].empty() && className == classes[playerClass])
+        {
+            if (rolePosition == std::string_view::npos)
+                return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, DefaultStarterRole(playerClass)};
+            for (unsigned id = 1; id <= 9; ++id)
+            {
+                auto role = static_cast<StarterRole>(id);
+                if (roleName == StarterRoleName(role) && StarterRoleAllowed(playerClass, role))
+                    return GearKey{static_cast<std::uint8_t>(*level), playerClass, 1, role};
+            }
+        }
     return std::nullopt;
 }
 
@@ -149,17 +209,28 @@ public:
         if (!parsedKey || !items)
             return false;
         for (auto const& item : *items)
-            if ((parsedKey->tier == 1 && item.honor != 0) || (parsedKey->tier > 1 && item.honor == 0))
+            if (item.honor != 0)
                 return false;
         _lists[*parsedKey] = std::move(*items);
         return true;
     }
 
-    Items const& Find(std::uint8_t level, std::uint8_t playerClass, std::uint16_t tier) const
+    Items const& Find(std::uint8_t level, std::uint8_t playerClass, std::uint16_t tier, StarterRole role = StarterRole::None) const
     {
         static Items const empty;
-        auto found = _lists.find({level, playerClass, tier});
+        if (role == StarterRole::None)
+            role = DefaultStarterRole(playerClass);
+        auto found = _lists.find({level, playerClass, tier, role});
         return found == _lists.end() ? empty : found->second;
+    }
+
+    std::vector<StarterRole> Roles(std::uint8_t level, std::uint8_t playerClass) const
+    {
+        std::vector<StarterRole> roles;
+        for (auto const& [key, items] : _lists)
+            if (key.level == level && key.playerClass == playerClass && !items.empty())
+                roles.push_back(key.role);
+        return roles;
     }
 
     Lists const& All() const { return _lists; }
@@ -167,6 +238,17 @@ public:
 private:
     Lists _lists;
 };
+
+// Share the same choice list between menu rendering and confirmation. Disabled
+// starter delivery may still enroll a class with no configured gear at all.
+inline std::vector<StarterRole> AvailableStarterRoles(GearCatalog const& catalog,
+    std::uint8_t level, std::uint8_t playerClass, bool starterEnabled)
+{
+    auto roles = catalog.Roles(level, playerClass);
+    if (!starterEnabled && roles.empty() && StarterRoleAllowed(playerClass, DefaultStarterRole(playerClass)))
+        roles.push_back(DefaultStarterRole(playerClass));
+    return roles;
+}
 
 // A held offhand may be preflighted after an ALREADY validated planned 1H
 // main hand, even while the current weapon is 2H. Ordinary dual-wield weapons

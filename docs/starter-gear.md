@@ -1,74 +1,79 @@
-# Starter gear and configurable honor catalogs
+# Starter gear and build selection
 
-The config is the editable source for gear and prices. No item lists or honor
-prices are stored in the module's character database.
+All playable starter builds live in the one module config:
+[mod_battleground_mode.conf.dist](../conf/mod_battleground_mode.conf.dist).
+Only Tier 1 remains. Players earn upgrades from the stock PvP vendors; tiers
+2–5, further tier discovery and the planned custom progression vendor are retired.
 
 ## Editing a character's gear list
 
-Edit the live `mod_battleground_mode.conf` in your server's installed module
-configuration directory. The repository distributes the defaults in
-[`conf/mod_battleground_mode.conf.dist`](../conf/mod_battleground_mode.conf.dist).
-Preserve your existing settings when copying the new gear sections into it.
-
 ```ini
-# LEVEL 19 - TIER 1 STARTER GEAR
-# Paladin: strength Valor completion, stock heirloom armor/sword, ring and trinkets
-BattlegroundMode.Gear.Level19.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# LEVEL 19 - TIER 2 GEAR
-# Paladin: boots cost 75 honor; each belt/bracer costs 50 honor
-BattlegroundMode.Gear.Level19.Tier2.Paladin = "12982:75,5425:50,14147:50"
-
-# LEVEL 19 - TIER 6 GEAR (example of adding a tier)
-BattlegroundMode.Gear.Level19.Tier6.Paladin = "12994:1200"
+BattlegroundMode.Gear.Level19.Tier1.Paladin.Retribution = "900047:0,..."
+BattlegroundMode.Gear.Level19.Tier1.Paladin.Holy = "900074:0,..."
 ```
 
-Each pair is **item ID:honor price**, separated by commas. Prices apply to one
-item, not an entire set. Item names are comments above each default list. Tier 1
-must be free. Every item in tiers 2 and above must have an explicit positive
-integer price within the server's configured honor cap. Empty quotes mean no
-items, with no fallback to another class or bracket.
+Use real complete item lists from the distributed config; the ellipses above
+only illustrate key names. Entries remain comma-separated `itemID:0` pairs.
+Every price must be zero, duplicate item IDs are rejected, and item metadata is
+validated for the class/bracket. Empty or rejected lists never appear as choices.
+Keep a one-handed main weapon before its held offhand. Both faction insignias
+can be listed; the receiver gets only the correct faction's version.
 
-The defaults cover levels 19, 29, 39, 49, 59, 69, and 79, with a separate entry for
-every WotLK class in each of five tiers. Class names are case-sensitive:
-`Paladin`, `Warrior`, `Hunter`, `Rogue`, `Priest`, `Shaman`, `Mage`, `Warlock`,
-`Druid`, `DeathKnight`. Death Knight lists are intentionally empty because its
-starting level makes it ineligible for the module's level-1 enrollment.
+| Class | Available builds |
+|---|---|
+| Warrior | Damage (two-handed strength) |
+| Paladin | Retribution, Holy |
+| Hunter, Rogue, Mage, Warlock | Damage |
+| Priest | Damage (shared caster/healer kit) |
+| Shaman | Enhancement, Elemental, Restoration |
+| Druid | Feral, Balance, Restoration |
 
-Five tiers are laid out: Starter, Soldier, Veteran, Champion, Elite. Tier 1 has
-heirlooms plus scaling completion pieces, tiers 2 and 3 have upgrade candidates, and tier 4 has additional
-expansion/PvP candidates at levels 59, 69, and 79. Other tier-4 lists and all
-tier-5 lists are empty placeholders. They are not completed five-tier sets.
-Stock gear at low brackets does not provide five distinct full sets with
-consistent stat improvements. Those tiers need further item curation or custom
-items before they can become complete progression steps.
-
-Add a new tier by adding keys with `Tier6`, `Tier7`, etc. No tier-count setting or
-code change is required; supported tier numbers are 1 through 65535. Levels 1
-through 80 are supported in keys, separately from which levels you allow players
-to select. Add each desired class explicitly. Use `.reload config` to refresh the
-catalog after edits; existing characters' bracket selections are unaffected.
+These 14 builds are present at 19/29/39/49/59/69/79. Death Knights start above
+level 1 and remain ineligible. `Protection` is a supported future Warrior/Paladin
+key, but no kit is supplied or offered yet. Do not fill it with a damage kit.
+New brackets need complete class/build keys too. No kit is borrowed from another
+bracket, class or role. Balance/Restoration and Elemental/Restoration currently
+share caster/healer item lists but persist as separate choices for future tuning.
 
 ## Current runtime behavior
 
-The C++ loader reads these lists and retains each item together with its honor
-price. Once item templates are loaded, it rejects a whole list if it contains an
-unknown item, an item above the bracket, incompatible armor/class restrictions,
-or a price above the honor cap. Malformed keys, duplicate IDs within a list,
-missing prices, negative prices, and incorrect zero prices are rejected with a
-server log message. Weapon skill, race, profession, and reputation checks must
-also be enforced by the future purchase flow if you add restricted items. Starter
-auto-equip uses the core's equipment checks, including item-use restrictions.
+The flow is **Normal/BG → bracket → build → final confirmation**. Browsing or
+closing the menu does not alter level, XP or inventory. Reopen with `.bgmode`.
+Leveling beyond 1 before confirmation permanently selects Normal Mode as before.
+The final confirmation saves mode, bracket and build in one conditional write
+before applying levels, spells, gear or teleport. Stale/duplicate clicks cannot
+change a completed decision. Class/build validity and the current catalog are
+checked again on confirmation; unsupported/empty/removed kits are rejected.
 
-A Battleground Mode character can use **`.bggear 2`** (or another tier number) to
-preview only the exact saved bracket/class list and its prices. Other brackets,
-other classes, and Normal Mode characters do not receive that list. This command
-is a preview: it does not grant, sell, equip, or deduct honor for anything.
+Build selection controls starter items only: no talent assignment, respec,
+automatic spec detection or additional Dual Wield grant is performed. A saved
+choice stays fixed even after later talent changes. `.bggear 1` previews that
+character's chosen starter kit; other tiers direct players to PvP vendors.
+`.bgstarter` retries an unclaimed delivery for the saved build, never another role.
+The one-time claim still covers the bag and gear together. Relogging, changing
+roles in config or using old menu packets cannot yield a second kit.
 
-The future vendor must use tiers 2+ and recheck the same
-bracket/class, live price, honor balance, and inventory capacity at purchase time.
-The data structures preserve prices for that flow, but purchasing is not yet
-implemented.
+## Upgrade an existing installation
+
+Pull and **rebuild/install worldserver**. Replace the entire old gear-catalog
+section in the active module `.conf` with the new section from `.conf.dist`,
+preserving your server's other settings, then restart. Do not append duplicate
+class keys. Separate `conf/loadouts` examples are retired and merged here.
+The core startup updater adds `starter_role` automatically; no SQL import is needed.
+
+Legacy `.Tier1.Class` keys are accepted as the old default build only, so a
+legacy config offers only those existing builds until updated. Use explicit
+`.Tier1.Class.Build` keys in the new config. Tiers above 1 are rejected rather
+than exposed. Existing BG records with role zero keep the old default: Retribution,
+Enhancement, Feral, or Damage for other classes. Existing completed/interrupted
+starter claims are preserved. Editing config never resets or regrants gear.
+A disabled/removed selected kit blocks an unclaimed delivery with a message;
+it never silently substitutes another role's kit.
+
+The stable database role IDs are: 0 legacy default, 1 Damage, 2 Holy,
+3 Retribution, 4 Feral, 5 Balance, 6 Restoration, 7 Enhancement, 8 Elemental,
+9 Protection. These IDs must not be renumbered. Role zero is only for legacy
+records and non-BG decisions; new BG confirmations save a nonzero role.
 
 ## One-time starter delivery and auto-equip
 
@@ -93,7 +98,6 @@ slots. Grants wait until the player is loaded, alive, out of combat, and outside
 travel, trades, battlegrounds, and queues. Normal characters never get this grant.
 Disabling starter delivery leaves the entitlement unclaimed for later use.
 
-The entire set must fit in inventory first, even when it will then be equipped.
 Auto-equip preflights every item and rejects kits with conflicting destination
 slots. Auto-equip reserves bag room for displaced gear and one reusable working
 slot, checking incoming item restrictions before claiming. Each item is stored
@@ -134,7 +138,7 @@ disable it. No manual SQL import or new schema migration is needed. Already
 completed starter grants stay completed; use a fresh character for bag testing.
 Verify first-empty-slot behavior, existing bag preservation, a full backpack
 with an empty bag slot, both gear delivery modes, repeat requests/relog, and
-survival of bag contents after save/relog. In-game bag delivery remains to test.
+survival of bag contents after save/relog. The role-selection flow still needs an in-game check.
 
 The optional training teaches only legal plate proficiency for level-40+
 Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weapon
@@ -181,98 +185,11 @@ without module records become Normal Mode; create a new level-1 character to
 retest first-login selection. The reset is optional and destructive, never a
 normal install/build/startup step.
 
-## Starter recommendations
+## Verification and item information
 
-Tier 1 now uses the same class-appropriate heirloom shoulders, chest, weapon(s),
-ring, and trinkets at every bracket. The old shoulders and chest are removed;
-Warrior/Paladin now use the [strength Valor completion set](plate-starter-set.md).
-Hunter/Shaman
-use the [agility mail completion set](mail-starter-set.md) from level 40 onward. Rogue/Feral Druid use the [leather completion set](leather-starter-set.md)
-at every bracket; Hunter/Enhancement Shaman get it below 40. Priest, Mage and
-Warlock instead use the [full custom caster completion set](caster-starter-set.md).
-See [the heirloom loadouts](tier1-heirlooms.md).
-The following families document the original ordinary-item research; the current
-Tier 1 defaults now use the scaling completion sets. Casters have scaling cloaks and
-wands; shields and ammunition remain separate. Every enabled class's current Tier 1 list includes a head item, including at level 19.
-
-| Bracket | Cloth | Leather | Mail | Plate |
-| --- | --- | --- | --- | --- |
-| 19 | Seer's | Bandit | Defender | Not available at this level |
-| 29 | Bright + Azure Silk Hood | Superior + Emblazoned Hat | Fortified + Glimmering Mail Coif | Not available at this level |
-| 39 | Conjurer's | Infiltrator | Phalanx | Not available at this level |
-| 49 | Sorcerer | Tracker's | Brigade | Field Plate |
-| 59 | Councillor's | Wanderer's | Merciless | Templar |
-| 69 | Feralfen | Ranger | Marshcreeper | Talonguard |
-| 79 | Frostwoven | Arctic | Frostscale | Cobalt |
-
-The research CSV also includes **Iceborne** (caster leather) and **Nerubian**
-(caster mail) at level 79. The default class lists favor physical roles for
-Paladins, Druids, and Shamans. They do not automatically infer a specialization:
-healing/caster variants need administrator edits or a later role-selection flow.
-Cobalt is a defensive physical baseline, not a tailored Retribution set.
-
-Hunter/Shaman completion armor uses leather below 40 and mail afterward.
-Warrior/Paladin Valor armor is heirloom plate, with the core's native low-level
-proficiency exception. Heirloom armor
-uses the core's built-in low-level adaptation. Starter auto-equip can teach the
-character's valid mail/plate armor proficiency where necessary. The existing
-talent module remains responsible for talents.
-
-The level-69 starter families are item level 99, leaving space for stronger
-Outland equipment and Northrend greens requiring levels 67-69. Level-79 starter
-families are roughly item level 134-150; the tier-4 crafted PvP families are item
-level 187 and require level 78. Level-59 Outland greens are reserved for tier 4,
-because they are a large jump over the Classic starter items.
-
-These are candidate progression lists, not proven upgrades for every spec and
-every random stat roll. Honor prices are initial editable suggestions. Verify
-the item tooltips and test time-to-upgrade against your server's honor rewards
-before opening a vendor to players.
-
-## Affixes and the restricted economy
-
-Many green items use random-property or random-suffix pools. An item ID alone
-does not specify its final stats. Starter delivery uses the core's normal random
-property/suffix generation and refuses to deliver a random-stat item if its
-affix could not be generated. These are legal ordinary rolls, not controlled
-role-specific stats; deterministic role-specific affixes remain future work.
-The starter research CSV records the relevant pool IDs and fixed stats.
-
-Stock templates have ordinary vendor resale and disenchant values. Merely listing
-them here does not make them zero-value or prevent disenchanting. If those actions
-must be prohibited, the grant/purchase implementation needs appropriate item
-restrictions or separate custom templates. Do not modify the stock templates
-globally and affect Normal Mode characters. Starter delivery is tracked once per
-character using the persistent delivery marker described above.
-
-## Research and verification
-
-Source: AzerothCore's
-[item_template.sql](https://github.com/azerothcore/azerothcore-wotlk/blob/a64665927de9d23cf81b0b623ee7117131f0919a/data/sql/base/db_world/item_template.sql),
-revision `a64665927de9d23cf81b0b623ee7117131f0919a`.
-The downloaded SQL SHA-256 is
-`bd4859be01946ca1521f7896f558f665e1e1d98890757a3df30e717b62768cc6`.
-Item facts originate from AzerothCore; catalog choices and honor prices are this
-module's proposed configuration.
-
-- [Starter research CSV](starter-gear-candidates.csv): 213 pieces across 27
-  armor profiles, including the two optional caster profiles. Includes fixed
-  stats, item levels, required levels, affix pools, resale values, and disenchant
-  IDs. Of these, 146 pieces require a controlled affix.
-- [Priced catalog snapshot](gear-catalog.csv): a readable export of the shipped
-  defaults, including each class and honor price. It is a research snapshot;
-  runtime settings come exclusively from the `.conf`, not this CSV.
-
-All 552 distinct items in the default class/tier lists were checked against that
-snapshot for existence, level cap, armor type, class/race/faction eligibility,
-and absence of profession, spell, reputation, honor-rank, map, area, and holiday
-requirements. This checks eligibility, not PvP balance or live-client behavior.
-The runtime validator also checks against your server's actual item templates.
-
-## Item tooltips
-
-Starter delivery sends the core's localized item-template response before the
-new-item notification and city teleport. BG login also refreshes information
-for equipped items. If an existing character shows “Retrieving item information,”
-log in again after updating, or use `.bgstarter` to refresh equipped-item
-information. A completed delivery remains completed; this does not grant gear.
+[gear-catalog.csv](gear-catalog.csv) snapshots every configured class/build list.
+See the individual armor-set documents for source appearances and approximate
+scaling budgets. Custom item icons/right-click support still awaits the client
+patch. Test new characters across brackets, both factions, each offered build,
+menu Back/close/reopen, stale confirmations, full-bag retry, and save/relog.
+Policy/config/database tests and module compilation do not prove in-game balance.

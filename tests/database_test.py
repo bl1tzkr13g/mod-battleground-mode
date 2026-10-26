@@ -90,6 +90,26 @@ def main():
                "SELECT ROW_COUNT();", "0", "completed deliveries cannot regrant on relog or request")
         sql(update)
         expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "2", "reapplying migration does not reset delivered grants")
+        # Role migration preserves legacy decisions/claims and defaults to zero.
+        sql("ALTER TABLE mod_battleground_mode DROP COLUMN starter_role;")
+        sql(update)
+        sql(update)
+        expect("SELECT mode,locked_level,starter_state,starter_role FROM mod_battleground_mode WHERE guid=1;",
+               "2\t19\t2\t0", "role migration preserves completed legacy grant")
+        sql("INSERT INTO characters (guid) VALUES (7);"
+            "INSERT INTO mod_battleground_mode (guid,mode,locked_level) VALUES (7,0,0);")
+        expect("SELECT mode,locked_level,starter_role FROM mod_battleground_mode WHERE guid=7;",
+               "0\t0\t0", "browsing bracket/build menus need not commit a decision")
+        sql("UPDATE mod_battleground_mode SET mode=2,locked_level=39,starter_role=2 WHERE guid=7 AND mode=0;")
+        expect("SELECT mode,locked_level,starter_role FROM mod_battleground_mode WHERE guid=7;",
+               "2\t39\t2", "Holy role and bracket persist together")
+        sql("UPDATE mod_battleground_mode SET mode=2,locked_level=79,starter_role=3 WHERE guid=7 AND mode=0;")
+        expect("SELECT locked_level,starter_role FROM mod_battleground_mode WHERE guid=7;",
+               "39\t2", "stale confirmations cannot switch build or bracket")
+        sql("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=7 AND mode=2 AND starter_state=0;")
+        sql(update)
+        expect("SELECT starter_role,starter_state FROM mod_battleground_mode WHERE guid=7;",
+               "2\t1", "reapplying migration cannot erase selected build or interrupted claim")
         # The bag shares the starter claim and the final inventory transaction:
         # no second entitlement/DB column, and no repeated free bag after loss.
         sql("INSERT INTO characters (guid) VALUES (6);"
@@ -132,7 +152,7 @@ def main():
         expect("SELECT playerFlags FROM characters WHERE guid=5;", "33554448", "reset leaves unrelated characters' XP flags untouched")
         expect("SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='mod_battleground_mode';",
                "0", "reset removes only the module table")
-        expect("SELECT COUNT(*) FROM characters;", "4", "reset does not delete characters")
+        expect("SELECT COUNT(*) FROM characters;", "5", "reset does not delete characters")
         sql(reset)
         expect("SELECT playerFlags FROM characters WHERE guid=5;", "33554448", "repeating reset without the module table is safe")
         sql(migration)

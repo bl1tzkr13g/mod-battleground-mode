@@ -34,7 +34,9 @@ constexpr uint32 ChooseNormal = 1;
 constexpr uint32 ChooseBracket = 2;
 constexpr uint32 Back = 3;
 constexpr uint32 LevelAction = 100;
+constexpr uint32 RoleAction = 1000;
 static_assert(MaxBracketChoices + 1 <= GOSSIP_MAX_MENU_ITEMS);
+static_assert(9 + 1 <= GOSSIP_MAX_MENU_ITEMS);
 
 struct Destination
 {
@@ -75,6 +77,7 @@ struct CharacterState
 {
     Mode mode = Mode::Normal;
     uint8 level = 0;
+    StarterRole role = StarterRole::None;
     bool persisted = false;
     bool applyingLevel = false;
     StarterState starter = StarterState::Pending;
@@ -143,10 +146,14 @@ public:
         next.shattrath = destination("Shattrath", next.shattrath);
         next.dalaran = destination("Dalaran", next.dalaran);
         auto gear = std::make_shared<GearCatalog>();
-        for (auto const& key : sConfigMgr->GetKeysByString("BattlegroundMode.Gear.Level"))
+        auto gearKeys = sConfigMgr->GetKeysByString("BattlegroundMode.Gear.Level");
+        // A legacy class key sorts before its explicit build keys. Explicit
+        // builds therefore win deterministically if an upgrade leaves both.
+        std::sort(gearKeys.begin(), gearKeys.end());
+        for (auto const& key : gearKeys)
             if (!gear->Add(key, sConfigMgr->GetOption<std::string>(key, "", false)))
                 LOG_ERROR("module", "Battleground Mode: invalid gear list {}. Expected itemId:honor pairs; "
-                    "tier 1 must be free and later tiers must have positive prices.", key);
+                    "only free Tier 1 class/build lists are supported.", key);
         next.gear = std::move(gear);
         // Item templates are loaded later during initial server startup. On
         // reload, validate before publishing the replacement immutable catalog.
@@ -338,10 +345,10 @@ public:
             Tell(player, "Use .bgstarter when alive, out of combat, and outside travel, trades, and battlegrounds.");
             return;
         }
-        auto const& kit = config.gear->Find(state->level, player->getClass(), 1);
+        auto const& kit = config.gear->Find(state->level, player->getClass(), 1, state->role);
         if (kit.empty())
         {
-            Tell(player, "No valid Tier 1 gear is configured for your bracket and class. Contact a game master.");
+            Tell(player, "No valid starter gear is configured for your bracket, class and selected build. Contact a game master.");
             return;
         }
 
@@ -564,7 +571,7 @@ public:
             player->GetGUID().GetCounter());
         auto claimed = Read(player);
         if (!claimed || claimed->mode != Mode::Battleground || claimed->level != state->level ||
-            claimed->starter != StarterState::Claimed)
+            claimed->role != state->role || claimed->starter != StarterState::Claimed)
         {
             DatabaseError(player);
             return;
@@ -689,19 +696,20 @@ public:
             Tell(player, "Gear lists are available to Battleground Mode characters only.");
             return;
         }
-        if (tier == 0 || tier > 65535)
+        if (tier != 1)
         {
-            Tell(player, "Tier must be between 1 and 65535.");
+            Tell(player, "Only starter Tier 1 is supported. Visit the PvP vendors for upgrades.");
             return;
         }
-        auto const& items = config.gear->Find(state->level, player->getClass(), static_cast<uint16>(tier));
+        auto const& items = config.gear->Find(state->level, player->getClass(), static_cast<uint16>(tier), state->role);
         if (items.empty())
         {
             Tell(player, "No gear is configured for your bracket, class, and requested tier.");
             return;
         }
         ChatHandler handler(player->GetSession());
-        handler.PSendSysMessage("Level {} / tier {} gear catalog (preview only):", state->level, tier);
+        handler.PSendSysMessage("Level {} / {} starter gear (preview only):", state->level,
+            std::string(StarterRoleName(state->role == StarterRole::None ? DefaultStarterRole(player->getClass()) : state->role)));
         for (auto const& item : items)
             handler.PSendSysMessage("Item {}: {} honor", item.entry, item.honor);
     }
@@ -745,7 +753,7 @@ public:
         // LEFT JOIN guarantees a row even when this existing character has no
         // module record. An empty result therefore means an actual DB failure.
         QueryResult result = CharacterDatabase.Query(
-            "SELECT b.mode, b.locked_level, b.starter_state "
+            "SELECT b.mode, b.locked_level, b.starter_state, b.starter_role "
             "FROM characters c LEFT JOIN mod_battleground_mode b ON b.guid = c.guid WHERE c.guid = {}",
             player->GetGUID().GetCounter());
         if (!result)
@@ -755,12 +763,16 @@ public:
         uint8 mode = (*result)[0].Get<uint8>();
         uint8 level = (*result)[1].Get<uint8>();
         uint8 starter = (*result)[2].Get<uint8>();
-        if (!ValidRecord(static_cast<Mode>(mode), level) || starter > static_cast<uint8>(StarterState::Delivered))
+        auto role = static_cast<StarterRole>((*result)[3].Get<uint8>());
+        if (!ValidRecord(static_cast<Mode>(mode), level) || starter > static_cast<uint8>(StarterState::Delivered) ||
+            (role != StarterRole::None && (static_cast<Mode>(mode) != Mode::Battleground ||
+                !StarterRoleAllowed(player->getClass(), role))))
             return std::nullopt;
         CharacterState state;
         state.mode = static_cast<Mode>(mode);
         state.level = level;
         state.starter = static_cast<StarterState>(starter);
+        state.role = role;
         state.persisted = true;
         return state;
     }
@@ -876,7 +888,8 @@ public:
             if (state->mode == Mode::Normal)
                 Tell(player, "This character uses Normal Mode. Its selection is permanent.");
             else
-                ChatHandler(player->GetSession()).PSendSysMessage("Battleground Mode: permanently locked at level {}.", state->level);
+                ChatHandler(player->GetSession()).PSendSysMessage("Battleground Mode: permanently locked at level {}, starter build {}.", state->level,
+                    std::string(StarterRoleName(state->role == StarterRole::None ? DefaultStarterRole(player->getClass()) : state->role)));
             return;
         }
         if (!SafeToSelect(player))
@@ -898,12 +911,29 @@ public:
         {
             for (uint8 level : config.levels)
                 if (CanChoose(state->mode, player->GetLevel(), level, config.levels))
-                    AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "Level " + std::to_string(level), Sender, LevelAction + level,
-                        "Permanently lock this character at level " + std::to_string(level) +
-                        "? XP is disabled. Trading, mail, auctions, and guild banking may be restricted. This choice cannot be undone.", 0, false);
+                    AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "Level " + std::to_string(level) + " - choose starter build",
+                        Sender, LevelAction + level);
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Back", Sender, Back);
         }
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, player->GetGUID());
+    }
+
+    void ShowRoles(Player* player, uint8 level)
+    {
+        auto config = Config();
+        auto roles = AvailableStarterRoles(*config.gear, level, player->getClass(), config.starterEnabled);
+        ClearGossipMenuFor(player);
+        player->PlayerTalkClass->GetGossipMenu().SetMenuId(MenuId);
+        for (auto role : roles)
+            AddGossipItemFor(player, GOSSIP_ICON_BATTLE, std::string(StarterRoleName(role)) + " - level " + std::to_string(level),
+                Sender, RoleAction + level * 16 + static_cast<uint8>(role),
+                "Permanently choose level " + std::to_string(level) + " and the " + std::string(StarterRoleName(role)) +
+                " starter build? This selects gear, not talents. XP is disabled. Trading, mail, auctions and guild banking may be restricted. "
+                "The starter kit is granted once; this choice cannot be undone.", 0, false);
+        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Back to levels", Sender, ChooseBracket);
+        SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, player->GetGUID());
+        if (roles.empty())
+            Tell(player, "No valid starter builds are configured for this bracket and class. Choose another bracket or contact a game master.");
     }
 
     void Select(Player* player, uint32 action)
@@ -921,13 +951,27 @@ public:
 
         Mode chosen;
         uint8 level = 0;
+        StarterRole role = StarterRole::None;
         if (action == ChooseNormal && config.allowNormal)
             chosen = Mode::Normal;
         else if (action > LevelAction && action <= LevelAction + 80 &&
             CanChoose(state->mode, player->GetLevel(), static_cast<uint8>(action - LevelAction), config.levels))
         {
+            ShowRoles(player, static_cast<uint8>(action - LevelAction));
+            return; // No mode, level, XP or inventory mutation until final role confirmation.
+        }
+        else if (action > RoleAction && action <= RoleAction + 80 * 16 + 9)
+        {
+            uint32 encoded = action - RoleAction;
+            level = static_cast<uint8>(encoded / 16);
+            role = static_cast<StarterRole>(encoded % 16);
+            if (!CanChoose(state->mode, player->GetLevel(), level, config.levels) ||
+                !StarterRoleAllowed(player->getClass(), role))
+                return;
+            auto roles = AvailableStarterRoles(*config.gear, level, player->getClass(), config.starterEnabled);
+            if (std::find(roles.begin(), roles.end(), role) == roles.end())
+                return; // Reject forged, removed, empty and invalidated loadouts.
             chosen = Mode::Battleground;
-            level = static_cast<uint8>(action - LevelAction);
         }
         else
             return;
@@ -935,10 +979,10 @@ public:
         // Persist and verify BEFORE changing the character. Never overwrite a
         // completed decision; duplicate clicks and old menus cannot re-enroll.
         CharacterDatabase.DirectExecute(
-            "UPDATE mod_battleground_mode SET mode = {}, locked_level = {} WHERE guid = {} AND mode = 0",
-            static_cast<uint8>(chosen), level, player->GetGUID().GetCounter());
+            "UPDATE mod_battleground_mode SET mode = {}, locked_level = {}, starter_role = {} WHERE guid = {} AND mode = 0",
+            static_cast<uint8>(chosen), level, static_cast<uint8>(role), player->GetGUID().GetCounter());
         auto persisted = Read(player);
-        if (!persisted || !persisted->persisted || persisted->mode != chosen || persisted->level != level)
+        if (!persisted || !persisted->persisted || persisted->mode != chosen || persisted->level != level || persisted->role != role)
         {
             DatabaseError(player);
             return;

@@ -2,8 +2,8 @@
 
 An AzerothCore 3.3.5a C++ module for permanent battleground bracket characters.
 Provides character selection, restrictions, and one-time starter gear delivery.
-Gear catalogs and per-item honor prices are configurable; vendors and progression
-rewards are the next milestone.
+Starter builds are configurable by bracket, class and role. Stock PvP vendors
+provide progression gear in the Shattrath and Dalaran hubs.
 
 ## Implemented
 
@@ -31,11 +31,11 @@ rewards are the next milestone.
 - Mail addressed to a restricted character is rejected even while that character
   is offline. NPC vendors and personally funded repairs remain available.
 - One character-database table: `guid`, `mode`, `locked_level`, and a one-time
-  starter delivery marker (`starter_state`).
+  starter delivery marker (`starter_state`) and saved build (`starter_role`).
   Character deletion removes its record in the core's deletion transaction.
-- Editable gear lists by bracket, tier, and class, with individual honor prices.
-  Five tiers are laid out, with automatic discovery of additional tier keys.
-  `.bggear <tier>` previews the matching list; it does not grant or sell items.
+- Editable Tier 1 starter builds in one config. Players choose a bracket, then
+  their class build, and confirm both together before leveling or receiving gear.
+  `.bggear 1` previews their saved build. Tiers 2+ have been removed.
 - Tier 1 is delivered once and auto-equipped by default, replacing matching
   equipment slots and preserving old gear in bags. Existing BG characters receive
   an unclaimed set on their next safe login. `.bgstarter` retries delivery after
@@ -137,7 +137,9 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | New character, close menu, relog, `.bgmode` | Choice remains pending and menu can reopen |
 | Close menu, gain XP, reach level 2, then relog and `.bgmode` | Normal XP and leveling work; Normal Mode is saved permanently |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
-| Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |
+| Choose level 19, then choose a build and confirm; relog/restart | Level and build persist; confirmation cannot repeat |
+| Browse levels/builds, close the menu before confirmation | No gear or level change; XP works normally until a final choice |
+| Replay another class/build action or remove an offered loadout before confirmation | Invalid/removed build is rejected without granting gear |
 | Confirm BG Mode with room for replaced gear and one staging item | Configured Tier 1 gear equips; replaced items move into bags |
 | Relog, change Tier 1 config, or repeat `.bgstarter` after delivery | No second kit and no replacement of later upgrades |
 | Full bags, then free space and `.bgstarter` | No partial grant while full; one successful delivery after space is available |
@@ -156,14 +158,22 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | Class spells requiring a talent, quest spell, or skill | Core prerequisites remain enforced; unselected talents and quest-only spells are not granted |
 | Delete a character | Module record is removed |
 
-## Next milestone
+## Starter builds and upgrades
 
-The config contains class heirlooms and scaling completion sets at every bracket,
-and priced upgrade candidates. See [Tier 1 heirloom loadouts](docs/tier1-heirlooms.md).
-See [gear configuration and research](docs/starter-gear.md) for editing syntax,
-the exact tier coverage, source data, and role/affix limitations. Starter gear is
-free; later items use `itemID:honorPrice` pairs. Empty higher-tier lists are
-placeholders for further curation or custom gear.
+[Starter build configuration](docs/starter-gear.md) lists the available roles and
+migration steps. All completed loadouts live in `conf/mod_battleground_mode.conf.dist`;
+there are no separate alternate config files to copy. Paladin has Retribution/Holy,
+Druid has Feral/Balance/Restoration, and Shaman has Enhancement/Elemental/Restoration.
+Other eligible classes share a Damage kit (Priest's kit also suits healing).
+Protection is reserved for future kits and is not offered yet. Gear choice does
+not assign talents, respec, or change the class-training policy.
+
+**Upgrade:** pull, rebuild/install worldserver, replace the gear catalog in your
+active module `.conf` with the new complete section, then restart. Preserve your
+other settings. The `.conf.dist` never overwrites an active `.conf`. The startup
+updater adds the saved build column automatically; no manual SQL import is needed.
+Existing characters keep their choices and completed claims; legacy BG records
+use their old physical/default build. PvP vendors supply all further upgrades.
 
 Starter delivery gives one Frostweave Bag (20 slots, item 41599) first, equipping
 it in the first empty bag slot before the gear. Configure this using
@@ -180,9 +190,8 @@ bag room for replaced gear plus one reusable staging slot; bag-only delivery
 requires room for the whole kit. Newly granted pieces are soulbound by default;
 class-appropriate mail/plate training at level 40+ is configurable.
 
-Next: implement an NPC that purchases from the bracket/class catalogs with
-server-side honor checks. No starting currency, purchases, or honor deductions
-are implemented yet.
+No custom progression catalog or custom honor-purchase system is maintained.
+The copied stock PvP vendors retain their normal inventories, prices and requirements.
 
 Keep auctions blocked for a restricted economy: buying a normal player's auction
 transfers gold to its owner. Custom modules with shared storage, account wallets,
@@ -199,7 +208,7 @@ updater installs the world SQL automatically. Build the updated module once to
 support location switches: `BattlegroundMode.VendorHubs.Shattrath.Enable` and
 `BattlegroundMode.VendorHubs.Dalaran.Enable` (default `1`). Changing a switch
 requires a restart. Stock inventories and requirements are retained; this is
-separate from the configurable bracket catalog.
+separate from starter builds.
 
 ## Custom scaling caster set
 
@@ -231,26 +240,10 @@ brackets use the same native heirloom proficiency exception as the stock Valor
 items. Update their active Tier 1 entries and restart; item SQL installs
 automatically with no additional rebuild required.
 
-## Alternate caster/healer leather
+## Caster/healer builds
 
-[Druid and low-level Shaman caster/healer leather](docs/caster-leather-starter-set.md)
-is available with optional ready-to-copy loadouts in `conf/loadouts`. Default
-physical class lists stay unchanged. The updater installs the items on restart;
-copy the chosen example entries into the active config to make that class's
-future starter grants use caster gear. No additional rebuild is required.
-
-## Alternate Elemental/Restoration Shaman mail
-
-[Caster/healer mail and a complete seven-bracket Shaman caster path](docs/caster-mail-starter-set.md)
-are available as optional example configs. The combined example uses caster
-leather below 40 and caster mail afterward. Enhancement remains the default;
-replace the chosen active Tier 1 entries to test the caster path. SQL installs
-on restart, with no additional rebuild required.
-
-## Alternate Holy Paladin plate
-
-[Holy Paladin Lightforge](docs/holy-paladin-starter-set.md) includes custom caster
-plate, a stock one-handed caster mace and a scaling held tome. Retribution stays
-the default; replace matching entries using `conf/loadouts/holy-paladin.conf.example`
-to activate Holy for future grants. This update needs a rebuild for planned
-main/offhand preflight; SQL still installs automatically on restart.
+[Balance/Restoration Druid and low-level caster Shaman](docs/caster-leather-starter-set.md),
+[Elemental/Restoration Shaman mail](docs/caster-mail-starter-set.md), and
+[Holy Paladin plate with mace/tome](docs/holy-paladin-starter-set.md) are selectable
+builds in the main config at all seven brackets. Caster Shaman uses leather below
+40 and mail afterward. Client patch work remains deferred.

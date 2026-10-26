@@ -92,1551 +92,254 @@ BattlegroundMode.StarterGear.Bag.Item = 41599
 # Character SQL is applied automatically by the core startup database updater;
 # it handles fresh installations and upgrades without resetting saved choices.
 
-# ============================================================================
-# GEAR CATALOG: bracket -> tier -> class -> itemID:honorPrice
-# ============================================================================
-# Tier 1: Starter (free). Tier 2: Soldier. Tier 3: Veteran.
-# Tier 4: Champion. Tier 5: Elite (reserved for further curated/custom upgrades).
-# Syntax: "itemID:honorPrice,itemID:honorPrice". Prices are per individual item.
-# Example: "12982:75,6460:100" means 75 honor for boots, 100 for the belt.
-# Tier 1 prices MUST be 0. Tier 2+ prices MUST be positive and <= the honor cap.
-# Empty lists are intentional: they supply no starter/vendor items.
-# Add any Tier6 (or higher) class key below; the loader discovers it automatically.
-# No TierCount or code change is needed. Tier IDs range from 1 to 65535.
-# Settings reload with .reload config. The catalog preview command is:
-# .bggear <tier> lists the logged-in BG character's exact bracket/class and prices.
-# Tier 1 is delivered once using the StarterGear settings above. Vendor purchasing
-# and honor deductions are NOT wired yet.
-# No starting gold or talent grants are provided here. Class-trainer spells
-# are controlled separately by AutoLearnClassTrainerSpells above.
-#
-# Tiers 2+ are STOCK upgrade candidates, NOT playtested complete sets.
-# Tier 1 uses the SAME class heirlooms at EVERY bracket. Rogue/Feral Druid use
-# custom agility leather completion pieces at all brackets; Hunter/Shaman use
-# them below 40 and the custom agility mail completion set from 40 onward.
-# Warrior/Retribution Paladin use custom strength Valor pieces at every bracket;
-# below 40, heirloom plate uses the core's native proficiency exception.
-# Priest/Mage/Warlock now get a full custom-scaling cloth completion set, including
-# cloak, jewelry and wand. Client icons/right-click support are deferred.
-# Shields and ammunition are not supplied. Higher tiers are unchanged.
-# Auto-equip stages one item at a time; bag-only delivery needs 15-16 free slots.
-# Both faction insignias are listed: only the player's faction version is given.
-# Hybrid defaults are physical: Retribution Paladin, Enhancement Shaman, Feral
-# Druid. Optional caster/healer loadouts are in conf/loadouts/*.conf.example;
-# copy their class entries to activate (including holy-paladin.conf.example).
-# No role-selection menu is provided.
-# Empty later tiers must be filled before exposing them in the future vendor.
-# Green starter items receive normal random stat affixes from the core's pools.
-# Role-specific fixed affixes are not implemented.
-# Default Druid/Shaman/Paladin lists favor physical roles; caster/healer variants
-# need separate role design or administrator edits. Death Knight lists are empty
-# because characters starting above level 1 are ineligible for BG enrollment.
-# Stock items retain resale/disenchant values. Zero-value custom copies or item
-# restrictions will be needed if those actions must be prohibited for starter gear.
-# Honor prices below are initial editable balance suggestions, not tuned rewards.
-# Source/item details: docs/starter-gear.md and docs/starter-gear-candidates.csv.
+# STARTER GEAR ONLY: bracket -> class -> build. PvP vendors supply upgrades.
+# Format: BattlegroundMode.Gear.Level19.Tier1.Paladin.Holy = "itemID:0,..."
+# All pieces are free. Tiers 2+ are no longer loaded. Replace your old active
+# catalog with this complete section; do not append duplicate legacy class keys.
+# The player chooses bracket, then one of the nonempty class builds below.
+# Selection controls the one-time gear grant, not talents, spells or spec.
+# Damage is a shared kit for the pure damage classes and Priest (caster/healer).
+# Protection kits are not available yet. No placeholder builds appear in menus.
+# Keep a one-handed main weapon before any held offhand in each item list.
+# Both insignias are listed; delivery filters to the player's faction.
+# Low-level heirloom armor follows native mail/plate adaptation. Client patch
+# work for custom item icons and right-click equipping remains deferred.
+# Settings reload with .reload config; selected roles and completed grants persist.
 
-# ============================================================================
-# LEVEL 19 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level19.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# LEVEL 19 - TIER 1 STARTER BUILDS
 
 # Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level19.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+BattlegroundMode.Gear.Level19.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level19.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level19.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level19.Tier1.Hunter = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
+BattlegroundMode.Gear.Level19.Tier1.Hunter.Damage = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level19.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
+BattlegroundMode.Gear.Level19.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level19.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level19.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level19.Tier1.Shaman = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level19.Tier1.Shaman.Enhancement = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level19.Tier1.Shaman.Elemental = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level19.Tier1.Shaman.Restoration = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level19.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level19.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level19.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level19.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level19.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level19.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level19.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level19.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level19.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 19 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Silver-linked Footguards; Runescale Girdle; Cavedweller Bracers
-BattlegroundMode.Gear.Level19.Tier2.Paladin = "12982:75,5425:50,14147:50"
+# LEVEL 29 - TIER 1 STARTER BUILDS
 
 # Warrior
-# Silver-linked Footguards; Runescale Girdle; Cavedweller Bracers
-BattlegroundMode.Gear.Level19.Tier2.Warrior = "12982:75,5425:50,14147:50"
+BattlegroundMode.Gear.Level29.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level29.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level29.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# Scouting Belt; Scouting Boots; Scouting Bracers; Scouting Gloves; Scouting Trousers; Scouting Spaulders
-BattlegroundMode.Gear.Level19.Tier2.Hunter = "6581:50,6582:75,6583:50,6586:75,6587:100,6588:75"
+BattlegroundMode.Gear.Level29.Tier1.Hunter.Damage = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# Scouting Belt; Scouting Boots; Scouting Bracers; Scouting Gloves; Scouting Trousers; Scouting Spaulders
-BattlegroundMode.Gear.Level19.Tier2.Rogue = "6581:50,6582:75,6583:50,6586:75,6587:100,6588:75"
+BattlegroundMode.Gear.Level29.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# Shimmering Boots; Shimmering Bracers; Shimmering Gloves; Shimmering Amice; Shimmering Trousers; Shimmering Sash; Mystic's Robe
-BattlegroundMode.Gear.Level19.Tier2.Priest = "6562:75,6563:50,6565:75,6566:75,6568:100,6570:50,14371:100"
+BattlegroundMode.Gear.Level29.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Scouting Belt; Scouting Boots; Scouting Bracers; Scouting Gloves; Scouting Trousers; Scouting Spaulders
-BattlegroundMode.Gear.Level19.Tier2.Shaman = "6581:50,6582:75,6583:50,6586:75,6587:100,6588:75"
+BattlegroundMode.Gear.Level29.Tier1.Shaman.Enhancement = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level29.Tier1.Shaman.Elemental = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level29.Tier1.Shaman.Restoration = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# Shimmering Boots; Shimmering Bracers; Shimmering Gloves; Shimmering Amice; Shimmering Trousers; Shimmering Sash; Mystic's Robe
-BattlegroundMode.Gear.Level19.Tier2.Mage = "6562:75,6563:50,6565:75,6566:75,6568:100,6570:50,14371:100"
+BattlegroundMode.Gear.Level29.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Shimmering Boots; Shimmering Bracers; Shimmering Gloves; Shimmering Amice; Shimmering Trousers; Shimmering Sash; Mystic's Robe
-BattlegroundMode.Gear.Level19.Tier2.Warlock = "6562:75,6563:50,6565:75,6566:75,6568:100,6570:50,14371:100"
+BattlegroundMode.Gear.Level29.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# Scouting Belt; Scouting Boots; Scouting Bracers; Scouting Gloves; Scouting Trousers; Scouting Spaulders
-BattlegroundMode.Gear.Level19.Tier2.Druid = "6581:50,6582:75,6583:50,6586:75,6587:100,6588:75"
+BattlegroundMode.Gear.Level29.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level29.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level29.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level19.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 19 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Savage Trodders; Cobrahn's Grasp; Thorbia's Gauntlets
-BattlegroundMode.Gear.Level19.Tier3.Paladin = "6459:225,6460:150,12994:225"
+# LEVEL 39 - TIER 1 STARTER BUILDS
 
 # Warrior
-# Savage Trodders; Cobrahn's Grasp; Thorbia's Gauntlets
-BattlegroundMode.Gear.Level19.Tier3.Warrior = "6459:225,6460:150,12994:225"
+BattlegroundMode.Gear.Level39.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level39.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level39.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# Blackened Defias Armor; Feet of the Lynx; Leggings of the Fang
-BattlegroundMode.Gear.Level19.Tier3.Hunter = "10399:300,1121:225,10410:300"
+BattlegroundMode.Gear.Level39.Tier1.Hunter.Damage = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# Blackened Defias Armor; Feet of the Lynx; Leggings of the Fang
-BattlegroundMode.Gear.Level19.Tier3.Rogue = "10399:300,1121:225,10410:300"
+BattlegroundMode.Gear.Level39.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# Spidersilk Boots; Corsair's Overshirt; Darkweave Breeches
-BattlegroundMode.Gear.Level19.Tier3.Priest = "4320:225,5202:300,12987:300"
+BattlegroundMode.Gear.Level39.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Blackened Defias Armor; Feet of the Lynx; Leggings of the Fang
-BattlegroundMode.Gear.Level19.Tier3.Shaman = "10399:300,1121:225,10410:300"
+BattlegroundMode.Gear.Level39.Tier1.Shaman.Enhancement = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level39.Tier1.Shaman.Elemental = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level39.Tier1.Shaman.Restoration = "900056:0,900064:0,42951:0,900057:0,48683:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# Spidersilk Boots; Corsair's Overshirt; Darkweave Breeches
-BattlegroundMode.Gear.Level19.Tier3.Mage = "4320:225,5202:300,12987:300"
+BattlegroundMode.Gear.Level39.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Spidersilk Boots; Corsair's Overshirt; Darkweave Breeches
-BattlegroundMode.Gear.Level19.Tier3.Warlock = "4320:225,5202:300,12987:300"
+BattlegroundMode.Gear.Level39.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# Blackened Defias Armor; Feet of the Lynx; Leggings of the Fang
-BattlegroundMode.Gear.Level19.Tier3.Druid = "10399:300,1121:225,10410:300"
+BattlegroundMode.Gear.Level39.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level39.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level39.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level19.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 19 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Paladin = ""
+# LEVEL 49 - TIER 1 STARTER BUILDS
 
 # Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Warrior = ""
+BattlegroundMode.Gear.Level49.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level49.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level49.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Hunter = ""
+BattlegroundMode.Gear.Level49.Tier1.Hunter.Damage = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Rogue = ""
+BattlegroundMode.Gear.Level49.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Priest = ""
+BattlegroundMode.Gear.Level49.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Shaman = ""
+BattlegroundMode.Gear.Level49.Tier1.Shaman.Enhancement = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level49.Tier1.Shaman.Elemental = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level49.Tier1.Shaman.Restoration = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Mage = ""
+BattlegroundMode.Gear.Level49.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Warlock = ""
+BattlegroundMode.Gear.Level49.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier4.Druid = ""
+BattlegroundMode.Gear.Level49.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level49.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level49.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level19.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 19 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Paladin = ""
+# LEVEL 59 - TIER 1 STARTER BUILDS
 
 # Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Warrior = ""
+BattlegroundMode.Gear.Level59.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level59.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level59.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Hunter = ""
+BattlegroundMode.Gear.Level59.Tier1.Hunter.Damage = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Rogue = ""
+BattlegroundMode.Gear.Level59.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Priest = ""
+BattlegroundMode.Gear.Level59.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Shaman = ""
+BattlegroundMode.Gear.Level59.Tier1.Shaman.Enhancement = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level59.Tier1.Shaman.Elemental = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level59.Tier1.Shaman.Restoration = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Mage = ""
+BattlegroundMode.Gear.Level59.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Warlock = ""
+BattlegroundMode.Gear.Level59.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level19.Tier5.Druid = ""
+BattlegroundMode.Gear.Level59.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level59.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level59.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level19.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 29 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level29.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# LEVEL 69 - TIER 1 STARTER BUILDS
 
 # Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level29.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+BattlegroundMode.Gear.Level69.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+
+# Paladin
+BattlegroundMode.Gear.Level69.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level69.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level29.Tier1.Hunter = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
+BattlegroundMode.Gear.Level69.Tier1.Hunter.Damage = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level29.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
+BattlegroundMode.Gear.Level69.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level29.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level69.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level29.Tier1.Shaman = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level69.Tier1.Shaman.Enhancement = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level69.Tier1.Shaman.Elemental = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level69.Tier1.Shaman.Restoration = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level29.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level69.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level29.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+BattlegroundMode.Gear.Level69.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level29.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level69.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level69.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level69.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level29.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 29 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Sentry's Surcoat; Sentry's Slippers; Sentry's Gloves; Sentry's Sash; Sentry's Leggings; Sentry's Shoulderguards; Sentry's Armsplints; Sentry's Headdress
-BattlegroundMode.Gear.Level29.Tier2.Paladin = "15524:150,15525:112,15527:112,15528:75,15529:150,15531:112,15532:75,15533:150"
+# LEVEL 79 - TIER 1 STARTER BUILDS
 
 # Warrior
-# Sentry's Surcoat; Sentry's Slippers; Sentry's Gloves; Sentry's Sash; Sentry's Leggings; Sentry's Shoulderguards; Sentry's Armsplints; Sentry's Headdress
-BattlegroundMode.Gear.Level29.Tier2.Warrior = "15524:150,15525:112,15527:112,15528:75,15529:150,15531:112,15532:75,15533:150"
+BattlegroundMode.Gear.Level79.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
 
-# Hunter
-# Robust Girdle; Robust Boots; Robust Bracers; Robust Gloves; Robust Leggings; Robust Shoulders; Robust Tunic; Robust Helm
-BattlegroundMode.Gear.Level29.Tier2.Hunter = "15120:75,15121:112,15122:75,15125:112,15126:150,15127:112,15128:150,15129:150"
-
-# Rogue
-# Robust Girdle; Robust Boots; Robust Bracers; Robust Gloves; Robust Leggings; Robust Shoulders; Robust Tunic; Robust Helm
-BattlegroundMode.Gear.Level29.Tier2.Rogue = "15120:75,15121:112,15122:75,15125:112,15126:150,15127:112,15128:150,15129:150"
-
-# Priest
-# Sage's Robe; Sage's Sash; Sage's Boots; Sage's Bracers; Sage's Gloves; Sage's Pants; Sage's Mantle; Sage's Circlet
-BattlegroundMode.Gear.Level29.Tier2.Priest = "6610:150,6611:75,6612:112,6613:75,6615:112,6616:150,6617:112,10288:150"
-
-# Shaman
-# Robust Girdle; Robust Boots; Robust Bracers; Robust Gloves; Robust Leggings; Robust Shoulders; Robust Tunic; Robust Helm
-BattlegroundMode.Gear.Level29.Tier2.Shaman = "15120:75,15121:112,15122:75,15125:112,15126:150,15127:112,15128:150,15129:150"
-
-# Mage
-# Sage's Robe; Sage's Sash; Sage's Boots; Sage's Bracers; Sage's Gloves; Sage's Pants; Sage's Mantle; Sage's Circlet
-BattlegroundMode.Gear.Level29.Tier2.Mage = "6610:150,6611:75,6612:112,6613:75,6615:112,6616:150,6617:112,10288:150"
-
-# Warlock
-# Sage's Robe; Sage's Sash; Sage's Boots; Sage's Bracers; Sage's Gloves; Sage's Pants; Sage's Mantle; Sage's Circlet
-BattlegroundMode.Gear.Level29.Tier2.Warlock = "6610:150,6611:75,6612:112,6613:75,6615:112,6616:150,6617:112,10288:150"
-
-# Druid
-# Robust Girdle; Robust Boots; Robust Bracers; Robust Gloves; Robust Leggings; Robust Shoulders; Robust Tunic; Robust Helm
-BattlegroundMode.Gear.Level29.Tier2.Druid = "15120:75,15121:112,15122:75,15125:112,15126:150,15127:112,15128:150,15129:150"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level29.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 29 - TIER 3 VETERAN GEAR
-# ============================================================================
 # Paladin
-# Avenger's Armor; Grubbis Paws; Tusken Helm
-BattlegroundMode.Gear.Level29.Tier3.Paladin = "1488:450,9445:337,6686:450"
-
-# Warrior
-# Avenger's Armor; Grubbis Paws; Tusken Helm
-BattlegroundMode.Gear.Level29.Tier3.Warrior = "1488:450,9445:337,6686:450"
+BattlegroundMode.Gear.Level79.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+BattlegroundMode.Gear.Level79.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
 
 # Hunter
-# Harbinger Boots; Petrolspill Leggings; Ferine Leggings
-BattlegroundMode.Gear.Level29.Tier3.Hunter = "7754:337,9509:450,6690:450"
+BattlegroundMode.Gear.Level79.Tier1.Hunter.Damage = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
 
 # Rogue
-# Harbinger Boots; Petrolspill Leggings; Ferine Leggings
-BattlegroundMode.Gear.Level29.Tier3.Rogue = "7754:337,9509:450,6690:450"
+BattlegroundMode.Gear.Level79.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
 
 # Priest
-# Beguiler Robes; Acidic Walkers; Leech Pants
-BattlegroundMode.Gear.Level29.Tier3.Priest = "7728:450,9454:337,6910:450"
+BattlegroundMode.Gear.Level79.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
-# Harbinger Boots; Petrolspill Leggings; Ferine Leggings
-BattlegroundMode.Gear.Level29.Tier3.Shaman = "7754:337,9509:450,6690:450"
+BattlegroundMode.Gear.Level79.Tier1.Shaman.Enhancement = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level79.Tier1.Shaman.Elemental = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level79.Tier1.Shaman.Restoration = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
 
 # Mage
-# Beguiler Robes; Acidic Walkers; Leech Pants
-BattlegroundMode.Gear.Level29.Tier3.Mage = "7728:450,9454:337,6910:450"
+BattlegroundMode.Gear.Level79.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Beguiler Robes; Acidic Walkers; Leech Pants
-BattlegroundMode.Gear.Level29.Tier3.Warlock = "7728:450,9454:337,6910:450"
+BattlegroundMode.Gear.Level79.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
-# Harbinger Boots; Petrolspill Leggings; Ferine Leggings
-BattlegroundMode.Gear.Level29.Tier3.Druid = "7754:337,9509:450,6690:450"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level29.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 29 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier4.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level29.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 29 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level29.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level29.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 39 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level39.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level39.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
-
-# Hunter
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level39.Tier1.Hunter = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,42946:0"
-
-# Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level39.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
-
-# Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level39.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Shaman
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Champion Herod's Shoulder; Stained Shadowcraft Cloak; Champion's Deathdealer Breastplate; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level39.Tier1.Shaman = "900029:0,900037:0,42950:0,900030:0,48677:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48716:0"
-
-# Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level39.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level39.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level39.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level39.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 39 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Knight's Breastplate; Knight's Legguards; Knight's Headguard; Knight's Gauntlets; Knight's Boots; Knight's Pauldrons; Knight's Bracers; Knight's Girdle
-BattlegroundMode.Gear.Level39.Tier2.Paladin = "7454:200,7455:200,7456:200,7457:150,7458:150,7459:150,7461:100,7462:100"
-
-# Warrior
-# Knight's Breastplate; Knight's Legguards; Knight's Headguard; Knight's Gauntlets; Knight's Boots; Knight's Pauldrons; Knight's Bracers; Knight's Girdle
-BattlegroundMode.Gear.Level39.Tier2.Warrior = "7454:200,7455:200,7456:200,7457:150,7458:150,7459:150,7461:100,7462:100"
-
-# Hunter
-# Huntsman's Boots; Huntsman's Bands; Huntsman's Armor; Huntsman's Cap; Huntsman's Belt; Huntsman's Gloves; Huntsman's Leggings; Huntsman's Shoulders
-BattlegroundMode.Gear.Level39.Tier2.Hunter = "9885:150,9886:100,9887:200,9889:200,9891:100,9892:150,9893:200,9894:150"
-
-# Rogue
-# Huntsman's Boots; Huntsman's Bands; Huntsman's Armor; Huntsman's Cap; Huntsman's Belt; Huntsman's Gloves; Huntsman's Leggings; Huntsman's Shoulders
-BattlegroundMode.Gear.Level39.Tier2.Rogue = "9885:150,9886:100,9887:200,9889:200,9891:100,9892:150,9893:200,9894:150"
-
-# Priest
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level39.Tier2.Priest = "9875:100,9876:150,9878:200,9879:100,9880:150,9881:150,9883:200,9884:200"
-
-# Shaman
-# Huntsman's Boots; Huntsman's Bands; Huntsman's Armor; Huntsman's Cap; Huntsman's Belt; Huntsman's Gloves; Huntsman's Leggings; Huntsman's Shoulders
-BattlegroundMode.Gear.Level39.Tier2.Shaman = "9885:150,9886:100,9887:200,9889:200,9891:100,9892:150,9893:200,9894:150"
-
-# Mage
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level39.Tier2.Mage = "9875:100,9876:150,9878:200,9879:100,9880:150,9881:150,9883:200,9884:200"
-
-# Warlock
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Mantle; Sorcerer Pants; Sorcerer Robe
-BattlegroundMode.Gear.Level39.Tier2.Warlock = "9875:100,9876:150,9878:200,9879:100,9880:150,9881:150,9883:200,9884:200"
-
-# Druid
-# Huntsman's Boots; Huntsman's Bands; Huntsman's Armor; Huntsman's Cap; Huntsman's Belt; Huntsman's Gloves; Huntsman's Leggings; Huntsman's Shoulders
-BattlegroundMode.Gear.Level39.Tier2.Druid = "9885:150,9886:100,9887:200,9889:200,9891:100,9892:150,9893:200,9894:150"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level39.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 39 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Scarlet Chestpiece; Scarlet Leggings; Herod's Shoulder
-BattlegroundMode.Gear.Level39.Tier3.Paladin = "10328:600,10330:600,7718:450"
-
-# Warrior
-# Scarlet Chestpiece; Scarlet Leggings; Herod's Shoulder
-BattlegroundMode.Gear.Level39.Tier3.Warrior = "10328:600,10330:600,7718:450"
-
-# Hunter
-# Quillward Harness; Worn Running Boots; Basilisk Hide Pants
-BattlegroundMode.Gear.Level39.Tier3.Hunter = "10583:600,9398:450,1718:600"
-
-# Rogue
-# Quillward Harness; Worn Running Boots; Basilisk Hide Pants
-BattlegroundMode.Gear.Level39.Tier3.Rogue = "10583:600,9398:450,1718:600"
-
-# Priest
-# Robes of the Lich; Furen's Boots; Death's Head Vestment
-BattlegroundMode.Gear.Level39.Tier3.Priest = "10762:600,13100:450,10581:600"
-
-# Shaman
-# Quillward Harness; Worn Running Boots; Basilisk Hide Pants
-BattlegroundMode.Gear.Level39.Tier3.Shaman = "10583:600,9398:450,1718:600"
-
-# Mage
-# Robes of the Lich; Furen's Boots; Death's Head Vestment
-BattlegroundMode.Gear.Level39.Tier3.Mage = "10762:600,13100:450,10581:600"
-
-# Warlock
-# Robes of the Lich; Furen's Boots; Death's Head Vestment
-BattlegroundMode.Gear.Level39.Tier3.Warlock = "10762:600,13100:450,10581:600"
-
-# Druid
-# Quillward Harness; Worn Running Boots; Basilisk Hide Pants
-BattlegroundMode.Gear.Level39.Tier3.Druid = "10583:600,9398:450,1718:600"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level39.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 39 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier4.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level39.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 39 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level39.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level39.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 49 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level49.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level49.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
-
-# Hunter
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level49.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
-
-# Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level49.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
-
-# Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level49.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Shaman
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level49.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
-
-# Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level49.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level49.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level49.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level49.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 49 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Revenant Bracers; Revenant Chestplate; Revenant Gauntlets; Revenant Girdle; Revenant Boots; Revenant Helmet; Revenant Leggings; Revenant Shoulders
-BattlegroundMode.Gear.Level49.Tier2.Paladin = "10127:125,10128:250,10129:187,10130:125,10131:187,10132:250,10133:250,10134:187"
-
-# Warrior
-# Revenant Bracers; Revenant Chestplate; Revenant Gauntlets; Revenant Girdle; Revenant Boots; Revenant Helmet; Revenant Leggings; Revenant Shoulders
-BattlegroundMode.Gear.Level49.Tier2.Warrior = "10127:125,10128:250,10129:187,10130:125,10131:187,10132:250,10133:250,10134:187"
-
-# Hunter
-# Captain's Breastplate; Captain's Leggings; Captain's Circlet; Captain's Gauntlets; Captain's Boots; Captain's Shoulderguards; Captain's Bracers; Captain's Waistguard
-BattlegroundMode.Gear.Level49.Tier2.Hunter = "7486:250,7487:250,7488:250,7489:187,7490:187,7491:187,7493:125,7494:125"
-
-# Rogue
-# Chieftain's Belt; Chieftain's Boots; Chieftain's Bracers; Chieftain's Breastplate; Chieftain's Gloves; Chieftain's Headdress; Chieftain's Leggings; Chieftain's Shoulders
-BattlegroundMode.Gear.Level49.Tier2.Rogue = "9947:125,9948:187,9949:125,9950:250,9952:187,9953:250,9954:250,9955:187"
-
-# Priest
-# Hibernal Boots; Hibernal Bracers; Hibernal Gloves; Hibernal Mantle; Hibernal Pants; Hibernal Robe; Hibernal Sash; Hibernal Cowl
-BattlegroundMode.Gear.Level49.Tier2.Priest = "8107:187,8108:125,8110:187,8111:187,8112:250,8113:250,8114:125,8115:250"
-
-# Shaman
-# Captain's Breastplate; Captain's Leggings; Captain's Circlet; Captain's Gauntlets; Captain's Boots; Captain's Shoulderguards; Captain's Bracers; Captain's Waistguard
-BattlegroundMode.Gear.Level49.Tier2.Shaman = "7486:250,7487:250,7488:250,7489:187,7490:187,7491:187,7493:125,7494:125"
-
-# Mage
-# Hibernal Boots; Hibernal Bracers; Hibernal Gloves; Hibernal Mantle; Hibernal Pants; Hibernal Robe; Hibernal Sash; Hibernal Cowl
-BattlegroundMode.Gear.Level49.Tier2.Mage = "8107:187,8108:125,8110:187,8111:187,8112:250,8113:250,8114:125,8115:250"
-
-# Warlock
-# Hibernal Boots; Hibernal Bracers; Hibernal Gloves; Hibernal Mantle; Hibernal Pants; Hibernal Robe; Hibernal Sash; Hibernal Cowl
-BattlegroundMode.Gear.Level49.Tier2.Warlock = "8107:187,8108:125,8110:187,8111:187,8112:250,8113:250,8114:125,8115:250"
-
-# Druid
-# Chieftain's Belt; Chieftain's Boots; Chieftain's Bracers; Chieftain's Breastplate; Chieftain's Gloves; Chieftain's Headdress; Chieftain's Leggings; Chieftain's Shoulders
-BattlegroundMode.Gear.Level49.Tier2.Druid = "9947:125,9948:187,9949:125,9950:250,9952:187,9953:250,9954:250,9955:187"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level49.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 49 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Hydralick Armor; Silvershell Leggings; Elemental Rockridge Leggings
-BattlegroundMode.Gear.Level49.Tier3.Paladin = "13067:750,10633:750,17711:750"
-
-# Warrior
-# Hydralick Armor; Silvershell Leggings; Elemental Rockridge Leggings
-BattlegroundMode.Gear.Level49.Tier3.Warrior = "13067:750,10633:750,17711:750"
-
-# Hunter
-# Infernal Trickster Leggings; Searingscale Leggings; Bloodshot Greaves
-BattlegroundMode.Gear.Level49.Tier3.Hunter = "17754:750,11749:750,10846:562"
-
-# Rogue
-# Fungus Shroud Armor; Albino Crocscale Boots; Sandstalker Ankleguards
-BattlegroundMode.Gear.Level49.Tier3.Rogue = "17742:750,17728:562,12470:562"
-
-# Priest
-# Dreamweave Vest; Spellshock Leggings; Chan's Imperial Robes
-BattlegroundMode.Gear.Level49.Tier3.Priest = "10021:750,9484:750,17050:750"
-
-# Shaman
-# Infernal Trickster Leggings; Searingscale Leggings; Bloodshot Greaves
-BattlegroundMode.Gear.Level49.Tier3.Shaman = "17754:750,11749:750,10846:562"
-
-# Mage
-# Dreamweave Vest; Spellshock Leggings; Chan's Imperial Robes
-BattlegroundMode.Gear.Level49.Tier3.Mage = "10021:750,9484:750,17050:750"
-
-# Warlock
-# Dreamweave Vest; Spellshock Leggings; Chan's Imperial Robes
-BattlegroundMode.Gear.Level49.Tier3.Warlock = "10021:750,9484:750,17050:750"
-
-# Druid
-# Fungus Shroud Armor; Albino Crocscale Boots; Sandstalker Ankleguards
-BattlegroundMode.Gear.Level49.Tier3.Druid = "17742:750,17728:562,12470:562"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level49.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 49 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier4.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level49.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 49 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level49.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level49.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 59 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level59.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level59.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
-
-# Hunter
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level59.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
-
-# Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level59.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
-
-# Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level59.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Shaman
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level59.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
-
-# Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level59.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level59.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level59.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level59.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 59 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Imbued Plate Armor; Imbued Plate Gauntlets; Imbued Plate Girdle; Imbued Plate Greaves; Imbued Plate Helmet; Imbued Plate Leggings; Imbued Plate Pauldrons; Imbued Plate Vambraces
-BattlegroundMode.Gear.Level59.Tier2.Paladin = "10368:300,10369:225,10370:150,10371:225,10372:300,10373:300,10374:225,10375:150"
-
-# Warrior
-# Imbued Plate Armor; Imbued Plate Gauntlets; Imbued Plate Girdle; Imbued Plate Greaves; Imbued Plate Helmet; Imbued Plate Leggings; Imbued Plate Pauldrons; Imbued Plate Vambraces
-BattlegroundMode.Gear.Level59.Tier2.Warrior = "10368:300,10369:225,10370:150,10371:225,10372:300,10373:300,10374:225,10375:150"
-
-# Hunter
-# Engraved Bracers; Engraved Breastplate; Engraved Gauntlets; Engraved Girdle; Engraved Boots; Engraved Helm; Engraved Leggings; Engraved Pauldrons
-BattlegroundMode.Gear.Level59.Tier2.Hunter = "10229:150,10230:300,10232:225,10233:150,10234:225,10235:300,10236:300,10237:225"
-
-# Rogue
-# Peerless Bracers; Peerless Boots; Peerless Belt; Peerless Gloves; Peerless Headband; Peerless Leggings; Peerless Shoulders; Peerless Armor
-BattlegroundMode.Gear.Level59.Tier2.Rogue = "15425:150,15426:225,15428:150,15429:225,15430:300,15431:300,15432:225,15433:300"
-
-# Priest
-# Elegant Mantle; Elegant Boots; Elegant Bracers; Elegant Gloves; Elegant Robes; Elegant Belt; Elegant Leggings; Elegant Circlet
-BattlegroundMode.Gear.Level59.Tier2.Priest = "10210:225,10211:225,10213:150,10214:225,10215:300,10216:150,10217:300,10219:300"
-
-# Shaman
-# Engraved Bracers; Engraved Breastplate; Engraved Gauntlets; Engraved Girdle; Engraved Boots; Engraved Helm; Engraved Leggings; Engraved Pauldrons
-BattlegroundMode.Gear.Level59.Tier2.Shaman = "10229:150,10230:300,10232:225,10233:150,10234:225,10235:300,10236:300,10237:225"
-
-# Mage
-# Elegant Mantle; Elegant Boots; Elegant Bracers; Elegant Gloves; Elegant Robes; Elegant Belt; Elegant Leggings; Elegant Circlet
-BattlegroundMode.Gear.Level59.Tier2.Mage = "10210:225,10211:225,10213:150,10214:225,10215:300,10216:150,10217:300,10219:300"
-
-# Warlock
-# Elegant Mantle; Elegant Boots; Elegant Bracers; Elegant Gloves; Elegant Robes; Elegant Belt; Elegant Leggings; Elegant Circlet
-BattlegroundMode.Gear.Level59.Tier2.Warlock = "10210:225,10211:225,10213:150,10214:225,10215:300,10216:150,10217:300,10219:300"
-
-# Druid
-# Peerless Bracers; Peerless Boots; Peerless Belt; Peerless Gloves; Peerless Headband; Peerless Leggings; Peerless Shoulders; Peerless Armor
-BattlegroundMode.Gear.Level59.Tier2.Druid = "15425:150,15426:225,15428:150,15429:225,15430:300,15431:300,15432:225,15433:300"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level59.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 59 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Breastplate of Valor; Lightforge Breastplate; Grimy Metal Boots
-BattlegroundMode.Gear.Level59.Tier3.Paladin = "16730:900,16726:900,18521:675"
-
-# Warrior
-# Breastplate of Valor; Lightforge Breastplate; Grimy Metal Boots
-BattlegroundMode.Gear.Level59.Tier3.Warrior = "16730:900,16726:900,18521:675"
-
-# Hunter
-# Beaststalker's Tunic; Leggings of Destruction; Breastplate of the Chosen
-BattlegroundMode.Gear.Level59.Tier3.Hunter = "16674:900,18524:900,13090:900"
-
-# Rogue
-# Shadowcraft Tunic; Blademaster Leggings; Plaguehound Leggings
-BattlegroundMode.Gear.Level59.Tier3.Rogue = "16721:900,12963:900,18736:900"
-
-# Priest
-# Robes of the Exalted; Leggings of Torment; Faith Healer's Boots
-BattlegroundMode.Gear.Level59.Tier3.Priest = "13346:900,22342:900,22247:675"
-
-# Shaman
-# Beaststalker's Tunic; Leggings of Destruction; Breastplate of the Chosen
-BattlegroundMode.Gear.Level59.Tier3.Shaman = "16674:900,18524:900,13090:900"
-
-# Mage
-# Robes of the Exalted; Leggings of Torment; Faith Healer's Boots
-BattlegroundMode.Gear.Level59.Tier3.Mage = "13346:900,22342:900,22247:675"
-
-# Warlock
-# Robes of the Exalted; Leggings of Torment; Faith Healer's Boots
-BattlegroundMode.Gear.Level59.Tier3.Warlock = "13346:900,22342:900,22247:675"
-
-# Druid
-# Shadowcraft Tunic; Blademaster Leggings; Plaguehound Leggings
-BattlegroundMode.Gear.Level59.Tier3.Druid = "16721:900,12963:900,18736:900"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level59.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 59 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# Ango'rosh Belt; Ango'rosh Sabatons; Ango'rosh Breastplate; Ango'rosh Gauntlets; Ango'rosh Helm; Ango'rosh Legguards; Ango'rosh Pauldrons; Ango'rosh Vambraces
-BattlegroundMode.Gear.Level59.Tier4.Paladin = "24926:1125,24927:1687,24928:2250,24929:1687,24930:2250,24931:2250,24932:1687,24933:1125"
-
-# Warrior
-# Ango'rosh Belt; Ango'rosh Sabatons; Ango'rosh Breastplate; Ango'rosh Gauntlets; Ango'rosh Helm; Ango'rosh Legguards; Ango'rosh Pauldrons; Ango'rosh Vambraces
-BattlegroundMode.Gear.Level59.Tier4.Warrior = "24926:1125,24927:1687,24928:2250,24929:1687,24930:2250,24931:2250,24932:1687,24933:1125"
-
-# Hunter
-# Felstone Waistband; Felstone Greaves; Felstone Chain Vest; Felstone Gauntlets; Felstone Helm; Felstone Leggings; Felstone Spaulders; Felstone Bindings
-BattlegroundMode.Gear.Level59.Tier4.Hunter = "24814:1125,24815:1687,24816:2250,24817:1687,24818:2250,24819:2250,24820:1687,24821:1125"
-
-# Rogue
-# Haal'eshi Cord; Haal'eshi Boots; Haal'eshi Jerkin; Haal'eshi Gloves; Haal'eshi Hat; Haal'eshi Leggings; Haal'eshi Pauldrons; Haal'eshi Bindings
-BattlegroundMode.Gear.Level59.Tier4.Rogue = "24701:1125,24702:1687,24703:2250,24704:1687,24705:2250,24706:2250,24707:1687,24708:1125"
-
-# Priest
-# Fireheart Girdle; Fireheart Boots; Fireheart Chestpiece; Fireheart Gloves; Fireheart Skullcap; Fireheart Leggings; Fireheart Shoulderpads; Fireheart Bracers
-BattlegroundMode.Gear.Level59.Tier4.Priest = "24589:1125,24590:1687,24591:2250,24592:1687,24593:2250,24594:2250,24595:1687,24596:1125"
-
-# Shaman
-# Felstone Waistband; Felstone Greaves; Felstone Chain Vest; Felstone Gauntlets; Felstone Helm; Felstone Leggings; Felstone Spaulders; Felstone Bindings
-BattlegroundMode.Gear.Level59.Tier4.Shaman = "24814:1125,24815:1687,24816:2250,24817:1687,24818:2250,24819:2250,24820:1687,24821:1125"
-
-# Mage
-# Fireheart Girdle; Fireheart Boots; Fireheart Chestpiece; Fireheart Gloves; Fireheart Skullcap; Fireheart Leggings; Fireheart Shoulderpads; Fireheart Bracers
-BattlegroundMode.Gear.Level59.Tier4.Mage = "24589:1125,24590:1687,24591:2250,24592:1687,24593:2250,24594:2250,24595:1687,24596:1125"
-
-# Warlock
-# Fireheart Girdle; Fireheart Boots; Fireheart Chestpiece; Fireheart Gloves; Fireheart Skullcap; Fireheart Leggings; Fireheart Shoulderpads; Fireheart Bracers
-BattlegroundMode.Gear.Level59.Tier4.Warlock = "24589:1125,24590:1687,24591:2250,24592:1687,24593:2250,24594:2250,24595:1687,24596:1125"
-
-# Druid
-# Haal'eshi Cord; Haal'eshi Boots; Haal'eshi Jerkin; Haal'eshi Gloves; Haal'eshi Hat; Haal'eshi Leggings; Haal'eshi Pauldrons; Haal'eshi Bindings
-BattlegroundMode.Gear.Level59.Tier4.Druid = "24701:1125,24702:1687,24703:2250,24704:1687,24705:2250,24706:2250,24707:1687,24708:1125"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level59.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 59 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level59.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level59.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 69 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level69.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level69.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
-
-# Hunter
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level69.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
-
-# Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level69.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
-
-# Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level69.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Shaman
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level69.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
-
-# Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level69.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level69.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level69.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level69.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 69 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Warmaul Belt; Warmaul Greaves; Warmaul Breastplate; Warmaul Gloves; Warmaul Helmet; Warmaul Legplates; Warmaul Epaulets; Warmaul Vambraces
-BattlegroundMode.Gear.Level69.Tier2.Paladin = "24990:200,24991:300,24992:400,24993:300,24994:400,24995:400,24996:300,24997:200"
-
-# Warrior
-# Warmaul Belt; Warmaul Greaves; Warmaul Breastplate; Warmaul Gloves; Warmaul Helmet; Warmaul Legplates; Warmaul Epaulets; Warmaul Vambraces
-BattlegroundMode.Gear.Level69.Tier2.Warrior = "24990:200,24991:300,24992:400,24993:300,24994:400,24995:400,24996:300,24997:200"
-
-# Hunter
-# Der'izu Belt; Der'izu Greaves; Der'izu Chestpiece; Der'izu Fists; Der'izu Helm; Der'izu Legguards; Der'izu Spaulders; Der'izu Bracer
-BattlegroundMode.Gear.Level69.Tier2.Hunter = "24878:200,24879:300,24880:400,24881:300,24882:400,24883:400,24884:300,24885:200"
-
-# Rogue
-# Clefthoof Belt; Clefthoof Wanderboots; Clefthoof Hidemantle; Clefthoof Gloves; Clefthoof Cover; Clefthoof Britches; Clefthoof Shoulderguards; Clefthoof Bracers
-BattlegroundMode.Gear.Level69.Tier2.Rogue = "24765:200,24766:300,24767:400,24768:300,24769:400,24770:400,24771:300,24772:200"
-
-# Priest
-# Astralaan Belt; Astralaan Boots; Astralaan Robe; Astralaan Gloves; Astralaan Headdress; Astralaan Pants; Astralaan Shoulderpads; Astralaan Bracer
-BattlegroundMode.Gear.Level69.Tier2.Priest = "24645:200,24646:300,24647:400,24648:300,24649:400,24650:400,24651:300,24652:200"
-
-# Shaman
-# Der'izu Belt; Der'izu Greaves; Der'izu Chestpiece; Der'izu Fists; Der'izu Helm; Der'izu Legguards; Der'izu Spaulders; Der'izu Bracer
-BattlegroundMode.Gear.Level69.Tier2.Shaman = "24878:200,24879:300,24880:400,24881:300,24882:400,24883:400,24884:300,24885:200"
-
-# Mage
-# Astralaan Belt; Astralaan Boots; Astralaan Robe; Astralaan Gloves; Astralaan Headdress; Astralaan Pants; Astralaan Shoulderpads; Astralaan Bracer
-BattlegroundMode.Gear.Level69.Tier2.Mage = "24645:200,24646:300,24647:400,24648:300,24649:400,24650:400,24651:300,24652:200"
-
-# Warlock
-# Astralaan Belt; Astralaan Boots; Astralaan Robe; Astralaan Gloves; Astralaan Headdress; Astralaan Pants; Astralaan Shoulderpads; Astralaan Bracer
-BattlegroundMode.Gear.Level69.Tier2.Warlock = "24645:200,24646:300,24647:400,24648:300,24649:400,24650:400,24651:300,24652:200"
-
-# Druid
-# Clefthoof Belt; Clefthoof Wanderboots; Clefthoof Hidemantle; Clefthoof Gloves; Clefthoof Cover; Clefthoof Britches; Clefthoof Shoulderguards; Clefthoof Bracers
-BattlegroundMode.Gear.Level69.Tier2.Druid = "24765:200,24766:300,24767:400,24768:300,24769:400,24770:400,24771:300,24772:200"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level69.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 69 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Legplates of the Bold; Legguards of Brutalization; Ornate Leggings of the Venerated
-BattlegroundMode.Gear.Level69.Tier3.Paladin = "27977:1200,37743:1200,27893:1200"
-
-# Warrior
-# Legplates of the Bold; Legguards of Brutalization; Ornate Leggings of the Venerated
-BattlegroundMode.Gear.Level69.Tier3.Warrior = "27977:1200,37743:1200,27893:1200"
-
-# Hunter
-# Laughing Skull Battle-Harness; Sky-Hunter Swift Boots; Horrorblood Treads
-BattlegroundMode.Gear.Level69.Tier3.Hunter = "28186:1200,27915:900,37744:900"
-
-# Rogue
-# Chestguard of the Talon; The Master's Treads; Shadowstalker's Leggings
-BattlegroundMode.Gear.Level69.Tier3.Rogue = "31285:1200,31288:900,27650:1200"
-
-# Priest
-# Robe of the Crimson Order; Trousers of Oblivion; Khadgar's Kilt of Abjuration
-BattlegroundMode.Gear.Level69.Tier3.Priest = "31297:1200,27948:1200,28185:1200"
-
-# Shaman
-# Laughing Skull Battle-Harness; Sky-Hunter Swift Boots; Horrorblood Treads
-BattlegroundMode.Gear.Level69.Tier3.Shaman = "28186:1200,27915:900,37744:900"
-
-# Mage
-# Robe of the Crimson Order; Trousers of Oblivion; Khadgar's Kilt of Abjuration
-BattlegroundMode.Gear.Level69.Tier3.Mage = "31297:1200,27948:1200,28185:1200"
-
-# Warlock
-# Robe of the Crimson Order; Trousers of Oblivion; Khadgar's Kilt of Abjuration
-BattlegroundMode.Gear.Level69.Tier3.Warlock = "31297:1200,27948:1200,28185:1200"
-
-# Druid
-# Chestguard of the Talon; The Master's Treads; Shadowstalker's Leggings
-BattlegroundMode.Gear.Level69.Tier3.Druid = "31285:1200,31288:900,27650:1200"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level69.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 69 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# Baleheim Belt; Baleheim Greaves; Baleheim Armor; Baleheim Gloves; Baleheim Helmet; Baleheim Legguards; Baleheim Epaulets; Baleheim Vambraces
-BattlegroundMode.Gear.Level69.Tier4.Paladin = "36307:1500,36308:2250,36309:3000,36310:2250,36311:3000,36312:3000,36313:2250,36314:1500"
-
-# Warrior
-# Baleheim Belt; Baleheim Greaves; Baleheim Armor; Baleheim Gloves; Baleheim Helmet; Baleheim Legguards; Baleheim Epaulets; Baleheim Vambraces
-BattlegroundMode.Gear.Level69.Tier4.Warrior = "36307:1500,36308:2250,36309:3000,36310:2250,36311:3000,36312:3000,36313:2250,36314:1500"
-
-# Hunter
-# Njord Belt; Njord Boots; Njord Chain Vest; Njord Gauntlets; Njord Helm; Njord Leggings; Njord Shoulderguards; Njord Bracers
-BattlegroundMode.Gear.Level69.Tier4.Hunter = "36187:1500,36188:2250,36189:3000,36190:2250,36191:3000,36192:3000,36193:2250,36194:1500"
-
-# Rogue
-# Daggercap Waistband; Daggercap Boots; Daggercap Jerkin; Daggercap Gloves; Daggercap Cover; Daggercap Trousers; Daggercap Spaulders; Daggercap Bracers
-BattlegroundMode.Gear.Level69.Tier4.Rogue = "36067:1500,36068:2250,36069:3000,36070:2250,36071:3000,36072:3000,36073:2250,36074:1500"
-
-# Priest
-# Bloodspore Sash; Bloodspore Sandals; Bloodspore Robe; Bloodspore Gloves; Bloodspore Hood; Bloodspore Leggings; Bloodspore Mantle; Bloodspore Bracelets
-BattlegroundMode.Gear.Level69.Tier4.Priest = "35963:1500,35964:2250,35965:3000,35966:2250,35967:3000,35968:3000,35969:2250,35970:1500"
-
-# Shaman
-# Njord Belt; Njord Boots; Njord Chain Vest; Njord Gauntlets; Njord Helm; Njord Leggings; Njord Shoulderguards; Njord Bracers
-BattlegroundMode.Gear.Level69.Tier4.Shaman = "36187:1500,36188:2250,36189:3000,36190:2250,36191:3000,36192:3000,36193:2250,36194:1500"
-
-# Mage
-# Bloodspore Sash; Bloodspore Sandals; Bloodspore Robe; Bloodspore Gloves; Bloodspore Hood; Bloodspore Leggings; Bloodspore Mantle; Bloodspore Bracelets
-BattlegroundMode.Gear.Level69.Tier4.Mage = "35963:1500,35964:2250,35965:3000,35966:2250,35967:3000,35968:3000,35969:2250,35970:1500"
-
-# Warlock
-# Bloodspore Sash; Bloodspore Sandals; Bloodspore Robe; Bloodspore Gloves; Bloodspore Hood; Bloodspore Leggings; Bloodspore Mantle; Bloodspore Bracelets
-BattlegroundMode.Gear.Level69.Tier4.Warlock = "35963:1500,35964:2250,35965:3000,35966:2250,35967:3000,35968:3000,35969:2250,35970:1500"
-
-# Druid
-# Daggercap Waistband; Daggercap Boots; Daggercap Jerkin; Daggercap Gloves; Daggercap Cover; Daggercap Trousers; Daggercap Spaulders; Daggercap Bracers
-BattlegroundMode.Gear.Level69.Tier4.Druid = "36067:1500,36068:2250,36069:3000,36070:2250,36071:3000,36072:3000,36073:2250,36074:1500"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level69.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 69 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level69.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level69.Tier5.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 79 - TIER 1 STARTER GEAR (FREE)
-# ============================================================================
-# Paladin
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Reforged Truesilver Champion
-BattlegroundMode.Gear.Level79.Tier1.Paladin = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
-
-# Warrior
-# Polished Helm of Valor; Polished Pendant of Valor; Polished Spaulders of Valor; Polished Cloak of Valor; Polished Breastplate of Valor; Polished Bracers of Valor; Polished Gauntlets of Valor; Polished Belt of Valor; Polished Legplates of Valor; Polished Boots of Valor; Dread Pirate Ring; Polished Signet of Valor; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Bloodied Arcanite Reaper
-BattlegroundMode.Gear.Level79.Tier1.Warrior = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
-
-# Hunter
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Charmed Ancient Bone Bow
-BattlegroundMode.Gear.Level79.Tier1.Hunter = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
-
-# Rogue
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Balanced Heartseeker; Sharpened Scarlet Kris
-BattlegroundMode.Gear.Level79.Tier1.Rogue = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
-
-# Priest
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level79.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Shaman
-# Champion's Deathdealer Cap; Champion's Deathdealer Pendant; Champion Herod's Shoulder; Champion's Deathdealer Cloak; Champion's Deathdealer Breastplate; Champion's Deathdealer Bindings; Champion's Deathdealer Gloves; Champion's Deathdealer Belt; Champion's Deathdealer Pants; Champion's Deathdealer Boots; Dread Pirate Ring; Champion's Deathdealer Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Venerable Mass of McGowan
-BattlegroundMode.Gear.Level79.Tier1.Shaman = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
-
-# Mage
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level79.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Warlock
-# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
-BattlegroundMode.Gear.Level79.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
-
-# Druid
-# Stained Shadowcraft Cap; Stained Shadowcraft Pendant; Stained Shadowcraft Spaulders; Stained Shadowcraft Cloak; Stained Shadowcraft Tunic; Stained Shadowcraft Bracers; Stained Shadowcraft Gloves; Stained Shadowcraft Belt; Stained Shadowcraft Pants; Stained Shadowcraft Boots; Dread Pirate Ring; Stained Shadowcraft Signet; Swift Hand of Justice; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Repurposed Lava Dredger
-BattlegroundMode.Gear.Level79.Tier1.Druid = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level79.Tier1.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 79 - TIER 2 SOLDIER GEAR
-# ============================================================================
-# Paladin
-# Jormungar Girdle; Jormungar Sabatons; Jormungar Breastplate; Jormungar Gauntlets; Jormungar Helmet; Jormungar Legplates; Jormungar Pauldrons; Jormungar Bracers
-BattlegroundMode.Gear.Level79.Tier2.Paladin = "36347:250,36348:375,36349:500,36350:375,36351:500,36352:500,36353:375,36354:250"
-
-# Warrior
-# Jormungar Girdle; Jormungar Sabatons; Jormungar Breastplate; Jormungar Gauntlets; Jormungar Helmet; Jormungar Legplates; Jormungar Pauldrons; Jormungar Bracers
-BattlegroundMode.Gear.Level79.Tier2.Warrior = "36347:250,36348:375,36349:500,36350:375,36351:500,36352:500,36353:375,36354:250"
-
-# Hunter
-# Shoveltusk Waistband; Shoveltusk Greaves; Shoveltusk Breastplate; Shoveltusk Gauntlets; Shoveltusk Helmet; Shoveltusk Legguards; Shoveltusk Mantle; Shoveltusk Bindings
-BattlegroundMode.Gear.Level79.Tier2.Hunter = "36235:250,36236:375,36237:500,36238:375,36239:500,36240:500,36241:375,36242:250"
-
-# Rogue
-# Muradin Belt; Muradin Boots; Muradin Chestpiece; Muradin Gloves; Muradin Hood; Muradin Pants; Muradin Shoulders; Muradin Bindings
-BattlegroundMode.Gear.Level79.Tier2.Rogue = "36123:250,36124:375,36125:500,36126:375,36127:500,36128:500,36129:375,36130:250"
-
-# Priest
-# Tethys Sash; Tethys Slippers; Tethys Robe; Tethys Gloves; Tethys Hood; Tethys Leggings; Tethys Mantle; Tethys Bracelets
-BattlegroundMode.Gear.Level79.Tier2.Priest = "36011:250,36012:375,36013:500,36014:375,36015:500,36016:500,36017:375,36018:250"
-
-# Shaman
-# Shoveltusk Waistband; Shoveltusk Greaves; Shoveltusk Breastplate; Shoveltusk Gauntlets; Shoveltusk Helmet; Shoveltusk Legguards; Shoveltusk Mantle; Shoveltusk Bindings
-BattlegroundMode.Gear.Level79.Tier2.Shaman = "36235:250,36236:375,36237:500,36238:375,36239:500,36240:500,36241:375,36242:250"
-
-# Mage
-# Tethys Sash; Tethys Slippers; Tethys Robe; Tethys Gloves; Tethys Hood; Tethys Leggings; Tethys Mantle; Tethys Bracelets
-BattlegroundMode.Gear.Level79.Tier2.Mage = "36011:250,36012:375,36013:500,36014:375,36015:500,36016:500,36017:375,36018:250"
-
-# Warlock
-# Tethys Sash; Tethys Slippers; Tethys Robe; Tethys Gloves; Tethys Hood; Tethys Leggings; Tethys Mantle; Tethys Bracelets
-BattlegroundMode.Gear.Level79.Tier2.Warlock = "36011:250,36012:375,36013:500,36014:375,36015:500,36016:500,36017:375,36018:250"
-
-# Druid
-# Muradin Belt; Muradin Boots; Muradin Chestpiece; Muradin Gloves; Muradin Hood; Muradin Pants; Muradin Shoulders; Muradin Bindings
-BattlegroundMode.Gear.Level79.Tier2.Druid = "36123:250,36124:375,36125:500,36126:375,36127:500,36128:500,36129:375,36130:250"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level79.Tier2.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 79 - TIER 3 VETERAN GEAR
-# ============================================================================
-# Paladin
-# Void Sentry Legplates; Battlechest of the Twilight Cult; Tempered Saronite Boots
-BattlegroundMode.Gear.Level79.Tier3.Paladin = "43353:1500,43279:1500,40671:1125"
-
-# Warrior
-# Void Sentry Legplates; Battlechest of the Twilight Cult; Tempered Saronite Boots
-BattlegroundMode.Gear.Level79.Tier3.Warrior = "43353:1500,43279:1500,40671:1125"
-
-# Hunter
-# Dragonstompers; Dark Frostscale Breastplate; Dark Frostscale Leggings
-BattlegroundMode.Gear.Level79.Tier3.Hunter = "44438:1125,44437:1500,44436:1500"
-
-# Rogue
-# Dark Arctic Chestpiece; Black Chitinguard Boots; Dark Arctic Leggings
-BattlegroundMode.Gear.Level79.Tier3.Rogue = "38592:1500,38590:1125,38591:1500"
-
-# Priest
-# Trousers of the Arakkoa; Robes of Novos; Exquisite Spider-Silk Footwraps
-BattlegroundMode.Gear.Level79.Tier3.Priest = "43375:1500,35632:1500,35657:1125"
-
-# Shaman
-# Dragonstompers; Dark Frostscale Breastplate; Dark Frostscale Leggings
-BattlegroundMode.Gear.Level79.Tier3.Shaman = "44438:1125,44437:1500,44436:1500"
-
-# Mage
-# Trousers of the Arakkoa; Robes of Novos; Exquisite Spider-Silk Footwraps
-BattlegroundMode.Gear.Level79.Tier3.Mage = "43375:1500,35632:1500,35657:1125"
-
-# Warlock
-# Trousers of the Arakkoa; Robes of Novos; Exquisite Spider-Silk Footwraps
-BattlegroundMode.Gear.Level79.Tier3.Warlock = "43375:1500,35632:1500,35657:1125"
-
-# Druid
-# Dark Arctic Chestpiece; Black Chitinguard Boots; Dark Arctic Leggings
-BattlegroundMode.Gear.Level79.Tier3.Druid = "38592:1500,38590:1125,38591:1500"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level79.Tier3.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 79 - TIER 4 CHAMPION GEAR
-# ============================================================================
-# Paladin
-# Savage Saronite Legplates; Savage Saronite Walkers; Savage Saronite Gauntlets; Savage Saronite Skullshield; Savage Saronite Pauldrons; Savage Saronite Waistguard; Savage Saronite Hauberk; Savage Saronite Bracers
-BattlegroundMode.Gear.Level79.Tier4.Paladin = "41347:3750,41348:2812,41349:2812,41350:3750,41351:2812,41352:1875,41353:3750,41354:1875"
-
-# Warrior
-# Savage Saronite Legplates; Savage Saronite Walkers; Savage Saronite Gauntlets; Savage Saronite Skullshield; Savage Saronite Pauldrons; Savage Saronite Waistguard; Savage Saronite Hauberk; Savage Saronite Bracers
-BattlegroundMode.Gear.Level79.Tier4.Warrior = "41347:3750,41348:2812,41349:2812,41350:3750,41351:2812,41352:1875,41353:3750,41354:1875"
-
-# Hunter
-# Swiftarrow Belt; Swiftarrow Boots; Swiftarrow Bracers; Swiftarrow Hauberk; Swiftarrow Gauntlets; Swiftarrow Helm; Swiftarrow Leggings; Swiftarrow Shoulderguards
-BattlegroundMode.Gear.Level79.Tier4.Hunter = "43442:1875,43443:2812,43444:1875,43445:3750,43446:2812,43447:3750,43448:3750,43449:2812"
-
-# Rogue
-# Eviscerator's Facemask; Eviscerator's Shoulderpads; Eviscerator's Chestguard; Eviscerator's Bindings; Eviscerator's Gauntlets; Eviscerator's Waistguard; Eviscerator's Legguards; Eviscerator's Treads
-BattlegroundMode.Gear.Level79.Tier4.Rogue = "43260:3750,43433:2812,43434:3750,43435:1875,43436:2812,43437:1875,43438:3750,43439:2812"
-
-# Priest
-# Frostsavage Gloves; Frostsavage Belt; Frostsavage Boots; Frostsavage Cowl; Frostsavage Robe; Frostsavage Shoulders; Frostsavage Bracers; Frostsavage Leggings
-BattlegroundMode.Gear.Level79.Tier4.Priest = "41516:2812,43969:1875,43970:2812,43971:3750,43972:3750,43973:2812,43974:1875,43975:3750"
-
-# Shaman
-# Swiftarrow Belt; Swiftarrow Boots; Swiftarrow Bracers; Swiftarrow Hauberk; Swiftarrow Gauntlets; Swiftarrow Helm; Swiftarrow Leggings; Swiftarrow Shoulderguards
-BattlegroundMode.Gear.Level79.Tier4.Shaman = "43442:1875,43443:2812,43444:1875,43445:3750,43446:2812,43447:3750,43448:3750,43449:2812"
-
-# Mage
-# Frostsavage Gloves; Frostsavage Belt; Frostsavage Boots; Frostsavage Cowl; Frostsavage Robe; Frostsavage Shoulders; Frostsavage Bracers; Frostsavage Leggings
-BattlegroundMode.Gear.Level79.Tier4.Mage = "41516:2812,43969:1875,43970:2812,43971:3750,43972:3750,43973:2812,43974:1875,43975:3750"
-
-# Warlock
-# Frostsavage Gloves; Frostsavage Belt; Frostsavage Boots; Frostsavage Cowl; Frostsavage Robe; Frostsavage Shoulders; Frostsavage Bracers; Frostsavage Leggings
-BattlegroundMode.Gear.Level79.Tier4.Warlock = "41516:2812,43969:1875,43970:2812,43971:3750,43972:3750,43973:2812,43974:1875,43975:3750"
-
-# Druid
-# Eviscerator's Facemask; Eviscerator's Shoulderpads; Eviscerator's Chestguard; Eviscerator's Bindings; Eviscerator's Gauntlets; Eviscerator's Waistguard; Eviscerator's Legguards; Eviscerator's Treads
-BattlegroundMode.Gear.Level79.Tier4.Druid = "43260:3750,43433:2812,43434:3750,43435:1875,43436:2812,43437:1875,43438:3750,43439:2812"
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level79.Tier4.DeathKnight = ""
-
-# ============================================================================
-# LEVEL 79 - TIER 5 ELITE GEAR (EDITABLE PLACEHOLDERS)
-# ============================================================================
-# Paladin
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Paladin = ""
-
-# Warrior
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Warrior = ""
-
-# Hunter
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Hunter = ""
-
-# Rogue
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Rogue = ""
-
-# Priest
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Priest = ""
-
-# Shaman
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Shaman = ""
-
-# Mage
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Mage = ""
-
-# Warlock
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Warlock = ""
-
-# Druid
-# No items configured yet.
-BattlegroundMode.Gear.Level79.Tier5.Druid = ""
-
-# DeathKnight
-# Ineligible starting class; reserved for future administrator use.
-BattlegroundMode.Gear.Level79.Tier5.DeathKnight = ""
+BattlegroundMode.Gear.Level79.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level79.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+BattlegroundMode.Gear.Level79.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"

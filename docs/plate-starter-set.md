@@ -4,7 +4,7 @@ Warrior and Retribution Paladin receive nine custom scaling completion pieces at
 **19, 29, 39, 49, 59, 69 and 79**. All their old ordinary filler armor is removed
 from those 14 lists. This is a strength/two-handed damage baseline, not a separate
 Protection or Holy loadout. A [Holy caster plate alternate](holy-paladin-starter-set.md)
-is now available with a separate example config. Other classes and every Tier 2+ list are unchanged.
+is selectable from the same main config. Higher tiers have been removed.
 
 | Slot | Item | ID | Stock appearance |
 |---|---|---:|---|

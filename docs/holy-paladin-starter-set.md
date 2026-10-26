@@ -3,7 +3,7 @@
 The alternate Holy loadout covers **19, 29, 39, 49, 59, 69 and 79** with 12 custom
 caster items, Devout Aurastone Hammer, Dread Pirate Ring, Discerning Eye of the
 Beast and the matching faction insignia. It delivers **16 equipped pieces**,
-plus the existing configurable starter bag. Retribution defaults remain unchanged.
+plus the existing configurable starter bag. Retribution and Holy are separate player choices.
 
 | Slot | Item | ID | Stock appearance |
 |---|---|---:|---|
@@ -33,14 +33,12 @@ No talent selection, respec, Dual Wield or early plate-proficiency training is
 added. Below 40, caster plate uses the same native heirloom proficiency exception
 as the stock Valor family. Low-level armor values still need in-game verification.
 
-## Alternate config
+## Selectable Holy build
 
-[holy-paladin.conf.example](../conf/loadouts/holy-paladin.conf.example) contains
-all seven Tier 1 entries. It is not loaded automatically. Replace the matching
-Paladin entries in the active module `.conf` to make Holy the default for future
-unclaimed grants. Existing completed grants stay completed, and the player is
-not automatically respecced. Other class defaults and Tier 2+ entries stay intact.
-[holy-paladin-loadouts.csv](holy-paladin-loadouts.csv) records the alternate list.
+Holy and Retribution live together in the main config at all seven brackets.
+Choose Holy after the bracket to receive this caster kit. The choice persists
+without respeccing the player. See [configuration and migration](starter-gear.md).
+Existing completed grants stay completed. Protection is not offered until built.
 
 **Keep the one-handed mace before the tome in the item list.** The updated
 preflight can validate a shield/held offhand after an already validated planned
@@ -71,7 +69,7 @@ untouched. Client patch work for custom-ID icons/right-click equip remains defer
 
 1. Pull, **rebuild/install worldserver**, and stop the server to deploy the new
    executable. This update includes the planned main/offhand preflight fix.
-2. Replace active Paladin Tier 1 entries using the Holy example, then restart.
+2. Update the active config to the unified build lists, restart, then choose Holy.
    The core updater automatically applies
    `mod_battleground_mode_heirloom_holy_plate_set.sql`; expect 12 Holy templates
    and no missing/conflicting-ID rows. No manual SQL import is needed.

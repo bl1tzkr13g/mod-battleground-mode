@@ -30,16 +30,34 @@ int main(int argc, char** argv)
     Check(!CanDeliverStarter(true, false, StarterState::Pending), "normal characters never receive free BG kits");
     GearCatalog catalog;
     Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin", "6573:0, 6574:0"), "free starter list parses");
-    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier2.Paladin", "12982:75,6460:100"), "per-piece honor prices parse");
-    auto const& gear = catalog.Find(19, 2, 2);
-    Check(gear.size() == 2 && gear[0].entry == 12982 && gear[0].honor == 75 && gear[1].honor == 100,
-        "item and honor prices remain paired");
-    Check(catalog.Find(29, 2, 2).empty(), "vendor cannot leak gear into another bracket");
-    Check(catalog.Find(19, 1, 2).empty(), "vendor cannot leak gear into another class");
-    Check(catalog.Find(19, 2, 3).empty(), "missing tiers have no implicit fallback");
-    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier6.Paladin", "12994:700"), "new tiers need no code changes");
-    Check(catalog.Find(19, 2, 6).front().honor == 700, "new tiers preserve their configured price");
-    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier5.Paladin", ""), "empty placeholder tiers are valid");
+    Check(!catalog.Add("BattlegroundMode.Gear.Level19.Tier2.Paladin", "12982:75"), "upgrade tiers are retired");
+    Check(!catalog.Add("BattlegroundMode.Gear.Level19.Tier6.Paladin", "12982:75"), "additional upgrade tiers cannot return implicitly");
+    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin.Holy", "42948:0,900085:0"), "Holy build parses independently");
+    Check(catalog.Find(19,2,1,StarterRole::Holy).front().entry == 42948, "chosen build selects its own kit");
+    Check(catalog.Find(19,2,1).front().entry == 6573, "legacy class key maps only to the default build");
+    Check(catalog.Find(29,2,1,StarterRole::Holy).empty(), "build cannot leak across brackets");
+    Check(catalog.Find(19,1,1,StarterRole::Holy).empty(), "build cannot leak across classes");
+    Check(!catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Warrior.Holy", "42948:0"), "class-inappropriate build rejected");
+    Check(catalog.Add("BattlegroundMode.Gear.Level19.Tier1.Paladin.Protection", ""), "Protection key is ready for a future kit without offering an empty build");
+    Check(catalog.Roles(19,2).size() == 2, "only configured nonempty builds are offered");
+    Check(catalog.Add("BattlegroundMode.Gear.Level29.Tier1.Paladin.Holy", ""), "empty build intentionally disabled");
+    Check(catalog.Roles(29,2).empty(), "empty builds do not appear in selection");
+    Check(AvailableStarterRoles(catalog,29,2,true).empty(), "enabled delivery never invents an empty fallback");
+    Check(AvailableStarterRoles(catalog,29,2,false) == std::vector<StarterRole>{StarterRole::Retribution},
+        "disabled grants permit default enrollment when no gear is configured");
+    Check(catalog.Add("BattlegroundMode.Gear.Level39.Tier1.Paladin.Holy", "42948:0"), "single-role catalog can omit the default");
+    Check(AvailableStarterRoles(catalog,39,2,false) == std::vector<StarterRole>{StarterRole::Holy},
+        "disabled grants cannot accept an unoffered default when other builds are present");
+    Check(AvailableStarterRoles(catalog,19,10,false).empty(), "invalid class cannot obtain disabled-delivery fallback");
+    for (unsigned cls = 1; cls <= 11; ++cls)
+        for (unsigned id = 0; id <= 255; ++id)
+        {
+            auto role = static_cast<StarterRole>(id);
+            bool expected = cls != 10 && (role == DefaultStarterRole(cls) ||
+                (cls == 2 && id == 2) || ((cls == 1 || cls == 2) && id == 9) || ((cls == 7 || cls == 11) && id == 6) ||
+                (cls == 7 && id == 8) || (cls == 11 && id == 5));
+            Check(StarterRoleAllowed(cls,role) == expected, "role validation rejects wrong-class and forged IDs");
+        }
     for (auto key : {"BattlegroundMode.Gear.Level0.Tier1.Paladin", "BattlegroundMode.Gear.Level81.Tier1.Paladin",
         "BattlegroundMode.Gear.Level19.Tier0.Paladin", "BattlegroundMode.Gear.Level19.Tier65536.Paladin",
         "BattlegroundMode.Gear.Level19.Tier1.Unknown", "BattlegroundMode.Gear.Level19.Tier1.Paladin.Extra"})
@@ -141,10 +159,11 @@ int main(int argc, char** argv)
         Check(shipped.Add(key, line.substr(firstQuote + 1, lastQuote - firstQuote - 1)), "shipped catalog syntax and prices are valid");
         ++lists;
     }
-    Check(lists >= 350, "all seven brackets, five tiers, and ten classes are represented");
+    Check(shipped.Find(19,2,1,StarterRole::Protection).empty(), "unbuilt Protection has no pretend loadout");
+    Check(lists == 98, "seven brackets include nine defaults and five alternate builds each");
     Check(!shipped.Find(19, 2, 1).empty(), "level 19 Paladin starter list is populated");
     Check(!shipped.Find(79, 8, 1).empty(), "level 79 Mage starter list is populated");
-    Check(!shipped.Find(79, 1, 4).empty(), "level 79 Warrior has a priced PvP upgrade catalog");
+    Check(shipped.Find(79, 1, 4).empty(), "upgrade catalog is removed");
     Check(shipped.Find(19, 6, 1).empty(), "Death Knight has no starter kit while enrollment is ineligible");
     auto contains = [](GearCatalog::Items const& items, std::uint32_t entry)
     {
@@ -212,43 +231,18 @@ int main(int argc, char** argv)
             Check(items.size() == 16, "strength kit has 15 equipped pieces plus one alternate insignia");
             Check(contains(items, 42949) && contains(items, 48685), "strength kit retains existing Valor shoulders and chest");
         }
-    std::string configPath = argv[1];
-    auto slash = configPath.find_last_of("/\\");
-    auto configDir = slash == std::string::npos ? std::string() : configPath.substr(0, slash + 1);
-    struct AlternateLoadout { char const* file; std::uint8_t playerClass; unsigned coverage; };
-    for (auto example : {AlternateLoadout{"caster-leather-druid.conf.example",11,0},
-            {"caster-leather-shaman-low.conf.example",7,1},
-            {"caster-mail-shaman-high.conf.example",7,2}, {"caster-shaman.conf.example",7,3},
-            {"holy-paladin.conf.example",2,4}})
+    struct AlternateLoadout { std::uint8_t playerClass; StarterRole role; };
+    for (auto example : {AlternateLoadout{11,StarterRole::Balance}, {11,StarterRole::Restoration},
+            {7,StarterRole::Elemental}, {7,StarterRole::Restoration}, {2,StarterRole::Holy}})
     {
-        std::ifstream alternate(configDir + "loadouts/" + example.file);
-        Check(alternate.good(), "caster alternate example is readable");
-        GearCatalog role;
-        unsigned roleLists = 0;
-        for (std::string line; std::getline(alternate, line);)
-        {
-            if (line.rfind("BattlegroundMode.Gear.Level", 0) != 0)
-                continue;
-            auto equals = line.find('=');
-            auto key = line.substr(0, line.find_last_not_of(" \t", equals - 1) + 1);
-            auto first = line.find('"', equals);
-            auto last = line.rfind('"');
-            Check(first != std::string::npos && last > first && role.Add(key, line.substr(first + 1, last - first - 1)),
-                "alternate caster list uses supported keys and free prices");
-            ++roleLists;
-        }
         bool druid = example.playerClass == 11;
         bool holy = example.playerClass == 2;
-        unsigned expectedLists = example.coverage == 1 ? 3u : example.coverage == 2 ? 4u : 7u;
-        Check(roleLists == expectedLists, "alternate contains only its intended class/bracket entries");
+
         for (auto level : {19,29,39,49,59,69,79})
         {
-            auto const& items = role.Find(level, example.playerClass, 1);
-            bool available = example.coverage == 0 || example.coverage == 3 || example.coverage == 4 ||
-                (example.coverage == 1 ? level < 40 : level >= 40);
-            Check(items.empty() == !available, "caster example covers intended brackets only");
-            if (!available)
-                continue;
+            auto const& items = shipped.Find(level, example.playerClass, 1, example.role);
+            auto choices = shipped.Roles(level, example.playerClass);
+            Check(std::find(choices.begin(),choices.end(),example.role) != choices.end(), "all completed alternate builds are selectable at every bracket");
             Check(items.size() == (holy ? 17u : 16u), "caster alternate has the correct piece count plus alternate insignia");
             std::uint32_t firstEntry = holy ? 900074 : !druid && level >= 40 ? 900065 : 900056;
             for (std::uint32_t entry = firstEntry; entry < firstEntry + (holy ? 12u : 9u); ++entry)

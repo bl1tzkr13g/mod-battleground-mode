@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `mod_battleground_mode` (
     `mode` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '0=pending, 1=normal, 2=battleground',
     `locked_level` TINYINT UNSIGNED NOT NULL DEFAULT 0,
     `starter_state` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '0=pending, 1=claimed, 2=delivered',
+    `starter_role` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT '0=legacy default, otherwise stable class build ID',
     PRIMARY KEY (`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -21,3 +22,17 @@ SET @bgmode_starter_ddl = IF(@bgmode_has_starter_state = 0,
 PREPARE bgmode_starter_upgrade FROM @bgmode_starter_ddl;
 EXECUTE bgmode_starter_upgrade;
 DEALLOCATE PREPARE bgmode_starter_upgrade;
+
+-- Build choice is saved with enrollment. Zero preserves legacy default grants.
+SET @bgmode_has_starter_role = (
+    SELECT COUNT(*) FROM information_schema.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'mod_battleground_mode'
+      AND COLUMN_NAME = 'starter_role'
+);
+SET @bgmode_role_ddl = IF(@bgmode_has_starter_role = 0,
+    'ALTER TABLE `mod_battleground_mode` ADD COLUMN `starter_role` TINYINT UNSIGNED NOT NULL DEFAULT 0 COMMENT ''0=legacy default, otherwise stable class build ID''',
+    'SELECT 1'
+);
+PREPARE bgmode_role_upgrade FROM @bgmode_role_ddl;
+EXECUTE bgmode_role_upgrade;
+DEALLOCATE PREPARE bgmode_role_upgrade;

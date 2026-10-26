@@ -3,7 +3,7 @@
 Nine custom scaling pieces complete caster/healer mail for Shaman in the default
 mail brackets **49, 59, 69 and 79**. They reuse Mystical Vest of Elements' existing
 caster distribution (stock **332**, donor **48683**) and stock Elements models.
-Enhancement's active default lists remain unchanged.
+Enhancement, Elemental and Restoration are separate selectable starter builds.
 
 | Slot | Item | ID | Stock appearance |
 |---|---|---:|---|
@@ -24,26 +24,17 @@ when this family is used. No client DBC records, new artwork or extra XP spells
 are added. Custom items have no sockets, item-set bonuses, resale/disenchant
 value or repair costs. Stock items and occupied custom IDs are never overwritten.
 
-## Alternate configs
+## Selectable caster builds
 
-- [Higher-bracket caster mail](../conf/loadouts/caster-mail-shaman-high.conf.example)
-  replaces only Shaman's 49/59/69/79 entries.
-- [Complete Shaman caster/healer path](../conf/loadouts/caster-shaman.conf.example)
-  replaces all seven Shaman entries: caster leather at 19/29/39, caster mail at
-  49/59/69/79. Lower-level pieces come from the preceding caster-leather set.
+The single module config includes Elemental and Restoration at every bracket:
+caster leather at 19/29/39 and caster mail at 49/59/69/79. Select the build after
+the bracket; see [configuration and migration](starter-gear.md).
 
-Both retain Mystical Pauldrons of Elements (42951) and Mystical Vest (48683), plus
+Both builds retain Mystical Pauldrons of Elements (42951) and Mystical Vest (48683), plus
 Dignified Headmaster's Charge (42947), Discerning Eye of the Beast (42992), Dread
 Pirate Ring (50255) and the matching faction insignia. The staff occupies both
 hands; no shield/offhand or relic is granted. This shared caster/healer baseline
 has **15 equipped pieces**, plus the configurable starter bag.
-
-These examples are **not loaded automatically**. Replace the matching Tier 1
-entries in the active module `.conf` to make the chosen role the class default
-for future unclaimed grants. Completed deliveries stay completed. No in-game
-role picker, automatic specialization detection or role DB field is introduced.
-Default physical kits and all Tier 2+ entries remain unchanged. The high-bracket
-lists are recorded separately in [caster-mail-loadouts.csv](caster-mail-loadouts.csv).
 
 ## Scaling budgets
 
@@ -65,9 +56,8 @@ Client patch work for custom IDs' icons/right-click equip remains deferred.
 Pull and restart worldserver with its normal updater enabled. It automatically
 applies `mod_battleground_mode_heirloom_caster_mail_set.sql`; expect nine caster
 mail templates and no missing/conflicting-ID rows. No manual SQL import or
-additional rebuild is required with the current heirloom/bag build installed.
-Copy the chosen alternate entries into the active config before testing a fresh
-Shaman. The starter bag continues to equip before the gear.
+manual activation of an alternate file is needed. The role-selection update
+requires a rebuilt/installed worldserver. Test a fresh Shaman and choose the build. The starter bag continues to equip before the gear.
 
 Check 19/39 with the combined config for leather, then 49/79 for mail; verify the
 intervening brackets too. Check both factions/races, staff proficiency, distinct
