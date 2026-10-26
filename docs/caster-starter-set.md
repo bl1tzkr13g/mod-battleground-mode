@@ -66,9 +66,11 @@ Existing models are reused; no new artwork is required.
    `mod_battleground_mode_heirloom_cloth_set.sql`; no manual SQL import is needed.
    Expect ten custom cloth-set templates and no missing/conflicting-ID rows.
 4. Test a fresh eligible character in each caster class, in both factions. The
-   current delivery policy requires **16 free general-purpose bag slots** for
-   the whole kit before granting any pieces. Free bag space and use `.bgstarter`
-   if delivery was blocked. Specialized bags may not accept all pieces.
+   auto-equip path needs room only for the replaced gear plus **one reusable
+   working slot**, not all 16 pieces simultaneously. Starting food/hearthstone
+   can remain. Free bag space and use `.bgstarter` if delivery was blocked.
+   With `AutoEquip=0`, all 16 items must fit in bags. Specialized bags may not
+   accept every piece. This delivery fix requires rebuilding the module once.
 5. Check all slots, separate rings/trinkets, correct faction insignia, staff and
    ranged wand, appearance, actual stat changes on equip/unequip, and relog.
    Confirm the wand fires and its damage changes between low/high brackets.

@@ -22,6 +22,20 @@ inline bool CanDeliverStarter(bool enabled, bool battlegroundMode, StarterState 
     return enabled && battlegroundMode && state == StarterState::Pending;
 }
 
+// Auto-equip stages one piece at a time. Reserve space for all displaced gear
+// and one reusable working item; bag-only delivery must hold the entire kit.
+template <typename Item>
+std::vector<Item*> StarterStorageReservation(std::vector<Item*> const& incoming,
+    std::vector<Item*> const& replaced, bool autoEquip)
+{
+    if (!autoEquip)
+        return incoming;
+    auto storage = replaced;
+    if (!incoming.empty())
+        storage.push_back(incoming.front());
+    return storage;
+}
+
 struct GearKey
 {
     std::uint8_t level;

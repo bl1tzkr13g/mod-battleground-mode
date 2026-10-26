@@ -72,9 +72,11 @@ and no missing/conflicting-ID rows. No manual SQL import or additional C++ rebui
 is needed with the previously built heirloom support. Existing custom IDs and
 stock templates are never overwritten.
 
-Use fresh eligible characters. Keep 15 free general-purpose bag slots for a
-Druid/Shaman kit or 16 for Rogue/Hunter; `.bgstarter` retries after clearing space.
-Completed deliveries are not reset. Existing testers can add individual IDs above
+Use fresh eligible characters. Auto-equip reserves room for replaced gear plus
+one reusable working slot, then equips each piece immediately. Bag-only delivery
+still requires 15 slots for Druid/Shaman or 16 for Rogue/Hunter. `.bgstarter`
+retries after clearing space; completed deliveries are not reset. The improved
+auto-equip staging requires rebuilding the updated module once. Existing testers can add individual IDs above
 with GM `.additem` to inspect them without resetting claims.
 
 Verify at least: Rogue/Druid at 19 and 79, Hunter/Shaman at 19 and 39, their old

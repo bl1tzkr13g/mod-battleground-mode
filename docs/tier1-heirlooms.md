@@ -45,6 +45,8 @@ grant talents, Dual Wield, or weapon skill ranks. Set to `0` to enforce existing
 proficiencies without teaching any. Heirloom plate/mail below 40 uses the core's
 built-in armor adaptation; ordinary plate/mail retains its level restrictions.
 Paired rings, trinkets and one-handed weapons are preflighted into separate slots.
+Auto-equip reserves space for displaced gear plus one working slot and equips
+each piece immediately; bag-only delivery requires space for the complete kit.
 
 Update the module, build/install, copy the updated Tier 1 lists into the active
 `.conf`, then restart. Configured lists replace the old lists; a `.conf.dist` file

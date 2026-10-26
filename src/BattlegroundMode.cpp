@@ -428,12 +428,55 @@ public:
             Tell(player, "No starter items match this character's faction. Contact a game master.");
             return;
         }
+        // Bag-only delivery still reserves the full kit. Auto-equip instead
+        // reserves the displaced equipment plus one reusable staging slot.
+        // Each newly equipped piece releases its bag slot immediately.
+        std::vector<Item*> replaced;
+        if (config.starterAutoEquip)
+        {
+            for (uint16 destination : equipment)
+                if (Item* old = player->GetItemByPos(destination))
+                    replaced.push_back(old);
+            bool twoHanded = std::any_of(incoming.begin(), incoming.end(), [](Item* item)
+            {
+                return item->GetTemplate()->InventoryType == INVTYPE_2HWEAPON;
+            });
+            uint16 offhand = (INVENTORY_SLOT_BAG_0 << 8) | EQUIPMENT_SLOT_OFFHAND;
+            if (twoHanded)
+            {
+                if (usedSlots.count(offhand) && !player->CanTitanGrip())
+                {
+                    Tell(player, "Starter gear cannot combine a two-handed weapon with an offhand item.");
+                    return;
+                }
+                if (!usedSlots.count(offhand))
+                    if (Item* old = player->GetItemByPos(offhand))
+                        replaced.push_back(old); // Native two-hand equip may also bag the old offhand.
+            }
+
+            // Check ownership/unique limits and storage restrictions for EVERY
+            // incoming piece without requiring simultaneous room for the kit.
+            for (Item* item : incoming)
+            {
+                ItemPosCountVec positions;
+                InventoryResult result = player->CanStoreItem(NULL_BAG, NULL_SLOT, positions, item);
+                if (result != EQUIP_ERR_OK)
+                {
+                    player->SendEquipError(result, item);
+                    Tell(player, "Starter delivery is blocked. Free bag space or resolve the item restriction, then use .bgstarter.");
+                    return;
+                }
+            }
+        }
+        auto storage = StarterStorageReservation(incoming, replaced, config.starterAutoEquip);
         uint32 limitedBy = 0;
-        InventoryResult capacity = player->CanStoreItems(incoming.data(), static_cast<int>(incoming.size()), &limitedBy);
+        InventoryResult capacity = player->CanStoreItems(storage.data(), static_cast<int>(storage.size()), &limitedBy);
         if (capacity != EQUIP_ERR_OK)
         {
             player->SendEquipError(capacity, nullptr);
-            Tell(player, "Make bag room for the entire starter set, then use .bgstarter. Existing equipment will be kept in your bags.");
+            Tell(player, config.starterAutoEquip ?
+                "Make bag room for replaced equipment and one working slot, then use .bgstarter. Nothing was delivered." :
+                "Make bag room for the entire starter set, then use .bgstarter. Nothing was delivered.");
             return;
         }
 
@@ -454,8 +497,9 @@ public:
         }
 
         std::vector<Item*> delivered;
-        for (auto& item : prepared)
+        for (std::size_t i = 0; i < prepared.size(); ++i)
         {
+            auto& item = prepared[i];
             ItemPosCountVec positions;
             if (player->CanStoreItem(NULL_BAG, NULL_SLOT, positions, item.get()) != EQUIP_ERR_OK)
             {
@@ -475,17 +519,28 @@ public:
             SendItemInformation(player, entry);
             player->SendNewItem(stored, 1, true, false);
             delivered.push_back(stored);
+            if (config.starterAutoEquip)
+            {
+                // Equip immediately so empty target slots release bag capacity;
+                // replaced gear occupies the new item's vacated bag position.
+                player->SwapItem(stored->GetPos(), equipment[i]);
+                if (player->GetItemByPos(equipment[i]) != stored)
+                {
+                    // Do not continue consuming the staging space after an
+                    // unexpected script/core refusal. Keep the safety claim.
+                    StarterDeliveryError(player);
+                    return;
+                }
+            }
         }
 
-        bool fullyEquipped = true;
         if (config.starterAutoEquip)
             for (std::size_t i = 0; i < delivered.size(); ++i)
-            {
-                // Native swapping updates stats/appearance and puts the old
-                // equipped item into the new item's vacated bag position.
-                player->SwapItem(delivered[i]->GetPos(), equipment[i]);
-                fullyEquipped = fullyEquipped && player->GetItemByPos(equipment[i]) == delivered[i];
-            }
+                if (player->GetItemByPos(equipment[i]) != delivered[i])
+                {
+                    StarterDeliveryError(player); // A later swap must not displace an earlier kit piece.
+                    return;
+                }
 
         // Queue item instances, inventory positions, and completion together.
         // Build the save BEFORE any city teleport (which delays saves).
@@ -506,7 +561,7 @@ public:
         WorldSession* session = player->GetSession();
         ObjectGuid guid = player->GetGUID();
         session->AddTransactionCallback(CharacterDatabase.AsyncCommitTransaction(transaction)).AfterComplete(
-            [this, session, guid, restore = config.restore, autoEquip = config.starterAutoEquip, fullyEquipped](bool success)
+            [this, session, guid, restore = config.restore, autoEquip = config.starterAutoEquip](bool success)
         {
             Player* current = session->GetPlayer();
             if (!current || current->GetGUID() != guid)
@@ -524,8 +579,7 @@ public:
                 current->SetPower(POWER_MANA, current->GetMaxPower(POWER_MANA));
             }
             Tell(current, !autoEquip ? "Your one-time Tier 1 starter set has been placed in your bags." :
-                fullyEquipped ? "Your Tier 1 starter set is equipped. Replaced equipment is in your bags." :
-                "Your starter set was delivered, but some pieces could not be equipped and remain in your bags.");
+                "Your Tier 1 starter set is equipped. Replaced equipment is in your bags.");
         });
     }
 

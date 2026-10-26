@@ -95,11 +95,15 @@ Disabling starter delivery leaves the entitlement unclaimed for later use.
 
 The entire set must fit in inventory first, even when it will then be equipped.
 Auto-equip preflights every item and rejects kits with conflicting destination
-slots. If capacity or equipment checks fail, no items are delivered and the claim
-stays available. Fix the problem and use **`.bgstarter`**, or relog. Repeating the
-command after success never grants a second set or overwrites earned upgrades.
-If a later native swap is blocked unexpectedly, that piece remains in the bags
-and the player is notified.
+slots. Auto-equip reserves bag room for displaced gear and one reusable working
+slot, checking incoming item restrictions before claiming. Each item is stored
+and equipped immediately so empty equipment slots release staging capacity.
+Starting food/hearthstone do not need to be removed just to hold a complete kit.
+Bag-only delivery still reserves room for the entire kit. If preflight checks
+fail, nothing is delivered and the claim stays available. Use **`.bgstarter`**
+after resolving the restriction. Success never grants a second set or overwrites
+later upgrades. An unexpected native swap failure after claiming stops delivery
+and requires GM reconciliation; the claim prevents automatic duplicate grants.
 
 The optional training teaches only legal plate proficiency for level-40+
 Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weapon

@@ -77,8 +77,10 @@ BattlegroundMode.StarterGear.TrainArmorProficiency = 1
 BattlegroundMode.StarterGear.TrainWeaponProficiency = 1
 # Soulbind new starter pieces to the receiving character.
 BattlegroundMode.StarterGear.BindToCharacter = 1
-# Keep enough free bag slots for the WHOLE starter set before delivery. Nothing
-# is deleted to make room. If blocked, fix the problem and use .bgstarter to retry.
+# AutoEquip=1: reserve bag room for replaced gear plus one reusable working slot.
+# Each piece equips immediately; the WHOLE kit need not fit in bags at once.
+# AutoEquip=0: reserve bag room for the entire kit. Nothing is deleted to make room.
+# If blocked, fix the problem and use .bgstarter to retry.
 # Character SQL is applied automatically by the core startup database updater;
 # it handles fresh installations and upgrades without resetting saved choices.
 
@@ -108,7 +110,7 @@ BattlegroundMode.StarterGear.BindToCharacter = 1
 # Priest/Mage/Warlock now get a full custom-scaling cloth completion set, including
 # cloak, jewelry and wand. Client icons/right-click support are deferred.
 # Shields and ammunition are not supplied. Higher tiers are unchanged.
-# Complete kits need 15-16 free general-purpose bag slots (one whole kit).
+# Auto-equip stages one item at a time; bag-only delivery needs 15-16 free slots.
 # Both faction insignias are listed: only the player's faction version is given.
 # Hybrid defaults are physical: Retribution Paladin, Enhancement Shaman, Feral
 # Druid. Edit the class lists for other roles; no role-selection menu is provided.

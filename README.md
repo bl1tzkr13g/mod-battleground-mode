@@ -138,7 +138,7 @@ not establish live client behavior. Before deployment, run these in-game checks:
 | Close menu, gain XP, reach level 2, then relog and `.bgmode` | Normal XP and leveling work; Normal Mode is saved permanently |
 | Choose Normal, then `.bgmode` | Normal progression; conversion unavailable |
 | Choose level 19 and relog/restart | Level 19 remains locked; confirmation cannot repeat |
-| Confirm BG Mode with room for the whole set | Configured Tier 1 gear equips; replaced items move into bags |
+| Confirm BG Mode with room for replaced gear and one staging item | Configured Tier 1 gear equips; replaced items move into bags |
 | Relog, change Tier 1 config, or repeat `.bgstarter` after delivery | No second kit and no replacement of later upgrades |
 | Full bags, then free space and `.bgstarter` | No partial grant while full; one successful delivery after space is available |
 | Set `StarterGear.AutoEquip = 0` before delivery | Set goes into bags; equipped gear stays in place |
@@ -167,8 +167,9 @@ placeholders for further curation or custom gear.
 
 Starter delivery is enabled and auto-equipped by default. Set
 `BattlegroundMode.StarterGear.AutoEquip = 0` for bag delivery, or
-`BattlegroundMode.StarterGear.Enable = 0` to disable grants. The whole set must fit
-in bags before a grant begins. Newly granted pieces are soulbound by default;
+`BattlegroundMode.StarterGear.Enable = 0` to disable grants. Auto-equip reserves
+bag room for replaced gear plus one reusable staging slot; bag-only delivery
+requires room for the whole kit. Newly granted pieces are soulbound by default;
 class-appropriate mail/plate training at level 40+ is configurable.
 
 Next: implement an NPC that purchases from the bracket/class catalogs with

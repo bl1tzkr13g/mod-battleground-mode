@@ -70,6 +70,47 @@ int main(int argc, char** argv)
     Check(!StarterWeaponProficiency(8, 1), "Mage cannot gain axe proficiency from configuration");
     Check(!StarterWeaponProficiency(2, 15), "Paladin cannot gain dagger proficiency from configuration");
 
+    // Regression: a fresh backpack with three starting items has 13 free slots,
+    // insufficient to bag a 16-piece kit, but enough for four displaced items
+    // and one staging slot. Food/hearthstone need not be deleted to auto-equip.
+    int newItems[16] = {}, oldItems[16] = {};
+    std::vector<int*> incoming, replaced;
+    for (int& item : newItems)
+        incoming.push_back(&item);
+    for (unsigned i = 0; i < 4; ++i)
+        replaced.push_back(&oldItems[i]);
+    auto reservation = StarterStorageReservation(incoming, replaced, true);
+    Check(reservation.size() == 5 && reservation.back() == incoming.front(), "auto-equip reserves displaced gear and one staging item");
+    Check(StarterStorageReservation(incoming, replaced, false) == incoming, "bag-only delivery still reserves the entire kit");
+    Check(reservation.size() <= 13 && incoming.size() > 13, "full caster kit fits a fresh backpack by equipping incrementally");
+    bool safe = true;
+    // Exercise every occupied/empty target combination for a 16-piece kit.
+    // At each step a new piece temporarily consumes a bag slot; an empty
+    // equipment target releases it, while a replacement retains the old item.
+    for (unsigned mask = 0; mask < (1u << 16); ++mask)
+    {
+        replaced.clear();
+        for (unsigned i = 0; i < 16; ++i)
+            if (mask & (1u << i))
+                replaced.push_back(&oldItems[i]);
+        auto slots = StarterStorageReservation(incoming, replaced, true);
+        int free = static_cast<int>(slots.size());
+        unsigned preserved = 0;
+        for (unsigned i = 0; i < 16; ++i)
+        {
+            if (free <= 0)
+                safe = false;
+            --free; // New item staged in a bag.
+            if (mask & (1u << i))
+                ++preserved; // Swap leaves old equipment in the vacated bag slot.
+            else
+                ++free; // New item moves to an empty equipment target.
+        }
+        if (preserved != replaced.size() || free < 1)
+            safe = false;
+    }
+    Check(safe, "reservation retains all replaced gear and staging capacity for every slot ordering");
+
     Check(argc == 2, "configuration path provided");
     std::ifstream config(argv[1]);
     Check(config.good(), "distributed config is readable");
