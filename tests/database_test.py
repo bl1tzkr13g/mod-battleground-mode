@@ -90,6 +90,31 @@ def main():
                "SELECT ROW_COUNT();", "0", "completed deliveries cannot regrant on relog or request")
         sql(update)
         expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=1;", "2", "reapplying migration does not reset delivered grants")
+        # The bag shares the starter claim and the final inventory transaction:
+        # no second entitlement/DB column, and no repeated free bag after loss.
+        sql("INSERT INTO characters (guid) VALUES (6);"
+            "INSERT INTO mod_battleground_mode (guid,mode,locked_level) VALUES (6,2,19);"
+            "CREATE TABLE starter_bag_items (owner INT, entry INT, PRIMARY KEY(owner,entry)) ENGINE=InnoDB;")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
+               "1", "one durable claim covers bag and gear")
+        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019);"
+            "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=6 AND starter_state=1; ROLLBACK;")
+        expect("SELECT COUNT(*) FROM starter_bag_items WHERE owner=6;", "0", "failed save rolls back bag and gear together")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=6;", "1", "failed bag-and-gear save retains duplication guard")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
+               "0", "interrupted delivery cannot regrant its bag")
+        sql("START TRANSACTION; INSERT INTO starter_bag_items VALUES (6,41599),(6,900019);"
+            "UPDATE mod_battleground_mode SET starter_state=2 WHERE guid=6 AND starter_state=1; COMMIT;")
+        expect("SELECT GROUP_CONCAT(entry ORDER BY entry) FROM starter_bag_items WHERE owner=6;", "41599,900019", "bag and gear commit in one transaction")
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=6;", "2", "bag and gear complete one entitlement")
+        sql("DELETE FROM starter_bag_items WHERE owner=6 AND entry=41599;")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=6 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
+               "0", "losing a completed starter bag does not allow another grant")
+        sql(migration)
+        expect("SELECT starter_state FROM mod_battleground_mode WHERE guid=6;", "2", "SQL reapplication preserves completed bag entitlement")
+        expect("UPDATE mod_battleground_mode SET starter_state=1 WHERE guid=2 AND mode=2 AND starter_state=0; SELECT ROW_COUNT();",
+               "0", "Normal Mode cannot claim a starter bag")
+        sql("DELETE FROM starter_bag_items WHERE owner=6; DELETE FROM mod_battleground_mode WHERE guid=6; DELETE FROM characters WHERE guid=6;")
         sql(migration)
         expect(record(1), "2\t19", "migration repeat preserves existing decisions")
         sql("START TRANSACTION; DELETE FROM mod_battleground_mode WHERE guid=1; ROLLBACK;")

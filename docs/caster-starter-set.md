@@ -57,8 +57,9 @@ Existing models are reused; no new artwork is required.
 
 ## Install and test
 
-1. Pull the module update. With the already-built heirloom support, this update is
-   SQL/config only: no additional C++ rebuild is required.
+1. Pull the module update. Custom item definitions are SQL/config only; rebuild
+   and install the current module once for automatic starter bags and improved
+   auto-equip delivery.
 2. Replace the **Priest/Mage/Warlock Tier 1 entries for all brackets** in the active
    module `.conf` with the updated `.conf.dist` entries. Updating `.conf.dist`
    alone does not replace an existing active config.
@@ -66,9 +67,10 @@ Existing models are reused; no new artwork is required.
    `mod_battleground_mode_heirloom_cloth_set.sql`; no manual SQL import is needed.
    Expect ten custom cloth-set templates and no missing/conflicting-ID rows.
 4. Test a fresh eligible character in each caster class, in both factions. The
-   auto-equip path needs room only for the replaced gear plus **one reusable
-   working slot**, not all 16 pieces simultaneously. Starting food/hearthstone
-   can remain. Free bag space and use `.bgstarter` if delivery was blocked.
+   default starter bag supplies 20 additional slots in the first empty equipped
+   bag slot, before gear delivery. Auto-equip reserves room only for replaced
+   gear plus **one reusable working slot**, not all 16 pieces simultaneously.
+   Starting food/hearthstone can remain. Free bag space and use `.bgstarter` if delivery was blocked.
    With `AutoEquip=0`, all 16 items must fit in bags. Specialized bags may not
    accept every piece. This delivery fix requires rebuilding the module once.
 5. Check all slots, separate rings/trinkets, correct faction insignia, staff and

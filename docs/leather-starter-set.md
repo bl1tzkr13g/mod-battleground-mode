@@ -68,12 +68,14 @@ right-click equip remains deferred, as for the cloth set.
 Pull the update, copy the affected Tier 1 config lists into your active module
 `.conf`, and restart worldserver. The normal database updater automatically
 applies `mod_battleground_mode_heirloom_leather_set.sql`; expect nine custom items
-and no missing/conflicting-ID rows. No manual SQL import or additional C++ rebuild
-is needed with the previously built heirloom support. Existing custom IDs and
-stock templates are never overwritten.
+and no missing/conflicting-ID rows. No manual SQL import is needed. Rebuild the
+current module once for automatic starter bags and improved delivery. Existing
+custom IDs and stock templates are never overwritten.
 
-Use fresh eligible characters. Auto-equip reserves room for replaced gear plus
-one reusable working slot, then equips each piece immediately. Bag-only delivery
+Use fresh eligible characters. A 20-slot Frostweave Bag now equips in the first
+empty bag slot before gear, without replacing any existing bags. Auto-equip
+reserves room for replaced gear plus one reusable working slot, then equips each
+piece immediately. Bag-only delivery
 still requires 15 slots for Druid/Shaman or 16 for Rogue/Hunter. `.bgstarter`
 retries after clearing space; completed deliveries are not reset. The improved
 auto-equip staging requires rebuilding the updated module once. Existing testers can add individual IDs above

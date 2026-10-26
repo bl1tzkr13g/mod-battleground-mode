@@ -22,6 +22,14 @@ inline bool CanDeliverStarter(bool enabled, bool battlegroundMode, StarterState 
     return enabled && battlegroundMode && state == StarterState::Pending;
 }
 
+inline bool ValidStarterBag(std::uint32_t itemClass, std::uint32_t subclass,
+    std::uint32_t inventoryType, std::uint32_t slots, std::uint32_t family)
+{
+    // WotLK's client/core container limit is 36. Only generic bags can hold
+    // every piece of a mixed armor/weapon/jewelry starter kit.
+    return itemClass == 1 && subclass == 0 && inventoryType == 18 && slots > 0 && slots <= 36 && family == 0;
+}
+
 // Auto-equip stages one piece at a time. Reserve space for all displaced gear
 // and one reusable working item; bag-only delivery must hold the entire kit.
 template <typename Item>

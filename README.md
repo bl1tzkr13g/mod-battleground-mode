@@ -165,6 +165,14 @@ the exact tier coverage, source data, and role/affix limitations. Starter gear i
 free; later items use `itemID:honorPrice` pairs. Empty higher-tier lists are
 placeholders for further curation or custom gear.
 
+Starter delivery gives one Frostweave Bag (20 slots, item 41599) first, equipping
+it in the first empty bag slot before the gear. Configure this using
+`BattlegroundMode.StarterGear.Bag.Enable` and `.Bag.Item`. Existing bags are not
+replaced; with all four bag slots occupied, delivery uses existing storage. Bag
+and gear share one claim/save transaction, so retries never add another bag.
+Completed grants are not retroactively given a bag. This requires the updated
+module build; no SQL schema change is needed.
+
 Starter delivery is enabled and auto-equipped by default. Set
 `BattlegroundMode.StarterGear.AutoEquip = 0` for bag delivery, or
 `BattlegroundMode.StarterGear.Enable = 0` to disable grants. Auto-equip reserves

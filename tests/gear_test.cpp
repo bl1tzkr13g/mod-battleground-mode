@@ -111,6 +111,12 @@ int main(int argc, char** argv)
     }
     Check(safe, "reservation retains all replaced gear and staging capacity for every slot ordering");
 
+    Check(ValidStarterBag(1,0,18,20,0), "Frostweave Bag is a valid generic starter bag");
+    Check(!ValidStarterBag(4,1,1,20,0), "ordinary armor cannot be configured as a starter bag");
+    Check(!ValidStarterBag(1,2,18,20,32), "specialized bags cannot stand in for general starter storage");
+    Check(!ValidStarterBag(1,0,18,0,0) && !ValidStarterBag(1,0,18,37,0), "invalid container sizes are rejected");
+    Check(StarterStorageReservation(incoming, {}, false).size() <= 20, "new 20-slot bag can hold the complete 16-piece kit even in bag-only mode");
+
     Check(argc == 2, "configuration path provided");
     std::ifstream config(argv[1]);
     Check(config.good(), "distributed config is readable");

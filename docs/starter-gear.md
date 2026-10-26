@@ -105,6 +105,37 @@ after resolving the restriction. Success never grants a second set or overwrites
 later upgrades. An unexpected native swap failure after claiming stops delivery
 and requires GM reconciliation; the claim prevents automatic duplicate grants.
 
+### Starter bag
+
+```ini
+BattlegroundMode.StarterGear.Bag.Enable = 1
+BattlegroundMode.StarterGear.Bag.Item = 41599
+```
+
+A Frostweave Bag (20 slots) is included by default and equipped **before** the
+gear, in the first empty equipped bag slot. Existing bags are never replaced.
+If all four slots are occupied, no bag is added and the kit uses existing space.
+Only ordinary generic bags with 1..36 slots are accepted; specialized bags are
+rejected. The bag is bound when `BindToCharacter` is enabled. It equips even with
+`AutoEquip=0`, since that setting controls gear delivery rather than the bag.
+
+The bag is prepared and checked before the existing durable starter claim. Only
+after that claim is verified does it enter inventory. Gear storage preflight can
+account for the planned generic bag, allowing delivery from a full backpack when
+the new bag alone holds the required reservation. Ownership and unique-item
+restrictions remain checked. Bag and all kit items are saved in the same final
+inventory transaction with the completion marker. No extra state column or
+entitlement is introduced. Losing/selling the bag after a completed grant does
+not allow another. Unexpected post-claim failures still require GM review.
+
+Pull and rebuild/install the updated module, then restart. The default bag works
+without adding config keys; copy them into the active config to customize or
+disable it. No manual SQL import or new schema migration is needed. Already
+completed starter grants stay completed; use a fresh character for bag testing.
+Verify first-empty-slot behavior, existing bag preservation, a full backpack
+with an empty bag slot, both gear delivery modes, repeat requests/relog, and
+survival of bag contents after save/relog. In-game bag delivery remains to test.
+
 The optional training teaches only legal plate proficiency for level-40+
 Warriors/Paladins and mail for level-40+ Hunters/Shamans. It does not grant weapon
 skill ranks or talents. Configurable starter weapon proficiency training now

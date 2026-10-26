@@ -77,7 +77,15 @@ BattlegroundMode.StarterGear.TrainArmorProficiency = 1
 BattlegroundMode.StarterGear.TrainWeaponProficiency = 1
 # Soulbind new starter pieces to the receiving character.
 BattlegroundMode.StarterGear.BindToCharacter = 1
-# AutoEquip=1: reserve bag room for replaced gear plus one reusable working slot.
+# One starter bag equips FIRST in an empty equipped bag slot, before the gear.
+# Bag equipping is independent of AutoEquip (which controls the other gear).
+# Bag is part of the same one-time grant (no extra bags from relog or .bgstarter).
+# Existing bags are never replaced. If all four slots are occupied, use those bags.
+BattlegroundMode.StarterGear.Bag.Enable = 1
+# Frostweave Bag: 20 slots. Any generic 1..36-slot bag can be configured here.
+BattlegroundMode.StarterGear.Bag.Item = 41599
+# AutoEquip=1: reserve room for replaced gear plus one reusable working slot;
+# the planned starter bag counts toward available storage.
 # Each piece equips immediately; the WHOLE kit need not fit in bags at once.
 # AutoEquip=0: reserve bag room for the entire kit. Nothing is deleted to make room.
 # If blocked, fix the problem and use .bgstarter to retry.

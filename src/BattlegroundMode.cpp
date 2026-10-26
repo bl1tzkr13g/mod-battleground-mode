@@ -62,6 +62,8 @@ struct Settings
     bool starterTrainArmor = true;
     bool starterTrainWeapons = true;
     bool starterBind = true;
+    bool starterBagEnabled = true;
+    uint32 starterBagItem = 41599;
     std::shared_ptr<GearCatalog const> gear = std::make_shared<GearCatalog>();
     std::vector<uint8> levels;
     uint32 dalaranMinLevel = 79;
@@ -120,6 +122,8 @@ public:
         next.starterTrainArmor = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.TrainArmorProficiency", true);
         next.starterTrainWeapons = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.TrainWeaponProficiency", true);
         next.starterBind = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.BindToCharacter", true);
+        next.starterBagEnabled = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.Bag.Enable", true);
+        next.starterBagItem = sConfigMgr->GetOption<uint32>("BattlegroundMode.StarterGear.Bag.Item", 41599);
         next.levels = ParseLevels(sConfigMgr->GetOption<std::string>("BattlegroundMode.AllowedLevels", "19,29,39,49,59,69,79"),
             static_cast<uint8>(std::min<uint32>(80, sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))));
         if (next.levels.empty())
@@ -359,6 +363,39 @@ public:
                 delete item;
             }
         };
+        std::unique_ptr<Item, decltype(discard)> starterBag(nullptr, discard);
+        uint16 bagDestination = 0;
+        if (config.starterBagEnabled)
+        {
+            for (uint8 slot = INVENTORY_SLOT_BAG_START; slot < INVENTORY_SLOT_BAG_END; ++slot)
+            {
+                if (player->GetItemByPos(INVENTORY_SLOT_BAG_0, slot))
+                    continue;
+                ItemTemplate const* bag = sObjectMgr->GetItemTemplate(config.starterBagItem);
+                if (!bag || !ValidStarterBag(bag->Class, bag->SubClass, bag->InventoryType, bag->ContainerSlots, bag->BagFamily))
+                {
+                    LOG_ERROR("module", "Battleground Mode: starter bag {} is not a valid generic bag.", config.starterBagItem);
+                    Tell(player, "The configured starter bag is unavailable or invalid. Contact a game master.");
+                    return;
+                }
+                starterBag.reset(Item::CreateItem(config.starterBagItem, 1, player));
+                if (!starterBag)
+                {
+                    Tell(player, "Your starter bag could not be prepared. Try .bgstarter later.");
+                    return;
+                }
+                if (config.starterBind)
+                    starterBag->SetBinding(true);
+                InventoryResult result = player->CanEquipItem(slot, bagDestination, starterBag.get(), false);
+                if (result != EQUIP_ERR_OK)
+                {
+                    player->SendEquipError(result, starterBag.get());
+                    Tell(player, "Your starter bag cannot be equipped yet. Resolve the restriction and use .bgstarter.");
+                    return;
+                }
+                break; // One bag in the first empty bag slot; never replace an existing bag.
+            }
+        }
         std::vector<std::unique_ptr<Item, decltype(discard)>> prepared;
         std::vector<Item*> incoming;
         std::vector<uint16> equipment;
@@ -423,6 +460,11 @@ public:
                 equipment.push_back(destination);
             }
         }
+        if (starterBag && usedSlots.count(bagDestination))
+        {
+            Tell(player, "Starter gear conflicts with the configured starter bag slot. Contact a game master.");
+            return;
+        }
         if (prepared.empty())
         {
             Tell(player, "No starter items match this character's faction. Contact a game master.");
@@ -454,23 +496,36 @@ public:
                         replaced.push_back(old); // Native two-hand equip may also bag the old offhand.
             }
 
-            // Check ownership/unique limits and storage restrictions for EVERY
-            // incoming piece without requiring simultaneous room for the kit.
-            for (Item* item : incoming)
+        }
+        // A planned empty generic bag supplies new storage without a backpack
+        // staging slot. Never let that bypass ownership or unique-item limits.
+        for (Item* item : incoming)
+        {
+            InventoryResult result = player->CanTakeMoreSimilarItems(item);
+            if (result == EQUIP_ERR_OK && config.starterAutoEquip)
             {
                 ItemPosCountVec positions;
-                InventoryResult result = player->CanStoreItem(NULL_BAG, NULL_SLOT, positions, item);
-                if (result != EQUIP_ERR_OK)
-                {
-                    player->SendEquipError(result, item);
-                    Tell(player, "Starter delivery is blocked. Free bag space or resolve the item restriction, then use .bgstarter.");
-                    return;
-                }
+                result = player->CanStoreItem(NULL_BAG, NULL_SLOT, positions, item);
+                if (starterBag && (result == EQUIP_ERR_BAG_FULL || result == EQUIP_ERR_INVENTORY_FULL))
+                    result = EQUIP_ERR_OK; // Capacity is checked for the complete reservation below.
+            }
+            if (result != EQUIP_ERR_OK)
+            {
+                player->SendEquipError(result, item);
+                Tell(player, "Starter delivery is blocked. Free bag space or resolve the item restriction, then use .bgstarter.");
+                return;
             }
         }
         auto storage = StarterStorageReservation(incoming, replaced, config.starterAutoEquip);
         uint32 limitedBy = 0;
         InventoryResult capacity = player->CanStoreItems(storage.data(), static_cast<int>(storage.size()), &limitedBy);
+        if (starterBag && (capacity == EQUIP_ERR_BAG_FULL || capacity == EQUIP_ERR_INVENTORY_FULL) &&
+            starterBag->GetTemplate()->ContainerSlots >= storage.size() &&
+            std::all_of(storage.begin(), storage.end(), [](Item* item)
+            {
+                return !item->IsBag() && item->GetCount() <= item->GetTemplate()->GetMaxStackSize();
+            }))
+            capacity = EQUIP_ERR_OK; // The new generic bag alone holds this entire reservation.
         if (capacity != EQUIP_ERR_OK)
         {
             player->SendEquipError(capacity, nullptr);
@@ -494,6 +549,29 @@ public:
         {
             DatabaseError(player);
             return;
+        }
+
+        if (starterBag)
+        {
+            // The same durable starter claim protects both bag and gear. Equip
+            // directly into an empty bag slot, even if the backpack is full.
+            if (player->GetItemByPos(bagDestination))
+            {
+                StarterDeliveryError(player);
+                return;
+            }
+            SendItemInformation(player, config.starterBagItem);
+            Item* bag = starterBag.release();
+            Item* equipped = player->EquipItem(bagDestination, bag, true);
+            if (equipped != bag || player->GetItemByPos(bagDestination) != bag)
+            {
+                StarterDeliveryError(player);
+                return;
+            }
+            player->ItemAddedQuestCheck(config.starterBagItem, 1);
+            player->UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_OWN_ITEM, config.starterBagItem, 1);
+            sScriptMgr->OnPlayerStoreNewItem(player, bag, 1);
+            player->SendNewItem(bag, 1, true, false);
         }
 
         std::vector<Item*> delivered;
