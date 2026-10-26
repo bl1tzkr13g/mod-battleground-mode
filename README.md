@@ -9,7 +9,7 @@ provide progression gear in the Shattrath and Dalaran hubs.
 
 - New level 1 characters choose **Normal Mode** or **Battleground Mode** through a
   player-owned gossip menu, with confirmation before either permanent decision.
-- Default bracket levels: **19, 29, 39, 49, 59, 69, 79**, configurable up to 80
+- Default bracket levels: **19, 29, 39, 49, 59, 69, 79, 80**, configurable
   with at most 31 distinct choices to stay within the gossip menu limit.
 - Battleground characters cannot gain XP or change level through `GiveLevel`,
   including GM level commands. The lock is restored on login and checked every
@@ -22,7 +22,7 @@ provide progression gear in the Shattrath and Dalaran hubs.
   are not granted. Set `BattlegroundMode.AutoLearnClassTrainerSpells = 0` to disable
   future training; this does not remove spells already learned.
 - Configurable health/mana restoration and neutral-city teleport on selection:
-  levels 19–69 go to Shattrath, level 79 to Dalaran, for both factions.
+  levels 19–69 go to Shattrath, levels 79 and 80 to Dalaran, for both factions.
   Edit `BattlegroundMode.Teleport.Shattrath.*`, `BattlegroundMode.Teleport.Dalaran.*`
   and `BattlegroundMode.Teleport.Dalaran.MinLevel` (default 79) to change routing.
   Replace the old Alliance/Horde destination settings in your installed config.
@@ -230,7 +230,7 @@ is replaced. SQL installs automatically on restart; update active Tier 1 lists.
 
 ## Agility mail completion set
 
-[Hunter/Enhancement Shaman use custom scaling mail completion pieces at 49/59/69/79](docs/mail-starter-set.md),
+[Hunter/Enhancement Shaman use custom scaling mail completion pieces at 49/59/69/79/80](docs/mail-starter-set.md),
 with existing heirloom chest, shoulders and weapons retained. Their lower brackets
 remain leather. Update active Tier 1 config entries and restart; SQL installs
 automatically and this gear-data update needs no additional rebuild.
@@ -248,7 +248,7 @@ automatically with no additional rebuild required.
 [Balance/Restoration Druid and low-level caster Shaman](docs/caster-leather-starter-set.md),
 [Elemental/Restoration Shaman mail](docs/caster-mail-starter-set.md), and
 [Holy Paladin plate with mace/tome](docs/holy-paladin-starter-set.md) are selectable
-builds in the main config at all seven brackets. Caster Shaman uses leather below
+builds in the main config at all eight brackets. Caster Shaman uses leather below
 40 and mail afterward. Client patch work remains deferred.
 
 ## Caster weapon alternatives

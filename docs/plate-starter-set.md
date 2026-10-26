@@ -1,8 +1,8 @@
 # Strength Valor starter completion set
 
 Warrior and Retribution Paladin receive nine custom scaling completion pieces at
-**19, 29, 39, 49, 59, 69 and 79**. All their old ordinary filler armor is removed
-from those 14 lists. This is a strength/two-handed damage baseline, not a separate
+**19, 29, 39, 49, 59, 69, 79 and 80**. All their old ordinary filler armor is removed
+from those 16 lists. This is a strength/two-handed damage baseline, not a separate
 Protection or Holy loadout. [Protection kits](protection-starter-set.md) reuse
 this armor with a one-handed sword and a bracket shield. A [Holy caster plate alternate](holy-paladin-starter-set.md)
 is selectable from the same main config. Higher tiers have been removed.
@@ -67,7 +67,7 @@ continues to use the server's template slot information.
 
 ## Install and test
 
-Pull the update, replace Warrior/Paladin Tier 1 entries for all seven brackets in
+Pull the update, replace Warrior/Paladin Tier 1 entries for all eight brackets in
 the active `.conf` with the updated `.conf.dist` entries, and restart worldserver.
 Its normal updater applies `mod_battleground_mode_heirloom_plate_set.sql`
 automatically; expect nine plate-set items and no missing/conflicting-ID rows.

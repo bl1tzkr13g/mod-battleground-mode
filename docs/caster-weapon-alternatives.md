@@ -2,7 +2,7 @@
 
 Caster builds keep their configured primary weapons equipped and receive a
 small, usable alternate combination in their bags through the same one-time
-starter grant. All seven default brackets are covered.
+starter grant. All eight default brackets are covered.
 
 | Build | Primary remains equipped | Bag alternatives |
 |---|---|---|
@@ -48,12 +48,14 @@ uses the existing native inventory flow.
 | 59 | Observer's Shield | 18485 | 56 | 2089 | 38 |
 | 69 | Draenei Honor Guard Shield | 31287 | 68 | 3615 | 80 |
 | 79 | Tharon'ja's Aegis | 35636 | 74 | 6541 | 181 |
+| 80 | Tharon'ja's Aegis | 35636 | 74 | 6541 | 181 |
 
 These stock shields have fixed intellect-oriented stats and native armor/block.
 Despite its name, Draenei Honor Guard Shield is not race/faction restricted.
 The choices have no profession/reputation requirement or random affix. Stock
 spell effects and sell/disenchant properties remain. Existing heirloom tables
 have no dedicated shield armor/block curve, so shields stay bracket-specific.
+Level 80 reuses the level-79 starter shield, leaving PvP upgrades available.
 Base block above excludes strength/talent/rating contributions.
 
 ## One config, one claim

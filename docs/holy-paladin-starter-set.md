@@ -1,6 +1,6 @@
 # Holy Paladin Lightforge starter set
 
-The alternate Holy loadout covers **19, 29, 39, 49, 59, 69 and 79** with 12 custom
+The alternate Holy loadout covers **19, 29, 39, 49, 59, 69, 79 and 80** with 12 custom
 caster items, Devout Aurastone Hammer, Dread Pirate Ring, Discerning Eye of the
 Beast and the matching faction insignia. It delivers **16 equipped pieces**,
 plus the existing configurable starter bag. Retribution and Holy are separate player choices.
@@ -36,7 +36,7 @@ as the stock Valor family. Low-level armor values still need in-game verificatio
 
 ## Selectable Holy build
 
-Holy and Retribution live together in the main config at all seven brackets.
+Holy and Retribution live together in the main config at all eight brackets.
 Choose Holy after the bracket to receive this caster kit. The choice persists
 without respeccing the player. See [configuration and migration](starter-gear.md).
 Existing completed grants stay completed. [Protection](protection-starter-set.md)

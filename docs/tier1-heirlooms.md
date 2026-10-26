@@ -1,6 +1,6 @@
 # Tier 1 heirloom starters
 
-Every enabled class list at **19, 29, 39, 49, 59, 69, and 79** includes the same
+Every enabled class list at **19, 29, 39, 49, 59, 69, 79, and 80** includes the same
 heirlooms within each build. They scale through the core's normal heirloom system.
 All completed builds are selectable in the single module config; no talent or
 specialization selection is inferred. Higher-tier catalogs have been removed.

@@ -16,7 +16,7 @@ BattlegroundMode.AllowNormal = 1
 # Invalid lists disable
 # Battleground Mode selection, with an error in the server log. No downleveling.
 # Existing permanent decisions survive edits to this list.
-BattlegroundMode.AllowedLevels = "19,29,39,49,59,69,79"
+BattlegroundMode.AllowedLevels = "19,29,39,49,59,69,79,80"
 
 # Learn normal class-trainer spells for the chosen level, free of training fees.
 # Runs on bracket selection and the next safe login for existing BG characters.
@@ -28,7 +28,7 @@ BattlegroundMode.AutoLearnClassTrainerSpells = 1
 BattlegroundMode.RestoreHealthMana = 1
 BattlegroundMode.TeleportOnSelection = 1
 # Both factions: default brackets 19/29/39/49/59/69 go to Shattrath;
-# level 79 goes to Dalaran. For custom brackets, levels below MinLevel use
+# levels 79 and 80 go to Dalaran. For custom brackets, levels below MinLevel use
 # Shattrath; levels at or above it use Dalaran (MinLevel is clamped to 1..80).
 # Applies once when selecting BG mode; existing characters are not moved on login.
 # Replaces the old Alliance/Horde destination settings, which are no longer used.
@@ -490,3 +490,58 @@ BattlegroundMode.Gear.Bag.Level79.Tier1.Druid.Balance = "900086:0,900087:0"
 BattlegroundMode.Gear.Level79.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
 # In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
 BattlegroundMode.Gear.Bag.Level79.Tier1.Druid.Restoration = "900086:0,900087:0"
+
+# ============================================================================
+# LEVEL 80 - TIER 1 STARTER BUILDS
+
+# Warrior
+BattlegroundMode.Gear.Level80.Tier1.Warrior.Damage = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42943:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Blade-Binding Bulwark.
+BattlegroundMode.Gear.Level80.Tier1.Warrior.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,37810:0"
+
+# Paladin
+BattlegroundMode.Gear.Level80.Tier1.Paladin.Retribution = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,44092:0"
+# Protection: Valor armor; Venerable Dal'Rend's Sacred Charge; Blade-Binding Bulwark.
+BattlegroundMode.Gear.Level80.Tier1.Paladin.Protection = "900047:0,900055:0,42949:0,900048:0,48685:0,900050:0,900051:0,900049:0,900052:0,900053:0,50255:0,900054:0,42991:0,44098:0,44097:0,42945:0,37810:0"
+BattlegroundMode.Gear.Level80.Tier1.Paladin.Holy = "900074:0,900082:0,900083:0,900075:0,900084:0,900077:0,900078:0,900076:0,900079:0,900080:0,50255:0,900081:0,42992:0,44098:0,44097:0,42948:0,900085:0"
+# In bags: Tharon'ja's Aegis; mace and tome remain equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Paladin.Holy = "35636:0"
+
+# Hunter
+BattlegroundMode.Gear.Level80.Tier1.Hunter.Damage = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,42944:0,42946:0"
+
+# Rogue
+BattlegroundMode.Gear.Level80.Tier1.Rogue.Damage = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,42944:0,44091:0"
+
+# Priest
+BattlegroundMode.Gear.Level80.Tier1.Priest.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+# In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Priest.Damage = "900086:0,900087:0"
+
+# Shaman
+BattlegroundMode.Gear.Level80.Tier1.Shaman.Enhancement = "900038:0,900046:0,42950:0,900039:0,48677:0,900041:0,900042:0,900040:0,900043:0,900044:0,50255:0,900045:0,42991:0,44098:0,44097:0,48716:0"
+BattlegroundMode.Gear.Level80.Tier1.Shaman.Elemental = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+# In bags: Devout Aurastone Hammer + Tharon'ja's Aegis; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Shaman.Elemental = "42948:0,35636:0"
+BattlegroundMode.Gear.Level80.Tier1.Shaman.Restoration = "900065:0,900073:0,42951:0,900066:0,48683:0,900068:0,900069:0,900067:0,900070:0,900071:0,50255:0,900072:0,42992:0,44098:0,44097:0,42947:0"
+# In bags: Devout Aurastone Hammer + Tharon'ja's Aegis; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Shaman.Restoration = "42948:0,35636:0"
+
+# Mage
+BattlegroundMode.Gear.Level80.Tier1.Mage.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+# In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Mage.Damage = "900086:0,900087:0"
+
+# Warlock
+BattlegroundMode.Gear.Level80.Tier1.Warlock.Damage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
+# In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Warlock.Damage = "900086:0,900087:0"
+
+# Druid
+BattlegroundMode.Gear.Level80.Tier1.Druid.Feral = "900029:0,900037:0,42952:0,900030:0,48689:0,900032:0,900033:0,900031:0,900034:0,900035:0,50255:0,900036:0,42991:0,44098:0,44097:0,48718:0"
+BattlegroundMode.Gear.Level80.Tier1.Druid.Balance = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+# In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Druid.Balance = "900086:0,900087:0"
+BattlegroundMode.Gear.Level80.Tier1.Druid.Restoration = "900056:0,900064:0,42984:0,900057:0,48687:0,900059:0,900060:0,900058:0,900061:0,900062:0,50255:0,900063:0,42992:0,44098:0,44097:0,42947:0"
+# In bags: Dignified Scholar's Kris + Tome; staff remains equipped.
+BattlegroundMode.Gear.Bag.Level80.Tier1.Druid.Restoration = "900086:0,900087:0"

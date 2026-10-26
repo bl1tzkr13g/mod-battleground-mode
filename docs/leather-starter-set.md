@@ -18,14 +18,14 @@ Nine custom scaling pieces complete the leather armor, cloak and jewelry slots:
 
 | Class / default role | Custom leather granted at | Existing heirloom chest / shoulders | Existing weapons |
 |---|---|---|---|
-| Rogue | 19, 29, 39, 49, 59, 69, 79 | Stained Shadowcraft Tunic / Spaulders | Balanced Heartseeker + Sharpened Scarlet Kris |
-| Druid, Feral | 19, 29, 39, 49, 59, 69, 79 | Stained Shadowcraft Tunic / Spaulders | Repurposed Lava Dredger |
+| Rogue | 19, 29, 39, 49, 59, 69, 79, 80 | Stained Shadowcraft Tunic / Spaulders | Balanced Heartseeker + Sharpened Scarlet Kris |
+| Druid, Feral | 19, 29, 39, 49, 59, 69, 79, 80 | Stained Shadowcraft Tunic / Spaulders | Repurposed Lava Dredger |
 | Hunter | 19, 29, 39 | Champion's Deathdealer Breastplate / Champion Herod's Shoulder | Balanced Heartseeker + Charmed Ancient Bone Bow |
 | Shaman, Enhancement | 19, 29, 39 | Champion's Deathdealer Breastplate / Champion Herod's Shoulder | Venerable Mass of McGowan |
 
 Hunter/Shaman mail heirloom chest/shoulders already use the core's low-level
 leather adaptation. Only the completion pieces change to actual leather. Their
-level-49/59/69/79 lists now use the separate [agility mail completion set](mail-starter-set.md). Warriors and Paladins wear mail below 40, so they do not
+level-49/59/69/79/80 lists now use the separate [agility mail completion set](mail-starter-set.md). Warriors and Paladins wear mail below 40, so they do not
 receive this leather set. Death Knights remain ineligible for level-1 enrollment.
 
 These are **agility/physical** defaults using the existing Shadowcraft heirloom

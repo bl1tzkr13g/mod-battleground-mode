@@ -1,7 +1,7 @@
 # Elemental/Restoration Shaman mail completion set
 
 Nine custom scaling pieces complete caster/healer mail for Shaman in the default
-mail brackets **49, 59, 69 and 79**. They reuse Mystical Vest of Elements' existing
+mail brackets **49, 59, 69, 79 and 80**. They reuse Mystical Vest of Elements' existing
 caster distribution (stock **332**, donor **48683**) and stock Elements models.
 Enhancement, Elemental and Restoration are separate selectable starter builds.
 
@@ -27,7 +27,7 @@ value or repair costs. Stock items and occupied custom IDs are never overwritten
 ## Selectable caster builds
 
 The single module config includes Elemental and Restoration at every bracket:
-caster leather at 19/29/39 and caster mail at 49/59/69/79. Select the build after
+caster leather at 19/29/39 and caster mail at 49/59/69/79/80. Select the build after
 the bracket; see [configuration and migration](starter-gear.md).
 
 Both builds retain Mystical Pauldrons of Elements (42951) and Mystical Vest (48683), plus

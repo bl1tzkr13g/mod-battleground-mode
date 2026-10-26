@@ -127,7 +127,7 @@ public:
         next.starterBind = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.BindToCharacter", true);
         next.starterBagEnabled = sConfigMgr->GetOption<bool>("BattlegroundMode.StarterGear.Bag.Enable", true);
         next.starterBagItem = sConfigMgr->GetOption<uint32>("BattlegroundMode.StarterGear.Bag.Item", 41599);
-        next.levels = ParseLevels(sConfigMgr->GetOption<std::string>("BattlegroundMode.AllowedLevels", "19,29,39,49,59,69,79"),
+        next.levels = ParseLevels(sConfigMgr->GetOption<std::string>("BattlegroundMode.AllowedLevels", "19,29,39,49,59,69,79,80"),
             static_cast<uint8>(std::min<uint32>(80, sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))));
         if (next.levels.empty())
             LOG_ERROR("module", "Battleground Mode: invalid/empty AllowedLevels; bracket selection is unavailable.");

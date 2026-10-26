@@ -1,7 +1,7 @@
 # Agility mail starter completion set
 
 Hunter and Enhancement Shaman now receive nine custom scaling completion pieces
-in level-40+ brackets: **49, 59, 69 and 79** in the default config. Their 19/29/39
+in level-40+ brackets: **49, 59, 69, 79 and 80** in the default config. Their 19/29/39
 leather lists remain unchanged. This is the physical/agility mail baseline, not
 an Elemental/Restoration caster-mail loadout. The separate
 [caster/healer mail alternative](caster-mail-starter-set.md) now includes ready-to-copy
@@ -20,7 +20,7 @@ are unchanged by this update.
 | Ring 2 | Champion's Deathdealer Signet | 900045 | Painweaver Band (13098) |
 | Neck | Champion's Deathdealer Pendant | 900046 | Mark of Fordring (15411) |
 
-The old ordinary head/belt/wrists/gloves/legs/boots are removed from all eight
+The old ordinary head/belt/wrists/gloves/legs/boots are removed from all ten
 applicable class/bracket lists. Existing Champion Herod's Shoulder (42950) and
 Champion's Deathdealer Breastplate (48677) remain. Both classes keep Swift Hand
 of Justice, Dread Pirate Ring, and the matching Alliance/Horde insignia.
@@ -59,7 +59,7 @@ correct template slots, and existing models are reused.
 
 ## Install and test
 
-Pull the update, replace Hunter/Shaman Tier 1 entries for **49/59/69/79** in the
+Pull the update, replace Hunter/Shaman Tier 1 entries for **49/59/69/79/80** in the
 active module `.conf` with the new `.conf.dist` entries, and restart worldserver.
 The normal updater applies `mod_battleground_mode_heirloom_mail_set.sql`
 automatically; expect nine mail items and no missing/conflicting-ID rows.

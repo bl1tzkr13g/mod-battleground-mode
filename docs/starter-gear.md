@@ -31,7 +31,7 @@ can be listed; the receiver gets only the correct faction's version.
 | Shaman | Enhancement, Elemental, Restoration |
 | Druid | Feral, Balance, Restoration |
 
-These 16 builds are present at 19/29/39/49/59/69/79. Death Knights start above
+These 16 builds are present at 19/29/39/49/59/69/79/80. Death Knights start above
 level 1 and remain ineligible. [Protection Warrior/Paladin](protection-starter-set.md)
 uses scaling Valor gear and a one-handed sword with bracket-appropriate stock
 shields. The shields retain their fixed native armor/block values.

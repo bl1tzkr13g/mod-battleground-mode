@@ -1,7 +1,7 @@
 # Priest, Mage and Warlock Tier 1 set
 
 All three classes use the same full cloth caster kit at levels **19, 29, 39, 49,
-59, 69 and 79**. Ordinary caster filler pieces are removed from those lists.
+59, 69, 79 and 80**. Ordinary caster filler pieces are removed from those lists.
 Every starter piece is free. Higher tiers have been removed; PvP vendors supply upgrades.
 
 | Slot | Item | ID | Existing appearance |

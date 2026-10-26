@@ -206,8 +206,8 @@ int main(int argc, char** argv)
         else
             ++lists;
     }
-    Check(bagLists == 56, "eight caster class/build alternatives are configured across seven brackets");
-    Check(lists == 112, "seven brackets include sixteen completed class/build choices each");
+    Check(bagLists == 64, "eight caster class/build alternatives are configured across eight brackets");
+    Check(lists == 128, "eight brackets include sixteen completed class/build choices each");
     Check(!shipped.Find(19, 2, 1).empty(), "level 19 Paladin starter list is populated");
     Check(!shipped.Find(79, 8, 1).empty(), "level 79 Mage starter list is populated");
     Check(shipped.Find(79, 1, 4).empty(), "upgrade catalog is removed");
@@ -217,7 +217,7 @@ int main(int argc, char** argv)
         return std::any_of(items.begin(), items.end(), [entry](GearItem const& item) { return item.entry == entry; });
     };
     struct HeirloomLoadout { std::uint8_t playerClass; std::uint32_t shoulders, chest, weapon, trinket; };
-    for (auto level : {19,29,39,49,59,69,79})
+    for (auto level : {19,29,39,49,59,69,79,80})
         for (auto kit : {HeirloomLoadout{1,42949,48685,42943,42991}, {2,42949,48685,44092,42991},
                 {3,42950,48677,42944,42991}, {4,42952,48689,42944,42991}, {5,42985,48691,42947,42992},
                 {7,42950,48677,48716,42991}, {8,42985,48691,42947,42992}, {9,42985,48691,42947,42992},
@@ -231,7 +231,7 @@ int main(int argc, char** argv)
         }
     Check(contains(shipped.Find(19, 4, 1), 44091), "Rogue also gets the offhand dagger");
     Check(contains(shipped.Find(79, 3, 1), 42946), "Hunter also gets the ranged heirloom");
-    for (auto level : {19,29,39,49,59,69,79})
+    for (auto level : {19,29,39,49,59,69,79,80})
         for (auto playerClass : {5,8,9})
         {
             auto const& items = shipped.Find(level, playerClass, 1);
@@ -240,7 +240,7 @@ int main(int argc, char** argv)
                 Check(contains(items, entry), "every caster bracket includes all ten custom completion pieces");
             Check(contains(items, 42985) && contains(items, 48691) && contains(items, 42947), "existing heirloom shoulders, robe and staff remain");
         }
-    for (auto level : {19,29,39,49,59,69,79})
+    for (auto level : {19,29,39,49,59,69,79,80})
         for (auto playerClass : {3,4,7,11})
         {
             auto const& items = shipped.Find(level, playerClass, 1);
@@ -256,7 +256,7 @@ int main(int argc, char** argv)
                 Check(contains(items, shoulders) && contains(items, chest), "appropriate existing heirloom chest and shoulders remain");
             }
         }
-    for (auto level : {19,29,39,49,59,69,79})
+    for (auto level : {19,29,39,49,59,69,79,80})
         for (auto playerClass : {3,7})
         {
             auto const& items = shipped.Find(level, playerClass, 1);
@@ -269,7 +269,7 @@ int main(int argc, char** argv)
                 Check(contains(items, 42950) && contains(items, 48677), "mail kit retains existing heirloom chest and shoulders");
             }
         }
-    for (auto level : {19,29,39,49,59,69,79})
+    for (auto level : {19,29,39,49,59,69,79,80})
         for (auto playerClass : {1,2})
         {
             auto const& items = shipped.Find(level, playerClass, 1);
@@ -279,7 +279,7 @@ int main(int argc, char** argv)
             Check(contains(items, 42949) && contains(items, 48685), "strength kit retains existing Valor shoulders and chest");
         }
     for (auto [level, shield] : {std::pair<unsigned,unsigned>{19,4821}, {29,4477}, {39,14825},
-            {49,8282}, {59,15943}, {69,31200}, {79,37810}})
+            {49,8282}, {59,15943}, {69,31200}, {79,37810}, {80,37810}})
         for (auto playerClass : {1,2})
         {
             auto const& items = shipped.Find(level, playerClass, 1, StarterRole::Protection);
@@ -300,7 +300,7 @@ int main(int argc, char** argv)
                 "Protection excludes damage 2H weapons, caster staves and the Holy tome");
         }
     for (auto [level, shield] : {std::pair<unsigned,unsigned>{19,6383}, {29,14608}, {39,14777},
-            {49,17718}, {59,18485}, {69,31287}, {79,35636}})
+            {49,17718}, {59,18485}, {69,31287}, {79,35636}, {80,35636}})
     {
         for (auto [playerClass, role] : {std::pair<unsigned,StarterRole>{5,StarterRole::Damage},
                 {8,StarterRole::Damage}, {9,StarterRole::Damage}, {11,StarterRole::Balance},
@@ -332,7 +332,7 @@ int main(int argc, char** argv)
         bool druid = example.playerClass == 11;
         bool holy = example.playerClass == 2;
 
-        for (auto level : {19,29,39,49,59,69,79})
+        for (auto level : {19,29,39,49,59,69,79,80})
         {
             auto const& items = shipped.Find(level, example.playerClass, 1, example.role);
             auto choices = shipped.Roles(level, example.playerClass);

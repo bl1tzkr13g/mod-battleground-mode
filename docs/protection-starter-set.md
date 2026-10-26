@@ -1,7 +1,7 @@
 # Protection Warrior and Paladin starters
 
-Both classes can choose **Protection** at 19/29/39/49/59/69/79 in the existing
-bracket → build → confirmation flow. The main module config contains all 14
+Both classes can choose **Protection** at 19/29/39/49/59/69/79/80 in the existing
+bracket → build → confirmation flow. The main module config contains all 16
 Protection entries. Other starter builds remain available with the same gear.
 
 The kit keeps the existing strength/stamina Valor armor, cloak and jewelry:
@@ -25,6 +25,7 @@ sword first, then the shield, and preserve displaced equipment in bags.
 | 59 | Imbued Shield | 15943 | 56 | 1861 | 35 |
 | 69 | Shield of the Wayward Footman | 31200 | 65 | 3329 | 71 |
 | 79 | Blade-Binding Bulwark | 37810 | 76 | 6011 | 162 |
+| 80 | Blade-Binding Bulwark | 37810 | 76 | 6011 | 162 |
 
 These are existing stock shields with fixed physical/defensive stats, no random
 affixes, no profession/reputation prerequisite, and no faction restriction. Base
@@ -52,7 +53,7 @@ builds. Completed starter claims never regrant equipment when config changes.
 
 ## Install and verify
 
-Pull and add the 14 `.Warrior.Protection` / `.Paladin.Protection` entries from
+Pull and add the 16 `.Warrior.Protection` / `.Paladin.Protection` entries from
 `conf/mod_battleground_mode.conf.dist` to the active module `.conf`, or replace
 its full gear section with the new version. Apply `.reload config` or restart.
 If the role-selection update (`b52f383`) is already built and installed, this

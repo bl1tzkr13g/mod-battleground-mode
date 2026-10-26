@@ -53,26 +53,29 @@ int main()
     Check(ShouldBecomeNormal(Mode::Pending, 5), "a multilevel jump also finalizes normal mode");
     Check(!ShouldBecomeNormal(Mode::Battleground, 19), "selected bracket characters never auto-convert");
     Check(!ShouldBecomeNormal(Mode::Normal, 2), "normal choices do not trigger repeated conversion");
-    auto levels = ParseLevels("19,29,39,49,59,69,79", 80);
-    Check(levels == std::vector<std::uint8_t>({19,29,39,49,59,69,79}), "all default brackets are available");
+    auto levels = ParseLevels("19,29,39,49,59,69,79,80", 80);
+    Check(levels == std::vector<std::uint8_t>({19,29,39,49,59,69,79,80}), "all default brackets are available");
     Check(ParseLevels(" 39 ,19,39, 29\t", 80) == std::vector<std::uint8_t>({19,29,39}), "whitespace and duplicate levels normalize");
     for (auto invalid : {"", "0", "81", "256", "-1", "19junk", "19,,29", ",19", "19,", "19, ", "19;29", "99999999999999999999999"})
         Check(ParseLevels(invalid, 80).empty(), std::string("reject malformed config: ") + invalid);
     Check(ParseLevels("19,79", 70).empty(), "reject a list exceeding the server cap");
-    Check(ParseLevels("80", 80) == std::vector<std::uint8_t>({80}), "level 80 is explicit opt-in");
+    Check(ParseLevels("80", 80) == std::vector<std::uint8_t>({80}), "level 80 is within the supported cap");
     std::string manyLevels;
     for (unsigned level = 1; level <= MaxBracketChoices; ++level)
         manyLevels += (level == 1 ? "" : ",") + std::to_string(level);
     Check(ParseLevels(manyLevels, 80).size() == MaxBracketChoices, "maximum menu choices leave room for Back");
     Check(ParseLevels(manyLevels + ",32", 80).empty(), "oversized configuration cannot overflow the gossip menu");
     Check(CanChoose(Mode::Pending, 1, 19, levels), "a new character can choose a bracket");
+    Check(CanChoose(Mode::Pending, 1, 80, levels), "new characters can choose the default level 80 bracket");
+    Check(ParseLevels("19,80", 79).empty(), "level 80 still respects the server level cap");
+    Check(ValidRecord(Mode::Battleground, 80), "level 80 lock survives persistence validation");
     Check(!CanChoose(Mode::Pending, 2, 19, levels), "a character above level 1 cannot enroll");
     Check(!CanChoose(Mode::Pending, 55, 59, levels), "Death Knight starting above level 1 cannot enroll");
     Check(!CanChoose(Mode::Pending, 79, 79, levels), "matching a bracket does not bypass level 1 eligibility");
     Check(!CanChoose(Mode::Pending, 55, 19, levels), "Death Knight cannot retain high-level abilities in level 19 bracket");
     Check(!CanChoose(Mode::Normal, 1, 19, levels), "normal decision is permanent");
     Check(!CanChoose(Mode::Battleground, 19, 29, levels), "a second confirmation cannot change bracket");
-    Check(!CanChoose(Mode::Pending, 1, 80, levels), "a forged unconfigured bracket is rejected");
+    Check(!CanChoose(Mode::Pending, 1, 78, levels), "a forged unconfigured bracket is rejected");
     Check(!CanChoose(Mode::Pending, 1, 19, {}), "invalid configuration cannot enroll a character");
     Check(ValidRecord(Mode::Pending, 0), "pending record is valid");
     Check(ValidRecord(Mode::Normal, 0), "normal record is valid");

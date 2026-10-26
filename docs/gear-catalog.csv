@@ -1952,3 +1952,282 @@ level,tier,player_class,role,delivery,item_id,item_name,honor,quality,required_l
 79,1,Druid,Balance,bag,900087,Dignified Scholar's Tome,0,7,1,1
 79,1,Druid,Restoration,bag,900086,Dignified Scholar's Kris,0,7,1,1
 79,1,Druid,Restoration,bag,900087,Dignified Scholar's Tome,0,7,1,1
+80,1,Warrior,Damage,equipped,900047,Polished Helm of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900055,Polished Pendant of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,42949,Polished Spaulders of Valor,0,7,0,1
+80,1,Warrior,Damage,equipped,900048,Polished Cloak of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,48685,Polished Breastplate of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900050,Polished Bracers of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900051,Polished Gauntlets of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900049,Polished Belt of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900052,Polished Legplates of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,900053,Polished Boots of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Warrior,Damage,equipped,900054,Polished Signet of Valor,0,7,1,1
+80,1,Warrior,Damage,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Warrior,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Warrior,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Warrior,Damage,equipped,42943,Bloodied Arcanite Reaper,0,7,0,1
+80,1,Paladin,Retribution,equipped,900047,Polished Helm of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900055,Polished Pendant of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,42949,Polished Spaulders of Valor,0,7,0,1
+80,1,Paladin,Retribution,equipped,900048,Polished Cloak of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,48685,Polished Breastplate of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900050,Polished Bracers of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900051,Polished Gauntlets of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900049,Polished Belt of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900052,Polished Legplates of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,900053,Polished Boots of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Paladin,Retribution,equipped,900054,Polished Signet of Valor,0,7,1,1
+80,1,Paladin,Retribution,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Paladin,Retribution,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Paladin,Retribution,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Paladin,Retribution,equipped,44092,Reforged Truesilver Champion,0,7,0,1
+80,1,Paladin,Holy,equipped,900074,Blessed Lightforge Helm,0,7,1,1
+80,1,Paladin,Holy,equipped,900082,Blessed Lightforge Pendant,0,7,1,1
+80,1,Paladin,Holy,equipped,900083,Blessed Lightforge Spaulders,0,7,1,1
+80,1,Paladin,Holy,equipped,900075,Blessed Lightforge Cloak,0,7,1,1
+80,1,Paladin,Holy,equipped,900084,Blessed Lightforge Breastplate,0,7,1,1
+80,1,Paladin,Holy,equipped,900077,Blessed Lightforge Bracers,0,7,1,1
+80,1,Paladin,Holy,equipped,900078,Blessed Lightforge Gauntlets,0,7,1,1
+80,1,Paladin,Holy,equipped,900076,Blessed Lightforge Belt,0,7,1,1
+80,1,Paladin,Holy,equipped,900079,Blessed Lightforge Legplates,0,7,1,1
+80,1,Paladin,Holy,equipped,900080,Blessed Lightforge Boots,0,7,1,1
+80,1,Paladin,Holy,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Paladin,Holy,equipped,900081,Blessed Lightforge Signet,0,7,1,1
+80,1,Paladin,Holy,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Paladin,Holy,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Paladin,Holy,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Paladin,Holy,equipped,42948,Devout Aurastone Hammer,0,7,0,1
+80,1,Paladin,Holy,equipped,900085,Blessed Lightforge Tome,0,7,1,1
+80,1,Hunter,Damage,equipped,900038,Champion's Deathdealer Cap,0,7,1,1
+80,1,Hunter,Damage,equipped,900046,Champion's Deathdealer Pendant,0,7,1,1
+80,1,Hunter,Damage,equipped,42950,Champion Herod's Shoulder,0,7,0,1
+80,1,Hunter,Damage,equipped,900039,Champion's Deathdealer Cloak,0,7,1,1
+80,1,Hunter,Damage,equipped,48677,Champion's Deathdealer Breastplate,0,7,1,1
+80,1,Hunter,Damage,equipped,900041,Champion's Deathdealer Bindings,0,7,1,1
+80,1,Hunter,Damage,equipped,900042,Champion's Deathdealer Gloves,0,7,1,1
+80,1,Hunter,Damage,equipped,900040,Champion's Deathdealer Belt,0,7,1,1
+80,1,Hunter,Damage,equipped,900043,Champion's Deathdealer Pants,0,7,1,1
+80,1,Hunter,Damage,equipped,900044,Champion's Deathdealer Boots,0,7,1,1
+80,1,Hunter,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Hunter,Damage,equipped,900045,Champion's Deathdealer Signet,0,7,1,1
+80,1,Hunter,Damage,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Hunter,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Hunter,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Hunter,Damage,equipped,42944,Balanced Heartseeker,0,7,0,1
+80,1,Hunter,Damage,equipped,42946,Charmed Ancient Bone Bow,0,7,0,1
+80,1,Rogue,Damage,equipped,900029,Stained Shadowcraft Cap,0,7,1,1
+80,1,Rogue,Damage,equipped,900037,Stained Shadowcraft Pendant,0,7,1,1
+80,1,Rogue,Damage,equipped,42952,Stained Shadowcraft Spaulders,0,7,0,1
+80,1,Rogue,Damage,equipped,900030,Stained Shadowcraft Cloak,0,7,1,1
+80,1,Rogue,Damage,equipped,48689,Stained Shadowcraft Tunic,0,7,1,1
+80,1,Rogue,Damage,equipped,900032,Stained Shadowcraft Bracers,0,7,1,1
+80,1,Rogue,Damage,equipped,900033,Stained Shadowcraft Gloves,0,7,1,1
+80,1,Rogue,Damage,equipped,900031,Stained Shadowcraft Belt,0,7,1,1
+80,1,Rogue,Damage,equipped,900034,Stained Shadowcraft Pants,0,7,1,1
+80,1,Rogue,Damage,equipped,900035,Stained Shadowcraft Boots,0,7,1,1
+80,1,Rogue,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Rogue,Damage,equipped,900036,Stained Shadowcraft Signet,0,7,1,1
+80,1,Rogue,Damage,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Rogue,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Rogue,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Rogue,Damage,equipped,42944,Balanced Heartseeker,0,7,0,1
+80,1,Rogue,Damage,equipped,44091,Sharpened Scarlet Kris,0,7,0,1
+80,1,Priest,Damage,equipped,900019,Tattered Dreadmist Hood,0,7,1,1
+80,1,Priest,Damage,equipped,900028,Tattered Dreadmist Pendant,0,7,1,1
+80,1,Priest,Damage,equipped,42985,Tattered Dreadmist Mantle,0,7,0,1
+80,1,Priest,Damage,equipped,900020,Tattered Dreadmist Cloak,0,7,1,1
+80,1,Priest,Damage,equipped,48691,Tattered Dreadmist Robe,0,7,1,1
+80,1,Priest,Damage,equipped,900022,Tattered Dreadmist Bracers,0,7,1,1
+80,1,Priest,Damage,equipped,900023,Tattered Dreadmist Wraps,0,7,1,1
+80,1,Priest,Damage,equipped,900021,Tattered Dreadmist Belt,0,7,1,1
+80,1,Priest,Damage,equipped,900024,Tattered Dreadmist Leggings,0,7,1,1
+80,1,Priest,Damage,equipped,900025,Tattered Dreadmist Sandals,0,7,1,1
+80,1,Priest,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Priest,Damage,equipped,900027,Tattered Dreadmist Signet,0,7,1,1
+80,1,Priest,Damage,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Priest,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Priest,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Priest,Damage,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Priest,Damage,equipped,900026,Tattered Dreadmist Wand,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900038,Champion's Deathdealer Cap,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900046,Champion's Deathdealer Pendant,0,7,1,1
+80,1,Shaman,Enhancement,equipped,42950,Champion Herod's Shoulder,0,7,0,1
+80,1,Shaman,Enhancement,equipped,900039,Champion's Deathdealer Cloak,0,7,1,1
+80,1,Shaman,Enhancement,equipped,48677,Champion's Deathdealer Breastplate,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900041,Champion's Deathdealer Bindings,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900042,Champion's Deathdealer Gloves,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900040,Champion's Deathdealer Belt,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900043,Champion's Deathdealer Pants,0,7,1,1
+80,1,Shaman,Enhancement,equipped,900044,Champion's Deathdealer Boots,0,7,1,1
+80,1,Shaman,Enhancement,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Shaman,Enhancement,equipped,900045,Champion's Deathdealer Signet,0,7,1,1
+80,1,Shaman,Enhancement,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Shaman,Enhancement,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Shaman,Enhancement,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Shaman,Enhancement,equipped,48716,Venerable Mass of McGowan,0,7,1,1
+80,1,Shaman,Elemental,equipped,900065,Mystical Coif of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900073,Mystical Pendant of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,42951,Mystical Pauldrons of Elements,0,7,0,1
+80,1,Shaman,Elemental,equipped,900066,Mystical Cloak of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,48683,Mystical Vest of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900068,Mystical Bindings of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900069,Mystical Gauntlets of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900067,Mystical Cord of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900070,Mystical Kilt of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,900071,Mystical Boots of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Shaman,Elemental,equipped,900072,Mystical Signet of Elements,0,7,1,1
+80,1,Shaman,Elemental,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Shaman,Elemental,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Shaman,Elemental,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Shaman,Elemental,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Shaman,Restoration,equipped,900065,Mystical Coif of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900073,Mystical Pendant of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,42951,Mystical Pauldrons of Elements,0,7,0,1
+80,1,Shaman,Restoration,equipped,900066,Mystical Cloak of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,48683,Mystical Vest of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900068,Mystical Bindings of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900069,Mystical Gauntlets of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900067,Mystical Cord of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900070,Mystical Kilt of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,900071,Mystical Boots of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Shaman,Restoration,equipped,900072,Mystical Signet of Elements,0,7,1,1
+80,1,Shaman,Restoration,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Shaman,Restoration,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Shaman,Restoration,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Shaman,Restoration,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Mage,Damage,equipped,900019,Tattered Dreadmist Hood,0,7,1,1
+80,1,Mage,Damage,equipped,900028,Tattered Dreadmist Pendant,0,7,1,1
+80,1,Mage,Damage,equipped,42985,Tattered Dreadmist Mantle,0,7,0,1
+80,1,Mage,Damage,equipped,900020,Tattered Dreadmist Cloak,0,7,1,1
+80,1,Mage,Damage,equipped,48691,Tattered Dreadmist Robe,0,7,1,1
+80,1,Mage,Damage,equipped,900022,Tattered Dreadmist Bracers,0,7,1,1
+80,1,Mage,Damage,equipped,900023,Tattered Dreadmist Wraps,0,7,1,1
+80,1,Mage,Damage,equipped,900021,Tattered Dreadmist Belt,0,7,1,1
+80,1,Mage,Damage,equipped,900024,Tattered Dreadmist Leggings,0,7,1,1
+80,1,Mage,Damage,equipped,900025,Tattered Dreadmist Sandals,0,7,1,1
+80,1,Mage,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Mage,Damage,equipped,900027,Tattered Dreadmist Signet,0,7,1,1
+80,1,Mage,Damage,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Mage,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Mage,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Mage,Damage,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Mage,Damage,equipped,900026,Tattered Dreadmist Wand,0,7,1,1
+80,1,Warlock,Damage,equipped,900019,Tattered Dreadmist Hood,0,7,1,1
+80,1,Warlock,Damage,equipped,900028,Tattered Dreadmist Pendant,0,7,1,1
+80,1,Warlock,Damage,equipped,42985,Tattered Dreadmist Mantle,0,7,0,1
+80,1,Warlock,Damage,equipped,900020,Tattered Dreadmist Cloak,0,7,1,1
+80,1,Warlock,Damage,equipped,48691,Tattered Dreadmist Robe,0,7,1,1
+80,1,Warlock,Damage,equipped,900022,Tattered Dreadmist Bracers,0,7,1,1
+80,1,Warlock,Damage,equipped,900023,Tattered Dreadmist Wraps,0,7,1,1
+80,1,Warlock,Damage,equipped,900021,Tattered Dreadmist Belt,0,7,1,1
+80,1,Warlock,Damage,equipped,900024,Tattered Dreadmist Leggings,0,7,1,1
+80,1,Warlock,Damage,equipped,900025,Tattered Dreadmist Sandals,0,7,1,1
+80,1,Warlock,Damage,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Warlock,Damage,equipped,900027,Tattered Dreadmist Signet,0,7,1,1
+80,1,Warlock,Damage,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Warlock,Damage,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Warlock,Damage,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Warlock,Damage,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Warlock,Damage,equipped,900026,Tattered Dreadmist Wand,0,7,1,1
+80,1,Druid,Feral,equipped,900029,Stained Shadowcraft Cap,0,7,1,1
+80,1,Druid,Feral,equipped,900037,Stained Shadowcraft Pendant,0,7,1,1
+80,1,Druid,Feral,equipped,42952,Stained Shadowcraft Spaulders,0,7,0,1
+80,1,Druid,Feral,equipped,900030,Stained Shadowcraft Cloak,0,7,1,1
+80,1,Druid,Feral,equipped,48689,Stained Shadowcraft Tunic,0,7,1,1
+80,1,Druid,Feral,equipped,900032,Stained Shadowcraft Bracers,0,7,1,1
+80,1,Druid,Feral,equipped,900033,Stained Shadowcraft Gloves,0,7,1,1
+80,1,Druid,Feral,equipped,900031,Stained Shadowcraft Belt,0,7,1,1
+80,1,Druid,Feral,equipped,900034,Stained Shadowcraft Pants,0,7,1,1
+80,1,Druid,Feral,equipped,900035,Stained Shadowcraft Boots,0,7,1,1
+80,1,Druid,Feral,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Druid,Feral,equipped,900036,Stained Shadowcraft Signet,0,7,1,1
+80,1,Druid,Feral,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Druid,Feral,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Druid,Feral,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Druid,Feral,equipped,48718,Repurposed Lava Dredger,0,7,1,1
+80,1,Druid,Balance,equipped,900056,Preened Ironfeather Cowl,0,7,1,1
+80,1,Druid,Balance,equipped,900064,Preened Ironfeather Pendant,0,7,1,1
+80,1,Druid,Balance,equipped,42984,Preened Ironfeather Shoulders,0,7,0,1
+80,1,Druid,Balance,equipped,900057,Preened Ironfeather Cloak,0,7,1,1
+80,1,Druid,Balance,equipped,48687,Preened Ironfeather Breastplate,0,7,1,1
+80,1,Druid,Balance,equipped,900059,Preened Ironfeather Bracers,0,7,1,1
+80,1,Druid,Balance,equipped,900060,Preened Ironfeather Gloves,0,7,1,1
+80,1,Druid,Balance,equipped,900058,Preened Ironfeather Belt,0,7,1,1
+80,1,Druid,Balance,equipped,900061,Preened Ironfeather Kilt,0,7,1,1
+80,1,Druid,Balance,equipped,900062,Preened Ironfeather Boots,0,7,1,1
+80,1,Druid,Balance,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Druid,Balance,equipped,900063,Preened Ironfeather Signet,0,7,1,1
+80,1,Druid,Balance,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Druid,Balance,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Druid,Balance,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Druid,Balance,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Druid,Restoration,equipped,900056,Preened Ironfeather Cowl,0,7,1,1
+80,1,Druid,Restoration,equipped,900064,Preened Ironfeather Pendant,0,7,1,1
+80,1,Druid,Restoration,equipped,42984,Preened Ironfeather Shoulders,0,7,0,1
+80,1,Druid,Restoration,equipped,900057,Preened Ironfeather Cloak,0,7,1,1
+80,1,Druid,Restoration,equipped,48687,Preened Ironfeather Breastplate,0,7,1,1
+80,1,Druid,Restoration,equipped,900059,Preened Ironfeather Bracers,0,7,1,1
+80,1,Druid,Restoration,equipped,900060,Preened Ironfeather Gloves,0,7,1,1
+80,1,Druid,Restoration,equipped,900058,Preened Ironfeather Belt,0,7,1,1
+80,1,Druid,Restoration,equipped,900061,Preened Ironfeather Kilt,0,7,1,1
+80,1,Druid,Restoration,equipped,900062,Preened Ironfeather Boots,0,7,1,1
+80,1,Druid,Restoration,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Druid,Restoration,equipped,900063,Preened Ironfeather Signet,0,7,1,1
+80,1,Druid,Restoration,equipped,42992,Discerning Eye of the Beast,0,7,0,1
+80,1,Druid,Restoration,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Druid,Restoration,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Druid,Restoration,equipped,42947,Dignified Headmaster's Charge,0,7,0,1
+80,1,Paladin,Protection,equipped,900047,Polished Helm of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900055,Polished Pendant of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,42949,Polished Spaulders of Valor,0,7,0,1
+80,1,Paladin,Protection,equipped,900048,Polished Cloak of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,48685,Polished Breastplate of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900050,Polished Bracers of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900051,Polished Gauntlets of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900049,Polished Belt of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900052,Polished Legplates of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,900053,Polished Boots of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Paladin,Protection,equipped,900054,Polished Signet of Valor,0,7,1,1
+80,1,Paladin,Protection,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Paladin,Protection,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Paladin,Protection,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Paladin,Protection,equipped,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+80,1,Paladin,Protection,equipped,37810,Blade-Binding Bulwark,0,3,76,158
+80,1,Warrior,Protection,equipped,900047,Polished Helm of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900055,Polished Pendant of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,42949,Polished Spaulders of Valor,0,7,0,1
+80,1,Warrior,Protection,equipped,900048,Polished Cloak of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,48685,Polished Breastplate of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900050,Polished Bracers of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900051,Polished Gauntlets of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900049,Polished Belt of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900052,Polished Legplates of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,900053,Polished Boots of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,50255,Dread Pirate Ring,0,7,0,1
+80,1,Warrior,Protection,equipped,900054,Polished Signet of Valor,0,7,1,1
+80,1,Warrior,Protection,equipped,42991,Swift Hand of Justice,0,7,0,1
+80,1,Warrior,Protection,equipped,44098,Inherited Insignia of the Alliance,0,7,0,1
+80,1,Warrior,Protection,equipped,44097,Inherited Insignia of the Horde,0,7,0,1
+80,1,Warrior,Protection,equipped,42945,Venerable Dal'Rend's Sacred Charge,0,7,0,1
+80,1,Warrior,Protection,equipped,37810,Blade-Binding Bulwark,0,3,76,158
+80,1,Paladin,Holy,bag,35636,Tharon'ja's Aegis,0,3,74,171
+80,1,Priest,Damage,bag,900086,Dignified Scholar's Kris,0,7,1,1
+80,1,Priest,Damage,bag,900087,Dignified Scholar's Tome,0,7,1,1
+80,1,Shaman,Elemental,bag,42948,Devout Aurastone Hammer,0,7,0,1
+80,1,Shaman,Elemental,bag,35636,Tharon'ja's Aegis,0,3,74,171
+80,1,Shaman,Restoration,bag,42948,Devout Aurastone Hammer,0,7,0,1
+80,1,Shaman,Restoration,bag,35636,Tharon'ja's Aegis,0,3,74,171
+80,1,Mage,Damage,bag,900086,Dignified Scholar's Kris,0,7,1,1
+80,1,Mage,Damage,bag,900087,Dignified Scholar's Tome,0,7,1,1
+80,1,Warlock,Damage,bag,900086,Dignified Scholar's Kris,0,7,1,1
+80,1,Warlock,Damage,bag,900087,Dignified Scholar's Tome,0,7,1,1
+80,1,Druid,Balance,bag,900086,Dignified Scholar's Kris,0,7,1,1
+80,1,Druid,Balance,bag,900087,Dignified Scholar's Tome,0,7,1,1
+80,1,Druid,Restoration,bag,900086,Dignified Scholar's Kris,0,7,1,1
+80,1,Druid,Restoration,bag,900087,Dignified Scholar's Tome,0,7,1,1
