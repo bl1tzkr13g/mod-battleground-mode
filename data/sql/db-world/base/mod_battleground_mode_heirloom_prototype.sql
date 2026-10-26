@@ -1,5 +1,5 @@
--- Experimental GM-test item; applied automatically by the core startup updater.
--- Not added to any starter list or vendor. No client DBC tables are modified.
+-- Original tested hood; applied automatically by the core startup updater.
+-- Now part of the caster Tier 1 completion set. No client DBC tables are modified.
 -- Existing IDs are never overwritten. Validate in game before enabling broadly.
 -- 48691 supplies an existing stock heirloom scaling profile; 16698 supplies
 -- the Dreadmist Mask appearance. Chest-budget scaling is a prototype, not a
@@ -21,7 +21,7 @@ WHERE donor.entry=48691
 SELECT CASE
     WHEN EXISTS (SELECT 1 FROM item_template WHERE entry=900019
         AND name='Tattered Dreadmist Hood' AND InventoryType=1 AND Quality=7)
-        THEN 'Battleground Mode: experimental hood 900019 ready for GM testing (not auto-granted).'
+        THEN 'Battleground Mode: hood 900019 available for the caster starter set.'
     WHEN EXISTS (SELECT 1 FROM item_template WHERE entry=900019)
         THEN 'Battleground Mode: ID 900019 is occupied; existing item preserved, prototype skipped.'
     ELSE 'Battleground Mode: prototype skipped; check source items 48691 and 16698 and scaling fields.'

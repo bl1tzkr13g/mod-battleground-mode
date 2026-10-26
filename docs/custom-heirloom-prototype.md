@@ -2,8 +2,9 @@
 
 The first prototype is **900019 — Tattered Dreadmist Hood**, a cloth helmet for
 Priests, Mages and Warlocks of any race. It is created by the normal automatic
-world SQL updater, but is **not** placed in starter kits or vendor inventories.
-Existing Tier 1 lists and items remain unchanged.
+world SQL updater. Following successful user tests, it is now included in the
+[complete caster Tier 1 set](caster-starter-set.md). The original prototype
+implementation and test notes are retained below as historical context.
 
 | Property | Source / behavior |
 |---|---|
@@ -61,9 +62,9 @@ values; the repository's SQL DBC overlay tables contain no default records.
 5. Check that removing it reverses its stat contributions, re-equipping restores
    them, and both Horde and Alliance characters can equip it.
 
-Only after these checks should it replace the ordinary helmet in caster Tier 1
-lists. At level 19, where there is currently no starter helmet, it would add the
-head slot. This prototype intentionally does not grant itself automatically.
+The hood has since been promoted into caster Tier 1 lists, replacing the old
+helmet above level 19 and adding the head slot at level 19. See the full caster
+set documentation for installation and current delivery behavior.
 
 `tests/heirloom_database_test.py` exercises repeat application, the real item
 schema, source preservation, collision handling, scaling fields and clean item

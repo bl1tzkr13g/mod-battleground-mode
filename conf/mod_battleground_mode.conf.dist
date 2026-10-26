@@ -100,10 +100,13 @@ BattlegroundMode.StarterGear.BindToCharacter = 1
 # No starting gold or talent grants are provided here. Class-trainer spells
 # are controlled separately by AutoLearnClassTrainerSpells above.
 #
-# These are STOCK item candidates, NOT playtested complete sets at every tier.
-# Tier 1 uses the SAME class heirlooms at EVERY bracket, plus retained ordinary
-# armor in slots not replaced. Level 19 still has no head item; cloaks/shields/
-# wands/ammunition are not supplied by these lists. Higher tiers are unchanged.
+# Tiers 2+ are STOCK upgrade candidates, NOT playtested complete sets.
+# Tier 1 uses the SAME class heirlooms at EVERY bracket. Other classes retain
+# ordinary filler armor; physical level-19 kits still have no head item.
+# Priest/Mage/Warlock now get a full custom-scaling cloth completion set, including
+# cloak, jewelry and wand. Client icons/right-click support are deferred.
+# Shields and ammunition are not supplied. Higher tiers are unchanged.
+# Caster delivery needs 16 free general-purpose bag slots (one whole kit).
 # Both faction insignias are listed: only the player's faction version is given.
 # Hybrid defaults are physical: Retribution Paladin, Enhancement Shaman, Feral
 # Druid. Edit the class lists for other roles; no role-selection menu is provided.
@@ -138,20 +141,20 @@ BattlegroundMode.Gear.Level19.Tier1.Hunter = "9775:0,9776:0,9777:0,9780:0,9781:0
 BattlegroundMode.Gear.Level19.Tier1.Rogue = "9775:0,9776:0,9777:0,9780:0,9781:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level19.Tier1.Priest = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level19.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level19.Tier1.Shaman = "9775:0,9776:0,9777:0,9780:0,9781:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level19.Tier1.Mage = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level19.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Seer's Pants; Seer's Boots; Seer's Gloves; Seer's Cuffs; Seer's Belt; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level19.Tier1.Warlock = "2982:0,2983:0,2984:0,3645:0,4699:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level19.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Bandit Cinch; Bandit Boots; Bandit Bracers; Bandit Gloves; Bandit Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -353,20 +356,20 @@ BattlegroundMode.Gear.Level29.Tier1.Hunter = "9801:0,9802:0,9803:0,9806:0,9808:0
 BattlegroundMode.Gear.Level29.Tier1.Rogue = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level29.Tier1.Priest = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level29.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level29.Tier1.Shaman = "9801:0,9802:0,9803:0,9806:0,9808:0,4048:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level29.Tier1.Mage = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level29.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Bright Boots; Bright Gloves; Bright Pants; Bright Bracers; Bright Belt; Azure Silk Hood; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level29.Tier1.Warlock = "3065:0,3066:0,3067:0,3647:0,4708:0,7048:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level29.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Superior Belt; Superior Boots; Superior Bracers; Superior Gloves; Superior Leggings; Emblazoned Hat; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -568,20 +571,20 @@ BattlegroundMode.Gear.Level39.Tier1.Hunter = "7406:0,7409:0,7410:0,7412:0,7413:0
 BattlegroundMode.Gear.Level39.Tier1.Rogue = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level39.Tier1.Priest = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level39.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level39.Tier1.Shaman = "7406:0,7409:0,7410:0,7412:0,7413:0,7414:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level39.Tier1.Mage = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level39.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Conjurer's Shoes; Conjurer's Bracers; Conjurer's Gloves; Conjurer's Hood; Conjurer's Breeches; Conjurer's Cinch; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level39.Tier1.Warlock = "9845:0,9846:0,9848:0,9849:0,9851:0,9853:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level39.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Infiltrator Cord; Infiltrator Boots; Infiltrator Bracers; Infiltrator Gloves; Infiltrator Cap; Infiltrator Pants; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -783,20 +786,20 @@ BattlegroundMode.Gear.Level49.Tier1.Hunter = "9926:0,9927:0,9930:0,9931:0,9932:0
 BattlegroundMode.Gear.Level49.Tier1.Rogue = "9916:0,9917:0,9920:0,9921:0,9922:0,9925:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level49.Tier1.Priest = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level49.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Brigade Boots; Brigade Bracers; Brigade Gauntlets; Brigade Girdle; Brigade Circlet; Brigade Leggings; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level49.Tier1.Shaman = "9926:0,9927:0,9930:0,9931:0,9932:0,9933:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level49.Tier1.Mage = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level49.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Sorcerer Sash; Sorcerer Slippers; Sorcerer Hat; Sorcerer Bracelets; Sorcerer Gloves; Sorcerer Pants; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level49.Tier1.Warlock = "9875:0,9876:0,9878:0,9879:0,9880:0,9883:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level49.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Tracker's Belt; Tracker's Boots; Tracker's Gloves; Tracker's Headband; Tracker's Leggings; Tracker's Wristguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -998,20 +1001,20 @@ BattlegroundMode.Gear.Level59.Tier1.Hunter = "15649:0,15651:0,15653:0,15654:0,15
 BattlegroundMode.Gear.Level59.Tier1.Rogue = "10106:0,10107:0,10109:0,10110:0,10111:0,10112:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level59.Tier1.Priest = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level59.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Merciless Bracers; Merciless Crown; Merciless Gauntlets; Merciless Belt; Merciless Legguards; Merciless Greaves; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level59.Tier1.Shaman = "15649:0,15651:0,15653:0,15654:0,15655:0,15694:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level59.Tier1.Mage = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level59.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Councillor's Boots; Councillor's Cuffs; Councillor's Circlet; Councillor's Gloves; Councillor's Pants; Councillor's Sash; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level59.Tier1.Warlock = "10095:0,10096:0,10097:0,10099:0,10101:0,10103:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level59.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Wanderer's Boots; Wanderer's Bracers; Wanderer's Belt; Wanderer's Gloves; Wanderer's Hat; Wanderer's Leggings; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -1213,20 +1216,20 @@ BattlegroundMode.Gear.Level69.Tier1.Hunter = "24854:0,24855:0,24857:0,24858:0,24
 BattlegroundMode.Gear.Level69.Tier1.Rogue = "24741:0,24742:0,24744:0,24745:0,24746:0,24748:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level69.Tier1.Priest = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level69.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Marshcreeper Belt; Marshcreeper Sludgeboots; Marshcreeper Gloves; Marshcreeper Helm; Marshcreeper Leggings; Marshcreeper Bracelets; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level69.Tier1.Shaman = "24854:0,24855:0,24857:0,24858:0,24859:0,24861:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level69.Tier1.Mage = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level69.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Feralfen Sash; Feralfen Sandals; Feralfen Hand; Feralfen Hood; Feralfen Pants; Feralfen Cuffs; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level69.Tier1.Warlock = "24629:0,24630:0,24632:0,24633:0,24634:0,24636:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level69.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Ranger Belt; Ranger Boots; Ranger Gloves; Ranger Hat; Ranger Pants; Ranger Armguards; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
@@ -1428,20 +1431,20 @@ BattlegroundMode.Gear.Level79.Tier1.Hunter = "38412:0,38413:0,38415:0,38416:0,38
 BattlegroundMode.Gear.Level79.Tier1.Rogue = "38401:0,38403:0,38404:0,38405:0,38433:0,38437:0,42952:0,48689:0,42944:0,44091:0,42991:0,50255:0,44098:0,44097:0"
 
 # Priest
-# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level79.Tier1.Priest = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level79.Tier1.Priest = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Shaman
 # Frostscale Belt; Frostscale Boots; Frostscale Gloves; Frostscale Leggings; Frostscale Bracers; Frostscale Helm; Champion Herod's Shoulder; Champion's Deathdealer Breastplate; Venerable Mass of McGowan; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
 BattlegroundMode.Gear.Level79.Tier1.Shaman = "38412:0,38413:0,38415:0,38416:0,38436:0,38440:0,42950:0,48677:0,48716:0,42991:0,50255:0,44098:0,44097:0"
 
 # Mage
-# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level79.Tier1.Mage = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level79.Tier1.Mage = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Warlock
-# Frostwoven Wristwraps; Frostwoven Leggings; Frostwoven Boots; Frostwoven Cowl; Frostwoven Belt; Frostwoven Gloves; Tattered Dreadmist Mantle; Tattered Dreadmist Robe; Dignified Headmaster's Charge; Discerning Eye of the Beast; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde
-BattlegroundMode.Gear.Level79.Tier1.Warlock = "41512:0,41519:0,41520:0,41521:0,41522:0,44211:0,42985:0,48691:0,42947:0,42992:0,50255:0,44098:0,44097:0"
+# Tattered Dreadmist Hood; Tattered Dreadmist Pendant; Tattered Dreadmist Mantle; Tattered Dreadmist Cloak; Tattered Dreadmist Robe; Tattered Dreadmist Bracers; Tattered Dreadmist Wraps; Tattered Dreadmist Belt; Tattered Dreadmist Leggings; Tattered Dreadmist Sandals; Dread Pirate Ring; Tattered Dreadmist Signet; Discerning Eye of the Beast; Inherited Insignia of the Alliance; Inherited Insignia of the Horde; Dignified Headmaster's Charge; Tattered Dreadmist Wand
+BattlegroundMode.Gear.Level79.Tier1.Warlock = "900019:0,900028:0,42985:0,900020:0,48691:0,900022:0,900023:0,900021:0,900024:0,900025:0,50255:0,900027:0,42992:0,44098:0,44097:0,42947:0,900026:0"
 
 # Druid
 # Arctic Leggings; Arctic Gloves; Arctic Boots; Arctic Belt; Arctic Wristguards; Arctic Helm; Stained Shadowcraft Spaulders; Stained Shadowcraft Tunic; Repurposed Lava Dredger; Swift Hand of Justice; Dread Pirate Ring; Inherited Insignia of the Alliance; Inherited Insignia of the Horde

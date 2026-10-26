@@ -111,5 +111,14 @@ int main(int argc, char** argv)
         }
     Check(contains(shipped.Find(19, 4, 1), 44091), "Rogue also gets the offhand dagger");
     Check(contains(shipped.Find(79, 3, 1), 42946), "Hunter also gets the ranged heirloom");
+    for (auto level : {19,29,39,49,59,69,79})
+        for (auto playerClass : {5,8,9})
+        {
+            auto const& items = shipped.Find(level, playerClass, 1);
+            Check(items.size() == 17, "caster config has 16 equipped pieces plus one alternate faction insignia");
+            for (std::uint32_t entry = 900019; entry <= 900028; ++entry)
+                Check(contains(items, entry), "every caster bracket includes all ten custom completion pieces");
+            Check(contains(items, 42985) && contains(items, 48691) && contains(items, 42947), "existing heirloom shoulders, robe and staff remain");
+        }
     std::cout << checks << " gear checks passed\n";
 }

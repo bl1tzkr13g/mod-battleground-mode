@@ -49,18 +49,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 19,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 19,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 19,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-19,1,Priest,2982,Seer's Pants,0,2,15,20
-19,1,Priest,2983,Seer's Boots,0,2,12,17
-19,1,Priest,2984,Seer's Gloves,0,2,13,18
-19,1,Priest,3645,Seer's Cuffs,0,2,12,17
-19,1,Priest,4699,Seer's Belt,0,2,13,18
-19,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+19,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 19,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-19,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-19,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-19,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 19,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+19,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+19,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+19,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+19,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 19,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+19,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+19,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 19,1,Shaman,9775,Bandit Cinch,0,2,14,19
 19,1,Shaman,9776,Bandit Boots,0,2,15,20
 19,1,Shaman,9777,Bandit Bracers,0,2,14,19
@@ -73,30 +78,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 19,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 19,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 19,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-19,1,Mage,2982,Seer's Pants,0,2,15,20
-19,1,Mage,2983,Seer's Boots,0,2,12,17
-19,1,Mage,2984,Seer's Gloves,0,2,13,18
-19,1,Mage,3645,Seer's Cuffs,0,2,12,17
-19,1,Mage,4699,Seer's Belt,0,2,13,18
-19,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+19,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 19,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-19,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-19,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-19,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 19,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+19,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+19,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+19,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+19,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 19,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-19,1,Warlock,2982,Seer's Pants,0,2,15,20
-19,1,Warlock,2983,Seer's Boots,0,2,12,17
-19,1,Warlock,2984,Seer's Gloves,0,2,13,18
-19,1,Warlock,3645,Seer's Cuffs,0,2,12,17
-19,1,Warlock,4699,Seer's Belt,0,2,13,18
-19,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+19,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+19,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+19,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 19,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-19,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-19,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-19,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 19,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+19,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+19,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+19,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+19,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+19,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 19,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+19,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+19,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+19,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+19,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+19,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+19,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 19,1,Druid,9775,Bandit Cinch,0,2,14,19
 19,1,Druid,9776,Bandit Boots,0,2,15,20
 19,1,Druid,9777,Bandit Bracers,0,2,14,19
@@ -241,19 +256,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 29,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 29,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 29,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-29,1,Priest,3065,Bright Boots,0,2,18,23
-29,1,Priest,3066,Bright Gloves,0,2,19,24
-29,1,Priest,3067,Bright Pants,0,2,21,26
-29,1,Priest,3647,Bright Bracers,0,2,18,23
-29,1,Priest,4708,Bright Belt,0,2,19,24
-29,1,Priest,7048,Azure Silk Hood,0,2,24,29
-29,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+29,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 29,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-29,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-29,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-29,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 29,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+29,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+29,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+29,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+29,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 29,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+29,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+29,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 29,1,Shaman,4048,Emblazoned Hat,0,2,26,31
 29,1,Shaman,9801,Superior Belt,0,2,20,25
 29,1,Shaman,9802,Superior Boots,0,2,21,26
@@ -267,32 +286,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 29,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 29,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 29,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-29,1,Mage,3065,Bright Boots,0,2,18,23
-29,1,Mage,3066,Bright Gloves,0,2,19,24
-29,1,Mage,3067,Bright Pants,0,2,21,26
-29,1,Mage,3647,Bright Bracers,0,2,18,23
-29,1,Mage,4708,Bright Belt,0,2,19,24
-29,1,Mage,7048,Azure Silk Hood,0,2,24,29
-29,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+29,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 29,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-29,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-29,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-29,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 29,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+29,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+29,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+29,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+29,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 29,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-29,1,Warlock,3065,Bright Boots,0,2,18,23
-29,1,Warlock,3066,Bright Gloves,0,2,19,24
-29,1,Warlock,3067,Bright Pants,0,2,21,26
-29,1,Warlock,3647,Bright Bracers,0,2,18,23
-29,1,Warlock,4708,Bright Belt,0,2,19,24
-29,1,Warlock,7048,Azure Silk Hood,0,2,24,29
-29,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+29,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+29,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+29,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 29,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-29,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-29,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-29,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 29,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+29,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+29,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+29,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+29,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+29,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 29,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+29,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+29,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+29,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+29,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+29,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+29,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 29,1,Druid,4048,Emblazoned Hat,0,2,26,31
 29,1,Druid,9801,Superior Belt,0,2,20,25
 29,1,Druid,9802,Superior Boots,0,2,21,26
@@ -459,19 +486,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 39,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 39,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 39,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-39,1,Priest,9845,Conjurer's Shoes,0,2,30,35
-39,1,Priest,9846,Conjurer's Bracers,0,2,30,35
-39,1,Priest,9848,Conjurer's Gloves,0,2,31,36
-39,1,Priest,9849,Conjurer's Hood,0,2,31,36
-39,1,Priest,9851,Conjurer's Breeches,0,2,32,37
-39,1,Priest,9853,Conjurer's Cinch,0,2,29,34
-39,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+39,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 39,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-39,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-39,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-39,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 39,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+39,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+39,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+39,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+39,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 39,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+39,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+39,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 39,1,Shaman,7406,Infiltrator Cord,0,2,27,32
 39,1,Shaman,7409,Infiltrator Boots,0,2,28,33
 39,1,Shaman,7410,Infiltrator Bracers,0,2,26,31
@@ -485,32 +516,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 39,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 39,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 39,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-39,1,Mage,9845,Conjurer's Shoes,0,2,30,35
-39,1,Mage,9846,Conjurer's Bracers,0,2,30,35
-39,1,Mage,9848,Conjurer's Gloves,0,2,31,36
-39,1,Mage,9849,Conjurer's Hood,0,2,31,36
-39,1,Mage,9851,Conjurer's Breeches,0,2,32,37
-39,1,Mage,9853,Conjurer's Cinch,0,2,29,34
-39,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+39,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 39,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-39,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-39,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-39,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 39,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+39,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+39,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+39,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+39,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 39,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-39,1,Warlock,9845,Conjurer's Shoes,0,2,30,35
-39,1,Warlock,9846,Conjurer's Bracers,0,2,30,35
-39,1,Warlock,9848,Conjurer's Gloves,0,2,31,36
-39,1,Warlock,9849,Conjurer's Hood,0,2,31,36
-39,1,Warlock,9851,Conjurer's Breeches,0,2,32,37
-39,1,Warlock,9853,Conjurer's Cinch,0,2,29,34
-39,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+39,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+39,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+39,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 39,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-39,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-39,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-39,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 39,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+39,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+39,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+39,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+39,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+39,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 39,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+39,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+39,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+39,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+39,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+39,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+39,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 39,1,Druid,7406,Infiltrator Cord,0,2,27,32
 39,1,Druid,7409,Infiltrator Boots,0,2,28,33
 39,1,Druid,7410,Infiltrator Bracers,0,2,26,31
@@ -677,19 +716,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 49,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 49,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 49,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-49,1,Priest,9875,Sorcerer Sash,0,2,34,39
-49,1,Priest,9876,Sorcerer Slippers,0,2,35,40
-49,1,Priest,9878,Sorcerer Hat,0,2,36,41
-49,1,Priest,9879,Sorcerer Bracelets,0,2,34,39
-49,1,Priest,9880,Sorcerer Gloves,0,2,35,40
-49,1,Priest,9883,Sorcerer Pants,0,2,37,42
-49,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+49,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 49,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-49,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-49,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-49,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 49,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+49,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+49,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+49,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+49,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 49,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+49,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+49,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 49,1,Shaman,9926,Brigade Boots,0,2,38,43
 49,1,Shaman,9927,Brigade Bracers,0,2,37,42
 49,1,Shaman,9930,Brigade Gauntlets,0,2,38,43
@@ -703,32 +746,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 49,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 49,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 49,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-49,1,Mage,9875,Sorcerer Sash,0,2,34,39
-49,1,Mage,9876,Sorcerer Slippers,0,2,35,40
-49,1,Mage,9878,Sorcerer Hat,0,2,36,41
-49,1,Mage,9879,Sorcerer Bracelets,0,2,34,39
-49,1,Mage,9880,Sorcerer Gloves,0,2,35,40
-49,1,Mage,9883,Sorcerer Pants,0,2,37,42
-49,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+49,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 49,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-49,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-49,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-49,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 49,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+49,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+49,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+49,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+49,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 49,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-49,1,Warlock,9875,Sorcerer Sash,0,2,34,39
-49,1,Warlock,9876,Sorcerer Slippers,0,2,35,40
-49,1,Warlock,9878,Sorcerer Hat,0,2,36,41
-49,1,Warlock,9879,Sorcerer Bracelets,0,2,34,39
-49,1,Warlock,9880,Sorcerer Gloves,0,2,35,40
-49,1,Warlock,9883,Sorcerer Pants,0,2,37,42
-49,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+49,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+49,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+49,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 49,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-49,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-49,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-49,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 49,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+49,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+49,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+49,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+49,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+49,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 49,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+49,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+49,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+49,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+49,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+49,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+49,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 49,1,Druid,9916,Tracker's Belt,0,2,39,44
 49,1,Druid,9917,Tracker's Boots,0,2,39,44
 49,1,Druid,9920,Tracker's Gloves,0,2,39,44
@@ -895,19 +946,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 59,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 59,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 59,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-59,1,Priest,10095,Councillor's Boots,0,2,51,56
-59,1,Priest,10096,Councillor's Cuffs,0,2,49,54
-59,1,Priest,10097,Councillor's Circlet,0,2,52,57
-59,1,Priest,10099,Councillor's Gloves,0,2,50,55
-59,1,Priest,10101,Councillor's Pants,0,2,53,58
-59,1,Priest,10103,Councillor's Sash,0,2,49,54
-59,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+59,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 59,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-59,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-59,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-59,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 59,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+59,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+59,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+59,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+59,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 59,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+59,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+59,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 59,1,Shaman,15649,Merciless Bracers,0,2,46,51
 59,1,Shaman,15651,Merciless Crown,0,2,51,56
 59,1,Shaman,15653,Merciless Gauntlets,0,2,48,53
@@ -921,32 +976,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 59,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 59,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 59,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-59,1,Mage,10095,Councillor's Boots,0,2,51,56
-59,1,Mage,10096,Councillor's Cuffs,0,2,49,54
-59,1,Mage,10097,Councillor's Circlet,0,2,52,57
-59,1,Mage,10099,Councillor's Gloves,0,2,50,55
-59,1,Mage,10101,Councillor's Pants,0,2,53,58
-59,1,Mage,10103,Councillor's Sash,0,2,49,54
-59,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+59,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 59,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-59,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-59,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-59,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 59,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+59,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+59,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+59,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+59,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 59,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-59,1,Warlock,10095,Councillor's Boots,0,2,51,56
-59,1,Warlock,10096,Councillor's Cuffs,0,2,49,54
-59,1,Warlock,10097,Councillor's Circlet,0,2,52,57
-59,1,Warlock,10099,Councillor's Gloves,0,2,50,55
-59,1,Warlock,10101,Councillor's Pants,0,2,53,58
-59,1,Warlock,10103,Councillor's Sash,0,2,49,54
-59,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+59,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+59,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+59,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 59,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-59,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-59,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-59,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 59,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+59,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+59,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+59,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+59,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+59,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 59,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+59,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+59,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+59,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+59,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+59,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+59,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 59,1,Druid,10106,Wanderer's Boots,0,2,51,56
 59,1,Druid,10107,Wanderer's Bracers,0,2,49,54
 59,1,Druid,10109,Wanderer's Belt,0,2,49,54
@@ -1185,19 +1248,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 69,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 69,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 69,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-69,1,Priest,24629,Feralfen Sash,0,2,63,99
-69,1,Priest,24630,Feralfen Sandals,0,2,63,99
-69,1,Priest,24632,Feralfen Hand,0,2,63,99
-69,1,Priest,24633,Feralfen Hood,0,2,63,99
-69,1,Priest,24634,Feralfen Pants,0,2,63,99
-69,1,Priest,24636,Feralfen Cuffs,0,2,63,99
-69,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+69,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 69,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-69,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-69,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-69,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 69,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+69,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+69,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+69,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+69,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 69,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+69,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+69,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 69,1,Shaman,24854,Marshcreeper Belt,0,2,63,99
 69,1,Shaman,24855,Marshcreeper Sludgeboots,0,2,63,99
 69,1,Shaman,24857,Marshcreeper Gloves,0,2,63,99
@@ -1211,32 +1278,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 69,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 69,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 69,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-69,1,Mage,24629,Feralfen Sash,0,2,63,99
-69,1,Mage,24630,Feralfen Sandals,0,2,63,99
-69,1,Mage,24632,Feralfen Hand,0,2,63,99
-69,1,Mage,24633,Feralfen Hood,0,2,63,99
-69,1,Mage,24634,Feralfen Pants,0,2,63,99
-69,1,Mage,24636,Feralfen Cuffs,0,2,63,99
-69,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+69,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 69,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-69,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-69,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-69,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 69,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+69,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+69,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+69,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+69,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 69,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-69,1,Warlock,24629,Feralfen Sash,0,2,63,99
-69,1,Warlock,24630,Feralfen Sandals,0,2,63,99
-69,1,Warlock,24632,Feralfen Hand,0,2,63,99
-69,1,Warlock,24633,Feralfen Hood,0,2,63,99
-69,1,Warlock,24634,Feralfen Pants,0,2,63,99
-69,1,Warlock,24636,Feralfen Cuffs,0,2,63,99
-69,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+69,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+69,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+69,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 69,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-69,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-69,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-69,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 69,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+69,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+69,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+69,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+69,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+69,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 69,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+69,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+69,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+69,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+69,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+69,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+69,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 69,1,Druid,24741,Ranger Belt,0,2,63,99
 69,1,Druid,24742,Ranger Boots,0,2,63,99
 69,1,Druid,24744,Ranger Gloves,0,2,63,99
@@ -1475,19 +1550,23 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 79,1,Rogue,44098,Inherited Insignia of the Alliance,0,7,0,1
 79,1,Rogue,48689,Stained Shadowcraft Tunic,0,7,1,1
 79,1,Rogue,50255,Dread Pirate Ring,0,7,0,1
-79,1,Priest,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Priest,41519,Frostwoven Leggings,0,2,72,142
-79,1,Priest,41520,Frostwoven Boots,0,2,68,138
-79,1,Priest,41521,Frostwoven Cowl,0,2,72,142
-79,1,Priest,41522,Frostwoven Belt,0,2,68,138
-79,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Priest,900019,Tattered Dreadmist Hood,0,7,1,1
+79,1,Priest,900028,Tattered Dreadmist Pendant,0,7,1,1
 79,1,Priest,42985,Tattered Dreadmist Mantle,0,7,0,1
-79,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
-79,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
-79,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
-79,1,Priest,44211,Frostwoven Gloves,0,2,68,138
+79,1,Priest,900020,Tattered Dreadmist Cloak,0,7,1,1
 79,1,Priest,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Priest,900022,Tattered Dreadmist Bracers,0,7,1,1
+79,1,Priest,900023,Tattered Dreadmist Wraps,0,7,1,1
+79,1,Priest,900021,Tattered Dreadmist Belt,0,7,1,1
+79,1,Priest,900024,Tattered Dreadmist Leggings,0,7,1,1
+79,1,Priest,900025,Tattered Dreadmist Sandals,0,7,1,1
 79,1,Priest,50255,Dread Pirate Ring,0,7,0,1
+79,1,Priest,900027,Tattered Dreadmist Signet,0,7,1,1
+79,1,Priest,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Priest,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Priest,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Priest,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Priest,900026,Tattered Dreadmist Wand,0,7,1,1
 79,1,Shaman,38412,Frostscale Belt,0,2,68,138
 79,1,Shaman,38413,Frostscale Boots,0,2,73,146
 79,1,Shaman,38415,Frostscale Gloves,0,2,72,142
@@ -1501,32 +1580,40 @@ level,tier,player_class,item_id,item_name,honor,quality,required_level,item_leve
 79,1,Shaman,48677,Champion's Deathdealer Breastplate,0,7,1,1
 79,1,Shaman,48716,Venerable Mass of McGowan,0,7,1,1
 79,1,Shaman,50255,Dread Pirate Ring,0,7,0,1
-79,1,Mage,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Mage,41519,Frostwoven Leggings,0,2,72,142
-79,1,Mage,41520,Frostwoven Boots,0,2,68,138
-79,1,Mage,41521,Frostwoven Cowl,0,2,72,142
-79,1,Mage,41522,Frostwoven Belt,0,2,68,138
-79,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Mage,900019,Tattered Dreadmist Hood,0,7,1,1
+79,1,Mage,900028,Tattered Dreadmist Pendant,0,7,1,1
 79,1,Mage,42985,Tattered Dreadmist Mantle,0,7,0,1
-79,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
-79,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
-79,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
-79,1,Mage,44211,Frostwoven Gloves,0,2,68,138
+79,1,Mage,900020,Tattered Dreadmist Cloak,0,7,1,1
 79,1,Mage,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Mage,900022,Tattered Dreadmist Bracers,0,7,1,1
+79,1,Mage,900023,Tattered Dreadmist Wraps,0,7,1,1
+79,1,Mage,900021,Tattered Dreadmist Belt,0,7,1,1
+79,1,Mage,900024,Tattered Dreadmist Leggings,0,7,1,1
+79,1,Mage,900025,Tattered Dreadmist Sandals,0,7,1,1
 79,1,Mage,50255,Dread Pirate Ring,0,7,0,1
-79,1,Warlock,41512,Frostwoven Wristwraps,0,2,70,134
-79,1,Warlock,41519,Frostwoven Leggings,0,2,72,142
-79,1,Warlock,41520,Frostwoven Boots,0,2,68,138
-79,1,Warlock,41521,Frostwoven Cowl,0,2,72,142
-79,1,Warlock,41522,Frostwoven Belt,0,2,68,138
-79,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Mage,900027,Tattered Dreadmist Signet,0,7,1,1
+79,1,Mage,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Mage,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Mage,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Mage,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Mage,900026,Tattered Dreadmist Wand,0,7,1,1
+79,1,Warlock,900019,Tattered Dreadmist Hood,0,7,1,1
+79,1,Warlock,900028,Tattered Dreadmist Pendant,0,7,1,1
 79,1,Warlock,42985,Tattered Dreadmist Mantle,0,7,0,1
-79,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
-79,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
-79,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
-79,1,Warlock,44211,Frostwoven Gloves,0,2,68,138
+79,1,Warlock,900020,Tattered Dreadmist Cloak,0,7,1,1
 79,1,Warlock,48691,Tattered Dreadmist Robe,0,7,1,1
+79,1,Warlock,900022,Tattered Dreadmist Bracers,0,7,1,1
+79,1,Warlock,900023,Tattered Dreadmist Wraps,0,7,1,1
+79,1,Warlock,900021,Tattered Dreadmist Belt,0,7,1,1
+79,1,Warlock,900024,Tattered Dreadmist Leggings,0,7,1,1
+79,1,Warlock,900025,Tattered Dreadmist Sandals,0,7,1,1
 79,1,Warlock,50255,Dread Pirate Ring,0,7,0,1
+79,1,Warlock,900027,Tattered Dreadmist Signet,0,7,1,1
+79,1,Warlock,42992,Discerning Eye of the Beast,0,7,0,1
+79,1,Warlock,44098,Inherited Insignia of the Alliance,0,7,0,1
+79,1,Warlock,44097,Inherited Insignia of the Horde,0,7,0,1
+79,1,Warlock,42947,Dignified Headmaster's Charge,0,7,0,1
+79,1,Warlock,900026,Tattered Dreadmist Wand,0,7,1,1
 79,1,Druid,38401,Arctic Leggings,0,2,71,146
 79,1,Druid,38403,Arctic Gloves,0,2,71,146
 79,1,Druid,38404,Arctic Boots,0,2,70,142

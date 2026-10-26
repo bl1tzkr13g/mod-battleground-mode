@@ -192,8 +192,10 @@ support location switches: `BattlegroundMode.VendorHubs.Shattrath.Enable` and
 requires a restart. Stock inventories and requirements are retained; this is
 separate from the configurable bracket catalog.
 
-## Experimental custom heirloom
+## Custom scaling caster set
 
-[A GM-test cloth helmet prototype](docs/custom-heirloom-prototype.md) reuses the
-Dreadmist Mask appearance and an existing heirloom scaling profile. The updater
-creates it automatically, but starter kits and vendor lists do not include it.
+[Priest, Mage and Warlock now receive a full caster starter set](docs/caster-starter-set.md)
+at every bracket, with ten custom scaling completion items alongside existing
+stock heirlooms. The original tested hood is included. SQL installs automatically
+on startup; update the active caster Tier 1 config lists too. Client patch work
+for custom-item icons/right-click equipping remains deferred.
